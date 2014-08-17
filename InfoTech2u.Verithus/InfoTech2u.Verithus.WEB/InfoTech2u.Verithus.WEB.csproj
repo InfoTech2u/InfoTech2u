@@ -57,6 +57,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Cryptography.aspx" />
+    <Content Include="js\DataTableEmpresa.js" />
     <Content Include="Modulos\InfoTech2u.Master" />
     <Content Include="fonts\fontawesome\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome\fontawesome-webfont.ttf" />
@@ -140,6 +142,7 @@
     <Content Include="fonts\roboto\Roboto-ThinItalic-webfont.eot" />
     <Content Include="fonts\roboto\Roboto-ThinItalic-webfont.ttf" />
     <Content Include="fonts\roboto\Roboto-ThinItalic-webfont.woff" />
+    <Content Include="Handler\DataTablesHandlerGeneric.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -661,6 +664,7 @@
     <Content Include="Logoff.aspx" />
     <Content Include="Modulos\Dashboard\DashboardGerente.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterBeneficios.aspx" />
+    <Content Include="Modulos\RecursosHumanos\ManterUsuario.aspx" />
     <Content Include="Modulos\RecursosHumanos\PesquisaBeneficios.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterEmpresa.aspx" />
     <Content Include="Modulos\RecursosHumanos\PesquisaEmpresa.aspx" />
@@ -711,6 +715,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\PaginaBase.cs" />
+    <Compile Include="Cryptography.aspx.cs">
+      <DependentUpon>Cryptography.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cryptography.aspx.designer.cs">
+      <DependentUpon>Cryptography.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -720,6 +731,9 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\DataTablesHandlerGeneric.ashx.cs">
+      <DependentUpon>DataTablesHandlerGeneric.ashx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Dashboard\DashboardGerente.aspx.cs">
       <DependentUpon>DashboardGerente.aspx</DependentUpon>
@@ -755,6 +769,13 @@
     </Compile>
     <Compile Include="Modulos\RecursosHumanos\ManterBeneficios.aspx.designer.cs">
       <DependentUpon>ManterBeneficios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\ManterUsuario.aspx.cs">
+      <DependentUpon>ManterUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\ManterUsuario.aspx.designer.cs">
+      <DependentUpon>ManterUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\RecursosHumanos\PesquisaBeneficios.aspx.cs">
       <DependentUpon>PesquisaBeneficios.aspx</DependentUpon>
@@ -795,13 +816,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Handler\" />
+    <Folder Include="include\xml\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\InfoTech2u.Verithus.BS\InfoTech2u.Verithus.BS.csproj">
+      <Project>{715bca57-8640-4845-b777-195c290c0894}</Project>
+      <Name>InfoTech2u.Verithus.BS</Name>
+    </ProjectReference>
     <ProjectReference Include="..\InfoTech2u.Verithus.Util\InfoTech2u.Verithus.Util.csproj">
       <Project>{37f90fd2-4ffd-497b-971a-df5e644075c3}</Project>
       <Name>InfoTech2u.Verithus.Util</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InfoTech2u.Verithus.VO\InfoTech2u.Verithus.VO.csproj">
+      <Project>{952f4234-1d72-4d3d-a440-7a5658806eda}</Project>
+      <Name>InfoTech2u.Verithus.VO</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

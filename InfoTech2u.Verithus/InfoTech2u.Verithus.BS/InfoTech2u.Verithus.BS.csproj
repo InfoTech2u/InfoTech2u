@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{715BCA57-8640-4845-B777-195C290C0894}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>InfoTech2u.Verithus.BS</RootNamespace>
+    <AssemblyName>InfoTech2u.Verithus.BS</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AcidenteTrabalhoBS.cs" />
+    <Compile Include="AlteracaoCargoSalariorBS.cs" />
+    <Compile Include="BancoBS.cs" />
+    <Compile Include="CaractesristicaFisicaBS.cs" />
+    <Compile Include="CategoriaBeneficioBS.cs" />
+    <Compile Include="ContatoBS.cs" />
+    <Compile Include="ContribuicaoSindicalBS.cs" />
+    <Compile Include="DadosAdmissaoBS.cs" />
+    <Compile Include="DadosDemissaoBS.cs" />
+    <Compile Include="DependenteBS.cs" />
+    <Compile Include="DetalheContatoMailBS.cs" />
+    <Compile Include="DetalheContatoTelefonicoBS.cs" />
+    <Compile Include="DetalheEnderecoBS.cs" />
+    <Compile Include="DocumentoBS.cs" />
+    <Compile Include="DocumentoEstrangeiroBS.cs" />
+    <Compile Include="DocumentoFundoGarantiaBS.cs" />
+    <Compile Include="DocumentoPISBS.cs" />
+    <Compile Include="EmpresaBS.cs" />
+    <Compile Include="EnderecoBS.cs" />
+    <Compile Include="EstadoCivilBS.cs" />
+    <Compile Include="FeriasBS.cs" />
+    <Compile Include="FuncionariosBS.cs" />
+    <Compile Include="LogAcaoBS.cs" />
+    <Compile Include="LogErroBS.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SindicatoBS.cs" />
+    <Compile Include="StatusBS.cs" />
+    <Compile Include="TipoAcessoBS.cs" />
+    <Compile Include="TipoBeneficioBS.cs" />
+    <Compile Include="TipoCabeloBS.cs" />
+    <Compile Include="TipoCargoBS.cs" />
+    <Compile Include="TipoContatoBS.cs" />
+    <Compile Include="TipoCorBS.cs" />
+    <Compile Include="TipoEnderecoBS.cs" />
+    <Compile Include="TipoFormaPagamentoBS.cs" />
+    <Compile Include="TipoLogradouroBS.cs" />
+    <Compile Include="TipoOlhoBS.cs" />
+    <Compile Include="TipoParentescoBS.cs" />
+    <Compile Include="TipoSecaoBS.cs" />
+    <Compile Include="TipoTarefaBS.cs" />
+    <Compile Include="UsuariosBS.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InfoTech2u.Verithus.DA\InfoTech2u.Verithus.DA.csproj">
+      <Project>{b1074c86-ff81-4be2-8f4e-2adc35e07573}</Project>
+      <Name>InfoTech2u.Verithus.DA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InfoTech2u.Verithus.VO\InfoTech2u.Verithus.VO.csproj">
+      <Project>{952f4234-1d72-4d3d-a440-7a5658806eda}</Project>
+      <Name>InfoTech2u.Verithus.VO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

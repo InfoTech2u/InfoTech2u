@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes"?>
+<dataset>
+ <ConnectionString>
+  <database>k8J8jOxuPhTQ9LBxhPzSJg==</database>
+  <server>TEfoTM63a5ItJtMvSZIaXYloFr9nlJiM</server>
+  <port></port>
+  <user>lXoTIyOWdSo=</user>
+  <password>B7bdS9WuFXi/i7G0rZWhPA==</password>
+  <winapli></winapli>
+ </ConnectionString>
+</dataset>
+
+<!-- Configurações de HOMOLOGAÇÂO-->
+<!--
+<dataset>
+ <ConnectionString>
+  <database>gkt7TA0v11GxNAHCrjj8Ug==</database>
+  <server>VC1IHhBQKU+dH43yD1pUSg==</server>
+  <port>k5W/PiW0Zhg=</port>
+  <user>ZLhku1/mNQvZv2T9PnuaJQ==</user>
+  <password>ZLhku1/mNQvZv2T9PnuaJQ==</password>
+ </ConnectionString>
+</dataset>
+-->
+<!-- Configurações de PRODUÇÃO -->
+<!--
+<dataset>
+ <ConnectionString>
+  <database>gkt7TA0v11FCSnDLjGAFhA==</database>
+  <server>ZLhku1/mNQuK09LoEyRDQEU3FvR1TPev</server>
+  <port>k5W/PiW0Zhg=</port>
+  <user>ZLhku1/mNQvZv2T9PnuaJQ==</user>
+  <password>ZLhku1/mNQvZv2T9PnuaJQ==</password>
+ </ConnectionString>
+</dataset>
+-->
+
+<!-- Para gerar o XML do servidor do banco de dados, bas acessar a url: http://www.itaucultural.org.br/inscrumos/sistemas/tools/cs.aspx -->

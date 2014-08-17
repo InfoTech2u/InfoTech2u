@@ -27,6 +27,7 @@ namespace InfoTech2u.Verithus.WEB
             InfoTech2uControlHtmlUtil.AdicionarUrlAmigavel("Modulos/RecursosHumanos/Pesquisa-Empresa", "PesquisaEmpresa.aspx", this.hlkPesquisaEmpresa);
             InfoTech2uControlHtmlUtil.AdicionarUrlAmigavel("Modulos/RecursosHumanos/Pesquisa-Funcionário", "PesquisaFuncionario.aspx", this.hlkPesquisaFuncionario);
             InfoTech2uControlHtmlUtil.AdicionarUrlAmigavel("Modulos/RecursosHumanos/Pesquisa-Benefícios", "PesquisaBeneficios.aspx", this.hlkPesquisaBeneficios);
+            InfoTech2uControlHtmlUtil.AdicionarUrlAmigavel("Modulos/RecursosHumanos/Cadastro-Funcionario", "ManterFuncionario.aspx", this.hlkManterUsuario);
 
         }
 
