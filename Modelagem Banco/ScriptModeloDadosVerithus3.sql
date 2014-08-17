@@ -1,8 +1,8 @@
-/*==============================================================*/
-/* DBMS name:      Microsoft SQL Server 2008                    */
-/* Created on:     17/08/2014 10:34:47                          */
-/*==============================================================*/
+CREATE DATABASE [DBVERITHUS]
+GO
 
+USE [DBVERITHUS]
+GO
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
@@ -603,10 +603,10 @@ go
 /* Table: TBVRT001_USUARIOS                                     */
 /*==============================================================*/
 create table TBVRT001_USUARIOS (
-   CODIGO_USUARIO       int                  identity,
+   CODIGO_USUARIO       int                  not null,
    NOME                 nvarchar(80)         null,
    MAIL                 nvarchar(120)        null,
-   LOGIN_USUARIO        nvarchar(80)         null,
+   LOGIN                nvarchar(80)         null,
    SENHA                nvarchar(80)         null,
    CODIGO_TIPO_ACESSO   int                  null,
    CODIGO_USUARIO_CADASTRO int                  null,
@@ -622,7 +622,7 @@ go
 /* Table: TBVRT002_TIPO_ACESSO                                  */
 /*==============================================================*/
 create table TBVRT002_TIPO_ACESSO (
-   CODIGO_TIPO_ACESSO   int                  identity,
+   CODIGO_TIPO_ACESSO   int                  not null,
    DESCRICAO            nvarchar(80)         null,
    CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
@@ -637,7 +637,7 @@ go
 /* Table: TBVRT003_STATUS                                       */
 /*==============================================================*/
 create table TBVRT003_STATUS (
-   CODIGO_STATUS        int                  identity,
+   CODIGO_STATUS        int                  not null,
    DESCRICAO            nvarchar(80)         null,
    CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
@@ -651,7 +651,7 @@ go
 /* Table: TBVRT004_LOG_ERRO                                     */
 /*==============================================================*/
 create table TBVRT004_LOG_ERRO (
-   CODIGO_LOG_ERRO      int                  identity,
+   CODIGO_LOG_ERRO      int                  not null,
    DESCRICAO            xml                  null,
    DATA                 datetime             null,
    CODIGO_USUARIO_EXECUCAO int                  null,
@@ -663,7 +663,7 @@ go
 /* Table: TBVRT005_LOG_ACAO                                     */
 /*==============================================================*/
 create table TBVRT005_LOG_ACAO (
-   CODIGO_LOG_ACAO      int                  identity,
+   CODIGO_LOG_ACAO      int                  not null,
    DESCRICAO            xml                  null,
    DATA                 datetime             null,
    CODIGO_USUARIO_EXECUCAO int                  null,
@@ -675,7 +675,7 @@ go
 /* Table: TBVRT006_FUNCIONARIO                                  */
 /*==============================================================*/
 create table TBVRT006_FUNCIONARIO (
-   CODIGO_FUNCIONARIO   int                  identity,
+   CODIGO_FUNCIONARIO   int                  not null,
    CODIGO_ENDERECO      int                  null,
    CODIGO_EMPRESA       int                  null,
    CODIGO_CONTATO       int                  null,
@@ -706,7 +706,7 @@ go
 /* Table: TBVRT007_DOCUMENTO                                    */
 /*==============================================================*/
 create table TBVRT007_DOCUMENTO (
-   CODIGO_DOCUMENTO     int                  identity,
+   CODIGO_DOCUMENTO     int                  not null,
    CODIGO_FUNCIONARIO   int                  null,
    NUMERO_IDENTIDADE    nvarchar(11)         null,
    NUMERO_CARTEIRA_TRABALHO nvarchar(15)         null,
@@ -714,7 +714,7 @@ create table TBVRT007_DOCUMENTO (
    NUMERO_CERTIFICADO_RESERVISTA nvarchar(15)         null,
    CATEGORIA            nvarchar(15)         null,
    NUMERO_CPF           nvarchar(11)         null,
-   TITULO_ELEITOR       nvarchar(15)         null,
+   TITULO_DE_ELEITOR    nvarchar(15)         null,
    NUMERO_CARTEIRA_SAUDE nvarchar(15)         null,
    CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
@@ -729,7 +729,7 @@ go
 /* Table: TBVRT008_DOCUMENTO_ESTRANGEIRO                        */
 /*==============================================================*/
 create table TBVRT008_DOCUMENTO_ESTRANGEIRO (
-   CODIGO_DOCUMENTO_ESTRAGEIRO int                  identity,
+   CODIGO_DOCUMENTO_ESTRAGEIRO int                  not null,
    CODIGO_FUNCIONARIO   int                  null,
    NUMERO_CBO           nvarchar(80)         null,
    NUMERO_CARTEIRA_19   nvarchar(80)         null,
@@ -751,7 +751,7 @@ go
 /* Table: TBVRT009_DOCUMENTO_PIS                                */
 /*==============================================================*/
 create table TBVRT009_DOCUMENTO_PIS (
-   CODIGO_PIS           int                  identity,
+   CODIGO_PIS           int                  not null,
    DATA_CADASTRO_PIS    datetime             null,
    SOB_NUMERO           nvarchar(10)         null,
    SOB_BANCO            nvarchar(10)         null,
@@ -771,7 +771,7 @@ go
 /* Table: TBVRT010_DOCUMENTO_FUNDO_GARANTIA                     */
 /*==============================================================*/
 create table TBVRT010_DOCUMENTO_FUNDO_GARANTIA (
-   CODIGO_DOCUMENTO_FUNDO_GARANTIA int                  identity,
+   CODIGO_DOCUMENTO_FUNDO_GARANTIA int                  not null,
    CODIGO_FUNCIONARIO   int                  null,
    OPTANTE              char(1)              null,
    DATA_OPCAO           datetime             null,
@@ -790,8 +790,8 @@ go
 /* Table: TBVRT011_DEPENDENTE                                   */
 /*==============================================================*/
 create table TBVRT011_DEPENDENTE (
-   CODIGO_DEPENDENTE    int                  identity,
-   CODIGO_FUNCIONARIO   int                  null,
+   CODIGO_DEPENDENTE    int                  not null,
+   COD_DETL_FUNC        int                  null,
    CODIGO_TIPO_BENECIFIO int                  null,
    NOME                 nvarchar(100)        null,
    CODIGO_TIPO_PARENTESCO int                  null,
@@ -809,13 +809,13 @@ go
 /* Table: TBVRT012_TIPO_BENEFICIO                               */
 /*==============================================================*/
 create table TBVRT012_TIPO_BENEFICIO (
-   CODIGO_TIPO_BENECIFIO int                  identity,
+   CODIGO_TIPO_BENECIFIO int                  not null,
    CODIGO_CATEGORIA_BENEFICIO int                  null,
    DESCRICAO            nvarchar(80)         null,
    CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
-   CODIGO_USUARIO_ALTERACAO int                  null,
-   DATA_ALTERACAO       datetime             null,
+   CODIGO_USUARIO_ATUALIZACAO int                  null,
+   DATA_ATUALIZACAO     datetime             null,
    CODIGO_STATUS        int                  null,
    constraint PK_TBVRT012_TIPO_BENEFICIO primary key (CODIGO_TIPO_BENECIFIO)
 )
@@ -825,12 +825,12 @@ go
 /* Table: TBVRT013_CATEGORIA_BENEFICIO                          */
 /*==============================================================*/
 create table TBVRT013_CATEGORIA_BENEFICIO (
-   CODIGO_CATEGORIA_BENEFICIO int                  identity,
+   CODIGO_CATEGORIA_BENEFICIO int                  not null,
    DESCRICAO            nvarchar(80)         null,
    CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
-   CODIGO_USUARIO_ALTERACAO int                  null,
-   DATA_ALTERACAO       datetime             null,
+   CODIGO_USUARIO_ATUALIZACAO int                  null,
+   DATA_ATUALIZACAO     datetime             null,
    CODIGO_STATUS        int                  null,
    constraint PK_TBVRT013_CATEGORIA_BENEFICI primary key (CODIGO_CATEGORIA_BENEFICIO)
 )
@@ -840,7 +840,7 @@ go
 /* Table: TBVRT014_TIPO_PARENTESCO                              */
 /*==============================================================*/
 create table TBVRT014_TIPO_PARENTESCO (
-   CODIGO_TIPO_PARENTESCO int                  identity,
+   CODIGO_TIPO_PARENTESCO int                  not null,
    DESCRICAO            nvarchar(80)         null,
    CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
@@ -855,8 +855,8 @@ go
 /* Table: TBVRT015_CARACTERISTICA_FISICA                        */
 /*==============================================================*/
 create table TBVRT015_CARACTERISTICA_FISICA (
-   CODIGO_CARACTERISTICA_FISICA int                  identity,
-   CODIGO_FUNCIONARIO   int                  null,
+   CODIGO_CARACTERISTICA_FISICA int                  not null,
+   COD_DETL_FUNC        int                  null,
    CODIGO_TIPO_COR      int                  null,
    ALTURA               decimal(3,2)         null,
    PESO                 decimal(5,2)         null,
@@ -876,7 +876,7 @@ go
 /* Table: TBVRT016_TIPO_COR                                     */
 /*==============================================================*/
 create table TBVRT016_TIPO_COR (
-   CODIGO_TIPO_COR      int                  identity,
+   CODIGO_TIPO_COR      int                  not null,
    DESCRICAO            nvarchar(80)         null,
    CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
@@ -891,7 +891,7 @@ go
 /* Table: TBVRT017_TIPO_CABELO                                  */
 /*==============================================================*/
 create table TBVRT017_TIPO_CABELO (
-   CODIGO_TIPO_CABELO   int                  identity,
+   CODIGO_TIPO_CABELO   int                  not null,
    DESCRICAO            nvarchar(80)         null,
    CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
@@ -906,7 +906,7 @@ go
 /* Table: TBVRT018_TIPO_OLHO                                    */
 /*==============================================================*/
 create table TBVRT018_TIPO_OLHO (
-   CODIGO_TIPO_OLHO     int                  identity,
+   CODIGO_TIPO_OLHO     int                  not null,
    DESCRICAO            nvarchar(80)         null,
    CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
@@ -921,8 +921,8 @@ go
 /* Table: TBVRT019_DADOS_ADMISSAO                               */
 /*==============================================================*/
 create table TBVRT019_DADOS_ADMISSAO (
-   CODIGO_ADMISSAO      int                  identity,
-   CODIGO_FUNCIONARIO   int                  null,
+   CODIGO_ADMISSAO      int                  not null,
+   COD_DETL_FUNC        int                  null,
    DATA_ADMISSAO        datetime             null,
    DATA_REGISTRO        datetime             null,
    CODIGO_TIPO_CARGO    int                  null,
@@ -950,7 +950,7 @@ go
 /* Table: TBVRT020_TIPO_CARGO                                   */
 /*==============================================================*/
 create table TBVRT020_TIPO_CARGO (
-   CODIGO_TIPO_CARGO    int                  identity,
+   CODIGO_TIPO_CARGO    int                  not null,
    DESCRICAO            nvarchar(80)         null,
    CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
@@ -965,7 +965,7 @@ go
 /* Table: TBVRT021_TIPO_SECAO                                   */
 /*==============================================================*/
 create table TBVRT021_TIPO_SECAO (
-   CODIGO_TIPO_SECAO    int                  identity,
+   CODIGO_TIPO_SECAO    int                  not null,
    DESCRICAO            nvarchar(80)         null,
    CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
@@ -980,7 +980,7 @@ go
 /* Table: TBVRT022_TIPO_TAREFA                                  */
 /*==============================================================*/
 create table TBVRT022_TIPO_TAREFA (
-   CODIGO_TIPO_TAREFA   int                  identity,
+   CODIGO_TIPO_TAREFA   int                  not null,
    DESCRICAO            nvarchar(80)         null,
    CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
@@ -995,7 +995,7 @@ go
 /* Table: TBVRT023_TIPO_FORMA_PAGAMENTO                         */
 /*==============================================================*/
 create table TBVRT023_TIPO_FORMA_PAGAMENTO (
-   CODIGO_TIPO_FORMA_PAGAMENTO int                  identity,
+   CODIGO_TIPO_FORMA_PAGAMENTO int                  not null,
    DESCRICAO            nvarchar(80)         null,
    CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
@@ -1010,8 +1010,8 @@ go
 /* Table: TBVRT024_DADOS_DEMISSAO                               */
 /*==============================================================*/
 create table TBVRT024_DADOS_DEMISSAO (
-   CODIGO_DEMISSAO      int                  identity,
-   CODIGO_FUNCIONARIO   int                  null,
+   CODIGO_DEMISSAO      int                  not null,
+   COD_DETL_FUNC        int                  null,
    DATA_DEMISSAO        datetime             null,
    DATA_REGISTRO        datetime             null,
    CODIGO_TIPO_CARGO    int                  null,
@@ -1034,8 +1034,8 @@ go
 /* Table: TBVRT025_FERIAS                                       */
 /*==============================================================*/
 create table TBVRT025_FERIAS (
-   CODIGO_FERIAS        int                  identity,
-   CODIGO_FUNCIONARIO   int                  null,
+   CODIGO_FERIAS        int                  not null,
+   COD_DETL_FUNC        int                  null,
    DATA_PERIODO_INICIO  datetime             null,
    DATA_PERIODO_FIM     datetime             null,
    DATA_GOZADA_INICIO   datetime             null,
@@ -1053,8 +1053,8 @@ go
 /* Table: TBVRT026_ACIDENTE_TRABALHO                            */
 /*==============================================================*/
 create table TBVRT026_ACIDENTE_TRABALHO (
-   CODIGO_ACIDENTE_TRABALHO int                  identity,
-   CODIGO_FUNCIONARIO   int                  null,
+   CODIGO_ACIDENTE_TRABALHO int                  not null,
+   COD_DETL_FUNC        int                  null,
    DATA                 datetime             null,
    LOCAL                text                 null,
    CAUSA                text                 null,
@@ -1074,8 +1074,8 @@ go
 /* Table: TBVRT027_ALTERACAO_CARGO_SALARIO                      */
 /*==============================================================*/
 create table TBVRT027_ALTERACAO_CARGO_SALARIO (
-   CODIGO_ALTERACAO_CARGO_SALARIO int                  identity,
-   CODIGO_FUNCIONARIO   int                  null,
+   CODIGO_ALTERACAO_CARGO_SALARIO int                  not null,
+   COD_DETL_FUNC        int                  null,
    DATA                 datetime             null,
    CODIGO_TIPO_CARGO    int                  null,
    SALARIO              nvarchar(80)         null,
@@ -1094,8 +1094,8 @@ go
 /* Table: TBVRT028_CONTRIBUICAO_SINDICAL                        */
 /*==============================================================*/
 create table TBVRT028_CONTRIBUICAO_SINDICAL (
-   CODIGO_CONTRIBUICAO_SINDICAL int                  identity,
-   CODIGO_FUNCIONARIO   int                  null,
+   CODIGO_CONTRIBUICAO_SINDICAL int                  not null,
+   COD_DETL_FUNC        int                  null,
    PERIODO_ANO          datetime             null,
    CODIGO_SINDICATO     int                  null,
    VALOR_RECOLHIDO      nvarchar(80)         null,
@@ -1112,7 +1112,7 @@ go
 /* Table: TBVRT029_SINDICATO                                    */
 /*==============================================================*/
 create table TBVRT029_SINDICATO (
-   CODIGO_SINDICATO     int                  identity,
+   CODIGO_SINDICATO     int                  not null,
    NOME                 nvarchar(80)         null,
    CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
@@ -1127,7 +1127,7 @@ go
 /* Table: TBVRT030_EMPRESA                                      */
 /*==============================================================*/
 create table TBVRT030_EMPRESA (
-   CODIGO_EMPRESA       int                  identity,
+   CODIGO_EMPRESA       int                  not null,
    CODIGO_ENDERECO      int                  null,
    CODIGO_CONTATO       int                  null,
    CNJP                 nvarchar(14)         null,
@@ -1147,7 +1147,7 @@ go
 /* Table: TBVRT031_ENDERECO                                     */
 /*==============================================================*/
 create table TBVRT031_ENDERECO (
-   CODIGO_ENDERECO      int                  identity,
+   CODIGO_ENDERECO      int                  not null,
    CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
    CODIGO_USUARIO_ALTERACAO int                  null,
@@ -1161,7 +1161,7 @@ go
 /* Table: TBVRT032_DETALHE_ENDERECO                             */
 /*==============================================================*/
 create table TBVRT032_DETALHE_ENDERECO (
-   CODIGO_DETALHE_ENDERECO int                  identity,
+   CODIGO_DETALHE_ENDERECO int                  not null,
    CODIGO_ENDERECO      int                  null,
    CODIGO_TIPO_ENDERECO int                  null,
    CODIGO_TIPO_LOGRADOURO int                  null,
@@ -1183,7 +1183,7 @@ go
 /* Table: TBVRT033_TIPO_ENDERECO                                */
 /*==============================================================*/
 create table TBVRT033_TIPO_ENDERECO (
-   CODIGO_TIPO_ENDERECO int                  identity,
+   CODIGO_TIPO_ENDERECO int                  not null,
    DESCRICAO            nvarchar(80)         null,
    CODIGO_USUARIO_CADASTRO_ int                  null,
    DATA_CADASTRO        datetime             null,
@@ -1198,7 +1198,7 @@ go
 /* Table: TBVRT034_TIPO_LOGRADOURO                              */
 /*==============================================================*/
 create table TBVRT034_TIPO_LOGRADOURO (
-   CODIGO_TIPO_LOGRADOURO int                  identity,
+   CODIGO_TIPO_LOGRADOURO int                  not null,
    DESCRICAO            nvarchar(80)         null,
    CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
@@ -1213,7 +1213,7 @@ go
 /* Table: TBVRT035_CONTATO                                      */
 /*==============================================================*/
 create table TBVRT035_CONTATO (
-   CODIGO_CONTATO       int                  identity,
+   CODIGO_CONTATO       int                  not null,
    CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
    CODIGO_USUARIO_ALTERACAO int                  null,
@@ -1227,7 +1227,7 @@ go
 /* Table: TBVRT036_DETALHE_CONTATO_MAIL                         */
 /*==============================================================*/
 create table TBVRT036_DETALHE_CONTATO_MAIL (
-   CODIGO_DETALHE_CONTATO_MAIL int                  identity,
+   CODIGO_DETALHE_CONTATO_MAIL int                  not null,
    CODIGO_CONTATO       int                  null,
    CODIGO_TIPO_CONTATO  int                  null,
    MAIL                 nvarchar(120)        null,
@@ -1245,7 +1245,7 @@ go
 /* Table: TBVRT037_DETALHE_CONTATO_TELEFONICO                   */
 /*==============================================================*/
 create table TBVRT037_DETALHE_CONTATO_TELEFONICO (
-   CODIGO_DETALHE_CONTATO_TELEFONICO int                  identity,
+   CODIGO_DETALHE_CONTATO_TELEFONICO int                  not null,
    CODIGO_CONTATO       int                  null,
    CODIGO_TIPO_CONTATO  int                  null,
    DDI                  char(3)              null,
@@ -1266,7 +1266,7 @@ go
 /* Table: TBVRT038_TIPO_CONTATO                                 */
 /*==============================================================*/
 create table TBVRT038_TIPO_CONTATO (
-   CODIGO_TIPO_CONTATO  int                  identity,
+   CODIGO_TIPO_CONTATO  int                  not null,
    DESCRICAO            nvarchar(80)         null,
    CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
@@ -1281,7 +1281,7 @@ go
 /* Table: TBVRT039_BANCO                                        */
 /*==============================================================*/
 create table TBVRT039_BANCO (
-   CODIGO_BANCO         int                  identity,
+   CODIGO_BANCO         int                  not null,
    NUMERO_BANCO         char(3)              null,
    AGENCIA              char(10)             null,
    DIGITO               char(2)              null,
@@ -1300,7 +1300,7 @@ go
 /* Table: TBVRT040_ESTADO_CIVIL                                 */
 /*==============================================================*/
 create table TBVRT040_ESTADO_CIVIL (
-   CODIGO_ESTADO_CIVIL  int                  identity,
+   CODIGO_ESTADO_CIVIL  int                  not null,
    DESCRICAO            nvarchar(80)         null,
    CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
@@ -1372,7 +1372,7 @@ alter table TBVRT010_DOCUMENTO_FUNDO_GARANTIA
 go
 
 alter table TBVRT011_DEPENDENTE
-   add constraint FK_TBVRT011_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO)
+   add constraint FK_TBVRT011_FUNCIONAR_TBVRT006 foreign key (COD_DETL_FUNC)
       references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO)
 go
 
@@ -1392,7 +1392,7 @@ alter table TBVRT012_TIPO_BENEFICIO
 go
 
 alter table TBVRT015_CARACTERISTICA_FISICA
-   add constraint FK_TBVRT015_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO)
+   add constraint FK_TBVRT015_FUNCIONAR_TBVRT006 foreign key (COD_DETL_FUNC)
       references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO)
 go
 
@@ -1412,7 +1412,7 @@ alter table TBVRT015_CARACTERISTICA_FISICA
 go
 
 alter table TBVRT019_DADOS_ADMISSAO
-   add constraint FK_TBVRT019_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO)
+   add constraint FK_TBVRT019_FUNCIONAR_TBVRT006 foreign key (COD_DETL_FUNC)
       references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO)
 go
 
@@ -1437,7 +1437,7 @@ alter table TBVRT019_DADOS_ADMISSAO
 go
 
 alter table TBVRT024_DADOS_DEMISSAO
-   add constraint FK_TBVRT024_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO)
+   add constraint FK_TBVRT024_FUNCIONAR_TBVRT006 foreign key (COD_DETL_FUNC)
       references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO)
 go
 
@@ -1462,22 +1462,22 @@ alter table TBVRT024_DADOS_DEMISSAO
 go
 
 alter table TBVRT025_FERIAS
-   add constraint FK_TBVRT025_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO)
+   add constraint FK_TBVRT025_FUNCIONAR_TBVRT006 foreign key (COD_DETL_FUNC)
       references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO)
 go
 
 alter table TBVRT026_ACIDENTE_TRABALHO
-   add constraint FK_TBVRT026_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO)
+   add constraint FK_TBVRT026_FUNCIONAR_TBVRT006 foreign key (COD_DETL_FUNC)
       references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO)
 go
 
 alter table TBVRT027_ALTERACAO_CARGO_SALARIO
-   add constraint FK_TBVRT027_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO)
+   add constraint FK_TBVRT027_FUNCIONAR_TBVRT006 foreign key (COD_DETL_FUNC)
       references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO)
 go
 
 alter table TBVRT028_CONTRIBUICAO_SINDICAL
-   add constraint FK_TBVRT028_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO)
+   add constraint FK_TBVRT028_FUNCIONAR_TBVRT006 foreign key (COD_DETL_FUNC)
       references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO)
 go
 
@@ -1535,4 +1535,3 @@ alter table TBVRT039_BANCO
    add constraint FK_TBVRT039_CONTATO_B_TBVRT035 foreign key (CODIGO_CONTATO)
       references TBVRT035_CONTATO (CODIGO_CONTATO)
 go
-
