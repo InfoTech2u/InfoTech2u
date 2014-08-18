@@ -24,6 +24,10 @@ jQuery(document).ready(function () {
     // Select with Search
     jQuery(".chzn-select").chosen();
 
+
+    // Spinner
+    jQuery("#spinner").spinner({ min: 0, max: 100, increment: 2 });
+
     
     jQuery('#wizard3').smartWizard({ onFinish: onFinishCallback });
     

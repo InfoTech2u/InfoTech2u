@@ -7,15 +7,15 @@
 
         <ul class="breadcrumbs">
             <li><a href="dashboard.html"><i class="iconfa-home"></i></a><span class="separator"></span></li>
-            <li><a href="forms.html">Forms</a> <span class="separator"></span></li>
-            <li>Wizard Forms</li>
+            <li><a href="forms.html">Recursos Humanos</a> <span class="separator"></span></li>
+            <li>Cadastros de Funcionario</li>
         </ul>
 
         <div class="pageheader">
             <div class="pageicon"><span class="iconfa-pencil"></span></div>
             <div class="pagetitle">
-                <h5>Forms</h5>
-                <h1>Wizard Forms</h1>
+                <h5>Cadastro</h5>
+                <h1>Funcionário</h1>
             </div>
         </div>
         <!--pageheader-->
@@ -24,7 +24,7 @@
             <div class="maincontentinner">
 
                 <!-- START OF TABBED WIZARD -->
-                <h4 class="subtitle2">Tabbed Wizard</h4>
+                <h4 class="subtitle2">Formulario de Cadastros</h4>
                 <br />
 
                 <div id="wizard3" class="wizard tabbedwizard">
@@ -874,6 +874,17 @@
                                     <option value="2">Divorciado</option>
                                 </select>
                             </span>
+                        </p>
+
+                        <p>
+                            <label>Nome do(a) Conjuge</label>
+                            <span class="field">
+                                <input type="text" name="lastname" class="input-xxlarge" /></span>
+                        </p>
+
+                        <p>
+                            <label>Quantos Filhos</label>
+                            <span class="field"><input type="text" id="spinner" name="" class="input-small input-spinner" value="0" /></span>
                         </p>
 
 
