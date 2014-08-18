@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Cryptography.aspx" />
+    <Content Include="js\CadastroFuncionario.js" />
     <Content Include="js\DataTableEmpresa.js" />
     <Content Include="Modulos\InfoTech2u.Master" />
     <Content Include="fonts\fontawesome\fontawesome-webfont.eot" />
