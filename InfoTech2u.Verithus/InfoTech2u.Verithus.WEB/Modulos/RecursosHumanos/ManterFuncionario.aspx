@@ -884,7 +884,8 @@
 
                         <p>
                             <label>Quantos Filhos</label>
-                            <span class="field"><input type="text" id="spinner" name="" class="input-small input-spinner" value="0" /></span>
+                            <span class="field">
+                                <input type="text" id="spinner" name="" class="input-small input-spinner" value="0" /></span>
                         </p>
 
 
@@ -965,6 +966,7 @@
                 </div>
                 <!--#wizard-->
 
+                
 
                 <!-- END OF TABBED WIZARD -->
 

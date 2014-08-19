@@ -39,6 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CidadeVO.cs" />
+    <Compile Include="EstadoVO.cs" />
+    <Compile Include="PaisVO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsuariosVO.cs" />
     <Compile Include="TipoAcessoVO.cs" />

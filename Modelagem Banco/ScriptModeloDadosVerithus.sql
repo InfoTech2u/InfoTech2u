@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2008                    */
-/* Created on:     17/08/2014 10:34:47                          */
+/* Created on:     18/08/2014 20:33:37                          */
 /*==============================================================*/
 
 
@@ -599,6 +599,27 @@ if exists (select 1
    drop table TBVRT040_ESTADO_CIVIL
 go
 
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('TBVRT041_PAIS')
+            and   type = 'U')
+   drop table TBVRT041_PAIS
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('TBVRT042_CIDADE')
+            and   type = 'U')
+   drop table TBVRT042_CIDADE
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('TBVRT043_ESTADO')
+            and   type = 'U')
+   drop table TBVRT043_ESTADO
+go
+
 /*==============================================================*/
 /* Table: TBVRT001_USUARIOS                                     */
 /*==============================================================*/
@@ -683,9 +704,9 @@ create table TBVRT006_FUNCIONARIO (
    NUMERO_ORDEM_MATRICULA int                  null,
    NUMERO_MATRICULA     int                  null,
    NOME_PAI             nvarchar(100)        null,
-   NACIONALIDADE_PAI    nvarchar(100)        null,
+   NACIONALIDADE_PAI    int                  null,
    NOME_MAE             nvarchar(100)        null,
-   NACIONALIDADE_MAE    nvarchar(100)        null,
+   NACIONALIDADE_MAE    int                  null,
    DATA_NASCIMENTO      nvarchar(100)        null,
    NACIMENTO            datetime             null,
    CODIGO_ESTADO_CIVIL  int                  null,
@@ -1056,7 +1077,7 @@ create table TBVRT026_ACIDENTE_TRABALHO (
    CODIGO_ACIDENTE_TRABALHO int                  identity,
    CODIGO_FUNCIONARIO   int                  null,
    DATA                 datetime             null,
-   LOCAL                text                 null,
+   ACIDENTE_TRABALHO_LOCAL text                 null,
    CAUSA                text                 null,
    DATA_ALTA            datetime             null,
    RESULTADO            text                 null,
@@ -1185,7 +1206,7 @@ go
 create table TBVRT033_TIPO_ENDERECO (
    CODIGO_TIPO_ENDERECO int                  identity,
    DESCRICAO            nvarchar(80)         null,
-   CODIGO_USUARIO_CADASTRO_ int                  null,
+   CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
    CODIGO_USUARIO_ALTERACAO int                  null,
    DATA_ALTERACAO       datetime             null,
@@ -1308,6 +1329,42 @@ create table TBVRT040_ESTADO_CIVIL (
    DATA_ALTERACAO       datetime             null,
    CODIGO_STATUS        int                  null,
    constraint PK_TBVRT040_ESTADO_CIVIL primary key (CODIGO_ESTADO_CIVIL)
+)
+go
+
+/*==============================================================*/
+/* Table: TBVRT041_PAIS                                         */
+/*==============================================================*/
+create table TBVRT041_PAIS (
+   CODIGO_PAIS          int                  identity,
+   DESCRICAO            nvarchar(100)        null,
+   CODIGO_USUARIO_CADASTRO int                  null,
+   DATA_CADASTRO        datetime             null,
+   CODIGO_USUARIO_ALTERACAO int                  null,
+   DATA_ALTERACAO       datetime             null,
+   constraint PK_TBVRT041_PAIS primary key (CODIGO_PAIS)
+)
+go
+
+/*==============================================================*/
+/* Table: TBVRT042_CIDADE                                       */
+/*==============================================================*/
+create table TBVRT042_CIDADE (
+   CODIGO_CIDADE        int                  identity,
+   DESCRICAO            nvarchar(120)        null,
+   SIGLA                char(2)              null,
+   constraint PK_TBVRT042_CIDADE primary key (CODIGO_CIDADE)
+)
+go
+
+/*==============================================================*/
+/* Table: TBVRT043_ESTADO                                       */
+/*==============================================================*/
+create table TBVRT043_ESTADO (
+   CODIGO_ESTADO        int                  identity,
+   SIGLA                char(2)              null,
+   DESCRICAO            nvarchar(120)        null,
+   constraint PK_TBVRT043_ESTADO primary key (CODIGO_ESTADO)
 )
 go
 
