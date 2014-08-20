@@ -14,7 +14,11 @@
         <asp:Label runat="server" ID="lblMail" /><br />
         <asp:Label runat="server" ID="lblLogin" /><br />
         <asp:Label runat="server" ID="lblSenha" /><br />
-        <asp:Label runat="server" ID="lblDataCadastro" />
+        <asp:Label runat="server" ID="lblDataCadastro" /><br />
+
+        <asp:GridView runat="server" ID="grdListaUsuario">
+
+        </asp:GridView>
     </div>
     </form>
 </body>

@@ -29,8 +29,10 @@ namespace InfoTech2u.Verithus.WEB
             this.lblLogin.Text = listParam[0].LoginUsuario.ToString();
             this.lblSenha.Text = listParam[0].Senha.ToString();
             this.lblDataCadastro.Text = listParam[0].DataCadastro.ToString();
-            
-            
+
+            this.grdListaUsuario.DataSource = listParam;
+            this.grdListaUsuario.DataBind();
+
 
         }
 
