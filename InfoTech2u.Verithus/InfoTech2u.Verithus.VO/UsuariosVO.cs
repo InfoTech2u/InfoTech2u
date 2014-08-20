@@ -14,7 +14,7 @@ namespace InfoTech2u.Verithus.VO
     
     public partial class UsuariosVO
     {
-        public int? CodigoUsuario { get; set; }
+        public decimal? CodigoUsuario { get; set; }
         public string Nome { get; set; }
         public string Mail { get; set; }
         public string LoginUsuario { get; set; }

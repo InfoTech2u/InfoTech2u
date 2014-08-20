@@ -29,5 +29,23 @@ namespace InfoTech2u.Verithus.BS
             }
 
         }
+
+        public List<UsuariosVO> SelecionarUsuarioLista(UsuariosVO param)
+        {
+            UsuariosDA objRetorno = new UsuariosDA();
+
+            try
+            {
+                return objRetorno.SelecionarUsuarioLista(param);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objRetorno = null;
+            }
+        }
     }
 }
