@@ -88,6 +88,8 @@ namespace InfoTech2u.Verithus.DA
 
                     retorno = new UsuariosVO();
 
+                    TipoAcessoVO tipoAcesso = new TipoAcessoVO();
+
                     retorno.CodigoUsuario = Convert.ToInt32(dtRetorno.Rows[i]["CODIGO_USUARIO"].ToString());
 
                     retorno.Nome = string.IsNullOrWhiteSpace(dtRetorno.Rows[i]["NOME"].ToString()) ? null : dtRetorno.Rows[i]["NOME"].ToString();
@@ -96,7 +98,10 @@ namespace InfoTech2u.Verithus.DA
                     retorno.Senha = string.IsNullOrWhiteSpace(dtRetorno.Rows[i]["SENHA"].ToString()) ? null : dtRetorno.Rows[i]["SENHA"].ToString();
 
                     if (!String.IsNullOrWhiteSpace(dtRetorno.Rows[i]["CODIGO_TIPO_ACESSO"].ToString()))
-                        retorno.TipoAcessoVO.CodigoTipoAcesso = Convert.ToInt32(dtRetorno.Rows[i]["CODIGO_TIPO_ACESSO"].ToString());
+                    {
+                        tipoAcesso.CodigoTipoAcesso = Convert.ToInt32(dtRetorno.Rows[i]["CODIGO_TIPO_ACESSO"].ToString());
+                        retorno.TipoAcessoVO = tipoAcesso;
+                    }
 
                     if (!String.IsNullOrWhiteSpace(dtRetorno.Rows[i]["CODIGO_USUARIO_CADASTRO"].ToString()))
                         retorno.CodigoUsuarioCadastro = Convert.ToInt32(dtRetorno.Rows[i]["CODIGO_USUARIO_CADASTRO"].ToString());
