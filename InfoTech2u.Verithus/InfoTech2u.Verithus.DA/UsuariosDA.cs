@@ -70,7 +70,7 @@ namespace InfoTech2u.Verithus.DA
                 objSql.ConnectionString = objSql.GetConnectionString(objSql.Sigla);
                 objSql.Open();
 
-                if (param.CodigoUsuario != null)
+                if (param.CodigoUsuario == null)
                     lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO", DBNull.Value));
                 else
                     lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO", param.CodigoUsuario));

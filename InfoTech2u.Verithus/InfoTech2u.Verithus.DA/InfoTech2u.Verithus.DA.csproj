@@ -64,6 +64,7 @@
     <Compile Include="FuncionariosDA.cs" />
     <Compile Include="LogAcaoDA.cs" />
     <Compile Include="LogErroDA.cs" />
+    <Compile Include="PaisDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SindicatoDA.cs" />
     <Compile Include="StatusDA.cs" />

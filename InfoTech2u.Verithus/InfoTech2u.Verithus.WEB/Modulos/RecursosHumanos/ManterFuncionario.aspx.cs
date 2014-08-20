@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using InfoTech2u.Verithus.VO;
+using InfoTech2u.Verithus.BS;
 
 namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
 {
@@ -15,7 +17,36 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
             if (!IsPostBack)
             {
                 CarregarIncludes();
+                CarregarPais();
             }
+
+        }
+        protected void CarregarPais()
+        {
+            PaisBS retorno = new PaisBS();
+            PaisVO entrada = new PaisVO();
+            List<PaisVO> retornoLista = new List<PaisVO>();
+
+            retornoLista = retorno.SelecionarUsuarioLista(entrada);
+
+            
+            this.ddlNacionalidadePai.DataSource = retornoLista;
+            this.ddlNacionalidadePai.DataValueField = "CodigoPais";
+            this.ddlNacionalidadePai.DataTextField = "Descricao";
+            this.ddlNacionalidadePai.DataBind();
+            this.ddlNacionalidadePai.Items.Insert(0, new ListItem("Selecionar", "0"));
+
+            this.ddlNacionalidadeMae.DataSource = retornoLista;
+            this.ddlNacionalidadeMae.DataValueField = "CodigoPais";
+            this.ddlNacionalidadeMae.DataTextField = "Descricao";
+            this.ddlNacionalidadeMae.DataBind();
+            this.ddlNacionalidadeMae.Items.Insert(0, new ListItem("Selecionar", "0"));
+
+            this.ddlNacionalidadeFuncionario.DataSource = retornoLista;
+            this.ddlNacionalidadeFuncionario.DataValueField = "CodigoPais";
+            this.ddlNacionalidadeFuncionario.DataTextField = "Descricao";
+            this.ddlNacionalidadeFuncionario.DataBind();
+            this.ddlNacionalidadeFuncionario.Items.Insert(0, new ListItem("Selecionar", "0"));
 
         }
         protected void CarregarIncludes()

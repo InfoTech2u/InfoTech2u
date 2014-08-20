@@ -13,7 +13,7 @@ jQuery(document).ready(function () {
 
 
     // Date Picker
-    jQuery("#datepicker").datepicker({
+    jQuery("#txtDataNascimento").datepicker({
         dateFormat: 'dd/mm/yy',
         changeMonth: true,
         changeYear: true,
@@ -26,7 +26,7 @@ jQuery(document).ready(function () {
 
 
     // Spinner
-    jQuery("#spinner").spinner({ min: 0, max: 100, increment: 2 });
+    jQuery("#txtQtdFilhos").spinner({ min: 0, max: 100, increment: 2 });
 
     
     jQuery('#wizard3').smartWizard({ onFinish: onFinishCallback });

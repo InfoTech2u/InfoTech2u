@@ -63,6 +63,7 @@
     <Compile Include="FuncionariosBS.cs" />
     <Compile Include="LogAcaoBS.cs" />
     <Compile Include="LogErroBS.cs" />
+    <Compile Include="PaisBS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SindicatoBS.cs" />
     <Compile Include="StatusBS.cs" />

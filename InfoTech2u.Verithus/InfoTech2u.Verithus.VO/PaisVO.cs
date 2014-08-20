@@ -16,7 +16,7 @@ namespace InfoTech2u.Verithus.VO
     {
         
     
-        public int CodigoPais { get; set; }
+        public int? CodigoPais { get; set; }
         public string Descricao { get; set; }
         public Nullable<int> CodigoUsuarioCadastro { get; set; }
         public Nullable<System.DateTime> DataCadastro { get; set; }
