@@ -34,6 +34,13 @@ jQuery(document).ready(function () {
     function onFinishCallback() {
         alert('Finish Clicked');
     }
+
+    //ddlNacionalidadeFuncionario
+    /*
+    jQuery("#ddlNacionalidadeFuncionario").change(function () {
+        jQuery("#ddlNacionalidadeFuncionario option:selected").text();
+    });
+    */
     
     //jQuery('input:checkbox').uniform();
 

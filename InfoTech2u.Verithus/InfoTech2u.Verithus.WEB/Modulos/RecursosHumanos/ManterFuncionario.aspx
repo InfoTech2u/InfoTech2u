@@ -132,7 +132,7 @@
                         <p>
                             <label>Nacionalidade</label>
                             <span class="field">
-                                <asp:DropDownList runat="server" ID="ddlNacionalidadeFuncionario" data-placeholder="Escolha um país..." style="width: 350px" class="chzn-select" tabindex="2" />
+                                <asp:DropDownList runat="server" ID="ddlNacionalidadeFuncionario" data-placeholder="Escolha um país..." style="width: 350px" class="chzn-select" tabindex="2" ClientIDMode="Static" />
                             </span>
                         </p>
 
