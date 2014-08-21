@@ -819,6 +819,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="include\xml\" />
     <Folder Include="Models\" />
+    <Folder Include="Modulos\Configuracao\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\InfoTech2u.Verithus.BS\InfoTech2u.Verithus.BS.csproj">
