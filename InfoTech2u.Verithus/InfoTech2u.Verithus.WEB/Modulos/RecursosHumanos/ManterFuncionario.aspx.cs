@@ -18,7 +18,25 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
             {
                 CarregarIncludes();
                 CarregarPais();
+                CarregarEstadoCivil();
             }
+
+        }
+        protected void CarregarEstadoCivil()
+        {
+            EstadoCivilBS retorno = new EstadoCivilBS();
+            EstadoCivilVO entrada = new EstadoCivilVO();
+            List<EstadoCivilVO> retornoLista = new List<EstadoCivilVO>();
+
+            retornoLista = retorno.SelecionarEstadoCivilLista(entrada);
+
+            this.ddlEstadoCivil.DataSource = retornoLista;
+            this.ddlEstadoCivil.DataValueField = "CodigoEstadoCivil";
+            this.ddlEstadoCivil.DataTextField = "Descricao";
+            this.ddlEstadoCivil.DataBind();
+            this.ddlEstadoCivil.Items.Insert(0, new ListItem("Selecionar", "0"));
+
+
 
         }
         protected void CarregarPais()
@@ -27,7 +45,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
             PaisVO entrada = new PaisVO();
             List<PaisVO> retornoLista = new List<PaisVO>();
 
-            retornoLista = retorno.SelecionarUsuarioLista(entrada);
+            retornoLista = retorno.SelecionarPaisLista(entrada);
 
             
             this.ddlNacionalidadePai.DataSource = retornoLista;

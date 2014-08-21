@@ -10,7 +10,7 @@ namespace InfoTech2u.Verithus.BS
 {
     public class PaisBS
     {
-        public List<PaisVO> SelecionarUsuarioLista(PaisVO param)
+        public List<PaisVO> SelecionarPaisLista(PaisVO param)
         {
             PaisDA objRetorno = new PaisDA();
 

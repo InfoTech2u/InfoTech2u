@@ -19,7 +19,7 @@ namespace InfoTech2u.Verithus.VO
             this.FuncionariosVO = new HashSet<FuncionariosVO>();
         }
     
-        public int CodigoEstadoCivil { get; set; }
+        public int? CodigoEstadoCivil { get; set; }
         public string Descricao { get; set; }
         public Nullable<int> CodigoUsuarioCadastro { get; set; }
         public Nullable<System.DateTime> DataCadastro { get; set; }
