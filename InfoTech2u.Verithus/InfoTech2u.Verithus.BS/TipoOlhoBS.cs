@@ -11,13 +11,15 @@ namespace InfoTech2u.Verithus.BS
     public class TipoOlhoBS
     {
 
-        public string SelecionarTipoOlho(TipoOlhoVO param)
+        public List<TipoOlhoVO> SelecionarTipoOlho(TipoOlhoVO param)
         {
 
-            TipoOlhoDA objRetorno = new TipoOlhoDA();
+            TipoOlhoDA objRetorno = null;
 
             try
             {
+                objRetorno = new TipoOlhoDA();
+
                 return objRetorno.SelecionarTipoOlho(param);
             }
             catch (Exception ex)
@@ -33,11 +35,13 @@ namespace InfoTech2u.Verithus.BS
 
         public List<TipoOlhoVO> SelecionarTipoOlhoLista(TipoOlhoVO param)
         {
-            TipoOlhoDA objRetorno = new TipoOlhoDA();
+            TipoOlhoDA objRetorno = null;
 
             try
             {
-                return objRetorno.SelecionarTipoOlhoLista(param);
+                objRetorno = new TipoOlhoDA();
+
+                return objRetorno.SelecionarTipoOlhoLista();
             }
             catch (Exception ex)
             {
@@ -48,5 +52,6 @@ namespace InfoTech2u.Verithus.BS
                 objRetorno = null;
             }
         }
+
     }
 }

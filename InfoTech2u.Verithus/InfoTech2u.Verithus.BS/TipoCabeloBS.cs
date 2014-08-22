@@ -10,5 +10,47 @@ namespace InfoTech2u.Verithus.BS
 {
     public class TipoCabeloBS
     {
+
+        public List<TipoCabeloVO> SelecionarTipoOlho(TipoCabeloVO param)
+        {
+
+            TipoCabeloDA objRetorno = null;
+
+            try
+            {
+                objRetorno = new TipoCabeloDA();
+
+                return objRetorno.SelecionarTipoOlho(param);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objRetorno = null;
+            }
+
+        }
+
+        public List<TipoCabeloVO> SelecionarTipoOlhoLista(TipoCabeloVO param)
+        {
+            TipoCabeloDA objRetorno = null;
+
+            try
+            {
+                objRetorno = new TipoCabeloDA();
+
+                return objRetorno.SelecionarTipoOlhoLista();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objRetorno = null;
+            }
+        }
     }
 }
