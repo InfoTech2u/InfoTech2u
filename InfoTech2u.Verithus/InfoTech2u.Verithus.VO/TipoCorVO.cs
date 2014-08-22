@@ -19,7 +19,7 @@ namespace InfoTech2u.Verithus.VO
             this.CaractesristicaFisicaVO = new HashSet<CaractesristicaFisicaVO>();
         }
     
-        public int CodigoTipoCor { get; set; }
+        public int? CodigoTipoCor { get; set; }
         public string Descricao { get; set; }
         public Nullable<int> CodigoUsuarioCadastro { get; set; }
         public Nullable<System.DateTime> DataCadastro { get; set; }

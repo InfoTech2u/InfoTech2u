@@ -12,7 +12,7 @@ namespace InfoTech2u.Verithus.DA
 {
     public class TipoCabeloDA
     {
-        public List<TipoCabeloVO> SelecionarTipoOlho(TipoCabeloVO param)
+        public List<TipoCabeloVO> SelecionarTipoCabelo(TipoCabeloVO param)
         {
             InfoTech2uSQLUtil objSql = null;
             List<SqlParameter> lstSqlParameter = null;
@@ -42,11 +42,7 @@ namespace InfoTech2u.Verithus.DA
                 int i = 0;
                 while (i < dtRetorno.Rows.Count)
                 {
-
-
                     retorno = new TipoCabeloVO();
-
-                    TipoAcessoVO tipoAcesso = new TipoAcessoVO();
 
                     retorno.CodigoTipoCabelo = Convert.ToInt32(dtRetorno.Rows[i]["CODIGO_TIPO_CABELO"].ToString());
 
@@ -80,14 +76,13 @@ namespace InfoTech2u.Verithus.DA
             }
         }
 
-        public List<TipoCabeloVO> SelecionarTipoOlhoLista()
+        public List<TipoCabeloVO> SelecionarTipoCabeloLista()
         {
 
             List<TipoCabeloVO> listaRetorno = null;
             TipoCabeloVO retorno = null;
             InfoTech2uSQLUtil objSql = null;
             List<SqlParameter> lstSqlParameter = null;
-            //DataSet dtRetorno = null;
             DataTable dtRetorno = null;
 
             try
@@ -95,7 +90,6 @@ namespace InfoTech2u.Verithus.DA
                 listaRetorno = new List<TipoCabeloVO>();
                 objSql = new InfoTech2uSQLUtil();
                 lstSqlParameter = new List<SqlParameter>();
-                //dtRetorno = new DataSet();
                 dtRetorno = new DataTable();
 
                 objSql.Sigla = objSql.GetDataBase();

@@ -43,10 +43,7 @@ namespace InfoTech2u.Verithus.DA
                 while (i < dtRetorno.Rows.Count)
                 {
 
-
                     retorno = new TipoOlhoVO();
-
-                    TipoAcessoVO tipoAcesso = new TipoAcessoVO();
 
                     retorno.CodigoTipoOlho = Convert.ToInt32(dtRetorno.Rows[i]["CODIGO_TIPO_OLHO"].ToString());
 
@@ -87,7 +84,6 @@ namespace InfoTech2u.Verithus.DA
             TipoOlhoVO retorno = null;
             InfoTech2uSQLUtil objSql = null;
             List<SqlParameter> lstSqlParameter = null;
-            //DataSet dtRetorno = null;
             DataTable dtRetorno = null;
 
             try
@@ -95,7 +91,6 @@ namespace InfoTech2u.Verithus.DA
                 listaRetorno = new List<TipoOlhoVO>();
                 objSql = new InfoTech2uSQLUtil();
                 lstSqlParameter = new List<SqlParameter>();
-                //dtRetorno = new DataSet();
                 dtRetorno = new DataTable();
 
                 objSql.Sigla = objSql.GetDataBase();
