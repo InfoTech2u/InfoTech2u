@@ -1,4 +1,0 @@
-Vamos colocar aqui as procedures que foram alteradas conforme o desenvolvimento.
-
-* Cria-las com o Script DROP CREATE.
-
