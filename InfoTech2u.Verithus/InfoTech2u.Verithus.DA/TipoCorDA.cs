@@ -33,7 +33,7 @@ namespace InfoTech2u.Verithus.DA
                 if (param.CodigoTipoCor == null)
                     lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_COR", DBNull.Value));
                 else
-                    lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_CABELO", param.CodigoTipoCor));
+                    lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_COR", param.CodigoTipoCor));
 
 
                 objSql.Execute("dbo.[SPVRT061_TIPO_COR_PR_SELECIONAR]", lstSqlParameter.ToArray(), null, ref dtRetorno);
