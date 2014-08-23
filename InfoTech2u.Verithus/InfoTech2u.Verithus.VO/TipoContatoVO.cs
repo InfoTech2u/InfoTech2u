@@ -20,7 +20,7 @@ namespace InfoTech2u.Verithus.VO
             this.DetalheContatoTelefonicoVO = new HashSet<DetalheContatoTelefonicoVO>();
         }
     
-        public int CodigoTipoContato { get; set; }
+        public int? CodigoTipoContato { get; set; }
         public string Descricao { get; set; }
         public Nullable<int> CodigoUsuarioCadastro { get; set; }
         public Nullable<System.DateTime> DataCadastro { get; set; }

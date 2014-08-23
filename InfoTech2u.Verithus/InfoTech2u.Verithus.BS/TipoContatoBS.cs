@@ -10,5 +10,46 @@ namespace InfoTech2u.Verithus.BS
 {
     public class TipoContatoBS
     {
+        public List<TipoContatoVO> SelecionarTipoContato(TipoContatoVO param)
+        {
+
+            TipoContatoDA objRetorno = null;
+
+            try
+            {
+                objRetorno = new TipoContatoDA();
+
+                return objRetorno.SelecionarTipoContato(param);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objRetorno = null;
+            }
+
+        }
+
+        public List<TipoContatoVO> SelecionarTipoContatoLista()
+        {
+            TipoContatoDA objRetorno = null;
+
+            try
+            {
+                objRetorno = new TipoContatoDA();
+
+                return objRetorno.SelecionarTipoContatoLista();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objRetorno = null;
+            }
+        }
     }
 }
