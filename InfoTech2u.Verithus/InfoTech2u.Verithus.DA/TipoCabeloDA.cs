@@ -13,6 +13,7 @@ namespace InfoTech2u.Verithus.DA
     public class TipoCabeloDA
     {
         //testeeee
+        //teste de verdade
         public List<TipoCabeloVO> SelecionarTipoCabelo(TipoCabeloVO param)
         {
             InfoTech2uSQLUtil objSql = null;
