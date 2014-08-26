@@ -11,7 +11,7 @@ namespace InfoTech2u.Verithus.BS
     public class TipoEnderecoBS
     {
 
-        public List<TipoEnderecoVO> SelecionarTipoCor(TipoEnderecoVO param)
+        public List<TipoEnderecoVO> SelecionarTipoEndereco(TipoEnderecoVO param)
         {
 
             TipoEnderecoDA objRetorno = null;
@@ -33,7 +33,7 @@ namespace InfoTech2u.Verithus.BS
 
         }
 
-        public List<TipoEnderecoVO> SelecionarTipoCorLista()
+        public List<TipoEnderecoVO> SelecionarTipoEndereciLista()
         {
             TipoEnderecoDA objRetorno = null;
 

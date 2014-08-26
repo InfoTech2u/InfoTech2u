@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CidadeVO.cs" />
+    <Compile Include="ConsultaCEPServicoFreeVO.cs" />
     <Compile Include="EstadoVO.cs" />
     <Compile Include="PaisVO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

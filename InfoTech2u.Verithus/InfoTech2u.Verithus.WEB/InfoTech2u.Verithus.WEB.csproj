@@ -39,6 +39,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -60,6 +64,8 @@
     <Content Include="Cryptography.aspx" />
     <Content Include="js\CadastroFuncionario.js" />
     <Content Include="js\DataTableEmpresa.js" />
+    <Content Include="js\jquery.maskedinput-1.3.js" />
+    <Content Include="js\jquery.maskMoney.js" />
     <Content Include="Modulos\InfoTech2u.Master" />
     <Content Include="fonts\fontawesome\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome\fontawesome-webfont.ttf" />
@@ -144,6 +150,8 @@
     <Content Include="fonts\roboto\Roboto-ThinItalic-webfont.ttf" />
     <Content Include="fonts\roboto\Roboto-ThinItalic-webfont.woff" />
     <Content Include="Handler\DataTablesHandlerGeneric.ashx" />
+    <Content Include="Handler\ManutencaoFuncionario.ashx" />
+    <Content Include="Handler\BuscarCep.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -733,8 +741,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Handler\BuscarCep.ashx.cs">
+      <DependentUpon>BuscarCep.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Handler\DataTablesHandlerGeneric.ashx.cs">
       <DependentUpon>DataTablesHandlerGeneric.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\ManutencaoFuncionario.ashx.cs">
+      <DependentUpon>ManutencaoFuncionario.ashx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Dashboard\DashboardGerente.aspx.cs">
       <DependentUpon>DashboardGerente.aspx</DependentUpon>

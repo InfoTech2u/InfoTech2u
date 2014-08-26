@@ -19,9 +19,45 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
                 CarregarIncludes();
                 CarregarPais();
                 CarregarEstadoCivil();
+                CarregarTipoEndereco();
+                CarregarTipoLogradouro();
             }
 
         }
+
+        protected void CarregarTipoLogradouro()
+        {
+
+            TipoLogradouroBS retorno = new TipoLogradouroBS();
+            TipoLogradouroVO entrada = new TipoLogradouroVO();
+            List<TipoLogradouroVO> retornoLista = new List<TipoLogradouroVO>();
+
+            retornoLista = retorno.SelecionarTipoLogradouroLista(entrada);
+
+            this.ddlTipoLogradouro.DataSource = retornoLista;
+            this.ddlTipoLogradouro.DataValueField = "CodigoTipoLogradouro";
+            this.ddlTipoLogradouro.DataTextField = "Descricao";
+            this.ddlTipoLogradouro.DataBind();
+            this.ddlTipoLogradouro.Items.Insert(0, new ListItem("Selecionar", "0"));
+        }
+
+        protected void CarregarTipoEndereco()
+        {
+            TipoEnderecoBS retorno = new TipoEnderecoBS();
+            TipoEnderecoVO entrada = new TipoEnderecoVO();
+            List<TipoEnderecoVO> retornoLista = new List<TipoEnderecoVO>();
+
+            retornoLista = retorno.SelecionarTipoEndereco(entrada);
+
+            this.ddlTipoEndereco.DataSource = retornoLista;
+            this.ddlTipoEndereco.DataValueField = "CodigoTipoEndereco";
+            this.ddlTipoEndereco.DataTextField = "Descricao";
+            this.ddlTipoEndereco.DataBind();
+            this.ddlTipoEndereco.Items.Insert(0, new ListItem("Selecionar", "0"));
+
+
+        }
+
         protected void CarregarEstadoCivil()
         {
             EstadoCivilBS retorno = new EstadoCivilBS();
@@ -66,6 +102,8 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
             this.ddlNacionalidadeFuncionario.DataBind();
             this.ddlNacionalidadeFuncionario.Items.Insert(0, new ListItem("Selecionar", "0"));
 
+
+
         }
         protected void CarregarIncludes()
         {
@@ -94,6 +132,8 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery.cookie.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "modernizr.min.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery.smartWizard.min.js");
+            InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery.maskedinput-1.3.js");
+            InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery.maskMoney.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "custom.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "CadastroFuncionario.js");
 
