@@ -21,8 +21,56 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
                 CarregarEstadoCivil();
                 CarregarTipoEndereco();
                 CarregarTipoLogradouro();
+                CarregarTipoCor();
+                CarregarTipoCabelo();
+                CarregarTipoOlho();
             }
 
+        }
+
+        protected void CarregarTipoCor()
+        {
+            TipoCorBS retorno = new TipoCorBS();
+            TipoCorVO entrada = new TipoCorVO();
+            List<TipoCorVO> retornoLista = new List<TipoCorVO>();
+
+            retornoLista = retorno.SelecionarTipoCor(entrada);
+
+            this.ddlCor.DataSource = retornoLista;
+            this.ddlCor.DataValueField = "CodigoTipoCor";
+            this.ddlCor.DataTextField = "Descricao";
+            this.ddlCor.DataBind();
+            this.ddlCor.Items.Insert(0, new ListItem("Selecionar", "0"));
+        }
+
+        protected void CarregarTipoOlho()
+        {
+            TipoOlhoBS retorno = new TipoOlhoBS();
+            TipoOlhoVO entrada = new TipoOlhoVO();
+            List<TipoOlhoVO> retornoLista = new List<TipoOlhoVO>();
+
+            retornoLista = retorno.SelecionarTipoOlhoLista(entrada);
+
+            this.ddlOlho.DataSource = retornoLista;
+            this.ddlOlho.DataValueField = "CodigoTipoOlho";
+            this.ddlOlho.DataTextField = "Descricao";
+            this.ddlOlho.DataBind();
+            this.ddlOlho.Items.Insert(0, new ListItem("Selecionar", "0"));
+        }
+
+        protected void CarregarTipoCabelo()
+        {
+            TipoCabeloBS retorno = new TipoCabeloBS();
+            TipoCabeloVO entrada = new TipoCabeloVO();
+            List<TipoCabeloVO> retornoLista = new List<TipoCabeloVO>();
+
+            retornoLista = retorno.SelecionarTipoCabeloLista(entrada);
+
+            this.ddlCabelo.DataSource = retornoLista;
+            this.ddlCabelo.DataValueField = "CodigoTipoCabelo";
+            this.ddlCabelo.DataTextField = "Descricao";
+            this.ddlCabelo.DataBind();
+            this.ddlCabelo.Items.Insert(0, new ListItem("Selecionar", "0"));
         }
 
         protected void CarregarTipoLogradouro()
@@ -39,6 +87,12 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
             this.ddlTipoLogradouro.DataTextField = "Descricao";
             this.ddlTipoLogradouro.DataBind();
             this.ddlTipoLogradouro.Items.Insert(0, new ListItem("Selecionar", "0"));
+
+            this.ddlTipoLogradouroPIS.DataSource = retornoLista;
+            this.ddlTipoLogradouroPIS.DataValueField = "CodigoTipoLogradouro";
+            this.ddlTipoLogradouroPIS.DataTextField = "Descricao";
+            this.ddlTipoLogradouroPIS.DataBind();
+            this.ddlTipoLogradouroPIS.Items.Insert(0, new ListItem("Selecionar", "0"));
         }
 
         protected void CarregarTipoEndereco()
@@ -54,6 +108,12 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
             this.ddlTipoEndereco.DataTextField = "Descricao";
             this.ddlTipoEndereco.DataBind();
             this.ddlTipoEndereco.Items.Insert(0, new ListItem("Selecionar", "0"));
+
+            this.ddlTipoEnderecoPIS.DataSource = retornoLista;
+            this.ddlTipoEnderecoPIS.DataValueField = "CodigoTipoEndereco";
+            this.ddlTipoEnderecoPIS.DataTextField = "Descricao";
+            this.ddlTipoEnderecoPIS.DataBind();
+            this.ddlTipoEnderecoPIS.Items.Insert(0, new ListItem("Selecionar", "0"));
 
 
         }

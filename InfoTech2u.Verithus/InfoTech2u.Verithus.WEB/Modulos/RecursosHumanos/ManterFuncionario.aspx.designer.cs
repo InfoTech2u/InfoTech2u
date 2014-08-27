@@ -373,13 +373,13 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario {
         protected global::System.Web.UI.WebControls.TextBox txtDigito;
         
         /// <summary>
-        /// txtTipoEnderecoPIS control.
+        /// ddlTipoEnderecoPIS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList txtTipoEnderecoPIS;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoEnderecoPIS;
         
         /// <summary>
         /// ddlTipoLogradouroPIS control.
@@ -400,13 +400,13 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario {
         protected global::System.Web.UI.WebControls.TextBox txtLogradouroPIS;
         
         /// <summary>
-        /// txtNumeroEnredecoPIS control.
+        /// txtNumeroEnderecoPIS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNumeroEnredecoPIS;
+        protected global::System.Web.UI.WebControls.TextBox txtNumeroEnderecoPIS;
         
         /// <summary>
         /// txtBairroPIS control.

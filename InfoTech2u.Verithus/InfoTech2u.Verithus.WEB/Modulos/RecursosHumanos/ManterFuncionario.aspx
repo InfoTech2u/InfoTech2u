@@ -72,12 +72,18 @@
                                 <span class="label">caracteristicas Fisicas</span>
                             </a>
                         </li>
+                        <li>
+                            <a href="#wiz3step8">
+                                <span class="h2">PASSO 8</span>
+                                <span class="label">Finalizar</span>
+                            </a>
+                        </li>
                     </ul>
 
                     <div id="wiz3step1" class="formwiz">
                         <h4>Passo 1: Dados Pessoais</h4>
 
-                        <br/>
+                        <br />
                         <p id="validaNumeroOrdemMatricula">
                             <label>Numero Ordem(Matricula)</label>
                             <span class="field">
@@ -141,11 +147,11 @@
                             </span>
                         </p>
 
-                        
 
 
 
-                        
+
+
 
                     </div>
 
@@ -263,7 +269,7 @@
                             <p id="validaRG">
                                 <label>Numero de RG</label>
                                 <span class="field">
-                                    <asp:TextBox runat="server" ID="txtRG" CssClass="input-small" ClientIDMode="Static" />
+                                    <asp:TextBox runat="server" ID="txtRG" CssClass="input-medium" ClientIDMode="Static" />
                                     <span class="help-inline" id="msgRG"></span>
                                 </span>
                             </p>
@@ -287,7 +293,7 @@
                             <p id="validaNumeroCertificadoReservista">
                                 <label>Numero Certificado de Reservista</label>
                                 <span class="field">
-                                    <asp:TextBox runat="server" ID="txtNumeroCertificadoReservista" CssClass="input-small" ClientIDMode="Static" />
+                                    <asp:TextBox runat="server" ID="txtNumeroCertificadoReservista" CssClass="input-medium" ClientIDMode="Static" />
                                     <span class="help-inline" id="msgNumeroCertificadoReservista"></span>
                                 </span>
                             </p>
@@ -303,7 +309,7 @@
                             <p id="validaCPF">
                                 <label>Numero de CPF</label>
                                 <span class="field">
-                                    <asp:TextBox runat="server" ID="txtCPF" CssClass="input-small CPF" ClientIDMode="Static" />
+                                    <asp:TextBox runat="server" ID="txtCPF" CssClass="input-medium CPF" ClientIDMode="Static" />
                                     <span class="help-inline" id="msgCPF"></span>
                                 </span>
                             </p>
@@ -311,7 +317,7 @@
                             <p id="validaTituloEleitor">
                                 <label>Titulo de Eleitor</label>
                                 <span class="field">
-                                    <asp:TextBox runat="server" ID="txtTituloEleitor" CssClass="input-small" ClientIDMode="Static" />
+                                    <asp:TextBox runat="server" ID="txtTituloEleitor" CssClass="input-medium" ClientIDMode="Static" />
                                     <span class="help-inline" id="msgTituloEleitor"></span>
                                 </span>
                             </p>
@@ -319,7 +325,7 @@
                             <p id="validaCateiraSaude">
                                 <label>Numero Carteira de Saude</label>
                                 <span class="field">
-                                    <asp:TextBox runat="server" ID="txtCateiraSaude" CssClass="input-small" ClientIDMode="Static" />
+                                    <asp:TextBox runat="server" ID="txtCateiraSaude" CssClass="input-medium" ClientIDMode="Static" />
                                     <span class="help-inline" id="msgCateiraSaude"></span>
                                 </span>
                             </p>
@@ -442,7 +448,7 @@
                         <p id="validaTipoEnderecoPIS">
                             <label>Tipo de Endereço</label>
                             <span class="field">
-                                <asp:DropDownList runat="server" ID="txtTipoEnderecoPIS" data-placeholder="Escolha um tipo de Endereço..." Style="width: 350px" class="chzn-select" TabIndex="2" ClientIDMode="Static" />
+                                <asp:DropDownList runat="server" ID="ddlTipoEnderecoPIS" data-placeholder="Escolha um tipo de Endereço..." Style="width: 350px" class="chzn-select" TabIndex="2" ClientIDMode="Static" />
                                 <span class="help-inline" id="msgTipoEnderecoPIS"></span>
                             </span>
                         </p>
@@ -463,11 +469,11 @@
                             </span>
                         </p>
 
-                        <p id="validaNumeroEnredecoPIS">
+                        <p id="validaNumeroEnderecoPIS">
                             <label>Numero</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtNumeroEnredecoPIS" CssClass="input-small" ClientIDMode="Static" />
-                                <span class="help-inline" id="msgNNumeroEnredecoPIS"></span>
+                                <asp:TextBox runat="server" ID="txtNumeroEnderecoPIS" CssClass="input-small" ClientIDMode="Static" />
+                                <span class="help-inline" id="msgNumeroEnderecoPIS"></span>
                             </span>
                         </p>
 
@@ -489,9 +495,9 @@
 
                         <p id="validaCEPPIS">
                             <label>CEP</label>
-                            <span class="field">
+                            <span class="input-append">
                                 <asp:TextBox runat="server" ID="txtCEPPIS" CssClass="input-small CEP" ClientIDMode="Static" />
-                                <span class="help-inline" id="msgCEPPIS"></span>
+                                <button type="button" class="btn" id="btnBuscarCEPPIS">Buscar</button>
                             </span>
                         </p>
 
@@ -513,11 +519,11 @@
                                 <span class="help-inline" id="msgOptanteFGTS"></span>
                             </span>
                         </p>
-                        
-                        <p  id="validaDataOpcao">
+
+                        <p id="validaDataOpcao">
                             <label>Data de Opção</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtDataOpcao" CssClass="input-small txtDataFilMesAno dataddmmaaaa" ClientIDMode="Static"  />
+                                <asp:TextBox runat="server" ID="txtDataOpcao" CssClass="input-small txtDataFilMesAno dataddmmaaaa" ClientIDMode="Static" />
                                 <span class="help-inline" id="msgDataOpcao"></span>
                             </span>
                         </p>
@@ -525,7 +531,7 @@
                         <p id="validaDataRetratacao">
                             <label>Data de retratação</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtDataRetratacao" CssClass="input-small txtDataFilMesAno dataddmmaaaa" ClientIDMode="Static"  />
+                                <asp:TextBox runat="server" ID="txtDataRetratacao" CssClass="input-small txtDataFilMesAno dataddmmaaaa" ClientIDMode="Static" />
                                 <span class="help-inline" id="msgDataRetratacao"></span>
                             </span>
                         </p>
@@ -561,51 +567,67 @@
                     <div id="wiz3step7" class="formwiz">
                         <h4>Passo 3: Dados fisicos</h4>
 
-                        <p>
+                        <p id="validaCor">
                             <label>Cor</label>
                             <span class="field">
                                 <asp:DropDownList runat="server" ID="ddlCor" data-placeholder="Escolha um tipo de Cor..." Style="width: 350px" class="chzn-select" TabIndex="2" ClientIDMode="Static" />
+                                <span class="help-inline" id="msgCor"></span>
                             </span>
                         </p>
 
-                        <p>
+                        <p id="validaAltura">
                             <label>Altura</label>
                             <span class="field">
                                 <asp:TextBox runat="server" ID="txtAltura" CssClass="input-small Altura" ClientIDMode="Static" />
+                                <span class="help-inline" id="msgAltura"></span>
                             </span>
                         </p>
 
-                        <p>
+                        <p id="validaPeso">
                             <label>Peso</label>
                             <span class="field">
                                 <asp:TextBox runat="server" ID="txtPeso" CssClass="input-small Peso" ClientIDMode="Static" />
+                                <span class="help-inline" id="msgPeso"></span>
                             </span>
                         </p>
 
-                        <p>
+                        <p id="validaCabelo">
                             <label>Cabelo</label>
                             <span class="field">
                                 <asp:DropDownList runat="server" ID="ddlCabelo" data-placeholder="Escolha um tipo de Cabelo..." Style="width: 350px" class="chzn-select" TabIndex="2" ClientIDMode="Static" />
+                                <span class="help-inline" id="msgCabelo"></span>
                             </span>
                         </p>
 
-                        <p>
+                        <p id="validaOlho">
                             <label>Olho</label>
                             <span class="field">
                                 <asp:DropDownList runat="server" ID="ddlOlho" data-placeholder="Escolha um tipo de Olho..." Style="width: 350px" class="chzn-select" TabIndex="2" ClientIDMode="Static" />
+                                <span class="help-inline" id="msgOlho"></span>
                             </span>
                         </p>
 
-                        <p>
+                        <p id="validaSinais">
                             <label>Sinais</label>
                             <span class="field">
                                 <asp:TextBox runat="server" ID="txtSinais" CssClass="input-small" ClientIDMode="Static" />
+                                <span class="help-inline" id="msgSinais"></span>
                             </span>
                         </p>
 
 
                     </div>
                     <!--#wiz3step7-->
+
+                    <div id="wiz3step8" class="formwiz">
+                        <h4>Passo 8: Finalizar</h4>
+                        <br />
+                        <div class="par terms" style="padding: 0 20px;">
+                            <p>Para concluir esse processo você deve clicar em confirmar</p>
+                        </div>
+
+                    </div>
+                    <!--#wiz3step8-->
 
                 </div>
                 <!--#wizard-->

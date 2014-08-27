@@ -31,7 +31,21 @@ jQuery(document).ready(function () {
     jQuery(".Altura").mask("9.99");
 
     //Peso
-    jQuery(".Peso").mask("999.999");
+    jQuery(".Peso").mask("999");
+
+    
+    jQuery("#txtCarteiraTrabalho").mask("99999");
+
+    jQuery("#txtNumeroSerie").mask("99999-##");
+
+    //RA RESERVISTA
+    jQuery("#txtNumeroCertificadoReservista").mask("999999999999");
+
+    //Titulo de Eleitor
+    jQuery("#txtTituloEleitor").mask("999999999999");
+
+    //Carteira de Saude
+    jQuery("#txtCateiraSaude").mask("99999999999 9999");
 
     //Monetario
     jQuery(".Monetario").maskMoney({
@@ -60,6 +74,7 @@ jQuery(document).ready(function () {
     });
 
     var passoAtivo;
+    var verificaValidacao;
 
     // Data Padrão
     jQuery(".DataPadrao").datepicker();
@@ -80,8 +95,7 @@ jQuery(document).ready(function () {
     jQuery('#wizard3').smartWizard({ transitionEffect: 'slideleft', onLeaveStep: leaveAStepCallback, onFinish: onFinishCallback });
 
     function onFinishCallback() {
-        finalizar();
-        if (validateAllSteps()) {
+        if (verificaValidacao) {
             alert('Finish Clicked');
 
         }
@@ -89,7 +103,8 @@ jQuery(document).ready(function () {
 
     function leaveAStepCallback(obj) {
         passoAtivo = obj.attr('rel');
-        return validarFuncionario(passoAtivo);
+        verificaValidacao = validarFuncionario(passoAtivo);
+        return verificaValidacao;
     }
     //ddlNacionalidadeFuncionario
 
@@ -165,31 +180,37 @@ jQuery(document).ready(function () {
         });
     });
 
+    jQuery('#btnBuscarCEPPIS').click(function (event) {
+
+        var cep = jQuery('#txtCEPPIS').val();
+
+        jQuery.ajax({
+            type: "GET",
+            crossDomain: true,
+            url: "../../Handler/BuscarCep.ashx?txtCEP=" + cep,
+            contentType: "json",
+            cache: false,
+            success: function (data) {
+
+
+                var arrCEP = eval(data);
+
+                jQuery('#txtBairroPIS').val(arrCEP[0].Bairro)
+                jQuery('#txtLogradouroPIS').val(arrCEP[0].Logradouro)
+
+                jQuery('#ddlTipoLogradouroPIS option:selected').removeAttr('selected');
+
+                jQuery("#ddlTipoLogradouroPIS option[value='131']").attr('selected', 'selected');
+
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrow) {
+                errorAjax(textStatus);
+                alert(textStatus);
+            }
+        });
+    });
+
 });
-
-/*
-    txtNumeroOrdemMatricula
-    txtNumeroMatricula
-    txtNomeFuncionario
-    txtDataNascimento
-    ddlNacionalidadeFuncionario
-    ddlEstadoCivil
-    txtNomeConjuge
-    txtQtdFilhos
-    
-    ddlTipoEndereco
-    ddlTipoLogradouro
-    txtLogradouro
-    txtNumeroEndereco
-    txtBairro
-    txtComplemento
-    txtCEP
-
-    txtNomePai
-    ddlNacionalidadePai
-    txtNomeMae
-    ddlNacionalidadeMae
-    */
 
 function validarFuncionario(passoAtivo) {
     var retorno = true;
@@ -562,85 +583,316 @@ function validarFuncionario(passoAtivo) {
     // Validar Documentos PIS
     if (passoAtivo == 5) {
 
+        var CadastroPIS = jQuery('#txtCadastroPIS').val();
+        var SobNumero = jQuery('#txtSobNumero').val();
+        var BancoPIS = jQuery('#txtBancoPIS').val();
+        var Agencia = jQuery('#txtAgencia').val();
+        var Digito = jQuery('#txtDigito').val();
+        var TipoEnderecoPIS = jQuery('#ddlTipoEnderecoPIS').val();
+        var TipoLogradouroPIS = jQuery('#ddlTipoLogradouroPIS').val();
+        var LogradouroPIS = jQuery('#txtLogradouroPIS').val();
+        var NumeroEnderecoPIS = jQuery('#txtNumeroEnderecoPIS').val();
+        var BairroPIS = jQuery('#txtBairroPIS').val();
+        var ComplementoPIS = jQuery('#txtComplementoPIS').val();
+        var CEPPIS = jQuery('#txtCEPPIS').val();
+
+        if (!CadastroPIS && CadastroPIS.length <= 0) {
+            jQuery('#msgCadastroPIS').html('O Campo CadastroPIS Deve ser preenchido').show();
+            jQuery("#validaCadastroPIS").removeClass("par control-group success").addClass("par control-group error");
+            retorno = false;
+        }
+        else {
+            jQuery('#msgCadastroPIS').html('').hide();
+            jQuery("#validaCadastroPIS").removeClass("par control-group error").addClass("par control-group success");
+        }
+
+        if (!SobNumero && SobNumero.length <= 0) {
+            jQuery('#msgSobNumero').html('O Campo SobNumero Deve ser preenchido').show();
+            jQuery("#validaSobNumero").removeClass("par control-group success").addClass("par control-group error");
+            retorno = false;
+        }
+        else {
+            jQuery('#msgSobNumero').html('').hide();
+            jQuery("#validaSobNumero").removeClass("par control-group error").addClass("par control-group success");
+        }
+
+        if (!BancoPIS && BancoPIS.length <= 0) {
+            jQuery('#msgBancoPIS').html('O Campo BancoPIS Deve ser preenchido').show();
+            jQuery("#validaBancoPIS").removeClass("par control-group success").addClass("par control-group error");
+            retorno = false;
+        }
+        else {
+            jQuery('#msgBancoPIS').html('').hide();
+            jQuery("#validaBancoPIS").removeClass("par control-group error").addClass("par control-group success");
+        }
+
+        if (!Agencia && Agencia.length <= 0) {
+            jQuery('#msgAgencia').html('O Campo Agencia Deve ser preenchido').show();
+            jQuery("#validaAgencia").removeClass("par control-group success").addClass("par control-group error");
+            retorno = false;
+        }
+        else {
+            jQuery('#msgAgencia').html('').hide();
+            jQuery("#validaAgencia").removeClass("par control-group error").addClass("par control-group success");
+        }
+
+        if (!Digito && Digito.length <= 0) {
+            jQuery('#msgDigito').html('O Campo Digito Deve ser preenchido').show();
+            jQuery("#validaDigito").removeClass("par control-group success").addClass("par control-group error");
+            retorno = false;
+        }
+        else {
+            jQuery('#msgDigito').html('').hide();
+            jQuery("#validaDigito").removeClass("par control-group error").addClass("par control-group success");
+        }
+
+        if (TipoEnderecoPIS == 'Selecionar') {
+            jQuery('#msgTipoEnderecoPIS').html('O Campo Tipo de Endereço Deve ser Selecionado um Item').show();
+            jQuery("#validaTipoEnderecoPIS").removeClass("par control-group success").addClass("par control-group error");
+            retorno = false;
+        }
+        else {
+            jQuery('#msgTipoEnderecoPIS').html('').hide();
+            jQuery("#validaTipoEnderecoPIS").removeClass("par control-group error").addClass("par control-group success");
+        }
+
+        if (TipoLogradouroPIS == 'Selecionar') {
+            jQuery('#msgTipoLogradouroPIS').html('O Campo Tipo de LogradouroPIS Deve ser Selecionado um Item').show();
+            jQuery("#validaTipoLogradouroPIS").removeClass("par control-group success").addClass("par control-group error");
+            retorno = false;
+        }
+        else {
+            jQuery('#msgTipoLogradouroPIS').html('').hide();
+            jQuery("#validaTipoLogradouroPIS").removeClass("par control-group error").addClass("par control-group success");
+        }
+
+        if (!LogradouroPIS && LogradouroPIS.length <= 0) {
+            jQuery('#msgLogradouroPIS').html('O Campo LogradouroPIS Deve ser preenchido').show();
+            jQuery("#validaLogradouroPIS").removeClass("par control-group success").addClass("par control-group error");
+            retorno = false;
+        }
+        else {
+            jQuery('#msgLogradouroPIS').html('').hide();
+            jQuery("#validaLogradouroPIS").removeClass("par control-group error").addClass("par control-group success");
+        }
+
+        if (!NumeroEnderecoPIS && NumeroEnderecoPIS.length <= 0) {
+            jQuery('#msgNumeroEnderecoPIS').html('O Campo Numero Deve ser preenchido').show();
+            jQuery("#validaNumeroEnderecoPIS").removeClass("par control-group success").addClass("par control-group error");
+            retorno = false;
+        }
+        else {
+            jQuery('#msgNumeroEnderecoPIS').html('').hide();
+            jQuery("#validaNumeroEnderecoPIS").removeClass("par control-group error").addClass("par control-group success");
+        }
+
+        if (!BairroPIS && BairroPIS.length <= 0) {
+            jQuery('#msgBairroPIS').html('O Campo BairroPIS Deve ser preenchido').show();
+            jQuery("#validaBairroPIS").removeClass("par control-group success").addClass("par control-group error");
+            retorno = false;
+        }
+        else {
+            jQuery('#msgBairroPIS').html('').hide();
+            jQuery("#validaBairroPIS").removeClass("par control-group error").addClass("par control-group success");
+        }
+
 
 
         return retorno;
     }
-    /*
+
+    // Validar Documentos Fundo de Garantia
+    if (passoAtivo == 6) {
+
+        var OptanteFGTS = jQuery('#rdpOptanteFGTS').val();
+        var DataOpcao = jQuery('#txtDataOpcao').val();
+        var DataRetratacao = jQuery('#txtDataRetratacao').val();
+        var BancoFGTS = jQuery('#txtBancoFGTS').val();
+        var AgenciaFGTS = jQuery('#txtAgenciaFGTS').val();
+        var DigitoFGTS = jQuery('#txtDigitoFGTS').val();
+
+        if (!DataOpcao && DataOpcao.length <= 0) {
+            jQuery('#msgDataOpcao').html('O Campo DataOpcao Deve ser preenchido').show();
+            jQuery("#validaDataOpcao").removeClass("par control-group success").addClass("par control-group error");
+            retorno = false;
+        }
+        else {
+            jQuery('#msgDataOpcao').html('').hide();
+            jQuery("#validaDataOpcao").removeClass("par control-group error").addClass("par control-group success");
+        }
+
+        if (!BancoFGTS && BancoFGTS.length <= 0) {
+            jQuery('#msgBancoFGTS').html('O Campo BancoFGTS Deve ser preenchido').show();
+            jQuery("#validaBancoFGTS").removeClass("par control-group success").addClass("par control-group error");
+            retorno = false;
+        }
+        else {
+            jQuery('#msgBancoFGTS').html('').hide();
+            jQuery("#validaBancoFGTS").removeClass("par control-group error").addClass("par control-group success");
+        }
+
+        if (!AgenciaFGTS && AgenciaFGTS.length <= 0) {
+            jQuery('#msgAgenciaFGTS').html('O Campo AgenciaFGTS Deve ser preenchido').show();
+            jQuery("#validaAgenciaFGTS").removeClass("par control-group success").addClass("par control-group error");
+            retorno = false;
+        }
+        else {
+            jQuery('#msgAgenciaFGTS').html('').hide();
+            jQuery("#validaAgenciaFGTS").removeClass("par control-group error").addClass("par control-group success");
+        }
+
+        if (!DigitoFGTS && DigitoFGTS.length <= 0) {
+            jQuery('#msgDigitoFGTS').html('O Campo DigitoFGTS Deve ser preenchido').show();
+            jQuery("#validaDigitoFGTS").removeClass("par control-group success").addClass("par control-group error");
+            retorno = false;
+        }
+        else {
+            jQuery('#msgDigitoFGTS').html('').hide();
+            jQuery("#validaDigitoFGTS").removeClass("par control-group error").addClass("par control-group success");
+        }
+
+        return retorno;
+    }
+
+    // Validar Caracteristicas Fisicas
+    if (passoAtivo == 7) {
+
+        var Cor = jQuery('#ddlCor').val();
+        var Altura = jQuery('#txtAltura').val();
+        var Peso = jQuery('#txtPeso').val();
+        var Cabelo = jQuery('#ddlCabelo').val();
+        var Olho = jQuery('#ddlOlho').val();
+        var Sinais = jQuery('#txtSinais').val();
+
+        if (Cor == 'Selecionar') {
+            jQuery('#msgCor').html('O Campo Tipo de LogradouroPIS Deve ser Selecionado um Item').show();
+            jQuery("#validaCor").removeClass("par control-group success").addClass("par control-group error");
+            retorno = false;
+        }
+        else {
+            jQuery('#msgCor').html('').hide();
+            jQuery("#validaCor").removeClass("par control-group error").addClass("par control-group success");
+        }
+
+        if (!Altura && Altura.length <= 0) {
+            jQuery('#msgAltura').html('O Campo Altura Deve ser preenchido').show();
+            jQuery("#validaAltura").removeClass("par control-group success").addClass("par control-group error");
+            retorno = false;
+        }
+        else {
+            jQuery('#msgAltura').html('').hide();
+            jQuery("#validaAltura").removeClass("par control-group error").addClass("par control-group success");
+        }
+
+        if (!Peso && Peso.length <= 0) {
+            jQuery('#msgPeso').html('O Campo Peso Deve ser preenchido').show();
+            jQuery("#validaPeso").removeClass("par control-group success").addClass("par control-group error");
+            retorno = false;
+        }
+        else {
+            jQuery('#msgPeso').html('').hide();
+            jQuery("#validaPeso").removeClass("par control-group error").addClass("par control-group success");
+        }
+
+        if (Cabelo == 'Selecionar') {
+            jQuery('#msgCabelo').html('O Campo Tipo de LogradouroPIS Deve ser Selecionado um Item').show();
+            jQuery("#validaCabelo").removeClass("par control-group success").addClass("par control-group error");
+            retorno = false;
+        }
+        else {
+            jQuery('#msgCabelo').html('').hide();
+            jQuery("#validaCabelo").removeClass("par control-group error").addClass("par control-group success");
+        }
+
+        if (Olho == 'Selecionar') {
+            jQuery('#msgOlho').html('O Campo Tipo de LogradouroPIS Deve ser Selecionado um Item').show();
+            jQuery("#validaOlho").removeClass("par control-group success").addClass("par control-group error");
+            retorno = false;
+        }
+        else {
+            jQuery('#msgOlho').html('').hide();
+            jQuery("#validaOlho").removeClass("par control-group error").addClass("par control-group success");
+        }
+
+        if (!Sinais && Sinais.length <= 0) {
+            jQuery('#msgSinais').html('O Campo Sinais Deve ser preenchido').show();
+            jQuery("#validaSinais").removeClass("par control-group success").addClass("par control-group error");
+            retorno = false;
+        }
+        else {
+            jQuery('#msgSinais').html('').hide();
+            jQuery("#validaSinais").removeClass("par control-group error").addClass("par control-group success");
+        }
+
+        return retorno;
+    }
     
-    txtCadastroPIS
-    txtSobNumero
-    txtBancoPIS
-    txtAgencia
-    txtDigito
-    txtTipoEnderecoPIS
-    ddlTipoLogradouroPIS
-    txtLogradouroPIS
-    txtNumeroEnredecoPIS
-    txtBairroPIS
-    txtComplementoPIS
-    txtCEPPIS
-
-    var CadastroPIS
-    var SobNumero
-    var BancoPIS
-    var Agencia
-    var Digito
-    var TipoEnderecoPIS
-    var TipoLogradouroPIS
-    var LogradouroPIS
-    var NumeroEnredecoPIS
-    var BairroPIS
-    var ComplementoPIS
-    var CEPPIS
-
-
-    rdpOptanteFGTS
-    txtDataOpcao
-    txtDataRetratacao
-    txtBancoFGTS
-    txtAgenciaFGTS
-    txtDigitoFGTS
-
-    var OptanteFGTS
-    var DataOpcao
-    var DataRetratacao
-    var BancoFGTS
-    var AgenciaFGTS
-    var DigitoFGTS
-
-
-   
-
-
-    */
 }
-
 
 function IncluirDadosFuncionario() {
 
     jQuery.ajax({
         type: "GET",
-        url: "",
+        url: "../../Handler/ManutencaoFuncionario.ashx",
         data: {
-            txtNumeroOrdemMatricula: txtNumeroOrdemMatricula,
-            txtNumeroMatricula: txtNumeroMatricula,
-            txtNomePai: txtNomePai,
-            ddlNacionalidadePai: ddlNacionalidadePai,
-            txtNomeMae: txtNomeMae,
-            ddlNacionalidadeMae: ddlNacionalidadeMae,
-            txtDataNascimento: txtDataNascimento,
-            ddlNacionalidadeFuncionario: ddlNacionalidadeFuncionario,
-            ddlEstadoCivil: ddlEstadoCivil,
-            txtNomeConjuge: txtNomeConjuge,
-            txtQtdFilhos: txtQtdFilhos,
-            ddlTipoEndereco: ddlTipoEndereco,
-            ddlTipoLogradouro: ddlTipoLogradouro,
-            txtLogradouro: txtLogradouro,
-            txtNumeroEndereco: txtNumeroEndereco,
-            txtBairro: txtBairro,
-            txtComplemento: txtComplemento,
-            txtCEP: txtCEP
+            NumeroOrdemMatricula: jQuery('#txtNumeroOrdemMatricula').val(),
+            NumeroMatricula: jQuery('#txtNumeroMatricula').val(),
+            NomeFuncionario: jQuery('#txtNomeFuncionario').val(),
+            DataNascimento: jQuery('#txtDataNascimento').val(),
+            NacionalidadeFuncionario: jQuery('#ddlNacionalidadeFuncionario option:selected').text(),
+            EstadoCivil: jQuery('#ddlEstadoCivil  option:selected').text(),
+            NomeConjuge: jQuery('#txtNomeConjuge').val(),
+            QtdFilhos: jQuery('#txtQtdFilhos').val(),
+            TipoEndereco: jQuery('#ddlTipoEndereco option:selected').text(),
+            TipoLogradouro: jQuery('#ddlTipoLogradouro option:selected').text(),
+            Logradouro: jQuery('#txtLogradouro').val(),
+            NumeroEndereco: jQuery('#txtNumeroEndereco').val(),
+            Bairro: jQuery('#txtBairro').val(),
+            Complemento: jQuery('#txtComplemento').val(),
+            CEP: jQuery('#txtCEP').val(),
+            NomePai: jQuery('#txtNomePai').val(),
+            NacionalidadePai: jQuery('#ddlNacionalidadePai option:selected').text(),
+            NomeMae: jQuery('#txtNomeMae').val(),
+            NacionalidadeMae: jQuery('#ddlNacionalidadeMae option:selected').text(),
+            RG: jQuery('#txtRG').val(),
+            CarteiraTrabalho: jQuery('#txtCarteiraTrabalho').val(),
+            NumeroSerie: jQuery('#txtNumeroSerie').val(),
+            NumeroCertificadoReservista: jQuery('#txtNumeroCertificadoReservista').val(),
+            Categoria: jQuery('#txtCategoria').val(),
+            CPF: jQuery('#txtCPF').val(),
+            TituloEleitor: jQuery('#txtTituloEleitor').val(),
+            CateiraSaude: jQuery('#txtCateiraSaude').val(),
+            CBO: jQuery('#txtCBO').val(),
+            Carteira19: jQuery('#txtCarteira19').val(),
+            RegistroGeral: jQuery('#txtRegistroGeral').val(),
+            CasadoBrasileiro: jQuery('input[name$:rdbCasadoBrasileiro]:checked').val(),
+            Naturalizado: jQuery('input[name$:rblNaturalizado]:checked').val(),
+            FilhoBrasileiro: jQuery('input[name$:rblFilhoBrasileiro]:checked').val(),
+            DataChegadaBrasil: jQuery('#txtDataChegadaBrasil').val(),
+            CadastroPIS: jQuery('#txtCadastroPIS').val(),
+            SobNumero: jQuery('#txtSobNumero').val(),
+            BancoPIS: jQuery('#txtBancoPIS').val(),
+            Agencia: jQuery('#txtAgencia').val(),
+            Digito: jQuery('#txtDigito').val(),
+            TipoEnderecoPIS: jQuery('#ddlTipoEnderecoPIS').val(),
+            TipoLogradouroPIS: jQuery('#ddlTipoLogradouroPIS').val(),
+            LogradouroPIS: jQuery('#txtLogradouroPIS').val(),
+            NumeroEnderecoPIS: jQuery('#txtNumeroEnderecoPIS').val(),
+            BairroPIS: jQuery('#txtBairroPIS').val(),
+            ComplementoPIS: jQuery('#txtComplementoPIS').val(),
+            CEPPIS: jQuery('#txtCEPPIS').val(),
+            OptanteFGTS: jQuery('#rdpOptanteFGTS').val(),
+            DataOpcao: jQuery('#txtDataOpcao').val(),
+            DataRetratacao: jQuery('#txtDataRetratacao').val(),
+            BancoFGTS: jQuery('#txtBancoFGTS').val(),
+            AgenciaFGTS: jQuery('#txtAgenciaFGTS').val(),
+            DigitoFGTS: jQuery('#txtDigitoFGTS').val(),
+            Cor: jQuery('#ddlCor').val(),
+            Altura: jQuery('#txtAltura').val(),
+            Peso: jQuery('#txtPeso').val(),
+            Cabelo: jQuery('#ddlCabelo').val(),
+            Olho: jQuery('#ddlOlho').val(),
+            Sinais: jQuery('#txtSinais').val()
         },
         contentType: "json",
         cache: false,
