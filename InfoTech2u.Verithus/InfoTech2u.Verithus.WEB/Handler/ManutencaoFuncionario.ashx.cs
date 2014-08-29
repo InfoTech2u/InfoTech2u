@@ -18,6 +18,42 @@ namespace InfoTech2u.Verithus.WEB.Handler
 
         public void ProcessRequest(HttpContext context)
         {
+            //Objetos Dados de Funcionario
+            FuncionariosVO objFuncionario = new FuncionariosVO();
+            EstadoCivilVO objEstadoCivilFuncionario = new EstadoCivilVO();
+            EnderecoVO objEnderecoFuncionario = new EnderecoVO();
+            TipoEnderecoVO objTipoEnderecoFuncionario = new TipoEnderecoVO();
+            TipoLogradouroVO objTipoLogradouroFuncionario = new TipoLogradouroVO();
+            DetalheEnderecoVO objDetalheEnderecoFuncionario = new DetalheEnderecoVO();
+            List<DetalheEnderecoVO> objListaDetalheEnderecoFuncionario = new List<DetalheEnderecoVO>();
+            PaisVO objPaisFuncionario = new PaisVO();
+            PaisVO objPaisPai = new PaisVO();
+            PaisVO objPaisMae = new PaisVO();
+
+            //Objetos de Documentos
+            DocumentoVO objDocumentos = new DocumentoVO();
+            List<DocumentoVO> objListaDocumentos = new List<DocumentoVO>();
+            DocumentoEstrangeiroVO objDocumentoEstrangeiro = new DocumentoEstrangeiroVO();
+            List<DocumentoEstrangeiroVO> objListDocumentoEstrangeiro = new List<DocumentoEstrangeiroVO>();
+            DocumentoPISVO objDocumentosPIS = new DocumentoPISVO();
+            List<DocumentoPISVO> objListaDocumentosPIS = new List<DocumentoPISVO>();
+            BancoVO objBancoPIS = new BancoVO();
+            EnderecoVO objEnderecoPIS = new EnderecoVO();
+            TipoEnderecoVO objTipoEnderecoPIS = new TipoEnderecoVO();
+            TipoLogradouroVO objTipoLogradouroPIS = new TipoLogradouroVO();
+            DetalheEnderecoVO objDetalheEnderecoPIS = new DetalheEnderecoVO();
+            List<DetalheEnderecoVO> objListDetalheEnderecoPIS = new List<DetalheEnderecoVO>();
+            DocumentoFundoGarantiaVO objDocumentoFundoGarantia = new DocumentoFundoGarantiaVO();
+            List<DocumentoFundoGarantiaVO> objListaDocumentoFundoGarantia = new List<DocumentoFundoGarantiaVO>();
+            BancoVO objBancoFGTS = new BancoVO();
+
+            //Objetos de Caracteristicas Fisicas
+            CaractesristicaFisicaVO objCaractesristicaFisica = new CaractesristicaFisicaVO();
+            List<CaractesristicaFisicaVO> objListaCaractesristicaFisica = new List<CaractesristicaFisicaVO>();
+            TipoCorVO objTipoCor = new TipoCorVO();
+            TipoCabeloVO objTipoCabelo = new TipoCabeloVO();
+            TipoOlhoVO objTipoOlho = new TipoOlhoVO();
+            
             string retorno = "";
 
             string Metodo = context.Request.QueryString["Metodo"].ToString();
@@ -33,6 +69,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
             string EstadoCivil = context.Request.QueryString["EstadoCivil"].ToString();
             string NomeConjuge = context.Request.QueryString["NomeConjuge"].ToString();
             string QtdFilhos = context.Request.QueryString["QtdFilhos"].ToString();
+            //Endereço
             string TipoEndereco = context.Request.QueryString["TipoEndereco"].ToString();
             string TipoLogradouro = context.Request.QueryString["TipoLogradouro"].ToString();
             string Logradouro = context.Request.QueryString["Logradouro"].ToString();
@@ -40,10 +77,12 @@ namespace InfoTech2u.Verithus.WEB.Handler
             string Bairro = context.Request.QueryString["Bairro"].ToString();
             string Complemento = context.Request.QueryString["Complemento"].ToString();
             string CEP = context.Request.QueryString["CEP"].ToString();
+            //Filiação
             string NomePai = context.Request.QueryString["NomePai"].ToString();
             string NacionalidadePai = context.Request.QueryString["NacionalidadePai"].ToString();
             string NomeMae = context.Request.QueryString["NomeMae"].ToString();
             string NacionalidadeMae = context.Request.QueryString["NacionalidadeMa"].ToString();
+            //Documentos
             string RG = context.Request.QueryString["RG"].ToString();
             string CarteiraTrabalho = context.Request.QueryString["CarteiraTrabalho"].ToString();
             string NumeroSerie = context.Request.QueryString["NumeroSerie"].ToString();
@@ -52,6 +91,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
             string CPF = context.Request.QueryString["CPF"].ToString();
             string TituloEleitor = context.Request.QueryString["TituloEleitor"].ToString();
             string CateiraSaude = context.Request.QueryString["CateiraSaude"].ToString();
+            //Documentos Estrangeiro
             string CBO = context.Request.QueryString["CBO"].ToString();
             string Carteira19 = context.Request.QueryString["Carteira19"].ToString();
             string RegistroGeral = context.Request.QueryString["RegistroGeral"].ToString();
@@ -59,6 +99,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
             string Naturalizado = context.Request.QueryString["Naturalizado"].ToString();
             string FilhoBrasileiro = context.Request.QueryString["FilhoBrasileirod"].ToString();
             string DataChegadaBrasil = context.Request.QueryString["DataChegadaBrasil"].ToString();
+            //Documentos PIS
             string CadastroPIS = context.Request.QueryString["CadastroPIS"].ToString();
             string SobNumero = context.Request.QueryString["SobNumero"].ToString();
             string BancoPIS = context.Request.QueryString["BancoPIS"].ToString();
@@ -71,49 +112,117 @@ namespace InfoTech2u.Verithus.WEB.Handler
             string BairroPIS = context.Request.QueryString["BairroPIS"].ToString();
             string ComplementoPIS = context.Request.QueryString["ComplementoPIS"].ToString();
             string CEPPIS = context.Request.QueryString["CEPPIS"].ToString();
+            //Documentos Fundo de Garantia
             string OptanteFGTS = context.Request.QueryString["rdpOptanteFGTS"].ToString();
             string DataOpcao = context.Request.QueryString["DataOpcao"].ToString();
             string DataRetratacao = context.Request.QueryString["DataRetratacao"].ToString();
             string BancoFGTS = context.Request.QueryString["BancoFGTS"].ToString();
             string AgenciaFGTS = context.Request.QueryString["AgenciaFGTS"].ToString();
             string DigitoFGTS = context.Request.QueryString["DigitoFGTS"].ToString();
+            //Caracteristicas Fisicas
             string Cor = context.Request.QueryString["Cor"].ToString();
             string Altura = context.Request.QueryString["Altura"].ToString();
             string Peso = context.Request.QueryString["Peso"].ToString();
             string Cabelo = context.Request.QueryString["Cabelo"].ToString();
             string Olho = context.Request.QueryString["Olho"].ToString();
             string Sinais = context.Request.QueryString["Sinais"].ToString();
-
-
-            //Objetos Dados de Funcionario
-            FuncionariosVO Funcionario = new FuncionariosVO();
-            EstadoCivilVO objEstadoCivilFuncionario = new EstadoCivilVO();
-            EnderecoVO EnderecoFuncionario = new EnderecoVO();
-            TipoEnderecoVO TipoEnderecoFuncionario = new TipoEnderecoVO();
-            TipoLogradouroVO objTipoLogradouroFuncionario = new TipoLogradouroVO();
-            DetalheEnderecoVO DetalheEnderecoFuncionario = new DetalheEnderecoVO();
-            PaisVO objPaisFuncionario = new PaisVO();
-            PaisVO objPaisPai = new PaisVO();
-            PaisVO objPaisMae = new PaisVO();
             
-            //Objetos de Documentos
-            DocumentoVO objDocumentos = new DocumentoVO();
-            DocumentoEstrangeiroVO objDocumentoEstrangeiro = new DocumentoEstrangeiroVO();
-            DocumentoPISVO objDocumentosPIS = new DocumentoPISVO();
-            EnderecoVO objEnderecoPIS = new EnderecoVO();
-            TipoEnderecoVO objTipoEnderecoPIS = new TipoEnderecoVO();
-            TipoLogradouroVO objTipoLogradouroPIS = new TipoLogradouroVO();
-            DetalheEnderecoVO objDetalheEnderecoPIS = new DetalheEnderecoVO();
-            DocumentoFundoGarantiaVO objDocumentoFundoGarantia = new DocumentoFundoGarantiaVO();
-
-            //Objetos de Caracteristicas Fisicas
-            CaractesristicaFisicaVO objCaractesristicaFisica = new CaractesristicaFisicaVO();
-            TipoCorVO objTipoCor = new TipoCorVO();
-            TipoCabeloVO objTipoCabelo = new TipoCabeloVO();
-            TipoOlhoVO objTipoOlho = new TipoOlhoVO();
+            
+            //Passo 1 - Dados Pessoais
+            objFuncionario.NumeroOrdemMatricula = Convert.ToInt32(NumeroOrdemMatricula);
+            objFuncionario.NumeroMatricula = Convert.ToInt32(NumeroMatricula);
+            objFuncionario.NomeFuncionario = NomeFuncionario;
+            objFuncionario.DataNascimento = DataNascimento;
+            objFuncionario.LocalNascimento = objPaisFuncionario.CodigoPais.ToString();
+            objFuncionario.CodigoEstadoCivil = Convert.ToInt32(EstadoCivil);
+            objFuncionario.NomeConjuge = NomeConjuge;
+            objFuncionario.QuantosFilhos = Convert.ToInt16(QtdFilhos);
+            //Passo2 - Endereço
+            objTipoEnderecoFuncionario.CodigoTipoEndereco = Convert.ToInt32(TipoEndereco);
+            objTipoLogradouroFuncionario.CodigoTipoLogradouro = Convert.ToInt32(TipoLogradouro);
+            objDetalheEnderecoFuncionario.TipoEnderecoVO = objTipoEnderecoFuncionario;
+            objDetalheEnderecoFuncionario.TipoLogradouroVO = objTipoLogradouroFuncionario;
+            objDetalheEnderecoFuncionario.Logradouro = Logradouro;
+            objDetalheEnderecoFuncionario.Numero = NumeroEndereco;
+            objDetalheEnderecoFuncionario.Bairro = Bairro;
+            objDetalheEnderecoFuncionario.Complemento = Complemento;
+            objDetalheEnderecoFuncionario.CEP = CEP;
+            objListaDetalheEnderecoFuncionario.Add(objDetalheEnderecoFuncionario);
+            objEnderecoFuncionario.DetalheEnderecoVO = objListaDetalheEnderecoFuncionario;
+            objFuncionario.EnderecoVO = objEnderecoFuncionario;
+            //Passo 3 - Filiação
+            objFuncionario.NomePai = NomePai;
+            objFuncionario.NacionalidadePai = NacionalidadePai;
+            objFuncionario.NomeMae = NomeMae;
+            objFuncionario.NacionalidadeMae = NacionalidadeMae;
+            //Passo 4 - Documentos
+            objDocumentos.NumeroIdentidade = RG;
+            objDocumentos.NumeroCarteiraTrabalho = CarteiraTrabalho;
+            objDocumentos.NumeroSerie = NumeroSerie;
+            objDocumentos.NumeroCertificadoReservista = NumeroCertificadoReservista;
+            objDocumentos.Categoria = Categoria;
+            objDocumentos.NumeroCPF = CPF;
+            objDocumentos.TituloEleitor = TituloEleitor;
+            objDocumentos.NumeroCarteiraSaude = CateiraSaude;
+            objListaDocumentos.Add(objDocumentos);
+            objFuncionario.DocumentoVO = objListaDocumentos;
+            //Passo 4 - Documentos Estrangeiro
+            objDocumentoEstrangeiro.NumeroCBO = CBO;
+            objDocumentoEstrangeiro.NumeroCarteira19 = Carteira19;
+            objDocumentoEstrangeiro.NumeroRegistroGeral = RegistroGeral;
+            objDocumentoEstrangeiro.CasadoBrasileiro = CasadoBrasileiro;
+            objDocumentoEstrangeiro.Naturalizado = Naturalizado;
+            objDocumentoEstrangeiro.FilhoBrasileiro = FilhoBrasileiro;
+            objDocumentoEstrangeiro.DataChegadaBrasil = Convert.ToDateTime(DataChegadaBrasil);
+            objListDocumentoEstrangeiro.Add(objDocumentoEstrangeiro);
+            objFuncionario.DocumentoEstrangeiroVO = objListDocumentoEstrangeiro;
+            //Passo 5 Documentos PIS
+            objDocumentosPIS.DataCadastroPIS = Convert.ToDateTime(CadastroPIS);
+            objDocumentosPIS.SOBNumero = SobNumero;
+            objBancoPIS.NumeroBanco = BancoPIS;
+            objBancoPIS.Agencia = Agencia;
+            objBancoPIS.Digito = Digito;
+            objDocumentosPIS.BancoVO = objBancoPIS;
+            objTipoEnderecoPIS.CodigoTipoEndereco = Convert.ToInt32(objTipoEnderecoPIS);
+            objTipoLogradouroPIS.CodigoTipoLogradouro = Convert.ToInt32(TipoLogradouroPIS);
+            objDetalheEnderecoPIS.TipoEnderecoVO = objTipoEnderecoPIS;
+            objDetalheEnderecoPIS.TipoLogradouroVO = objTipoLogradouroPIS;
+            objDetalheEnderecoPIS.Logradouro = LogradouroPIS;
+            objDetalheEnderecoPIS.Numero = NumeroEnderecoPIS;
+            objDetalheEnderecoPIS.Bairro = BairroPIS;
+            objDetalheEnderecoPIS.Complemento = ComplementoPIS;
+            objDetalheEnderecoPIS.CEP = CEPPIS;
+            objListDetalheEnderecoPIS.Add(objDetalheEnderecoPIS);
+            objEnderecoPIS.DetalheEnderecoVO = objListDetalheEnderecoPIS;
+            objDocumentosPIS.EnderecoVO = objEnderecoPIS;
+            objListaDocumentosPIS.Add(objDocumentosPIS);
+            objFuncionario.DocumentoPIS = objListaDocumentosPIS;
+            //Passo 6 Documentos Fundo de Garantia
+            objDocumentoFundoGarantia.Optante = OptanteFGTS;
+            objDocumentoFundoGarantia.DataOpcao = Convert.ToDateTime(DataOpcao);
+            objDocumentoFundoGarantia.DataRetratacao = Convert.ToDateTime(DataRetratacao);
+            objBancoFGTS.NumeroBanco = BancoFGTS;
+            objBancoFGTS.Agencia = AgenciaFGTS;
+            objBancoFGTS.Digito = DigitoFGTS;
+            objDocumentoFundoGarantia.BancoVO = objBancoFGTS;
+            objListaDocumentoFundoGarantia.Add(objDocumentoFundoGarantia);
+            objFuncionario.DocumentoFundoGarantiaVO = objListaDocumentoFundoGarantia;
+            //Passo 7 - Caracteristicas Fisicas
+            objCaractesristicaFisica.Altura = Convert.ToDecimal(Altura);
+            objCaractesristicaFisica.Peso = Convert.ToDecimal(Peso);
+            objCaractesristicaFisica.Sinais = Sinais;
+            objTipoCor.CodigoTipoCor = Convert.ToInt32(Cor);
+            objCaractesristicaFisica.TipoCorVO = objTipoCor;
+            objTipoCabelo.CodigoTipoCabelo = Convert.ToInt32(Cabelo);
+            objCaractesristicaFisica.TipoCabeloVO = objTipoCabelo;
+            objTipoOlho.CodigoTipoOlho = Convert.ToInt32(Olho);
+            objCaractesristicaFisica.TipoOlhoVO = objTipoOlho;
+            objListaCaractesristicaFisica.Add(objCaractesristicaFisica);
+            objFuncionario.CaractesristicaFisicaVO = objListaCaractesristicaFisica;
+            
 
             //valorizar Objetos
-            Funcionario.
+            
 
             context.Response.Write(retorno);
         }

@@ -28,6 +28,8 @@ namespace InfoTech2u.Verithus.VO
         public Nullable<int> CodigoUsuarioAlteracao { get; set; }
         public Nullable<System.DateTime> DataAlteracao { get; set; }
         public Nullable<int> CodigoStatus { get; set; }
+
+        public virtual DetalheEnderecoVO DetalheEndereco { get; set; }
     
         public virtual ICollection<FuncionariosVO> FuncionariosVO { get; set; }
         public virtual ICollection<DocumentoPISVO> DocumentoPIS { get; set; }
