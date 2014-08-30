@@ -61,7 +61,7 @@ body.loginpage { background: #0866c6; }
 a,a:hover,a:link,a:active,a:focus { outline: none; color: #0866c6; text-decoration: none; }
 a:hover { text-decoration: underline; }
 input,select,
-textarea,button { outline: none; font-size: 13px; font-family: 'RobotoRegular', 'Helvetica Neue', Helvetica, sans-serif; }
+textarea,button, input[type=button] { outline: none; font-size: 13px; font-family: 'RobotoRegular', 'Helvetica Neue', Helvetica, sans-serif; }
 strong { font-weight: normal; }
 label, input, textarea, select, button { font-size: 13px; }
 h1,h2,h3,h4,h5 { font-weight: normal; line-height: normal; }
@@ -75,7 +75,7 @@ h1,h2,h3,h4,h5 { font-weight: normal; line-height: normal; }
 
 .inputwrapper input { border: 0; padding: 10px; background: #fff; width: 250px; }
 .inputwrapper input:active, .inputwrapper input:focus { background: #fff; border: 0; }
-.inputwrapper button {
+.inputwrapper button, .inputwrapper input[type=button] {
 		  display: block; border: 1px solid #0c57a3; padding: 10px; background: #0972dd; width: 100%;
 		  color: #fff; text-transform: uppercase; }
 .inputwrapper button:focus, .inputwrapper button:active, .inputwrapper button:hover { background: #1e82e8; }
@@ -352,11 +352,12 @@ h1,h2,h3,h4,h5 { font-weight: normal; line-height: normal; }
 .stdform2 input { margin: 0; }
 .stdform2 input[type=checkbox], .stdform2 input[type=radio] { margin: 10px; }
 
+
 .dualselect { margin-left: 220px; display: block; }
 .dualselect select { height: 200px; width: 40%; padding: 0; outline: none; }
 .dualselect select option { padding: 4px 5px; margin: 0; }
 .dualselect .ds_arrow { display: inline-block; vertical-align: top; padding-top: 60px; margin: 0 10px; }
-.dualselect .ds_arrow button { margin-top: -1px; }
+.dualselect .ds_arrow button  { margin-top: -1px; }
 
 .counter { display: block; font-size: 11px; }
 .warning { color: #bb0000; }

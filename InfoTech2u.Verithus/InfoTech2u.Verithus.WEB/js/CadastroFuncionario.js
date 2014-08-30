@@ -906,8 +906,9 @@ function IncluirDadosFuncionario() {
         success: function (data) {
             alert(data);
 
+            
             for (var i = 0; i < data.le; i++) {
-                //data[i].atributo
+                alert(data[i].FUNC_NOME_FUNCIONARIO)
             }
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
