@@ -14,13 +14,7 @@ namespace InfoTech2u.Verithus.VO
     
     public partial class EnderecoVO
     {
-        public EnderecoVO()
-        {
-            this.FuncionariosVO = new HashSet<FuncionariosVO>();
-            this.DocumentoPIS = new HashSet<DocumentoPISVO>();
-            this.EmpresaVO = new HashSet<EmpresaVO>();
-            this.DetalheEnderecoVO = new HashSet<DetalheEnderecoVO>();
-        }
+        
     
         public int CodigoEndereco { get; set; }
         public Nullable<int> CodigoUsuarioCadastro { get; set; }
@@ -29,11 +23,11 @@ namespace InfoTech2u.Verithus.VO
         public Nullable<System.DateTime> DataAlteracao { get; set; }
         public Nullable<int> CodigoStatus { get; set; }
 
-        public virtual DetalheEnderecoVO DetalheEndereco { get; set; }
+        public  DetalheEnderecoVO DetalheEndereco { get; set; }
     
-        public virtual ICollection<FuncionariosVO> FuncionariosVO { get; set; }
-        public virtual ICollection<DocumentoPISVO> DocumentoPIS { get; set; }
-        public virtual ICollection<EmpresaVO> EmpresaVO { get; set; }
-        public virtual ICollection<DetalheEnderecoVO> DetalheEnderecoVO { get; set; }
+        public FuncionariosVO Funcionarios { get; set; }
+        public DocumentoPISVO DocumentoPIS { get; set; }
+        public EmpresaVO Empresa { get; set; }
+        
     }
 }

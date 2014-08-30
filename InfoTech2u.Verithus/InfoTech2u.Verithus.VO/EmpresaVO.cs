@@ -14,10 +14,6 @@ namespace InfoTech2u.Verithus.VO
     
     public partial class EmpresaVO
     {
-        public EmpresaVO()
-        {
-            this.FuncionariosVO = new HashSet<FuncionariosVO>();
-        }
     
         public int CodigoEmpresa { get; set; }
         public Nullable<int> CodigoEndereco { get; set; }
@@ -32,8 +28,8 @@ namespace InfoTech2u.Verithus.VO
         public Nullable<System.DateTime> DataAlteracao { get; set; }
         public Nullable<int> CodigoStatus { get; set; }
     
-        public virtual ICollection<FuncionariosVO> FuncionariosVO { get; set; }
-        public virtual ContatoVO ContatoVO { get; set; }
-        public virtual EnderecoVO EnderecoVO { get; set; }
+        public  FuncionariosVO Funcionarios { get; set; }
+        public virtual ContatoVO Contato { get; set; }
+        public virtual EnderecoVO Endereco { get; set; }
     }
 }

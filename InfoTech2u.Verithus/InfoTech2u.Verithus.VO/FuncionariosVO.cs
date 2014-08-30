@@ -14,7 +14,7 @@ namespace InfoTech2u.Verithus.VO
     
     public partial class FuncionariosVO
     {
-        public FuncionariosVO()
+        /*public FuncionariosVO()
         {
             this.DocumentoVO = new HashSet<DocumentoVO>();
             this.DocumentoEstrangeiroVO = new HashSet<DocumentoEstrangeiroVO>();
@@ -28,9 +28,9 @@ namespace InfoTech2u.Verithus.VO
             this.AcidenteTrabalhoVO = new HashSet<AcidenteTrabalhoVO>();
             this.AlteracaoCargoSalariorVO = new HashSet<AlteracaoCargoSalariorVO>();
             this.ContribuicaoSindicalVO = new HashSet<ContribuicaoSindicalVO>();
-        }
+        }*/
     
-        public int CodigoFuncionario { get; set; }
+        public int? CodigoFuncionario { get; set; }
         public Nullable<int> CodigoEndereco { get; set; }
         public Nullable<int> CodigoEmpresa { get; set; }
         public Nullable<int> CodigoContato { get; set; }
@@ -41,7 +41,7 @@ namespace InfoTech2u.Verithus.VO
         public string NacionalidadePai { get; set; }
         public string NomeMae { get; set; }
         public string NacionalidadeMae { get; set; }
-        public string DataNascimento { get; set; }
+        public DateTime DataNascimento { get; set; }
         public Nullable<System.DateTime> Nascimento { get; set; }
         public Nullable<int> CodigoEstadoCivil { get; set; }
         public string LocalNascimento { get; set; }
@@ -54,21 +54,21 @@ namespace InfoTech2u.Verithus.VO
         public Nullable<System.DateTime> DataAlteracao { get; set; }
         public Nullable<int> CodigoStatus { get; set; }
     
-        public virtual ContatoVO ContatoVO { get; set; }
-        public virtual EmpresaVO EmpresaVO { get; set; }
-        public virtual EnderecoVO EnderecoVO { get; set; }
-        public virtual EstadoCivilVO EstadoCivilVO { get; set; }
-        public virtual ICollection<DocumentoVO> DocumentoVO { get; set; }
-        public virtual ICollection<DocumentoEstrangeiroVO> DocumentoEstrangeiroVO { get; set; }
-        public virtual ICollection<DocumentoPISVO> DocumentoPIS { get; set; }
-        public virtual ICollection<DocumentoFundoGarantiaVO> DocumentoFundoGarantiaVO { get; set; }
-        public virtual ICollection<DependenteVO> DependenteVO { get; set; }
-        public virtual ICollection<CaractesristicaFisicaVO> CaractesristicaFisicaVO { get; set; }
-        public virtual ICollection<DadosAdmissaoVO> DadosAdmissaoVO { get; set; }
-        public virtual ICollection<DadosDemissaoVO> DadosDemissaoVO { get; set; }
-        public virtual ICollection<FeriasVO> FeriasVO { get; set; }
-        public virtual ICollection<AcidenteTrabalhoVO> AcidenteTrabalhoVO { get; set; }
-        public virtual ICollection<AlteracaoCargoSalariorVO> AlteracaoCargoSalariorVO { get; set; }
-        public virtual ICollection<ContribuicaoSindicalVO> ContribuicaoSindicalVO { get; set; }
+        public  ContatoVO Contato { get; set; }
+        public  EmpresaVO Empresa { get; set; }
+        public  EnderecoVO Endereco { get; set; }
+        public  EstadoCivilVO EstadoCivil { get; set; }
+        public  DocumentoVO Documento { get; set; }
+        public  DocumentoEstrangeiroVO DocumentoEstrangeiro { get; set; }
+        public  DocumentoPISVO DocumentoPIS { get; set; }
+        public  DocumentoFundoGarantiaVO DocumentoFundoGarantia { get; set; }
+        public  DependenteVO Dependente { get; set; }
+        public  CaractesristicaFisicaVO CaractesristicaFisica { get; set; }
+        public  DadosAdmissaoVO DadosAdmissao { get; set; }
+        public  DadosDemissaoVO DadosDemissao { get; set; }
+        public  FeriasVO FeriasVO { get; set; }
+        public  AcidenteTrabalhoVO AcidenteTrabalho { get; set; }
+        public  AlteracaoCargoSalariorVO AlteracaoCargoSalarior { get; set; }
+        public  ContribuicaoSindicalVO ContribuicaoSindical { get; set; }
     }
 }
