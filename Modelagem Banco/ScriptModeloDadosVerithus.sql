@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2008                    */
-/* Created on:     31/08/2014 14:11:27                          */
+/* Created on:     31/08/2014 16:34:54                          */
 /*==============================================================*/
 
 
@@ -834,14 +834,14 @@ go
 /* Table: TBVRT012_TIPO_BENEFICIO                               */
 /*==============================================================*/
 create table TBVRT012_TIPO_BENEFICIO (
-   CODIGO_TIPO_BENECIFIO int                  identity,
+   CODIGO_TIPO_BENEFICIO int                  identity,
    DESCRICAO            nvarchar(80)         null,
    CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
    CODIGO_USUARIO_ALTERACAO int                  null,
    DATA_ALTERACAO       datetime             null,
    CODIGO_STATUS        int                  null,
-   constraint PK_TBVRT012_TIPO_BENEFICIO primary key (CODIGO_TIPO_BENECIFIO)
+   constraint PK_TBVRT012_TIPO_BENEFICIO primary key (CODIGO_TIPO_BENEFICIO)
 )
 go
 
@@ -867,8 +867,8 @@ create table TBVRT015_CARACTERISTICA_FISICA (
    CODIGO_CARACTERISTICA_FISICA int                  identity,
    CODIGO_FUNCIONARIO   int                  null,
    CODIGO_TIPO_COR      int                  null,
-   ALTURA               decimal(3,2)         null,
-   PESO                 decimal(5,2)         null,
+   ALTURA               nvarchar(3)          null,
+   PESO                 nvarchar(3)          null,
    CODIGO_TIPO_CABELO   int                  null,
    CODIGO_TIPO_OLHO     int                  null,
    SINAIS               nvarchar(80)         null,
@@ -1291,7 +1291,7 @@ go
 /*==============================================================*/
 create table TBVRT039_BANCO (
    CODIGO_BANCO         int                  identity,
-   NUMERO_BANCO         char(3)              null,
+   NUMERO_BANCO         nvarchar(5)          null,
    AGENCIA              char(10)             null,
    DIGITO               char(2)              null,
    CODIGO_ENDERECO      int                  null,
@@ -1600,7 +1600,7 @@ go
 
 alter table TBVRT045_BENEFICIO
    add constraint FK_TBVRT045_REFERENCE_TBVRT012 foreign key (CODIGO_TIPO_BENECIFIO)
-      references TBVRT012_TIPO_BENEFICIO (CODIGO_TIPO_BENECIFIO)
+      references TBVRT012_TIPO_BENEFICIO (CODIGO_TIPO_BENEFICIO)
 go
 
 alter table TBVRT045_BENEFICIO

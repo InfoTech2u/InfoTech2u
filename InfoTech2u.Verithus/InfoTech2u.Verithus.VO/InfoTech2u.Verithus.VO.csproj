@@ -45,6 +45,7 @@
     <Compile Include="FuncionarioVO.cs" />
     <Compile Include="PaisVO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoBancoVO.cs" />
     <Compile Include="UsuariosVO.cs" />
     <Compile Include="TipoAcessoVO.cs" />
     <Compile Include="StatusVO.cs" />
