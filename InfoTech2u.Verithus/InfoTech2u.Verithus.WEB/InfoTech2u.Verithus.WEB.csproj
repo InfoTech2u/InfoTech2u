@@ -676,11 +676,6 @@
     <Content Include="Modulos\Dashboard\DashboardGerente.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterAdmissao.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterBeneficios.aspx" />
-    <Content Include="Modulos\RecursosHumanos\ManterCargo.aspx" />
-    <Content Include="Modulos\RecursosHumanos\ManterDemissao.aspx" />
-    <Content Include="Modulos\RecursosHumanos\ManterFormaDePagamento.aspx" />
-    <Content Include="Modulos\RecursosHumanos\ManterSecao.aspx" />
-    <Content Include="Modulos\RecursosHumanos\ManterTarefa.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterDependente.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterTipoBeneficio.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterUsuario.aspx" />
@@ -803,40 +798,6 @@
     <Compile Include="Modulos\RecursosHumanos\ManterBeneficios.aspx.designer.cs">
       <DependentUpon>ManterBeneficios.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\RecursosHumanos\ManterCargo.aspx.cs">
-      <DependentUpon>ManterCargo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Modulos\RecursosHumanos\ManterCargo.aspx.designer.cs">
-      <DependentUpon>ManterCargo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Modulos\RecursosHumanos\ManterDemissao.aspx.cs">
-      <DependentUpon>ManterDemissao.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Modulos\RecursosHumanos\ManterDemissao.aspx.designer.cs">
-      <DependentUpon>ManterDemissao.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Modulos\RecursosHumanos\ManterFormaDePagamento.aspx.cs">
-      <DependentUpon>ManterFormaDePagamento.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Modulos\RecursosHumanos\ManterFormaDePagamento.aspx.designer.cs">
-      <DependentUpon>ManterFormaDePagamento.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Modulos\RecursosHumanos\ManterSecao.aspx.cs">
-      <DependentUpon>ManterSecao.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Modulos\RecursosHumanos\ManterSecao.aspx.designer.cs">
-      <DependentUpon>ManterSecao.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Modulos\RecursosHumanos\ManterTarefa.aspx.cs">
-      <DependentUpon>ManterTarefa.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Modulos\RecursosHumanos\ManterTarefa.aspx.designer.cs">
-      <DependentUpon>ManterTarefa.aspx</DependentUpon>
     <Compile Include="Modulos\RecursosHumanos\ManterDependente.aspx.cs">
       <DependentUpon>ManterDependente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

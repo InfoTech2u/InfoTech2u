@@ -15,9 +15,8 @@
         <div class="pageheader">
             <div class="pageicon"><span class="iconfa-pencil"></span></div>
             <div class="pagetitle">
-                <h5>Admissão
-                </h5>
-                <h1>Fomulário de Admissão</h1>
+                <h5>Forms</h5>
+                <h1>Form Styles</h1>
             </div>
         </div>
         <!--pageheader-->
@@ -25,7 +24,7 @@
         <div class="maincontent">
             <div class="maincontentinner">
                 <div class="widgetbox box-inverse">
-                    <h4 class="widgettitle">Dados Admissão</h4>
+                    <h4 class="widgettitle">With Form Validation</h4>
                     <div class="widgetcontent nopadding">
                         <div class="stdform stdform2">
                             <p>
@@ -41,85 +40,50 @@
                                     <asp:TextBox runat="server" ID="TextBox1" class="input-small" ClientIDMode="Static" />
                                 </span>
                             </p>
+
                             <p>
                                 <label>Cargo</label>
                                 <span class="field">
-                                    <asp:DropDownList runat="server" ID="ddlCargo" class="uniformselect" ClientIDMode="Static" />
-                                    <span class="help-inline" id="msgCargo"></span>
+                                    <asp:TextBox runat="server" ID="TextBox2" class="input-small" ClientIDMode="Static" />
                                 </span>
                             </p>
+
                             <p>
-                                <label>Seção</label>
+                                <label>Sessão</label>
                                 <span class="field">
-                                    <asp:DropDownList runat="server" ID="ddlSecao" class="uniformselect" ClientIDMode="Static" />
-                                    <span class="help-inline" id="msgSecao"></span>
+                                    <asp:TextBox runat="server" ID="TextBox3" class="input-small" ClientIDMode="Static" />
                                 </span>
                             </p>
+
                             <p>
                                 <label>Salário Inicial R$</label>
                                 <span class="field">
                                     <asp:TextBox runat="server" ID="TextBox4" class="input-small" ClientIDMode="Static" />
                                 </span>
                             </p>
+
                             <p>
                                 <label>Comissões</label>
                                 <span class="field">
                                     <asp:TextBox runat="server" ID="TextBox5" class="input-small" ClientIDMode="Static" />
                                 </span>
                             </p>
+
                             <p>
                                 <label>Tarefa</label>
                                 <span class="field">
                                     <asp:TextBox runat="server" ID="TextBox6" class="input-small" ClientIDMode="Static" />
                                 </span>
                             </p>
-                            <p>
-                                <label>Horário de Trabalho</label>
-                                <p>
-                                    <label>Entrada</label>
-                                    <span class="field">
-                                        <asp:TextBox runat="server" ID="TextBox2" class="input-small" ClientIDMode="Static" />
-                                    </span>
-                                </p>
-                                <p>
-                                    <label>Saída</label>
-                                    <span class="field">
-                                        <asp:TextBox runat="server" ID="TextBox13" class="input-small" ClientIDMode="Static" />
-                                    </span>
-                                </p>
-                            </p>
-                            <p>
-                                <label>Intervalo de Trabalho</label>
-                                <p>
-                                    <label>Entrada</label>
-                                    <span class="field">
-                                        <asp:TextBox runat="server" ID="TextBox3" class="input-small" ClientIDMode="Static" />
-                                    </span>
-                                </p>
-                                <p>
-                                    <label>Saída</label>
-                                    <span class="field">
-                                        <asp:TextBox runat="server" ID="TextBox7" class="input-small" ClientIDMode="Static" />
-                                    </span>
-                                </p>
-                            </p>
-                            <p>
-                                <label>Descanso Semanal</label>
-                                <p>
-                                    <label>Entrada</label>
-                                    <span class="field">
-                                        <asp:TextBox runat="server" ID="TextBox8" class="input-small" ClientIDMode="Static" />
-                                    </span>
-                                </p>
-                                <p>
-                                    <label>Saída</label>
-                                    <span class="field">
-                                        <asp:TextBox runat="server" ID="TextBox9" class="input-small" ClientIDMode="Static" />
-                                    </span>
-                                </p>
-                            </p>
+
+
+
+
+
+
+
                             <p class="stdformbutton">
-                                <a href="#" class="btn btn-primary btn-rounded">Concluir</a>
+                                <a href="#" class="btn btn-primary btn-rounded"><i class="iconsweets-magnifying iconsweets-white"></i>&nbsp; Pesquisar</a>
                                 <a href="#" class="btn btn-rounded"><i class="iconfa-refresh iconsweets-black"></i>&nbsp; limpar</a>
                             </p>
 

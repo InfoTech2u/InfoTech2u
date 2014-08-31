@@ -10,22 +10,5 @@ namespace InfoTech2u.Verithus.BS
 {
     public class TipoSecaoBS
     {
-        public List<TipoSecaoVO> SelecionarSecaoLista(TipoSecaoVO objEntrada)
-        {
-            TipoSecaoDA objRetorno = new TipoSecaoDA();
-
-            try
-            {
-                return objRetorno.SelecionarSecaoLista(objEntrada);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                objRetorno = null;
-            }
-        }
     }
 }

@@ -17,39 +17,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
             if (!IsPostBack)
             {
                 CarregarIncludes();
-                CarregarCargo();
-                CarregarSecao();
             }
-        }
-
-        private void CarregarSecao()
-        {
-            TipoSecaoBS retornoSecaoBS = new TipoSecaoBS();
-            TipoSecaoVO objEntrada = new TipoSecaoVO();
-            List<TipoSecaoVO> listaSecaoVO = new List<TipoSecaoVO>();
-
-            listaSecaoVO = retornoSecaoBS.SelecionarSecaoLista(objEntrada);
-
-            this.ddlSecao.DataSource = listaSecaoVO;
-            this.ddlSecao.DataValueField = "CodigoTipoSecao";
-            this.ddlSecao.DataTextField = "Descricao";
-            this.ddlSecao.DataBind();
-            this.ddlSecao.Items.Insert(0, new ListItem("Selecionar", "0"));
-        }
-
-        private void CarregarCargo()
-        {
-            TipoCargoBS retornoCargoBS = new TipoCargoBS();
-            TipoCargoVO objEntrada = new TipoCargoVO();
-            List<TipoCargoVO> listaCargoVO = new List<TipoCargoVO>();
-
-            listaCargoVO = retornoCargoBS.SelecionarCargoLista(objEntrada);
-
-            this.ddlCargo.DataSource = listaCargoVO;
-            this.ddlCargo.DataValueField = "CodigoTipoCargo";
-            this.ddlCargo.DataTextField = "Descricao";
-            this.ddlCargo.DataBind();
-            this.ddlCargo.Items.Insert(0, new ListItem("Selecionar", "0"));
         }
 
         protected void CarregarIncludes()
@@ -83,6 +51,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery.maskMoney.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "custom.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "CadastroFuncionario.js");
+
         }
     }
 }

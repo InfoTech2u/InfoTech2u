@@ -10,9 +10,5 @@ namespace InfoTech2u.Verithus.BS
 {
     public class TipoTarefaBS
     {
-        public List<TipoSecaoVO> SelecionarSecaoLista()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
