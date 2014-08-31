@@ -66,6 +66,8 @@
     <Content Include="js\DataTableEmpresa.js" />
     <Content Include="js\jquery.maskedinput-1.3.js" />
     <Content Include="js\jquery.maskMoney.js" />
+    <Content Include="js\ManterDependente.js" />
+    <Content Include="js\TipoBeneficio.js" />
     <Content Include="Modulos\InfoTech2u.Master" />
     <Content Include="fonts\fontawesome\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome\fontawesome-webfont.ttf" />
@@ -674,12 +676,15 @@
     <Content Include="Modulos\Dashboard\DashboardGerente.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterAdmissao.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterBeneficios.aspx" />
+    <Content Include="Modulos\RecursosHumanos\ManterDependente.aspx" />
+    <Content Include="Modulos\RecursosHumanos\ManterTipoBeneficio.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterUsuario.aspx" />
     <Content Include="Modulos\RecursosHumanos\PesquisaBeneficios.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterEmpresa.aspx" />
     <Content Include="Modulos\RecursosHumanos\PesquisaEmpresa.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterFuncionario.aspx" />
     <Content Include="Modulos\RecursosHumanos\PesquisaFuncionario.aspx" />
+    <Content Include="Modulos\RecursosHumanos\PesquisarDependente.aspx" />
     <Content Include="prettify\lang-apollo.js" />
     <Content Include="prettify\lang-clj.js" />
     <Content Include="prettify\lang-css.js" />
@@ -793,6 +798,20 @@
     <Compile Include="Modulos\RecursosHumanos\ManterBeneficios.aspx.designer.cs">
       <DependentUpon>ManterBeneficios.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\RecursosHumanos\ManterDependente.aspx.cs">
+      <DependentUpon>ManterDependente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\ManterDependente.aspx.designer.cs">
+      <DependentUpon>ManterDependente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\ManterTipoBeneficio.aspx.cs">
+      <DependentUpon>ManterTipoBeneficio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\ManterTipoBeneficio.aspx.designer.cs">
+      <DependentUpon>ManterTipoBeneficio.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\RecursosHumanos\ManterUsuario.aspx.cs">
       <DependentUpon>ManterUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -834,6 +853,13 @@
     </Compile>
     <Compile Include="Modulos\RecursosHumanos\PesquisaFuncionario.aspx.designer.cs">
       <DependentUpon>PesquisaFuncionario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\PesquisarDependente.aspx.cs">
+      <DependentUpon>PesquisarDependente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\PesquisarDependente.aspx.designer.cs">
+      <DependentUpon>PesquisarDependente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

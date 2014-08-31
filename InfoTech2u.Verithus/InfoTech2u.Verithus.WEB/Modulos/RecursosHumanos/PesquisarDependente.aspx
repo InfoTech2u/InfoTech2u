@@ -1,9 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Modulos/InfoTech2u.Master" AutoEventWireup="true" CodeBehind="PesquisaFuncionario.aspx.cs" Inherits="InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario.PesquisaFuncionario" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Modulos/InfoTech2u.Master" AutoEventWireup="true" CodeBehind="PesquisarDependente.aspx.cs" Inherits="InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.PesquisarDependente" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderInfoTech2u" runat="server">
-
     <script type="text/javascript">
         jQuery(document).ready(function () {
             // dynamic table
@@ -14,9 +13,6 @@
                     jQuery.uniform.update();
                 }
             });
-
-
-
         });
     </script>
     <div class="rightpanel">
@@ -36,14 +32,10 @@
             </div>
         </div>
         <!--pageheader-->
-
         <div class="maincontent">
             <div class="maincontentinner">
 
-
-
-
-                <div class="widgetbox box-inverse">
+                 <div class="widgetbox box-inverse">
                     <h4 class="widgettitle">With Form Validation</h4>
                     <div class="widgetcontent nopadding">
                         <div class="stdform stdform2">
@@ -51,27 +43,6 @@
                                 <label>Codigo do Funcionario</label>
                                 <span class="field">
                                     <asp:TextBox runat="server" ID="txtCodigoFuncionario" class="input-small" ClientIDMode="Static" />
-                                </span>
-                            </p>
-
-                            <p>
-                                <label>Ordem Matricula</label>
-                                <span class="field">
-                                    <asp:TextBox runat="server" ID="txtNumeroOrdemMatricula" class="input-small" ClientIDMode="Static" />
-                                </span>
-                            </p>
-
-                            <p>
-                                <label>Matricula</label>
-                                <span class="field">
-                                    <asp:TextBox runat="server" ID="txtNumeroMatricula" class="input-small" ClientIDMode="Static" />
-                                </span>
-                            </p>
-
-                            <p>
-                                <label>Nome Funcionario</label>
-                                <span class="field">
-                                    <asp:TextBox runat="server" ID="txtNomeFuncionario" class="input-xxLarge" ClientIDMode="Static" />
                                 </span>
                             </p>
 
@@ -84,10 +55,9 @@
                     </div>
                 </div>
 
-                <h4 class="widgettitle">Data Table</h4>
+                 <h4 class="widgettitle">Data Table</h4>
                 <table id="dyntable" class="table table-bordered responsive">
                     <colgroup>
-                        <col class="con0" style="align: center; width: 4%" />
                         <col class="con1" />
                         <col class="con0" />
                         <col class="con1" />
@@ -221,95 +191,23 @@
                             <td>Mozilla 1.4</td>
                             <td>Win 95+ / OSX.1+</td>
                             <td class="center">1.4</td>
-                        </tr>
-                        <tr class="gradeA">
-                            <td>Gecko</td>
-                            <td>Mozilla 1.5</td>
-                            <td>Win 95+ / OSX.1+</td>
-                            <td class="center">1.5</td>
-                        </tr>
-                        <tr class="gradeA">
-                            <td>Gecko</td>
-                            <td>Mozilla 1.6</td>
-                            <td>Win 95+ / OSX.1+</td>
-                            <td class="center">1.6</td>
-                        </tr>
-                        <tr class="gradeA">
-                            <td>Gecko</td>
-                            <td>Mozilla 1.7</td>
-                            <td>Win 98+ / OSX.1+</td>
-                            <td class="center">1.7</td>
-                        </tr>
-                        <tr class="gradeA">
-                            <td>Gecko</td>
-                            <td>Mozilla 1.8</td>
-                            <td>Win 98+ / OSX.1+</td>
-                            <td class="center">1.8</td>
-                        </tr>
-                        <tr class="gradeA">
-                            <td>Gecko</td>
-                            <td>Seamonkey 1.1</td>
-                            <td>Win 98+ / OSX.2+</td>
-                            <td class="center">1.8</td>
-                        </tr>
-                        <tr class="gradeA">
-                            <td>Gecko</td>
-                            <td>Epiphany 2.20</td>
-                            <td>Gnome</td>
-                            <td class="center">1.8</td>
-                        </tr>
-                        <tr class="gradeA">
-                            <td>Webkit</td>
-                            <td>Safari 1.2</td>
-                            <td>OSX.3</td>
-                            <td class="center">125.5</td>
-                        </tr>
-                        <tr class="gradeA">
-                            <td>Webkit</td>
-                            <td>Safari 1.3</td>
-                            <td>OSX.3</td>
-                            <td class="center">312.8</td>
-                        </tr>
-                        <tr class="gradeA">
-                            <td>Webkit</td>
-                            <td>Safari 2.0</td>
-                            <td>OSX.4+</td>
-                            <td class="center">419.3</td>
-                        </tr>
-                        <tr class="gradeA">
-                            <td>Webkit</td>
-                            <td>Safari 3.0</td>
-                            <td>OSX.4+</td>
-                            <td class="center">522.1</td>
-                        </tr>
-                       
+                        </tr>                       
                     </tbody>
                 </table>
-                <br />
-                <div class="row-fluid">
-                    <button class="btn btn-primary"><i class="iconsweets-magnifying"></i>&nbsp; Incluir</button>
-                    <button class="btn"><i class="iconsweets-magnifying"></i>&nbsp; Alterar</button>
-                    <button class="btn"><i class="iconsweets-magnifying"></i>&nbsp; Excluir</button>
-                    <button class="btn"><i class="iconsweets-magnifying"></i>&nbsp; Detalhar</button>
-                </div>
-            </div>
-            <!--widget-->
 
-            <div class="footer">
-                <div class="footer-left">
-                    <span>&copy; 2013. Shamcey Admin Template. All Rights Reserved.</span>
+                <div class="footer">
+                    <div class="footer-left">
+                        <span>&copy; 2013. Shamcey Admin Template. All Rights Reserved.</span>
+                    </div>
+                    <div class="footer-right">
+                        <span>Designed by: <a href="http://themepixels.com/">ThemePixels</a></span>
+                    </div>
                 </div>
-                <div class="footer-right">
-                    <span>Designed by: <a href="http://themepixels.com/">ThemePixels</a></span>
-                </div>
-            </div>
-            <!--footer-->
+                <!--footer-->
 
-        </div>
-        <!--maincontentinner-->
+            </div>
+    <!--maincontentinner-->
     </div>
     <!--maincontent-->
-
     </div>
-    <!--rightpanel-->
 </asp:Content>
