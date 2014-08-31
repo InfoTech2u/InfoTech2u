@@ -19,7 +19,7 @@ namespace InfoTech2u.Verithus.VO
             this.DependenteVO = new HashSet<DependenteVO>();
         }
     
-        public int CodigoTipoBeneficio { get; set; }
+        public int? CodigoTipoBeneficio { get; set; }
         public Nullable<int> CodigoCategoriaBeneficio { get; set; }
         public string Descricao { get; set; }
         public Nullable<int> CodigoUsuarioCadastro { get; set; }

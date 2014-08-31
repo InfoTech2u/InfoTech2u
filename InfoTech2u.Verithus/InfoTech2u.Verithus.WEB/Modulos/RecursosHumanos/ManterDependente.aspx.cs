@@ -1,4 +1,6 @@
-﻿using InfoTech2u.Verithus.Util;
+﻿using InfoTech2u.Verithus.BS;
+using InfoTech2u.Verithus.Util;
+using InfoTech2u.Verithus.VO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,17 +8,51 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Beneficios
+namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
 {
-    public partial class PesquisaBeneficios : System.Web.UI.Page
+    public partial class ManterDependente : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 CarregarIncludes();
+                CarregarTipoParentesco();
+                CarregarTipoBeneficio();
             }
         }
+
+        protected void CarregarTipoParentesco()
+        {
+
+            TipoParentescoBS retorno = new TipoParentescoBS();
+            TipoParentescoVO entrada = new TipoParentescoVO();
+            List<TipoParentescoVO> retornoLista = new List<TipoParentescoVO>();
+
+            retornoLista = retorno.SelecionarTipoParentesco(entrada);
+
+            this.ddlTipoParentesco.DataSource = retornoLista;
+            this.ddlTipoParentesco.DataValueField = "CodigoTipoParentesco";
+            this.ddlTipoParentesco.DataTextField = "Descricao";
+            this.ddlTipoParentesco.DataBind();
+            this.ddlTipoParentesco.Items.Insert(0, new ListItem("Selecionar", "0"));
+        }
+
+        protected void CarregarTipoBeneficio()
+        {
+            TipoBeneficioBS retorno = new TipoBeneficioBS();
+            TipoBeneficioVO entrada = new TipoBeneficioVO();
+            List<TipoBeneficioVO> retornoLista = new List<TipoBeneficioVO>();
+
+            retornoLista = retorno.SelecionarTipoBeneficio(entrada);
+
+            this.lstBeneficioSelect.DataSource = retornoLista;
+            this.lstBeneficioSelect.DataValueField = "CodigoTipoBeneficio";
+            this.lstBeneficioSelect.DataTextField = "Descricao";
+            this.lstBeneficioSelect.DataBind();
+            this.lstBeneficioSelect.Items.Insert(0, new ListItem("Selecionar", "0"));
+        }
+
         protected void CarregarIncludes()
         {
             string pachCss = "../../css/";
@@ -25,7 +61,6 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Beneficios
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "css", pachCss, "style.default.css");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "css", pachCss, "bootstrap-fileupload.min.css");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "css", pachCss, "bootstrap-timepicker.min.css");
-
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery-1.9.1.min.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery-migrate-1.1.1.min.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery-ui-1.9.2.min.js");
@@ -47,7 +82,8 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Beneficios
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery.maskMoney.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "responsive-tables.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "custom.js");
-
+            InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "ManterDependente.js");
+            
 
 
         }

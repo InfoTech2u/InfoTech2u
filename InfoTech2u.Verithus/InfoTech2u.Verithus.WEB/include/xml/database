@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="iso-8859-1" standalone="yes"?>
-<dataset>
+<!--<dataset>
  <ConnectionString>
   <database>k8J8jOxuPhTQ9LBxhPzSJg==</database>
   <server>+wXj4b2YoVQ=</server>
@@ -9,6 +9,7 @@
   <winapli></winapli>
  </ConnectionString>
 </dataset>
+-->
 
 <!-- Configurações de HOMOLOGAÇÂO-->
 <!--
@@ -60,6 +61,19 @@
  </ConnectionString>
 </dataset>
 -->
+
+
+<dataset>
+ <ConnectionString>
+  <database>k8J8jOxuPhTQ9LBxhPzSJg==</database>
+  <server>hMRAm8CYbBDvDdk7B73VPA==</server>
+  <port></port>
+  <user>lXoTIyOWdSo=</user>
+  <password>m3v05kVshH15Rj5boO0FCg==</password>
+  <winapli></winapli>
+ </ConnectionString>
+</dataset>
+
 
 <!-- Para gerar o XML do servidor do banco de dados, bas acessar a url: http://www.itaucultural.org.br/inscrumos/sistemas/tools/cs.aspx -->
 <!-- Beto 
