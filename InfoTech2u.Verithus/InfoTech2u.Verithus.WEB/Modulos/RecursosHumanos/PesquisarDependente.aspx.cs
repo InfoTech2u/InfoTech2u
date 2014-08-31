@@ -6,9 +6,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Beneficios
+namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
 {
-    public partial class PesquisaBeneficios : System.Web.UI.Page
+    public partial class PesquisarDependente : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -17,6 +17,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Beneficios
                 CarregarIncludes();
             }
         }
+
         protected void CarregarIncludes()
         {
             string pachCss = "../../css/";
