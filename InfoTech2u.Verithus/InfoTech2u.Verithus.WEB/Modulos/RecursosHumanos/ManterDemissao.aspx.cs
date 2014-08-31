@@ -10,7 +10,7 @@ using InfoTech2u.Verithus.BS;
 
 namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
 {
-    public partial class ManterAdmissao : System.Web.UI.Page
+    public partial class ManterDemissao : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,7 +21,6 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
                 CarregarSecao();
             }
         }
-
         private void CarregarSecao()
         {
             TipoSecaoBS retornoSecaoBS = new TipoSecaoBS();
@@ -83,6 +82,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery.maskMoney.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "custom.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "CadastroFuncionario.js");
+
         }
     }
 }

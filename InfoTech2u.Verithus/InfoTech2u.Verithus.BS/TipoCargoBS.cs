@@ -10,5 +10,22 @@ namespace InfoTech2u.Verithus.BS
 {
     public class TipoCargoBS
     {
+        public List<TipoCargoVO> SelecionarCargoLista(TipoCargoVO objEntrada)
+        {
+            TipoCargoDA objRetorno = new TipoCargoDA();
+
+            try
+            {
+                return objRetorno.SelecionarCargoLista(objEntrada);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objRetorno = null;
+            }
+        }
     }
 }

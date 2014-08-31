@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Modulos/InfoTech2u.Master" AutoEventWireup="true" CodeBehind="ManterAdmissao.aspx.cs" Inherits="InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.ManterAdmissao" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Modulos/InfoTech2u.Master" AutoEventWireup="true" CodeBehind="ManterDemissao.aspx.cs" Inherits="InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.ManterDemissao" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -15,9 +15,8 @@
         <div class="pageheader">
             <div class="pageicon"><span class="iconfa-pencil"></span></div>
             <div class="pagetitle">
-                <h5>Admissão
-                </h5>
-                <h1>Fomulário de Admissão</h1>
+                <h5>Demissão</h5>
+                <h1>Fomulário de Demissão</h1>
             </div>
         </div>
         <!--pageheader-->
@@ -25,7 +24,7 @@
         <div class="maincontent">
             <div class="maincontentinner">
                 <div class="widgetbox box-inverse">
-                    <h4 class="widgettitle">Dados Admissão</h4>
+                    <h4 class="widgettitle">Dados Demissão</h4>
                     <div class="widgetcontent nopadding">
                         <div class="stdform stdform2">
                             <p>
@@ -34,7 +33,6 @@
                                     <asp:TextBox runat="server" ID="txtCodigoFuncionario" class="input-small" ClientIDMode="Static" />
                                 </span>
                             </p>
-
                             <p>
                                 <label>Data do Registro</label>
                                 <span class="field">
@@ -74,55 +72,15 @@
                                 </span>
                             </p>
                             <p>
-                                <label>Horário de Trabalho</label>
-                                <p>
-                                    <label>Entrada</label>
-                                    <span class="field">
-                                        <asp:TextBox runat="server" ID="TextBox2" class="input-small" ClientIDMode="Static" />
-                                    </span>
-                                </p>
-                                <p>
-                                    <label>Saída</label>
-                                    <span class="field">
-                                        <asp:TextBox runat="server" ID="TextBox13" class="input-small" ClientIDMode="Static" />
-                                    </span>
-                                </p>
-                            </p>
-                            <p>
-                                <label>Intervalo de Trabalho</label>
-                                <p>
-                                    <label>Entrada</label>
-                                    <span class="field">
-                                        <asp:TextBox runat="server" ID="TextBox3" class="input-small" ClientIDMode="Static" />
-                                    </span>
-                                </p>
-                                <p>
-                                    <label>Saída</label>
-                                    <span class="field">
-                                        <asp:TextBox runat="server" ID="TextBox7" class="input-small" ClientIDMode="Static" />
-                                    </span>
-                                </p>
-                            </p>
-                            <p>
-                                <label>Descanso Semanal</label>
-                                <p>
-                                    <label>Entrada</label>
-                                    <span class="field">
-                                        <asp:TextBox runat="server" ID="TextBox8" class="input-small" ClientIDMode="Static" />
-                                    </span>
-                                </p>
-                                <p>
-                                    <label>Saída</label>
-                                    <span class="field">
-                                        <asp:TextBox runat="server" ID="TextBox9" class="input-small" ClientIDMode="Static" />
-                                    </span>
-                                </p>
+                                <label>Forma de Pagamento</label>
+                                <span class="field">
+                                    <asp:TextBox runat="server" ID="TextBox2" class="input-small" ClientIDMode="Static" />
+                                </span>
                             </p>
                             <p class="stdformbutton">
                                 <a href="#" class="btn btn-primary btn-rounded">Concluir</a>
                                 <a href="#" class="btn btn-rounded"><i class="iconfa-refresh iconsweets-black"></i>&nbsp; limpar</a>
                             </p>
-
                         </div>
                     </div>
                 </div>
