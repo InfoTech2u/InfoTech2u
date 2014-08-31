@@ -197,28 +197,6 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "custom.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "CadastroFuncionario.js");
 
-
-            /*
-             bootstrap-fileupload.min.css
-             bootstrap-timepicker.min.css
-             
-             bootstrap-fileupload.min.js
-             bootstrap-timepicker.min.js
-             jquery.validate.min.js
-             jquery.tagsinput.min.js
-             jquery.autogrow-textarea.js
-             charCount.js
-             colorpicker.js
-             ui.spinner.min.js
-             chosen.jquery.min.js
-             forms.js
-             */
-
-
-
-
-
-
         }
     }
 }

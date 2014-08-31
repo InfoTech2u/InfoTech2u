@@ -2,10 +2,10 @@
 <dataset>
  <ConnectionString>
   <database>k8J8jOxuPhTQ9LBxhPzSJg==</database>
-  <server>TEfoTM63a5ItJtMvSZIaXYloFr9nlJiM</server>
+  <server>+wXj4b2YoVQ=</server>
   <port></port>
   <user>lXoTIyOWdSo=</user>
-  <password>B7bdS9WuFXi/i7G0rZWhPA==</password>
+  <password>7vVRtPoJ/GWxfLphtUl/HA==</password>
   <winapli></winapli>
  </ConnectionString>
 </dataset>
@@ -62,3 +62,17 @@
 -->
 
 <!-- Para gerar o XML do servidor do banco de dados, bas acessar a url: http://www.itaucultural.org.br/inscrumos/sistemas/tools/cs.aspx -->
+<!-- Beto 
+<dataset>
+ <ConnectionString>
+  <database>k8J8jOxuPhTQ9LBxhPzSJg==</database>
+  <server>+wXj4b2YoVQ=</server>
+  <port></port>
+  <user>lXoTIyOWdSo=</user>
+  <password>7vVRtPoJ/GWxfLphtUl/HA==</password>
+  <winapli></winapli>
+ </ConnectionString>
+</dataset>
+
+-->
+

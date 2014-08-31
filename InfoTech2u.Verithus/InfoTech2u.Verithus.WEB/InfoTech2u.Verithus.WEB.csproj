@@ -672,6 +672,7 @@
     <Content Include="Login.aspx" />
     <Content Include="Logoff.aspx" />
     <Content Include="Modulos\Dashboard\DashboardGerente.aspx" />
+    <Content Include="Modulos\RecursosHumanos\ManterAdmissao.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterBeneficios.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterUsuario.aspx" />
     <Content Include="Modulos\RecursosHumanos\PesquisaBeneficios.aspx" />
@@ -777,6 +778,13 @@
     </Compile>
     <Compile Include="Logoff.aspx.designer.cs">
       <DependentUpon>Logoff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\ManterAdmissao.aspx.cs">
+      <DependentUpon>ManterAdmissao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\ManterAdmissao.aspx.designer.cs">
+      <DependentUpon>ManterAdmissao.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\RecursosHumanos\ManterBeneficios.aspx.cs">
       <DependentUpon>ManterBeneficios.aspx</DependentUpon>
