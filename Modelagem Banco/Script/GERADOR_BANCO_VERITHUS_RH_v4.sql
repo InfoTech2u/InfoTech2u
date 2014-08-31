@@ -1,8 +1,8 @@
-/*==============================================================*/
-/* DBMS name:      Microsoft SQL Server 2008                    */
-/* Created on:     31/08/2014 14:11:27                          */
-/*==============================================================*/
+CREATE DATABASE DBVERITHUS
+GO
 
+USE DBVERITHUS
+GO
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
@@ -1607,4 +1607,3 @@ alter table TBVRT045_BENEFICIO
    add constraint FK_TBVRT045_REFERENCE_TBVRT011 foreign key (CODIGO_DEPENDENTE)
       references TBVRT011_DEPENDENTE (CODIGO_DEPENDENTE)
 go
-
