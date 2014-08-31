@@ -26,7 +26,6 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
                 CarregarTipoOlho();
             }
 
-
         }
 
         protected void CarregarTipoCor()

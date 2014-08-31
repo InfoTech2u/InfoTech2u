@@ -2,14 +2,13 @@
 <dataset>
  <ConnectionString>
   <database>k8J8jOxuPhTQ9LBxhPzSJg==</database>
-  <server>gyvpn4kQKgjjBauiGHO7vTJ6NI6nFx4+8NHfI5izxH0=</server>
+  <server>+wXj4b2YoVQ=</server>
   <port></port>
   <user>lXoTIyOWdSo=</user>
-  <password>B7bdS9WuFXi/i7G0rZWhPA==</password>
+  <password>7vVRtPoJ/GWxfLphtUl/HA==</password>
   <winapli></winapli>
  </ConnectionString>
 </dataset>
-
 
 <!-- Configurações de HOMOLOGAÇÂO-->
 <!--
@@ -61,7 +60,6 @@
  </ConnectionString>
 </dataset>
 -->
-
 
 <!-- Para gerar o XML do servidor do banco de dados, bas acessar a url: http://www.itaucultural.org.br/inscrumos/sistemas/tools/cs.aspx -->
 <!-- Beto 
