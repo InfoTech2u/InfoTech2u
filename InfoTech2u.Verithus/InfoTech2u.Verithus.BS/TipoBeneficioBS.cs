@@ -10,46 +10,5 @@ namespace InfoTech2u.Verithus.BS
 {
     public class TipoBeneficioBS
     {
-        public List<TipoBeneficioVO> SelecionarTipoBeneficio(TipoBeneficioVO param)
-        {
-
-            TipoBeneficioDA objRetorno = null;
-
-            try
-            {
-                objRetorno = new TipoBeneficioDA();
-
-                return objRetorno.SelecionarTipoBeneficio(param);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                objRetorno = null;
-            }
-
-        }
-
-        public List<TipoBeneficioVO> SelecionarTipoBeneficioLista()
-        {
-            TipoBeneficioDA objRetorno = null;
-
-            try
-            {
-                objRetorno = new TipoBeneficioDA();
-
-                return objRetorno.SelecionarTipoBeneficioLista();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                objRetorno = null;
-            }
-        }
     }
 }
