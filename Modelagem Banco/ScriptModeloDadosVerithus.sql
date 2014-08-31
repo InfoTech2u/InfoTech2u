@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2008                    */
-/* Created on:     18/08/2014 20:33:37                          */
+/* Created on:     31/08/2014 13:48:07                          */
 /*==============================================================*/
 
 
@@ -620,6 +620,13 @@ if exists (select 1
    drop table TBVRT043_ESTADO
 go
 
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('TBVRT044_TIPO_BANCO')
+            and   type = 'U')
+   drop table TBVRT044_TIPO_BANCO
+go
+
 /*==============================================================*/
 /* Table: TBVRT001_USUARIOS                                     */
 /*==============================================================*/
@@ -707,19 +714,17 @@ create table TBVRT006_FUNCIONARIO (
    NACIONALIDADE_PAI    int                  null,
    NOME_MAE             nvarchar(100)        null,
    NACIONALIDADE_MAE    int                  null,
-   DATA_NASCIMENTO      nvarchar(100)        null,
-   NACIMENTO            datetime             null,
+   DATA_NASCIMENTO      datetime             null,
    CODIGO_ESTADO_CIVIL  int                  null,
-   LOCAL_NASCIMENTO     nvarchar(100)        null,
-   ESTADO               char(2)              null,
+   LOCAL_NASCIMENTO     int                  null,
    NOME_CONJUGE         nvarchar(100)        null,
-   QUANTOS_FILHOS       smallint             null,
-   CODIGO_USUARIO_CADASTRO int                  null,
+   QUANTOS_FILHOS       varchar(2)           null,
+   CODIGO_USUARIO_CADASTRO int                  not null,
    DATA_CADASTRO        datetime             null,
    CODIGO_USUARIO_ALTERACAO int                  null,
    DATA_ALTERACAO       datetime             null,
    CODIGO_STATUS        int                  null,
-   constraint PK_TBVRT006_FUNCIONARIO primary key (CODIGO_FUNCIONARIO)
+   constraint PK_TBVRT006_FUNCIONARIO primary key (CODIGO_FUNCIONARIO, CODIGO_USUARIO_CADASTRO)
 )
 go
 
@@ -1368,6 +1373,22 @@ create table TBVRT043_ESTADO (
 )
 go
 
+/*==============================================================*/
+/* Table: TBVRT044_TIPO_BANCO                                   */
+/*==============================================================*/
+create table TBVRT044_TIPO_BANCO (
+   CODIGO_BANCO         int                  identity,
+   BANCO                nvarchar(5)          null,
+   NOME_BANCO           nvarchar(100)        null,
+   CODIGO_USUARIO_CADASTRO int                  null,
+   DATA_CADASTRO        datetime             null,
+   CODIGO_USUARIO_ALTERACAO int                  null,
+   DATA_ALTERACAO       datetime             null,
+   CODIGO_STATUS        int                  null,
+   constraint PK_TBVRT044_TIPO_BANCO primary key (CODIGO_BANCO)
+)
+go
+
 alter table TBVRT001_USUARIOS
    add constraint FK_TBVRT001_TIPO_ACES_TBVRT002 foreign key (CODIGO_TIPO_ACESSO)
       references TBVRT002_TIPO_ACESSO (CODIGO_TIPO_ACESSO)
@@ -1394,13 +1415,13 @@ alter table TBVRT006_FUNCIONARIO
 go
 
 alter table TBVRT007_DOCUMENTO
-   add constraint FK_TBVRT007_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO)
-      references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO)
+   add constraint FK_TBVRT007_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO, CODIGO_USUARIO_CADASTRO)
+      references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO, CODIGO_USUARIO_CADASTRO)
 go
 
 alter table TBVRT008_DOCUMENTO_ESTRANGEIRO
-   add constraint FK_TBVRT008_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO)
-      references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO)
+   add constraint FK_TBVRT008_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO, CODIGO_USUARIO_CADASTRO)
+      references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO, CODIGO_USUARIO_CADASTRO)
 go
 
 alter table TBVRT009_DOCUMENTO_PIS
@@ -1414,8 +1435,8 @@ alter table TBVRT009_DOCUMENTO_PIS
 go
 
 alter table TBVRT009_DOCUMENTO_PIS
-   add constraint FK_TBVRT009_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO)
-      references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO)
+   add constraint FK_TBVRT009_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO, CODIGO_USUARIO_CADASTRO)
+      references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO, CODIGO_USUARIO_CADASTRO)
 go
 
 alter table TBVRT010_DOCUMENTO_FUNDO_GARANTIA
@@ -1424,13 +1445,13 @@ alter table TBVRT010_DOCUMENTO_FUNDO_GARANTIA
 go
 
 alter table TBVRT010_DOCUMENTO_FUNDO_GARANTIA
-   add constraint FK_TBVRT010_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO)
-      references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO)
+   add constraint FK_TBVRT010_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO, CODIGO_USUARIO_CADASTRO)
+      references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO, CODIGO_USUARIO_CADASTRO)
 go
 
 alter table TBVRT011_DEPENDENTE
-   add constraint FK_TBVRT011_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO)
-      references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO)
+   add constraint FK_TBVRT011_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO, CODIGO_USUARIO_CADASTRO)
+      references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO, CODIGO_USUARIO_CADASTRO)
 go
 
 alter table TBVRT011_DEPENDENTE
@@ -1449,8 +1470,8 @@ alter table TBVRT012_TIPO_BENEFICIO
 go
 
 alter table TBVRT015_CARACTERISTICA_FISICA
-   add constraint FK_TBVRT015_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO)
-      references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO)
+   add constraint FK_TBVRT015_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO, CODIGO_USUARIO_CADASTRO)
+      references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO, CODIGO_USUARIO_CADASTRO)
 go
 
 alter table TBVRT015_CARACTERISTICA_FISICA
@@ -1469,8 +1490,8 @@ alter table TBVRT015_CARACTERISTICA_FISICA
 go
 
 alter table TBVRT019_DADOS_ADMISSAO
-   add constraint FK_TBVRT019_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO)
-      references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO)
+   add constraint FK_TBVRT019_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO, CODIGO_USUARIO_CADASTRO)
+      references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO, CODIGO_USUARIO_CADASTRO)
 go
 
 alter table TBVRT019_DADOS_ADMISSAO
@@ -1494,8 +1515,8 @@ alter table TBVRT019_DADOS_ADMISSAO
 go
 
 alter table TBVRT024_DADOS_DEMISSAO
-   add constraint FK_TBVRT024_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO)
-      references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO)
+   add constraint FK_TBVRT024_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO, CODIGO_USUARIO_CADASTRO)
+      references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO, CODIGO_USUARIO_CADASTRO)
 go
 
 alter table TBVRT024_DADOS_DEMISSAO
@@ -1519,23 +1540,23 @@ alter table TBVRT024_DADOS_DEMISSAO
 go
 
 alter table TBVRT025_FERIAS
-   add constraint FK_TBVRT025_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO)
-      references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO)
+   add constraint FK_TBVRT025_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO, CODIGO_USUARIO_CADASTRO)
+      references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO, CODIGO_USUARIO_CADASTRO)
 go
 
 alter table TBVRT026_ACIDENTE_TRABALHO
-   add constraint FK_TBVRT026_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO)
-      references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO)
+   add constraint FK_TBVRT026_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO, CODIGO_USUARIO_CADASTRO)
+      references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO, CODIGO_USUARIO_CADASTRO)
 go
 
 alter table TBVRT027_ALTERACAO_CARGO_SALARIO
-   add constraint FK_TBVRT027_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO)
-      references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO)
+   add constraint FK_TBVRT027_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO, CODIGO_USUARIO_CADASTRO)
+      references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO, CODIGO_USUARIO_CADASTRO)
 go
 
 alter table TBVRT028_CONTRIBUICAO_SINDICAL
-   add constraint FK_TBVRT028_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO)
-      references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO)
+   add constraint FK_TBVRT028_FUNCIONAR_TBVRT006 foreign key (CODIGO_FUNCIONARIO, CODIGO_USUARIO_CADASTRO)
+      references TBVRT006_FUNCIONARIO (CODIGO_FUNCIONARIO, CODIGO_USUARIO_CADASTRO)
 go
 
 alter table TBVRT028_CONTRIBUICAO_SINDICAL
