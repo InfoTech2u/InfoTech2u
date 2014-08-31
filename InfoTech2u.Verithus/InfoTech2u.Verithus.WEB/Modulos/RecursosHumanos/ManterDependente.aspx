@@ -4,19 +4,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderInfoTech2u" runat="server">
     <script type="text/javascript">
-        jQuery(document).ready(function () {
-            // dynamic table
-            jQuery('#dyntable').dataTable({
-                "sPaginationType": "full_numbers",
-                "aaSortingFixed": [[0, 'asc']],
-                "fnDrawCallback": function (oSettings) {
-                    jQuery.uniform.update();
-                }
-            });
+        Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(BeginRequest);
+        function BeginRequest(sender, e) {
+            e.get_postBackElement().disabled = true;
 
-            
-        });
-    </script>
+        }
+     </script>
     <div class="rightpanel">
 
         <ul class="breadcrumbs">
@@ -88,8 +81,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button data-dismiss="modal" class="btn">&nbsp; Close</button>
-                        <button id="btnSaveChanges" class="btn btn-primary"><i class="iconfa-pencil"></i>&nbsp; Save changes</button>
+                        <button data-dismiss="modal" class="btn">&nbsp; Sair</button>
+                        <a class="btn btn-primary" id="btnIncluir" href="#" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Incluir</a>
                     </div>
                 </div>
                 <!--#myModal-->

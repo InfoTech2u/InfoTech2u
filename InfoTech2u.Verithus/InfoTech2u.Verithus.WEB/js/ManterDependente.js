@@ -1,5 +1,14 @@
 ﻿jQuery(document).ready(function () {
 
+    // dynamic table
+    jQuery('#dyntable').dataTable({
+        "sPaginationType": "full_numbers",
+        "aaSortingFixed": [[0, 'asc']],
+        "fnDrawCallback": function (oSettings) {
+            jQuery.uniform.update();
+        }
+    });
+
     //Data dataddmmaaaa
     jQuery(".dataddmmaaaa").mask("99/99/9999");
 
@@ -31,4 +40,26 @@
         return false;
     });
 
+    //btnSaveChanges
+
+    jQuery('#btnIncluir').click(function (event) {
+        if (validar()) {
+
+            jQuery('#dyntable > tbody:last').append('<tr class="gradeX"><td class="aligncenter"><span class="center"><input type="checkbox" /></span></td><td>Trident</td><td>Internet Explorer 4.0</td><td>Win 95+</td><td class="center">4</td></tr>');
+            jQuery('#dyntable > tbody:last').append('<tr class="gradeX"><td class="aligncenter"><span class="center"><input type="checkbox" /></span></td><td>Trident</td><td>Internet Explorer 4.0</td><td>Win 95+</td><td class="center">4</td></tr>');
+            jQuery('#dyntable > tbody:last').append('<tr class="gradeX"><td class="aligncenter"><span class="center"><input type="checkbox" /></span></td><td>Trident</td><td>Internet Explorer 4.0</td><td>Win 95+</td><td class="center">4</td></tr>');
+            jQuery('#dyntable > tbody:last').append('<tr class="gradeX"><td class="aligncenter"><span class="center"><input type="checkbox" /></span></td><td>Trident</td><td>Internet Explorer 4.0</td><td>Win 95+</td><td class="center">4</td></tr>');
+
+            jQuery('#myModal').modal('hide')
+        }
+    });
+
+    /*
+    <tr class="gradeX"><td class="aligncenter"><span class="center"><input type="checkbox" /></span></td><td>Trident</td><td>Internet Explorer 4.0</td><td>Win 95+</td><td class="center">4</td></tr>
+    */
+
 });
+
+function validar() {
+    return false;
+}

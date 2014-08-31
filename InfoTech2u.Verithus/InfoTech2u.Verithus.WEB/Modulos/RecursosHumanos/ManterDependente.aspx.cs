@@ -16,10 +16,12 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
         {
             if (!IsPostBack)
             {
-                CarregarIncludes();
-                CarregarTipoParentesco();
-                CarregarTipoBeneficio();
+                
             }
+
+            CarregarIncludes();
+            CarregarTipoParentesco();
+            CarregarTipoBeneficio();
         }
 
         protected void CarregarTipoParentesco()
