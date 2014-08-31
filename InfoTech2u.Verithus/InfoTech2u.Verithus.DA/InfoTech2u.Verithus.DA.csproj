@@ -69,6 +69,7 @@
     <Compile Include="SindicatoDA.cs" />
     <Compile Include="StatusDA.cs" />
     <Compile Include="TipoAcessoDA.cs" />
+    <Compile Include="TipoBancoDA.cs" />
     <Compile Include="TipoBeneficioDA.cs" />
     <Compile Include="TipoCabeloDA.cs" />
     <Compile Include="TipoCargoDA.cs" />

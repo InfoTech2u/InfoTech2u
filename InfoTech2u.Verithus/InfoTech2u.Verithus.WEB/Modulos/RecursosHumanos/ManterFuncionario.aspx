@@ -424,6 +424,9 @@
                         <p id="validaBancoPIS">
                             <label>Banco</label>
                             <span class="field">
+                                <asp:DropDownList runat="server" ID="ddlBancoPIS" data-placeholder="Escolha um Banco..." Style="width: 350px" class="chzn-select" TabIndex="2" ClientIDMode="Static">
+                                </asp:DropDownList>
+                                <br />
                                 <asp:TextBox runat="server" ID="txtBancoPIS" CssClass="input-small" ClientIDMode="Static" />
                                 <span class="help-inline" id="msgBancoPIS"></span>
                             </span>
@@ -539,6 +542,9 @@
                         <p id="validaBancoFGTS">
                             <label>Banco</label>
                             <span class="field">
+                                <asp:DropDownList runat="server" ID="ddlBancoFGTS" data-placeholder="Escolha um Banco..." Style="width: 350px" class="chzn-select" TabIndex="2" ClientIDMode="Static">
+                                </asp:DropDownList>
+                                <br />
                                 <asp:TextBox runat="server" ID="txtBancoFGTS" CssClass="input-small" ClientIDMode="Static" />
                                 <span class="help-inline" id="msgBancoFGTS"></span>
                             </span>

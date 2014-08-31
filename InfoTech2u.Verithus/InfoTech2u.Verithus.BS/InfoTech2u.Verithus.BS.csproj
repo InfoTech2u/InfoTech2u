@@ -68,6 +68,7 @@
     <Compile Include="SindicatoBS.cs" />
     <Compile Include="StatusBS.cs" />
     <Compile Include="TipoAcessoBS.cs" />
+    <Compile Include="TipoBancoBS.cs" />
     <Compile Include="TipoBeneficioBS.cs" />
     <Compile Include="TipoCabeloBS.cs" />
     <Compile Include="TipoCargoBS.cs" />
