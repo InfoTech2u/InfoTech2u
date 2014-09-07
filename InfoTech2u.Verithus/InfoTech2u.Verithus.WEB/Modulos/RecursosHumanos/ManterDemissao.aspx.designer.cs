@@ -13,22 +13,22 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos {
     public partial class ManterDemissao {
         
         /// <summary>
-        /// txtCodigoFuncionario control.
+        /// txtDataAdmissao control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCodigoFuncionario;
+        protected global::System.Web.UI.WebControls.TextBox txtDataAdmissao;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txtDataRegistro control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtDataRegistro;
         
         /// <summary>
         /// ddlCargo control.
@@ -49,31 +49,31 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos {
         protected global::System.Web.UI.WebControls.DropDownList ddlSecao;
         
         /// <summary>
-        /// TextBox4 control.
+        /// txtSalarioInicial control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.TextBox txtSalarioInicial;
         
         /// <summary>
-        /// TextBox5 control.
+        /// txtComissao control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.WebControls.TextBox txtComissao;
         
         /// <summary>
-        /// TextBox6 control.
+        /// ddlTarefa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox6;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTarefa;
         
         /// <summary>
         /// TextBox2 control.

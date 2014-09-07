@@ -27,48 +27,60 @@
                     <h4 class="widgettitle">Dados Demissão</h4>
                     <div class="widgetcontent nopadding">
                         <div class="stdform stdform2">
-                            <p>
+
+                            <p id="validaDataDeAdmissao">
                                 <label>Data de Admissão</label>
                                 <span class="field">
-                                    <asp:TextBox runat="server" ID="txtCodigoFuncionario" class="input-small" ClientIDMode="Static" />
+                                    <asp:TextBox runat="server" ID="txtDataAdmissao" class="input-small dataddmmaaaa" ClientIDMode="Static" />
+                                    <span class="help-inline" id="msgDataDeAdmissao"></span>
                                 </span>
                             </p>
-                            <p>
+
+                            <p id="validaDataRegistro">
                                 <label>Data do Registro</label>
                                 <span class="field">
-                                    <asp:TextBox runat="server" ID="TextBox1" class="input-small" ClientIDMode="Static" />
+                                    <asp:TextBox runat="server" ID="txtDataRegistro" class="input-small dataddmmaaaa" ClientIDMode="Static" />
+                                    <span class="help-inline" id="msgDataRegistro"></span>
                                 </span>
                             </p>
-                            <p>
+
+                            <p id="validaCargo">
                                 <label>Cargo</label>
                                 <span class="field">
                                     <asp:DropDownList runat="server" ID="ddlCargo" class="uniformselect" ClientIDMode="Static" />
                                     <span class="help-inline" id="msgCargo"></span>
                                 </span>
                             </p>
-                            <p>
+
+                            <p id="validaSecao">
                                 <label>Seção</label>
                                 <span class="field">
                                     <asp:DropDownList runat="server" ID="ddlSecao" class="uniformselect" ClientIDMode="Static" />
                                     <span class="help-inline" id="msgSecao"></span>
                                 </span>
                             </p>
-                            <p>
+
+                            <p id="validaSalarioInicial">
                                 <label>Salário Inicial R$</label>
                                 <span class="field">
-                                    <asp:TextBox runat="server" ID="TextBox4" class="input-small" ClientIDMode="Static" />
+                                    <asp:TextBox runat="server" ID="txtSalarioInicial" class="input-small" ClientIDMode="Static" />
+                                    <span class="help-inline" id="msgSalarioInicial"></span>
                                 </span>
                             </p>
-                            <p>
+
+                            <p id="validaComissao">
                                 <label>Comissões</label>
                                 <span class="field">
-                                    <asp:TextBox runat="server" ID="TextBox5" class="input-small" ClientIDMode="Static" />
+                                    <asp:TextBox runat="server" ID="txtComissao" class="input-small" ClientIDMode="Static" />
+                                    <span class="help-inline" id="msgComissao"></span>
                                 </span>
                             </p>
-                            <p>
+
+                            <p id="validaTarefa">
                                 <label>Tarefa</label>
                                 <span class="field">
-                                    <asp:TextBox runat="server" ID="TextBox6" class="input-small" ClientIDMode="Static" />
+                                    <asp:DropDownList runat="server" ID="ddlTarefa" class="uniformselect" ClientIDMode="Static" />
+                                    <span class="help-inline" id="msgTarefa"></span>
                                 </span>
                             </p>
                             <p>

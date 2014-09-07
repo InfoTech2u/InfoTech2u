@@ -17,10 +17,27 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
             if (!IsPostBack)
             {
                 CarregarIncludes();
+                CarregarTarefa();
                 CarregarCargo();
                 CarregarSecao();
             }
         }
+
+        private void CarregarTarefa()
+        {
+            TipoTarefaBS retornoTarefaBS = new TipoTarefaBS();
+            TipoTarefaVO objEntrada = new TipoTarefaVO();
+            List<TipoTarefaVO> listaTarefaVO = new List<TipoTarefaVO>();
+
+            listaTarefaVO = retornoTarefaBS.SelecionarTarefaLista(objEntrada);
+
+            this.ddlTarefa.DataSource = listaTarefaVO;
+            this.ddlTarefa.DataValueField = "CodigoTipoTarefa";
+            this.ddlTarefa.DataTextField = "Descricao";
+            this.ddlTarefa.DataBind();
+            this.ddlTarefa.Items.Insert(0, new ListItem("Selecionar", "0"));
+        }
+
         private void CarregarSecao()
         {
             TipoSecaoBS retornoSecaoBS = new TipoSecaoBS();
@@ -82,6 +99,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery.maskMoney.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "custom.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "CadastroFuncionario.js");
+            InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "CadastroAdmissaoDemissao.js");
 
         }
     }

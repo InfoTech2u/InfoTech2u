@@ -15,8 +15,9 @@
         <div class="pageheader">
             <div class="pageicon"><span class="iconfa-pencil"></span></div>
             <div class="pagetitle">
-                <h5>Forms</h5>
-                <h1>Form Styles</h1>
+                <h5>Admissão
+                </h5>
+                <h1>Fomulário de Admissão</h1>
             </div>
         </div>
         <!--pageheader-->
@@ -24,69 +25,125 @@
         <div class="maincontent">
             <div class="maincontentinner">
                 <div class="widgetbox box-inverse">
-                    <h4 class="widgettitle">With Form Validation</h4>
+                    <h4 class="widgettitle">Dados Admissão</h4>
                     <div class="widgetcontent nopadding">
                         <div class="stdform stdform2">
-                            <p>
+
+                            <p id="validaDataDeAdmissao">
                                 <label>Data de Admissão</label>
                                 <span class="field">
-                                    <asp:TextBox runat="server" ID="txtCodigoFuncionario" class="input-small" ClientIDMode="Static" />
+                                    <asp:TextBox runat="server" ID="txtDataAdmissao" class="input-small dataddmmaaaa" ClientIDMode="Static" />
+                                    <span class="help-inline" id="msgDataDeAdmissao"></span>
                                 </span>
                             </p>
 
-                            <p>
+                            <p id="validaDataRegistro">
                                 <label>Data do Registro</label>
                                 <span class="field">
-                                    <asp:TextBox runat="server" ID="TextBox1" class="input-small" ClientIDMode="Static" />
+                                    <asp:TextBox runat="server" ID="txtDataRegistro" class="input-small dataddmmaaaa" ClientIDMode="Static" />
+                                    <span class="help-inline" id="msgDataRegistro"></span>
                                 </span>
                             </p>
 
-                            <p>
+                            <p id="validaCargo">
                                 <label>Cargo</label>
                                 <span class="field">
-                                    <asp:TextBox runat="server" ID="TextBox2" class="input-small" ClientIDMode="Static" />
+                                    <asp:DropDownList runat="server" ID="ddlCargo" class="uniformselect" ClientIDMode="Static" />
+                                    <span class="help-inline" id="msgCargo"></span>
                                 </span>
                             </p>
 
-                            <p>
-                                <label>Sessão</label>
+                            <p id="validaSecao">
+                                <label>Seção</label>
                                 <span class="field">
-                                    <asp:TextBox runat="server" ID="TextBox3" class="input-small" ClientIDMode="Static" />
+                                    <asp:DropDownList runat="server" ID="ddlSecao" class="uniformselect" ClientIDMode="Static" />
+                                    <span class="help-inline" id="msgSecao"></span>
                                 </span>
                             </p>
 
-                            <p>
+                            <p id="validaSalarioInicial">
                                 <label>Salário Inicial R$</label>
                                 <span class="field">
-                                    <asp:TextBox runat="server" ID="TextBox4" class="input-small" ClientIDMode="Static" />
+                                    <asp:TextBox runat="server" ID="txtSalarioInicial" class="input-small" ClientIDMode="Static" />
+                                    <span class="help-inline" id="msgSalarioInicial"></span>
                                 </span>
                             </p>
 
-                            <p>
+                            <p id="validaComissao">
                                 <label>Comissões</label>
                                 <span class="field">
-                                    <asp:TextBox runat="server" ID="TextBox5" class="input-small" ClientIDMode="Static" />
+                                    <asp:TextBox runat="server" ID="txtComissao" class="input-small" ClientIDMode="Static" />
+                                    <span class="help-inline" id="msgComissao"></span>
+                                </span>
+                            </p>
+
+                            <p id="validaTarefa">
+                                <label>Tarefa</label>
+                                <span class="field">
+                                    <asp:DropDownList runat="server" ID="ddlTarefa" class="uniformselect" ClientIDMode="Static" />
+                                    <span class="help-inline" id="msgTarefa"></span>
                                 </span>
                             </p>
 
                             <p>
-                                <label>Tarefa</label>
-                                <span class="field">
-                                    <asp:TextBox runat="server" ID="TextBox6" class="input-small" ClientIDMode="Static" />
-                                </span>
+                                <label>Horário de Trabalho</label>
+                                <p id="validaHorarioTrabalhoEntrada">
+                                    <label>Entrada</label>
+                                    <span class="field">
+                                        <asp:TextBox runat="server" ID="txtHorarioTrabalhoEntrada" class="input-small" ClientIDMode="Static" />
+                                        <span class="help-inline" id="msgHorarioTrabalhoEntrada"></span>
+                                    </span>
+                                </p>
+                                <p id="validaHorarioTrabalhoSaida">
+                                    <label>Saída</label>
+                                    <span class="field">
+                                        <asp:TextBox runat="server" ID="txtHorarioTrabalhoSaida" class="input-small" ClientIDMode="Static" />
+                                        <span class="help-inline" id="msgHorarioTrabalhoSaida"></span>
+                                    </span>
+                                </p>
                             </p>
 
+                            <p>
+                                <label>Intervalo de Trabalho</label>
+                                <p id="validaIntervaloTrabalhoEntrada">
+                                    <label>Entrada</label>
+                                    <span class="field">
+                                        <asp:TextBox runat="server" ID="txtIntervaloTrabalhoEntrada" class="input-small" ClientIDMode="Static" />
+                                        <span class="help-inline" id="msgIntervaloTrabalhoEntrada"></span>
+                                    </span>
+                                </p>
+                                <p id="validaIntervaloTrabalhoSaida">
+                                    <label>Saída</label>
+                                    <span class="field">
+                                        <asp:TextBox runat="server" ID="txtIntervaloTrabalhoSaida" class="input-small" ClientIDMode="Static" />
+                                        <span class="help-inline" id="msgIntervaloTrabalhoSaida"></span>
+                                    </span>
+                                </p>
+                            </p>
 
-
-
-
-
-
+                            <p>
+                                <label>Descanso Semanal</label>
+                                <p id="validaDescansoSemanalEntrada">
+                                    <label>Entrada</label>
+                                    <span class="field">
+                                        <asp:TextBox runat="server" ID="txtDescansoSemanalEntrada" class="input-small" ClientIDMode="Static" />
+                                        <span class="help-inline" id="msgDescansoSemanalEntrada"></span>
+                                    </span>
+                                </p>
+                                <p id="validaDescansoSemanalSaida">
+                                    <label>Saída</label>
+                                    <span class="field">
+                                        <asp:TextBox runat="server" ID="txtDescansoSemanalSaida" class="input-small" ClientIDMode="Static" />
+                                        <span class="help-inline" id="msgDescansoSemanalSaida"></span>
+                                    </span>
+                                </p>
+                            </p>
                             <p class="stdformbutton">
-                                <a href="#" class="btn btn-primary btn-rounded"><i class="iconsweets-magnifying iconsweets-white"></i>&nbsp; Pesquisar</a>
+                                <asp:Button runat="server" ID="btnConcluir" class="btn btn-primary btn-rounded" ClientIDMode="Static" Text="Concluir" OnClick="btnConcluir_Click" />
+                                <asp:Button runat="server" ID="btnLimpar" class="iconfa-refresh " ClientIDMode="Static" Text="Limpar" OnClick="btnLimpar_Click" />
+                                <a href="#" class="btn btn-primary btn-rounded">Concluir</a>
                                 <a href="#" class="btn btn-rounded"><i class="iconfa-refresh iconsweets-black"></i>&nbsp; limpar</a>
                             </p>
-
                         </div>
                     </div>
                 </div>

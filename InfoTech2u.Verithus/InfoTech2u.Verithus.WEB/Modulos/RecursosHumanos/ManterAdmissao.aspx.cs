@@ -14,10 +14,65 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                CarregarIncludes();
-            }
+            CarregarIncludes();
+            CarregarTarefa();
+            CarregarCargo();
+            CarregarSecao();
+        }
+
+        protected void btnConcluir_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnLimpar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CarregarSecao()
+        {
+            TipoSecaoBS retornoSecaoBS = new TipoSecaoBS();
+            TipoSecaoVO objEntrada = new TipoSecaoVO();
+            List<TipoSecaoVO> listaSecaoVO = new List<TipoSecaoVO>();
+
+            listaSecaoVO = retornoSecaoBS.SelecionarSecaoLista(objEntrada);
+
+            this.ddlSecao.DataSource = listaSecaoVO;
+            this.ddlSecao.DataValueField = "CodigoTipoSecao";
+            this.ddlSecao.DataTextField = "Descricao";
+            this.ddlSecao.DataBind();
+            this.ddlSecao.Items.Insert(0, new ListItem("Selecionar", "0"));
+        }
+
+        private void CarregarCargo()
+        {
+            TipoCargoBS retornoCargoBS = new TipoCargoBS();
+            TipoCargoVO objEntrada = new TipoCargoVO();
+            List<TipoCargoVO> listaCargoVO = new List<TipoCargoVO>();
+
+            listaCargoVO = retornoCargoBS.SelecionarCargoLista(objEntrada);
+
+            this.ddlCargo.DataSource = listaCargoVO;
+            this.ddlCargo.DataValueField = "CodigoTipoCargo";
+            this.ddlCargo.DataTextField = "Descricao";
+            this.ddlCargo.DataBind();
+            this.ddlCargo.Items.Insert(0, new ListItem("Selecionar", "0"));
+        }
+
+        private void CarregarTarefa()
+        {
+            TipoTarefaBS retornoTarefaBS = new TipoTarefaBS();
+            TipoTarefaVO objEntrada = new TipoTarefaVO();
+            List<TipoTarefaVO> listaTarefaVO = new List<TipoTarefaVO>();
+
+            listaTarefaVO = retornoTarefaBS.SelecionarTarefaLista(objEntrada);
+
+            this.ddlTarefa.DataSource = listaTarefaVO;
+            this.ddlTarefa.DataValueField = "CodigoTipoTarefa";
+            this.ddlTarefa.DataTextField = "Descricao";
+            this.ddlTarefa.DataBind();
+            this.ddlTarefa.Items.Insert(0, new ListItem("Selecionar", "0"));
         }
 
         protected void CarregarIncludes()
@@ -50,8 +105,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery.maskedinput-1.3.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery.maskMoney.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "custom.js");
-            InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "CadastroFuncionario.js");
-
+            InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "CadastroAdmissaoDemissao.js");
         }
     }
 }
