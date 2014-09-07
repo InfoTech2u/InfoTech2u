@@ -20,16 +20,6 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
             CarregarSecao();
         }
 
-        protected void btnConcluir_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnLimpar_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void CarregarSecao()
         {
             TipoSecaoBS retornoSecaoBS = new TipoSecaoBS();

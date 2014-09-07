@@ -23,6 +23,8 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
             }
         }
 
+
+
         private void CarregarTarefa()
         {
             TipoTarefaBS retornoTarefaBS = new TipoTarefaBS();
