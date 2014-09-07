@@ -38,8 +38,8 @@ namespace InfoTech2u.Verithus.DA
 
                 int rowsAffected = 0;
 
-
-                objSql.ExecuteNonQuery("SPVRT046_TIPO_BENEFICIO_PR_INCLUIR", lstSqlParameter.ToArray(), null, out rowsAffected);
+                
+                //objSql.Execute("SPVRT046_TIPO_BENEFICIO_PR_INCLUIR", lstSqlParameter.ToArray(), null, out rowsAffected);
 
                 return rowsAffected > 0;
             }

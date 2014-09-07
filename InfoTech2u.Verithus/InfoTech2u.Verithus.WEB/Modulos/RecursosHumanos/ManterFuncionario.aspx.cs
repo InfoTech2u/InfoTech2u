@@ -14,8 +14,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
+            
                 CarregarIncludes();
                 CarregarPais();
                 CarregarEstadoCivil();
@@ -24,9 +23,42 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
                 CarregarTipoCor();
                 CarregarTipoCabelo();
                 CarregarTipoOlho();
-            }
+                CarregarTipoBancoPIS();
+                CarregarTipoBancoFGTS();
+                CarregarEstado();
+            
 
 
+        }
+
+        protected void CarregarTipoBancoPIS()
+        {
+            TipoBancoBS retorno = new TipoBancoBS();
+            TipoBancoVO entrada = new TipoBancoVO();
+            List<TipoBancoVO> retornoLista = new List<TipoBancoVO>();
+
+            retornoLista = retorno.SelecionarTipoBanco(entrada);
+
+            this.ddlBancoPIS.DataSource = retornoLista;
+            this.ddlBancoPIS.DataValueField = "CodigoBanco";
+            this.ddlBancoPIS.DataTextField = "NomeBanco";
+            this.ddlBancoPIS.DataBind();
+            this.ddlBancoPIS.Items.Insert(0, new ListItem("Selecionar", "0"));
+        }
+
+        protected void CarregarTipoBancoFGTS()
+        {
+            TipoBancoBS retorno = new TipoBancoBS();
+            TipoBancoVO entrada = new TipoBancoVO();
+            List<TipoBancoVO> retornoLista = new List<TipoBancoVO>();
+
+            retornoLista = retorno.SelecionarTipoBanco(entrada);
+
+            this.ddlBancoFGTS.DataSource = retornoLista;
+            this.ddlBancoFGTS.DataValueField = "CodigoBanco";
+            this.ddlBancoFGTS.DataTextField = "NomeBanco";
+            this.ddlBancoFGTS.DataBind();
+            this.ddlBancoFGTS.Items.Insert(0, new ListItem("Selecionar", "0"));
         }
 
         protected void CarregarTipoCor()
@@ -136,6 +168,28 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
 
 
         }
+
+        protected void CarregarEstado()
+        {
+            EstadoBS retorno = new EstadoBS();
+            EstadoVO entrada = new EstadoVO();
+            List<EstadoVO> retornoLista = new List<EstadoVO>();
+
+            retornoLista = retorno.SelecionarEstado(entrada);
+
+            this.ddlEstadoFuncionario.DataSource = retornoLista;
+            this.ddlEstadoFuncionario.DataValueField = "CodigoEstado";
+            this.ddlEstadoFuncionario.DataTextField = "Descricao";
+            this.ddlEstadoFuncionario.DataBind();
+            this.ddlEstadoFuncionario.Items.Insert(0, new ListItem("Selecionar", "0"));
+
+            this.ddlEstadoPIS.DataSource = retornoLista;
+            this.ddlEstadoPIS.DataValueField = "CodigoEstado";
+            this.ddlEstadoPIS.DataTextField = "Descricao";
+            this.ddlEstadoPIS.DataBind();
+            this.ddlEstadoPIS.Items.Insert(0, new ListItem("Selecionar", "0"));
+        }
+
         protected void CarregarPais()
         {
             PaisBS retorno = new PaisBS();

@@ -30,6 +30,10 @@ namespace InfoTech2u.Verithus.WEB.Handler
                 string _StrX = "<?xml version='1.0' encoding='utf-8'?><root>";
                 string jsonText = null;
                 string CEP;
+                List<EstadoVO> listaEstado = new List<EstadoVO>();
+                EstadoBS objEstado = new EstadoBS();
+                EstadoVO paramEstado = new EstadoVO();
+
 
                 if (!String.IsNullOrEmpty(context.Request.QueryString["txtCEP"].ToString()))
                     CEP = context.Request.QueryString["txtCEP"].ToString();
@@ -55,7 +59,14 @@ namespace InfoTech2u.Verithus.WEB.Handler
                         switch (objCEP.Resultado)
                         {
                             case "1":
-                                objCEP.Uf = ds.Tables[0].Rows[0]["uf"].ToString().Trim();
+
+                                paramEstado.Sigla = ds.Tables[0].Rows[0]["uf"].ToString().Trim();
+
+                                listaEstado = objEstado.SelecionarEstado(paramEstado);
+
+                                //objCEP.Uf = ds.Tables[0].Rows[0]["uf"].ToString().Trim();
+
+                                objCEP.Uf = listaEstado[0].Descricao.ToString();
                                 objCEP.Cidade = ds.Tables[0].Rows[0]["cidade"].ToString().Trim();
                                 objCEP.Bairro = ds.Tables[0].Rows[0]["bairro"].ToString().Trim();
                                 objCEP.Tipo_logradouro = ds.Tables[0].Rows[0]["tipo_logradouro"].ToString().Trim();

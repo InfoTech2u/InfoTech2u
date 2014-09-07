@@ -44,6 +44,7 @@
     <Compile Include="BancoBS.cs" />
     <Compile Include="CaractesristicaFisicaBS.cs" />
     <Compile Include="CategoriaBeneficioBS.cs" />
+    <Compile Include="CidadeBS.cs" />
     <Compile Include="ContatoBS.cs" />
     <Compile Include="ContribuicaoSindicalBS.cs" />
     <Compile Include="DadosAdmissaoBS.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="DocumentoPISBS.cs" />
     <Compile Include="EmpresaBS.cs" />
     <Compile Include="EnderecoBS.cs" />
+    <Compile Include="EstadoBS.cs" />
     <Compile Include="EstadoCivilBS.cs" />
     <Compile Include="FeriasBS.cs" />
     <Compile Include="FuncionariosBS.cs" />
@@ -68,6 +70,7 @@
     <Compile Include="SindicatoBS.cs" />
     <Compile Include="StatusBS.cs" />
     <Compile Include="TipoAcessoBS.cs" />
+    <Compile Include="TipoBancoBS.cs" />
     <Compile Include="TipoBeneficioBS.cs" />
     <Compile Include="TipoCabeloBS.cs" />
     <Compile Include="TipoCargoBS.cs" />

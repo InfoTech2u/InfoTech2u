@@ -2,13 +2,14 @@
 <dataset>
  <ConnectionString>
   <database>k8J8jOxuPhTQ9LBxhPzSJg==</database>
-  <server>hMRAm8CYbBDvDdk7B73VPA==</server>
+  <server>TEfoTM63a5ItJtMvSZIaXYloFr9nlJiM</server>
   <port></port>
   <user>lXoTIyOWdSo=</user>
-  <password>m3v05kVshH15Rj5boO0FCg==</password>
+  <password>B7bdS9WuFXi/i7G0rZWhPA==</password>
   <winapli></winapli>
  </ConnectionString>
 </dataset>
+
 
 <!-- Configurações de HOMOLOGAÇÂO-->
 <!--
@@ -35,4 +36,45 @@
 </dataset>
 -->
 
+<!-- Romulo PC
+<dataset>
+ <ConnectionString>
+  <database>k8J8jOxuPhTQ9LBxhPzSJg==</database>
+  <server>TEfoTM63a5ItJtMvSZIaXYloFr9nlJiM</server>
+  <port></port>
+  <user>lXoTIyOWdSo=</user>
+  <password>B7bdS9WuFXi/i7G0rZWhPA==</password>
+  <winapli></winapli>
+ </ConnectionString>
+</dataset>
+-->
+
+<!-- Romulo MAC
+<dataset>
+ <ConnectionString>
+  <database>k8J8jOxuPhTQ9LBxhPzSJg==</database>
+  <server>TEfoTM63a5ItJtMvSZIaXYloFr9nlJiM</server>
+  <port></port>
+  <user>lXoTIyOWdSo=</user>
+  <password>B7bdS9WuFXi/i7G0rZWhPA==</password>
+  <winapli></winapli>
+ </ConnectionString>
+</dataset>
+-->
+
+
 <!-- Para gerar o XML do servidor do banco de dados, bas acessar a url: http://www.itaucultural.org.br/inscrumos/sistemas/tools/cs.aspx -->
+<!-- Beto 
+<dataset>
+ <ConnectionString>
+  <database>k8J8jOxuPhTQ9LBxhPzSJg==</database>
+  <server>+wXj4b2YoVQ=</server>
+  <port></port>
+  <user>lXoTIyOWdSo=</user>
+  <password>7vVRtPoJ/GWxfLphtUl/HA==</password>
+  <winapli></winapli>
+ </ConnectionString>
+</dataset>
+
+-->
+

@@ -22,7 +22,8 @@
                         //FormatarGrid();
                         //CarregarTipoBeneficioLista();
 
-
+                        var row = '<tr><td>' + tiposBeneficios[x].CodigoTipoBeneficio + '</td><td>' + tiposBeneficios[x].Descricao + '</td><td class="centeralign"><a title="Excluir" href="#" class="deleterow"><i class="icon-trash"></i></a></td></tr>';
+                        jQuery('tbody').append(row);
                         jQuery('#myModal').modal('hide')
                     }
                     else {

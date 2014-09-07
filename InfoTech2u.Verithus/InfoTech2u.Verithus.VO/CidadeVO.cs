@@ -4,7 +4,9 @@
     using System.Collections.Generic;
     public partial class CidadeVO
     {
-        public int CodigoCidade { get; set; }
+        public int? CodigoCidade { get; set; }
+
+        public int? CodigoEstado { get; set; }
 
         public string Sigla { get; set; }
 
