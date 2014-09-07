@@ -8,6 +8,7 @@ using InfoTech2u.Verithus.BS;
 using System.Web.Script.Serialization;
 using System.Collections.Generic;
 using System.Data;
+using InfoTech2u.Verithus.Util;
 
 namespace InfoTech2u.Verithus.WEB.Handler
 {
@@ -270,22 +271,8 @@ namespace InfoTech2u.Verithus.WEB.Handler
 
             dtRetorno = objRetorno.IncluirFuncionario(objFuncionario);
 
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
-            Dictionary<string, object> row;
 
-            foreach (DataRow dr in dtRetorno.Rows)
-            {
-                row = new Dictionary<string, object>();
-                foreach (DataColumn col in dtRetorno.Columns)
-                {
-                    row.Add(col.ColumnName, dr[col]);
-                }
-                rows.Add(row);
-            }
-            retorno = serializer.Serialize(rows);
-
-            context.Response.Write(retorno);
+            context.Response.Write(dtRetorno.DataTableSerializer());
         }
 
 

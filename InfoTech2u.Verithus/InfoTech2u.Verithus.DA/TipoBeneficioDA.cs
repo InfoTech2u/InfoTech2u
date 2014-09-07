@@ -17,6 +17,7 @@ namespace InfoTech2u.Verithus.DA
             InfoTech2uSQLUtil objSql = null;
             StringBuilder query = null;
             List<SqlParameter> lstSqlParameter = null;
+            DataTable dt = null;
 
             try
             {
@@ -36,10 +37,10 @@ namespace InfoTech2u.Verithus.DA
                 lstSqlParameter.Add(new SqlParameter("@DATA_ALTERACAO", param.DataAlteracao));
                 lstSqlParameter.Add(new SqlParameter("@CODIGO_STATUS", param.CodigoStatus));
 
-                int rowsAffected = 0;
+                dt = new DataTable();
 
-                
-                //objSql.Execute("SPVRT046_TIPO_BENEFICIO_PR_INCLUIR", lstSqlParameter.ToArray(), null, out rowsAffected);
+                int rowsAffected = 0;
+                objSql.ExecuteNonQuery("SPVRT046_TIPO_BENEFICIO_PR_INCLUIR", lstSqlParameter.ToArray(), null, out rowsAffected);
 
                 return rowsAffected > 0;
             }
