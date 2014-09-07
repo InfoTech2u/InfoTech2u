@@ -15,6 +15,9 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
             if (!IsPostBack)
             {
                 CarregarIncludes();
+
+                //TODO: PEgar codigo funcionario
+                hdnCodigoFuncionario.Value = "1";
             }
         }
 
@@ -47,10 +50,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery.maskMoney.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "responsive-tables.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "custom.js");
-            InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "ManterTipoBeneficio.js");
-
-
-
+            InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "TipoBeneficio.js");
         }
     }
 }

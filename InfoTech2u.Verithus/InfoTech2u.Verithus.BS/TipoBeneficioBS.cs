@@ -51,5 +51,47 @@ namespace InfoTech2u.Verithus.BS
                 objRetorno = null;
             }
         }
+
+        public bool IncluirTipoBeneficio(TipoBeneficioVO param)
+        {
+            TipoBeneficioDA objRetorno = null;
+
+            try
+            {
+                objRetorno = new TipoBeneficioDA();
+
+                return objRetorno.IncluirTipoBeneficio(param);
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            finally
+            {
+                objRetorno = null;
+            }
+        }
+
+        public bool ExcluirTipoBeneficio(TipoBeneficioVO param)
+        {
+            TipoBeneficioDA objRetorno = null;
+
+            try
+            {
+                objRetorno = new TipoBeneficioDA();
+
+                return objRetorno.ExcluirTipoBeneficio(param);
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            finally
+            {
+                objRetorno = null;
+            }
+        }
     }
 }

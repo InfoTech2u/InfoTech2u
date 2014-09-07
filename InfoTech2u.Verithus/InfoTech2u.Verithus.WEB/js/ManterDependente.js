@@ -61,5 +61,95 @@
 });
 
 function validar() {
+    var codFuncionario = 
+
     return false;
+}
+
+function IncluirDependente() {
+
+    jQuery.ajax({
+        type: "GET",
+        url: "../../Handler/ManutencaoFuncionario.ashx",
+        data: {
+            Metodo: 'CadastroFuncionario',
+            Acao: 'Inclusao',
+            NumeroOrdemMatricula: jQuery('#txtNumeroOrdemMatricula').val(),
+            NumeroMatricula: jQuery('#txtNumeroMatricula').val(),
+            NomeFuncionario: jQuery('#txtNomeFuncionario').val(),
+            DataNascimento: jQuery('#txtDataNascimento').val(),
+            NacionalidadeFuncionario: jQuery('#ddlNacionalidadeFuncionario option:selected').val(),
+            EstadoCivil: jQuery('#ddlEstadoCivil  option:selected').val(),
+            NomeConjuge: jQuery('#txtNomeConjuge').val(),
+            QtdFilhos: jQuery('#txtQtdFilhos').val(),
+            TipoEndereco: jQuery('#ddlTipoEndereco option:selected').val(),
+            TipoLogradouro: jQuery('#ddlTipoLogradouro option:selected').val(),
+            Logradouro: jQuery('#txtLogradouro').val(),
+            NumeroEndereco: jQuery('#txtNumeroEndereco').val(),
+            Bairro: jQuery('#txtBairro').val(),
+            Complemento: jQuery('#txtComplemento').val(),
+            CEP: jQuery('#txtCEP').val(),
+            NomePai: jQuery('#txtNomePai').val(),
+            NacionalidadePai: jQuery('#ddlNacionalidadePai option:selected').val(),
+            NomeMae: jQuery('#txtNomeMae').val(),
+            NacionalidadeMae: jQuery('#ddlNacionalidadeMae option:selected').val(),
+            RG: jQuery('#txtRG').val(),
+            CarteiraTrabalho: jQuery('#txtCarteiraTrabalho').val(),
+            NumeroSerie: jQuery('#txtNumeroSerie').val(),
+            NumeroCertificadoReservista: jQuery('#txtNumeroCertificadoReservista').val(),
+            Categoria: jQuery('#txtCategoria').val(),
+            CPF: jQuery('#txtCPF').val(),
+            TituloEleitor: jQuery('#txtTituloEleitor').val(),
+            CateiraSaude: jQuery('#txtCateiraSaude').val(),
+            CBO: jQuery('#txtCBO').val(),
+            Carteira19: jQuery('#txtCarteira19').val(),
+            RegistroGeral: jQuery('#txtRegistroGeral').val(),
+            CasadoBrasileiro: jQuery('input[@name=<%=rdbCasadoBrasileiro.ClientID%>]:radio:checked').val(),
+            //CasadoBrasileiro: jQuery('input[name$:rdbCasadoBrasileiro]:checked').val(),
+            //$("input[@name=<%=rdlMinor.ClientID%>]:radio:checked").val();
+            Naturalizado: jQuery('input[@name=<%=rblNaturalizado.ClientID%>]:radio:checked').val(),
+            //Naturalizado: jQuery('input[name$:rblNaturalizado]:checked').val(),
+            FilhoBrasileiro: jQuery('input[@name=<%=rblFilhoBrasileiro.ClientID%>]:radio:checked').val(),
+            //FilhoBrasileiro: jQuery('input[name$:rblFilhoBrasileiro]:checked').val(),
+            DataChegadaBrasil: jQuery('#txtDataChegadaBrasil').val(),
+            CadastroPIS: jQuery('#txtCadastroPIS').val(),
+            SobNumero: jQuery('#txtSobNumero').val(),
+            BancoPIS: jQuery('#txtBancoPIS').val(),
+            Agencia: jQuery('#txtAgencia').val(),
+            Digito: jQuery('#txtDigito').val(),
+            TipoEnderecoPIS: jQuery('#ddlTipoEnderecoPIS').val(),
+            TipoLogradouroPIS: jQuery('#ddlTipoLogradouroPIS').val(),
+            LogradouroPIS: jQuery('#txtLogradouroPIS').val(),
+            NumeroEnderecoPIS: jQuery('#txtNumeroEnderecoPIS').val(),
+            BairroPIS: jQuery('#txtBairroPIS').val(),
+            ComplementoPIS: jQuery('#txtComplementoPIS').val(),
+            CEPPIS: jQuery('#txtCEPPIS').val(),
+            OptanteFGTS: jQuery('#rdpOptanteFGTS').val(),
+            DataOpcao: jQuery('#txtDataOpcao').val(),
+            DataRetratacao: jQuery('#txtDataRetratacao').val(),
+            BancoFGTS: jQuery('#txtBancoFGTS').val(),
+            AgenciaFGTS: jQuery('#txtAgenciaFGTS').val(),
+            DigitoFGTS: jQuery('#txtDigitoFGTS').val(),
+            Cor: jQuery('#ddlCor').val(),
+            Altura: jQuery('#txtAltura').val(),
+            Peso: jQuery('#txtPeso').val(),
+            Cabelo: jQuery('#ddlCabelo').val(),
+            Olho: jQuery('#ddlOlho').val(),
+            Sinais: jQuery('#txtSinais').val()
+        },
+        contentType: "json",
+        cache: false,
+        success: function (data) {
+            alert(data);
+
+
+            for (var i = 0; i < data.le; i++) {
+                alert(data[i].FUNC_NOME_FUNCIONARIO)
+            }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrow) {
+            errorAjax(textStatus);
+        }
+    });
+
 }

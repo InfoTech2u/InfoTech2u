@@ -14,9 +14,8 @@ namespace InfoTech2u.Verithus.VO
     
     public partial class DependenteVO
     {
-        public int CodigoDEPENDENTE { get; set; }
+        public int CodigoDependente { get; set; }
         public Nullable<int> CodigoFuncionario { get; set; }
-        public Nullable<int> CodigoTipoBeneficio { get; set; }
         public string Nome { get; set; }
         public Nullable<int> CodigoTipoParentesco { get; set; }
         public Nullable<System.DateTime> DataNascimento { get; set; }
@@ -27,7 +26,7 @@ namespace InfoTech2u.Verithus.VO
         public Nullable<int> CodigoStatus { get; set; }
     
         public virtual FuncionariosVO FuncionariosVO { get; set; }
-        public virtual TipoBeneficioVO TipoBeneficioVO { get; set; }
+        public virtual List<BeneficioVO> BeneficioVO { get; set; }
         public virtual TipoParentescoVO TipoParentescoVO { get; set; }
     }
 }

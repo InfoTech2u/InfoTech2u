@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BeneficioVO.cs" />
     <Compile Include="CidadeVO.cs" />
     <Compile Include="ConsultaCEPServicoFreeVO.cs" />
     <Compile Include="EstadoVO.cs" />

@@ -16,12 +16,24 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
         {
             if (!IsPostBack)
             {
-                
+                CarregarDependentes();
             }
 
             CarregarIncludes();
             CarregarTipoParentesco();
             CarregarTipoBeneficio();
+        }
+
+        protected void CarregarDependentes()
+        {
+            //var id = Request.QueryString["CodigoFuncionario"].ToString();
+            DependenteBS objDependenteBS = new DependenteBS();
+
+            List<DependenteVO> objDependenteVO = new List<DependenteVO>();
+            FuncionariosVO objFuncionariosVO = new FuncionariosVO();
+            objFuncionariosVO.CodigoFuncionario = 1;
+            objDependenteVO = objDependenteBS.SelecionarDependentesDoFuncionario(objFuncionariosVO);
+            
         }
 
         protected void CarregarTipoParentesco()

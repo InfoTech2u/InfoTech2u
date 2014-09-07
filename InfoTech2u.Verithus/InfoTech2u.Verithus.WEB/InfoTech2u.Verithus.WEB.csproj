@@ -43,6 +43,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -154,6 +155,8 @@
     <Content Include="Handler\DataTablesHandlerGeneric.ashx" />
     <Content Include="Handler\ManutencaoFuncionario.ashx" />
     <Content Include="Handler\BuscarCep.ashx" />
+    <Content Include="Handler\TipoBeneficio.ashx" />
+    <Content Include="Handler\Dependente.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -676,6 +679,7 @@
     <Content Include="Modulos\Dashboard\DashboardGerente.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterAdmissao.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterBeneficios.aspx" />
+    <Content Include="Modulos\RecursosHumanos\ManterContribuicaoSindicaol.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterDependente.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterTipoBeneficio.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterUsuario.aspx" />
@@ -753,6 +757,12 @@
     <Compile Include="Handler\DataTablesHandlerGeneric.ashx.cs">
       <DependentUpon>DataTablesHandlerGeneric.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Handler\Dependente.ashx.cs">
+      <DependentUpon>Dependente.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\TipoBeneficio.ashx.cs">
+      <DependentUpon>TipoBeneficio.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Handler\ManutencaoFuncionario.ashx.cs">
       <DependentUpon>ManutencaoFuncionario.ashx</DependentUpon>
     </Compile>
@@ -797,6 +807,13 @@
     </Compile>
     <Compile Include="Modulos\RecursosHumanos\ManterBeneficios.aspx.designer.cs">
       <DependentUpon>ManterBeneficios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\ManterContribuicaoSindicaol.aspx.cs">
+      <DependentUpon>ManterContribuicaoSindicaol.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\ManterContribuicaoSindicaol.aspx.designer.cs">
+      <DependentUpon>ManterContribuicaoSindicaol.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\RecursosHumanos\ManterDependente.aspx.cs">
       <DependentUpon>ManterDependente.aspx</DependentUpon>
