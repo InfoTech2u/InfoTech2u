@@ -83,15 +83,18 @@
                                     <span class="help-inline" id="msgTarefa"></span>
                                 </span>
                             </p>
-                            <p>
+
+                            <p id="validaFormaPagamento">
                                 <label>Forma de Pagamento</label>
                                 <span class="field">
-                                    <asp:TextBox runat="server" ID="TextBox2" class="input-small" ClientIDMode="Static" />
+                                    <asp:TextBox runat="server" ID="txtFormaPagamento" class="input-small" ClientIDMode="Static" />
+                                    <span class="help-inline" id="msgFormaPagamento"></span>
                                 </span>
                             </p>
+
                             <p class="stdformbutton">
-                                <a href="#" class="btn btn-primary btn-rounded">Concluir</a>
-                                <a href="#" class="btn btn-rounded"><i class="iconfa-refresh iconsweets-black"></i>&nbsp; limpar</a>
+                                <a href="#" id="btnConcluirDemissao" class="btn btn-primary btn-rounded">Concluir</a>
+                                <a href="#" id="btnLimparDemissao" class="btn btn-rounded"><i class="iconfa-refresh iconsweets-black"></i>&nbsp; limpar</a>
                             </p>
                         </div>
                     </div>

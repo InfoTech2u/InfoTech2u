@@ -28,16 +28,19 @@
                     <h4 class="widgettitle">Dados de Forma de Pagamento</h4>
                     <div class="widgetcontent nopadding">
                         <div class="stdform stdform2">
-                            <p>
+                        
+                            <p id="validaDescricao">
                                 <label>Descrição</label>
                                 <span class="field">
                                     <asp:TextBox runat="server" ID="txtDescricao" class="input-small" ClientIDMode="Static" />
+                                    <span class="help-inline" id="msgDescricao"></span>
                                 </span>
                             </p>
 
+
                             <p class="stdformbutton">
-                                <a href="#" class="btn btn-primary btn-rounded">Concluir</a>
-                                <a href="#" class="btn btn-rounded"><i class="iconfa-refresh iconsweets-black"></i>&nbsp; limpar</a>
+                                <a href="#" id="btnConcluir" class="btn btn-primary btn-rounded">Concluir</a>
+                                <a href="#" id="btnLimpar" class="btn btn-rounded"><i class="iconfa-refresh iconsweets-black"></i>&nbsp; limpar</a>
                             </p>
 
                         </div>

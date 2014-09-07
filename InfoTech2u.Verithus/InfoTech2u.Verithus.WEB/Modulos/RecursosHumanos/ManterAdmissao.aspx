@@ -139,10 +139,8 @@
                                 </p>
                             </p>
                             <p class="stdformbutton">
-                                <asp:Button runat="server" ID="btnConcluir" class="btn btn-primary btn-rounded" ClientIDMode="Static" Text="Concluir" OnClick="btnConcluir_Click" />
-                                <asp:Button runat="server" ID="btnLimpar" class="iconfa-refresh " ClientIDMode="Static" Text="Limpar" OnClick="btnLimpar_Click" />
-                                <a href="#" class="btn btn-primary btn-rounded">Concluir</a>
-                                <a href="#" class="btn btn-rounded"><i class="iconfa-refresh iconsweets-black"></i>&nbsp; limpar</a>
+                                <a href="#"  id="btnConcluirAdmissao"  class="btn btn-primary btn-rounded">Concluir</a>
+                                <a href="#" id="btnLimparAdmissao" class="btn btn-rounded"><i class="iconfa-refresh iconsweets-black"></i>&nbsp; limpar</a>
                             </p>
                         </div>
                     </div>

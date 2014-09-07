@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Modulos/InfoTech2u.Master" AutoEventWireup="true" CodeBehind="ManterSecao.aspx.cs" Inherits="InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.ManterSecao" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderInfoTech2u" runat="server">
-     <div class="rightpanel">
+    <div class="rightpanel">
 
         <ul class="breadcrumbs">
             <li><a href="dashboard.html"><i class="iconfa-home"></i></a><span class="separator"></span></li>
@@ -27,16 +28,18 @@
                     <h4 class="widgettitle">Dados Seção</h4>
                     <div class="widgetcontent nopadding">
                         <div class="stdform stdform2">
-                            <p>
+
+                            <p id="validaDescricao">
                                 <label>Descrição</label>
                                 <span class="field">
                                     <asp:TextBox runat="server" ID="txtDescricao" class="input-small" ClientIDMode="Static" />
+                                    <span class="help-inline" id="msgDescricao"></span>
                                 </span>
                             </p>
 
                             <p class="stdformbutton">
-                                <a href="#" class="btn btn-primary btn-rounded">Concluir</a>
-                                <a href="#" class="btn btn-rounded"><i class="iconfa-refresh iconsweets-black"></i>&nbsp; limpar</a>
+                                <a href="#"  id="btnConcluir" class="btn btn-primary btn-rounded">Concluir</a>
+                                <a href="#" id="btnLimpar"  class="btn btn-rounded"><i class="iconfa-refresh iconsweets-black"></i>&nbsp; limpar</a>
                             </p>
 
                         </div>

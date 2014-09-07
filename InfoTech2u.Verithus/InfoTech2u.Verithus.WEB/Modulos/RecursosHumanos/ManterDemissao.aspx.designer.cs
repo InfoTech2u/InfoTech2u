@@ -76,12 +76,12 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos {
         protected global::System.Web.UI.WebControls.DropDownList ddlTarefa;
         
         /// <summary>
-        /// TextBox2 control.
+        /// txtFormaPagamento control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtFormaPagamento;
     }
 }
