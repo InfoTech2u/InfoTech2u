@@ -17,8 +17,8 @@ namespace InfoTech2u.Verithus.VO
         public int CodigoCARACTERISTICAFISICA { get; set; }
         public Nullable<int> CodigoFuncionario { get; set; }
         public Nullable<int> CodigoTipoCor { get; set; }
-        public Nullable<decimal> Altura { get; set; }
-        public Nullable<decimal> Peso { get; set; }
+        public string Altura { get; set; }
+        public string Peso { get; set; }
         public Nullable<int> CodigoTipoCabelo { get; set; }
         public Nullable<int> CodigoTipoOlho { get; set; }
         public string Sinais { get; set; }

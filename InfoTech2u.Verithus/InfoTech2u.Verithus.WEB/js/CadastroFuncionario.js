@@ -27,16 +27,12 @@ jQuery(document).ready(function () {
     //Data dataddmmaaaa
     jQuery(".dataddmmaaaa").mask("99/99/9999");
 
-    //Altura
-    jQuery(".Altura").mask("9.99");
 
-    //Peso
-    jQuery(".Peso").mask("999");
 
-    
+
     jQuery("#txtCarteiraTrabalho").mask("99999");
 
-    jQuery("#txtNumeroSerie").mask("99999-##");
+    jQuery("#txtNumeroSerie").mask("99999-aa");
 
     //RA RESERVISTA
     jQuery("#txtNumeroCertificadoReservista").mask("999999999999");
@@ -144,6 +140,33 @@ jQuery(document).ready(function () {
     });
 
 
+    jQuery("#ddlEstadoFuncionario").change(function () {
+        var str = "";
+
+        str += jQuery("#ddlEstadoFuncionario option:selected").val();
+
+        jQuery('#spCidadeFuncionario').empty();
+
+        jQuery('#spCidadeFuncionario').append('<select id ="ddlCidadeFuncionario" data-placeholder="Escolha uma Cidade..." Style="width: 350px"  TabIndex="2">');
+        
+        CarregaComboCidade(str, 1);
+
+    });
+
+    jQuery("#ddlEstadoPIS").change(function () {
+        var str = "";
+
+        str += jQuery("#ddlEstadoPIS option:selected").val();
+
+        jQuery('#spCidadePIS').empty();
+
+        jQuery('#spCidadePIS').append('<select id ="ddlCidadePIS" data-placeholder="Escolha uma Cidade..." Style="width: 350px"  TabIndex="2">');
+
+        CarregaComboCidade(str, 2);
+
+    });
+
+
     //buttonNext
 
     //jQuery('input:checkbox').uniform();
@@ -166,12 +189,77 @@ jQuery(document).ready(function () {
 
                 var arrCEP = eval(data);
 
-                jQuery('#txtBairro').val(arrCEP[0].Bairro)
-                jQuery('#txtLogradouro').val(arrCEP[0].Logradouro)
+                jQuery('#txtBairro').val(arrCEP[0].Bairro);
+                jQuery('#txtLogradouro').val(arrCEP[0].Logradouro);
+
+                //Cidade
+                //Uf
 
                 jQuery('#ddlTipoLogradouro option:selected').removeAttr('selected');
 
-                jQuery("#ddlTipoLogradouro option[value='131']").attr('selected', 'selected');
+                jQuery("#ddlTipoLogradouro").each(function () {
+                    jQuery('option', this).each(function () {
+                        if (jQuery(this).text().toLowerCase() == arrCEP[0].Tipo_logradouro.toLowerCase()) {
+                            jQuery(this).attr('selected', 'selected')
+                        };
+                    });
+                });
+
+                jQuery('#ddlTipoLogradouro_chzn .chzn-single span').text(arrCEP[0].Tipo_logradouro);
+
+                //Estado
+                jQuery('#ddlEstadoFuncionario option:selected').removeAttr('selected');
+
+                jQuery("#ddlEstadoFuncionario").each(function () {
+                    jQuery('option', this).each(function () {
+
+                        if (jQuery(this).text().toLowerCase() == jQuery('#ddlEstadoFuncionario option').filter(function () { return jQuery(this).html() == arrCEP[0].Uf; }).text().toLowerCase()) {
+                            jQuery(this).attr('selected', 'selected')
+                        };
+
+                    });
+                });
+
+                jQuery('#ddlEstadoFuncionario_chzn .chzn-single span').text(arrCEP[0].Uf);
+
+
+                //Cidade
+                var str = "";
+                str += jQuery("#ddlEstadoFuncionario option:selected").val();
+                jQuery('#spCidadeFuncionario').empty();
+                jQuery('#spCidadeFuncionario').append('<select id ="ddlCidadeFuncionario" data-placeholder="Escolha uma Cidade..." Style="width: 350px"  TabIndex="2">');
+                CarregaComboCidade(str, 1);
+
+                
+                jQuery('#ddlCidadeFuncionario option:selected').removeAttr('selected');
+
+                //alert(arrCEP[0].Cidade);
+
+                jQuery(jQuery('#ddlCidadeFuncionario option').filter(function () { return jQuery(this).html() == arrCEP[0].Cidade }).text()).attr('selected', 'selected');
+
+                jQuery("#ddlCidadeFuncionario").each(function () {
+
+                    alert('3');
+
+                    
+
+                    jQuery('option', this).each(function () {
+
+                        alert('4');
+
+                        alert(jQuery(this).text().toLowerCase());
+                        alert(jQuery('#ddlCidadeFuncionario option').filter(function () { return jQuery(this).html() == arrCEP[0].Cidade; }).text().toLowerCase());
+
+                        if (jQuery(this).text().toLowerCase() == jQuery('#ddlCidadeFuncionario option').filter(function () { return jQuery(this).html() == arrCEP[0].Cidade }).text().toLowerCase()) {
+                            jQuery(this).attr('selected', 'selected')
+                        };
+                    });
+                });
+
+                jQuery('#ddlCidadeFuncionario_chzn .chzn-single span').text(arrCEP[0].Cidade);
+
+                alert('1');
+                
 
             },
             error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -196,12 +284,22 @@ jQuery(document).ready(function () {
 
                 var arrCEP = eval(data);
 
-                jQuery('#txtBairroPIS').val(arrCEP[0].Bairro)
-                jQuery('#txtLogradouroPIS').val(arrCEP[0].Logradouro)
+                jQuery('#txtBairroPIS').val(arrCEP[0].Bairro);
+                jQuery('#txtLogradouroPIS').val(arrCEP[0].Logradouro);
 
                 jQuery('#ddlTipoLogradouroPIS option:selected').removeAttr('selected');
 
-                jQuery("#ddlTipoLogradouroPIS option[value='131']").attr('selected', 'selected');
+                jQuery("#ddlTipoLogradouroPIS").each(function () {
+                    jQuery('option', this).each(function () {
+                        if (jQuery(this).text().toLowerCase() == arrCEP[0].Tipo_logradouro.toLowerCase()) {
+                            jQuery(this).attr('selected', 'selected')
+                        };
+                    });
+                });
+
+                jQuery('#ddlTipoLogradouroPIS_chzn .chzn-single span').text(arrCEP[0].Tipo_logradouro);
+
+
 
             },
             error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -501,8 +599,15 @@ function validarFuncionario(passoAtivo) {
                 retorno = false;
             }
             else {
-                jQuery('#msgCPF').html('').hide();
-                jQuery("#validaCPF").removeClass("par control-group error").addClass("par control-group success");
+                if (validarCPF(CPF)) {
+                    jQuery('#msgCPF').html('').hide();
+                    jQuery("#validaCPF").removeClass("par control-group error").addClass("par control-group success");
+                }
+                else {
+                    jQuery('#msgCPF').html('O Campo CPF Deve ser preenchido co um valor valido').show();
+                    jQuery("#validaCPF").removeClass("par control-group success").addClass("par control-group error");
+                    retorno = false;
+                }
             }
 
             if (!TituloEleitor && TituloEleitor.length <= 0) {
@@ -827,7 +932,7 @@ function validarFuncionario(passoAtivo) {
 
         return retorno;
     }
-    
+
 }
 
 function IncluirDadosFuncionario() {
@@ -906,8 +1011,8 @@ function IncluirDadosFuncionario() {
         success: function (data) {
             alert(data);
 
-            
-            for (var i = 0; i < data.le; i++) {
+
+            for (var i = 0; i < data.length; i++) {
                 alert(data[i].FUNC_NOME_FUNCIONARIO)
             }
         },
@@ -916,5 +1021,92 @@ function IncluirDadosFuncionario() {
         }
     });
 
+}
+
+function CarregaComboCidade(str, tipo) {
+
+    alert(2);
+
+    jQuery.ajax({
+        type: "GET",
+        url: "../../Handler/BuscaCidade.ashx",
+        data: {
+            codigoEstado: str
+        },
+        contentType: "json",
+        cache: false,
+        success: function (data) {
+
+            var arrCidade = eval(data);
+
+
+
+            if (tipo == 1) 
+            {
+                jQuery('#ddlCidadeFuncionario').empty();
+
+                for (var i = 0; i < arrCidade.length; i++) {
+                    jQuery("#ddlCidadeFuncionario").append('<option value=' + arrCidade[i].CODIGO_CIDADE + '>' + arrCidade[i].DESCRICAO + '</option>');
+                }
+
+                jQuery("#ddlCidadeFuncionario").attr("class", "chzn-select-cidade");
+
+                jQuery(".chzn-select-cidade").chosen();
+
+                jQuery('#ddlCidadeFuncionario_chzn .chzn-single span').text('Selecione');
+
+                jQuery('#ddlCidadeFuncionario').trigger("chosen:updated");
+            }
+            else if (tipo = 2)
+            {
+                jQuery('#ddlCidadePIS').empty();
+
+                for (var i = 0; i < arrCidade.length; i++) {
+                    jQuery("#ddlCidadePIS").append('<option value=' + arrCidade[i].CODIGO_CIDADE + '>' + arrCidade[i].DESCRICAO + '</option>');
+                }
+
+                jQuery("#ddlCidadePIS").attr("class", "chzn-select-cidade-pis");
+
+                jQuery(".chzn-select-cidade-pis").chosen();
+
+                jQuery('#ddlCidadePIS_chzn .chzn-single span').text('Selecione');
+
+                jQuery('#ddlCidadePIS').trigger("chosen:updated");
+            }
+            
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrow) {
+            errorAjax(textStatus);
+        }
+    });
+
+    
+
+}
+
+function validarCPF(strCPF) {
+    var Soma;
+    var Resto;
+    Soma = 0;
+    var novoCPF = strCPF.replace(/[\.-]/g, "");
+    //strCPF  = RetiraCaracteresInvalidos(strCPF,11);
+    if (novoCPF == "00000000000")
+        return false;
+    for (i = 1; i <= 9; i++)
+        Soma = Soma + parseInt(novoCPF.substring(i - 1, i)) * (11 - i);
+    Resto = (Soma * 10) % 11;
+    if ((Resto == 10) || (Resto == 11))
+        Resto = 0;
+    if (Resto != parseInt(novoCPF.substring(9, 10)))
+        return false;
+    Soma = 0;
+    for (i = 1; i <= 10; i++)
+        Soma = Soma + parseInt(novoCPF.substring(i - 1, i)) * (12 - i);
+    Resto = (Soma * 10) % 11;
+    if ((Resto == 10) || (Resto == 11))
+        Resto = 0;
+    if (Resto != parseInt(novoCPF.substring(10, 11)))
+        return false;
+    return true;
 }
 

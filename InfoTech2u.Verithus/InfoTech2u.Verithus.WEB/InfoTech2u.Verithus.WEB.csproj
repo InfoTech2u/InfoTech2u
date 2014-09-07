@@ -154,6 +154,7 @@
     <Content Include="Handler\DataTablesHandlerGeneric.ashx" />
     <Content Include="Handler\ManutencaoFuncionario.ashx" />
     <Content Include="Handler\BuscarCep.ashx" />
+    <Content Include="Handler\BuscaCidade.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -730,6 +731,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\PaginaBase.cs" />
+    <Compile Include="Handler\BuscaCidade.ashx.cs">
+      <DependentUpon>BuscaCidade.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Cryptography.aspx.cs">
       <DependentUpon>Cryptography.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

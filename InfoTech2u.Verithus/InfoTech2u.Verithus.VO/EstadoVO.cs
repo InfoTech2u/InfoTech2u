@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     public partial class EstadoVO
     {
-        public int CodigoEstato { get; set; }
+        public int? CodigoEstado { get; set; }
 
         public string Sigla { get; set; }
 

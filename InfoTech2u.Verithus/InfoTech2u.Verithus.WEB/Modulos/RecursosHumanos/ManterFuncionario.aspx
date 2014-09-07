@@ -87,7 +87,7 @@
                         <p id="validaNumeroOrdemMatricula">
                             <label>Numero Ordem(Matricula)</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtNumeroOrdemMatricula" CssClass="input-small" ClientIDMode="Static" />
+                                <asp:TextBox runat="server" ID="txtNumeroOrdemMatricula" CssClass="input-small" ClientIDMode="Static" MaxLength="10" />
                                 <span class="help-inline" id="msgNumeroOrdemMatricula"></span>
                             </span>
                         </p>
@@ -95,7 +95,7 @@
                         <p id="validaNumeroMatricula">
                             <label>Numero Matricula</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtNumeroMatricula" CssClass="input-small" ClientIDMode="Static" />
+                                <asp:TextBox runat="server" ID="txtNumeroMatricula" CssClass="input-small" ClientIDMode="Static" MaxLength="10" />
                                 <span class="help-inline" id="msgNumeroMatricula"></span>
                             </span>
                         </p>
@@ -103,7 +103,7 @@
                         <p id="validaNomeFuncionario">
                             <label>Nome Funcionario</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtNomeFuncionario" CssClass="input-xxlarge" ClientIDMode="Static" />
+                                <asp:TextBox runat="server" ID="txtNomeFuncionario" CssClass="input-xxlarge" ClientIDMode="Static" MaxLength="100"  />
                                 <span class="help-inline" id="msgNomeFuncionario"></span>
                             </span>
                         </p>
@@ -135,7 +135,7 @@
                         <p id="validaNomeConjuge">
                             <label>Nome do(a) Conjuge</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtNomeConjuge" CssClass="input-xxlarge" ClientIDMode="Static" />
+                                <asp:TextBox runat="server" ID="txtNomeConjuge" CssClass="input-xxlarge" ClientIDMode="Static" MaxLength="100" />
                                 <span class="help-inline" id="msgNomeConjuge"></span>
                             </span>
                         </p>
@@ -143,7 +143,7 @@
                         <p>
                             <label>Quantos Filhos</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtQtdFilhos" CssClass="input-small input-spinner" Text="0" ClientIDMode="Static" />
+                                <asp:TextBox runat="server" ID="txtQtdFilhos" CssClass="input-small input-spinner" Text="0" ClientIDMode="Static" MaxLength="2" />
                             </span>
                         </p>
 
@@ -169,6 +169,20 @@
                             </span>
                         </p>
 
+                        <p>
+                            <label>Estado</label>
+                            <span class="field">
+                                <asp:DropDownList runat="server" ID="ddlEstadoFuncionario" data-placeholder="Escolha um Estado..." Style="width: 350px" class="chzn-select" TabIndex="2" ClientIDMode="Static" />
+                            </span>
+                        </p>
+
+                        <p>
+                            <label>Cidade</label>
+                            <span class="field" id="spCidadeFuncionario">
+                                <asp:DropDownList ID="ddlCidadeFuncionario" data-placeholder="Escolha uma Cidade..." Style="width: 350px"  TabIndex="2" ClientIDMode="Static" />
+                            </span>
+                        </p>
+
                         <p id="validaTipoLogradouro">
                             <label>Tipo de Logradouro</label>
                             <span class="field">
@@ -180,7 +194,7 @@
                         <p id="validaLogradouro">
                             <label>Logradouro</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtLogradouro" CssClass="input-xxlarge" ClientIDMode="Static" />
+                                <asp:TextBox runat="server" ID="txtLogradouro" CssClass="input-xxlarge" ClientIDMode="Static" MaxLength="120" />
                                 <span class="help-inline" id="msgLogradouro"></span>
                             </span>
                         </p>
@@ -188,7 +202,7 @@
                         <p id="validaNumeroEndereco">
                             <label>Numero</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtNumeroEndereco" CssClass="input-small" ClientIDMode="Static" />
+                                <asp:TextBox runat="server" ID="txtNumeroEndereco" CssClass="input-small" ClientIDMode="Static" MaxLength="8" />
                                 <span class="help-inline" id="msgNumeroEndereco"></span>
                             </span>
                         </p>
@@ -196,7 +210,7 @@
                         <p id="validaBairro">
                             <label>Bairro</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtBairro" CssClass="input-large" ClientIDMode="Static" />
+                                <asp:TextBox runat="server" ID="txtBairro" CssClass="input-large" ClientIDMode="Static" MaxLength="80" />
                                 <span class="help-inline" id="msgBairro"></span>
                             </span>
                         </p>
@@ -204,7 +218,7 @@
                         <p>
                             <label>Complemento</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtComplemento" CssClass="input-xxlarge" ClientIDMode="Static" />
+                                <asp:TextBox runat="server" ID="txtComplemento" CssClass="input-xxlarge" ClientIDMode="Static" MaxLength="80" />
                             </span>
                         </p>
 
@@ -227,7 +241,7 @@
                         <p id="validaNomePai">
                             <label>Nome do Pai</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtNomePai" CssClass="input-xxlarge" ClientIDMode="Static" />
+                                <asp:TextBox runat="server" ID="txtNomePai" CssClass="input-xxlarge" ClientIDMode="Static" MaxLength="100" />
                                 <span class="help-inline" id="msgNomePai"></span>
                             </span>
                         </p>
@@ -244,7 +258,7 @@
                         <p id="validaNomeMae">
                             <label>Nome da Mãe</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtNomeMae" CssClass="input-xxlarge" ClientIDMode="Static" />
+                                <asp:TextBox runat="server" ID="txtNomeMae" CssClass="input-xxlarge" ClientIDMode="Static" MaxLength="100" />
                                 <span class="help-inline" id="msgNomeMae"></span>
                             </span>
                         </p>
@@ -269,7 +283,7 @@
                             <p id="validaRG">
                                 <label>Numero de RG</label>
                                 <span class="field">
-                                    <asp:TextBox runat="server" ID="txtRG" CssClass="input-medium" ClientIDMode="Static" />
+                                    <asp:TextBox runat="server" ID="txtRG" CssClass="input-medium" ClientIDMode="Static" MaxLength="11" />
                                     <span class="help-inline" id="msgRG"></span>
                                 </span>
                             </p>
@@ -453,6 +467,20 @@
                             <span class="field">
                                 <asp:DropDownList runat="server" ID="ddlTipoEnderecoPIS" data-placeholder="Escolha um tipo de Endereço..." Style="width: 350px" class="chzn-select" TabIndex="2" ClientIDMode="Static" />
                                 <span class="help-inline" id="msgTipoEnderecoPIS"></span>
+                            </span>
+                        </p>
+
+                        <p>
+                            <label>Estado</label>
+                            <span class="field">
+                                <asp:DropDownList runat="server" ID="ddlEstadoPIS" data-placeholder="Escolha um Estado..." Style="width: 350px" class="chzn-select" TabIndex="2" ClientIDMode="Static" />
+                            </span>
+                        </p>
+
+                        <p>
+                            <label>Cidade</label>
+                            <span class="field" id="spCidadePIS">
+                                <asp:DropDownList ID="ddlCidadePIS" data-placeholder="Escolha uma Cidade..." Style="width: 350px"  TabIndex="2" ClientIDMode="Static" />
                             </span>
                         </p>
 

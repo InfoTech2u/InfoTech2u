@@ -239,10 +239,10 @@ namespace InfoTech2u.Verithus.WEB.Handler
             objFuncionario.DocumentoFundoGarantia = objDocumentoFundoGarantia;
             //Passo 7 - Caracteristicas Fisicas
             if (!String.IsNullOrWhiteSpace(Altura))
-                objCaractesristicaFisica.Altura = Convert.ToDecimal(Altura);
+                objCaractesristicaFisica.Altura = Altura;
 
             if (!String.IsNullOrWhiteSpace(Peso))
-                objCaractesristicaFisica.Peso = Convert.ToDecimal(Peso);
+                objCaractesristicaFisica.Peso = Peso;
 
             objCaractesristicaFisica.Sinais = Sinais;
 

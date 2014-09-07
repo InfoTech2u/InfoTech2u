@@ -25,6 +25,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
                 CarregarTipoOlho();
                 CarregarTipoBancoPIS();
                 CarregarTipoBancoFGTS();
+                CarregarEstado();
             
 
 
@@ -167,6 +168,28 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
 
 
         }
+
+        protected void CarregarEstado()
+        {
+            EstadoBS retorno = new EstadoBS();
+            EstadoVO entrada = new EstadoVO();
+            List<EstadoVO> retornoLista = new List<EstadoVO>();
+
+            retornoLista = retorno.SelecionarEstado(entrada);
+
+            this.ddlEstadoFuncionario.DataSource = retornoLista;
+            this.ddlEstadoFuncionario.DataValueField = "CodigoEstado";
+            this.ddlEstadoFuncionario.DataTextField = "Descricao";
+            this.ddlEstadoFuncionario.DataBind();
+            this.ddlEstadoFuncionario.Items.Insert(0, new ListItem("Selecionar", "0"));
+
+            this.ddlEstadoPIS.DataSource = retornoLista;
+            this.ddlEstadoPIS.DataValueField = "CodigoEstado";
+            this.ddlEstadoPIS.DataTextField = "Descricao";
+            this.ddlEstadoPIS.DataBind();
+            this.ddlEstadoPIS.Items.Insert(0, new ListItem("Selecionar", "0"));
+        }
+
         protected void CarregarPais()
         {
             PaisBS retorno = new PaisBS();

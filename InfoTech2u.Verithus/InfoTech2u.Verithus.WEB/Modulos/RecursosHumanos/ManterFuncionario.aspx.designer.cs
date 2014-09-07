@@ -94,6 +94,15 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario {
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoEndereco;
         
         /// <summary>
+        /// ddlEstadoFuncionario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlEstadoFuncionario;
+        
+        /// <summary>
         /// ddlTipoLogradouro control.
         /// </summary>
         /// <remarks>
@@ -389,6 +398,15 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoEnderecoPIS;
+        
+        /// <summary>
+        /// ddlEstadoPIS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlEstadoPIS;
         
         /// <summary>
         /// ddlTipoLogradouroPIS control.
