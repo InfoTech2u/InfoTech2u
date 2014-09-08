@@ -63,7 +63,6 @@
     <Compile Include="EstadoCivilBS.cs" />
     <Compile Include="FeriasBS.cs" />
     <Compile Include="FuncionariosBS.cs" />
-    <Compile Include="InfoTech2uSQLUtil.cs" />
     <Compile Include="LogAcaoBS.cs" />
     <Compile Include="LogErroBS.cs" />
     <Compile Include="PaisBS.cs" />
