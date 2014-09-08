@@ -27,5 +27,47 @@ namespace InfoTech2u.Verithus.BS
                 objRetorno = null;
             }
         }
+
+        public bool IncluirTipoCargo(TipoCargoVO param)
+        {
+            TipoCargoDA objRetorno = null;
+
+            try
+            {
+                objRetorno = new TipoCargoDA();
+
+                return objRetorno.IncluirTipoCargo(param);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                objRetorno = null;
+            }
+        }
+
+        public bool ExcluirTipoCargo(TipoCargoVO param)
+        {
+            TipoCargoDA objRetorno = null;
+
+            try
+            {
+                objRetorno = new TipoCargoDA();
+
+                return objRetorno.ExcluirTipoCargo(param);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                objRetorno = null;
+            }
+        }
     }
 }
