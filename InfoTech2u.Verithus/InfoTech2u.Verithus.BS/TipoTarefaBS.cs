@@ -27,5 +27,47 @@ namespace InfoTech2u.Verithus.BS
                 objRetorno = null;
             }
         }
+
+        public bool IncluirTipoTarefa(TipoTarefaVO param)
+        {
+            TipoTarefaDA objRetorno = null;
+
+            try
+            {
+                objRetorno = new TipoTarefaDA();
+
+                return objRetorno.IncluirTipoTarefa(param);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                objRetorno = null;
+            }
+        }
+
+        public bool ExcluirTipoTarefa(TipoTarefaVO param)
+        {
+            TipoTarefaDA objRetorno = null;
+
+            try
+            {
+                objRetorno = new TipoTarefaDA();
+
+                return objRetorno.ExcluirTipoTarefa(param);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                objRetorno = null;
+            }
+        }
     }
 }
