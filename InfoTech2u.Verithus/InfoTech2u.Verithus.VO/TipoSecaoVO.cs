@@ -19,8 +19,8 @@ namespace InfoTech2u.Verithus.VO
             this.DadosAdmissaoVO = new HashSet<DadosAdmissaoVO>();
             this.DadosDemissaoVO = new HashSet<DadosDemissaoVO>();
         }
-    
-        public int CodigoTipoSecao { get; set; }
+
+        public Nullable<int> CodigoTipoSecao { get; set; }
         public string Descricao { get; set; }
         public Nullable<int> CodigoUsuarioCadastro { get; set; }
         public Nullable<System.DateTime> DataCadastro { get; set; }

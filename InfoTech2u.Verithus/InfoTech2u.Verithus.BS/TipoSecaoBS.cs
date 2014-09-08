@@ -27,5 +27,47 @@ namespace InfoTech2u.Verithus.BS
                 objRetorno = null;
             }
         }
+
+        public bool IncluirTipoSecao(TipoSecaoVO param)
+        {
+            TipoSecaoDA objRetorno = null;
+
+            try
+            {
+                objRetorno = new TipoSecaoDA();
+
+                return objRetorno.IncluirTipoSecao(param);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                objRetorno = null;
+            }
+        }
+
+        public bool ExcluirTipoSecao(TipoSecaoVO param)
+        {
+            TipoSecaoDA objRetorno = null;
+
+            try
+            {
+                objRetorno = new TipoSecaoDA();
+
+                return objRetorno.ExcluirTipoSecao(param);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                objRetorno = null;
+            }
+        }
     }
 }

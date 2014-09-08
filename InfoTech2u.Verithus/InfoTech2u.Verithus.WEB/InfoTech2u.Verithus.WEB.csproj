@@ -161,6 +161,7 @@
     <Content Include="Handler\Dependente.ashx" />
     <Content Include="Handler\BuscaCidade.ashx" />
     <Content Include="Handler\ManterCargo.ashx" />
+    <Content Include="Handler\ManterSecao.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -774,6 +775,9 @@
     </Compile>
     <Compile Include="Handler\ManterCargo.ashx.cs">
       <DependentUpon>ManterCargo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\ManterSecao.ashx.cs">
+      <DependentUpon>ManterSecao.ashx</DependentUpon>
     </Compile>
     <Compile Include="Handler\TipoBeneficio.ashx.cs">
       <DependentUpon>TipoBeneficio.ashx</DependentUpon>

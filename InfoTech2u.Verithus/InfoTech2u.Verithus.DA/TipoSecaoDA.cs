@@ -12,7 +12,6 @@ namespace InfoTech2u.Verithus.DA
 {
     public class TipoSecaoDA
     {
-        //SPVRT021_FUNCIONARIO_PR_SELECIONAR
         public List<TipoSecaoVO> SelecionarSecaoLista(TipoSecaoVO param)
         {
             List<TipoSecaoVO> listaRetorno = new List<TipoSecaoVO>();
@@ -61,6 +60,86 @@ namespace InfoTech2u.Verithus.DA
                 dtRetorno = null;
                 param = null;
             }
+        }
+
+        public bool IncluirTipoSecao(TipoSecaoVO param)
+        {
+            InfoTech2uSQLUtil objSql = null;
+            StringBuilder query = null;
+            List<SqlParameter> lstSqlParameter = null;
+            DataTable dt = null;
+
+            try
+            {
+
+                objSql = new InfoTech2uSQLUtil();
+                lstSqlParameter = new List<SqlParameter>();
+                query = new StringBuilder();
+
+                objSql.Sigla = objSql.GetDataBase();
+                objSql.ConnectionString = objSql.GetConnectionString(objSql.Sigla);
+                objSql.Open();
+
+                lstSqlParameter.Add(new SqlParameter("@DESCRICAO", param.Descricao));
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO_CADASTRO", param.CodigoUsuarioCadastro));
+                lstSqlParameter.Add(new SqlParameter("@DATA_CADASTRO", param.DataCadastro));
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO_ALTERACAO", param.CodigoUsuarioAlteracao));
+                lstSqlParameter.Add(new SqlParameter("@DATA_ALTERACAO", param.DataAlteracao));
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_STATUS", param.CodigoStatus));
+
+                dt = new DataTable();
+
+                int rowsAffected = 0;
+                objSql.ExecuteNonQuery("SPVRT046_TIPO_BENEFICIO_PR_INCLUIR", lstSqlParameter.ToArray(), null, out rowsAffected);
+
+                return rowsAffected > 0;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool ExcluirTipoSecao(TipoSecaoVO param)
+        {
+            InfoTech2uSQLUtil objSql = null;
+            StringBuilder query = null;
+            List<SqlParameter> lstSqlParameter = null;
+            bool foiExcluido = false;
+
+            try
+            {
+
+                objSql = new InfoTech2uSQLUtil();
+                lstSqlParameter = new List<SqlParameter>();
+                query = new StringBuilder();
+
+                objSql.Sigla = objSql.GetDataBase();
+                objSql.ConnectionString = objSql.GetConnectionString(objSql.Sigla);
+                objSql.Open();
+
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_SECAO", param.CodigoTipoSecao));
+
+                int rowsAffected = 0;
+
+                objSql.ExecuteNonQuery("SPVRT048_TIPO_BENEFICIO_PR_EXCLUIR", lstSqlParameter.ToArray(), null, out rowsAffected);
+
+                foiExcluido = rowsAffected > 0;
+            }
+            catch (Exception ex)
+            {
+                foiExcluido = false;
+            }
+            finally
+            {
+                objSql = null;
+                lstSqlParameter = null;
+                query = null;
+            }
+
+            return foiExcluido;
         }
     }
 }
