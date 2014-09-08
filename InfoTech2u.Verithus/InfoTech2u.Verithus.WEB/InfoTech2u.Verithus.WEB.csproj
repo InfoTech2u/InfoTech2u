@@ -163,6 +163,7 @@
     <Content Include="Handler\ManterCargo.ashx" />
     <Content Include="Handler\ManterSecao.ashx" />
     <Content Include="Handler\ManterTarefa.ashx" />
+    <Content Include="Handler\ManterFormaDePagamento.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -776,6 +777,9 @@
     </Compile>
     <Compile Include="Handler\ManterCargo.ashx.cs">
       <DependentUpon>ManterCargo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\ManterFormaDePagamento.ashx.cs">
+      <DependentUpon>ManterFormaDePagamento.ashx</DependentUpon>
     </Compile>
     <Compile Include="Handler\ManterSecao.ashx.cs">
       <DependentUpon>ManterSecao.ashx</DependentUpon>
