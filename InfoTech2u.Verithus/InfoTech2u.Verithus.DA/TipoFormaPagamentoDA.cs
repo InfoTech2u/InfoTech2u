@@ -27,11 +27,11 @@ namespace InfoTech2u.Verithus.DA
                 objSql.Open();
 
                 if (param.CodigoTipoFormaPagamento == null)
-                    lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_CARGO", DBNull.Value));
+                    lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_FORMA_PAGAMENTO", DBNull.Value));
                 else
-                    lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_CARGO", param.CodigoTipoFormaPagamento));
+                    lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_FORMA_PAGAMENTO", param.CodigoTipoFormaPagamento));
 
-                objSql.Execute("dbo.[SPVRT061_TIPO_CARGO_PR_SELECIONAR]", lstSqlParameter.ToArray(), null, ref dtRetorno);
+                objSql.Execute("dbo.[SPVRT089_TIPO_FORMA_PAGAMENTO_PR_SELECIONAR]", lstSqlParameter.ToArray(), null, ref dtRetorno);
 
                 DataTable dt = dtRetorno;
 
@@ -40,7 +40,7 @@ namespace InfoTech2u.Verithus.DA
                 {
                     retorno = new TipoFormaPagamentoVO();
 
-                    retorno.CodigoTipoFormaPagamento = Convert.ToInt32(dtRetorno.Rows[i]["CODIGO_TIPO_CARGO"].ToString());
+                    retorno.CodigoTipoFormaPagamento = Convert.ToInt32(dtRetorno.Rows[i]["CODIGO_TIPO_FORMA_PAGAMENTO"].ToString());
                     retorno.Descricao = string.IsNullOrWhiteSpace(dtRetorno.Rows[i]["DESCRICAO"].ToString()) ? null : dtRetorno.Rows[i]["DESCRICAO"].ToString();
 
                     listaRetorno.Add(retorno);
@@ -90,7 +90,7 @@ namespace InfoTech2u.Verithus.DA
                 dt = new DataTable();
 
                 int rowsAffected = 0;
-                objSql.ExecuteNonQuery("SPVRT046_TIPO_BENEFICIO_PR_INCLUIR", lstSqlParameter.ToArray(), null, out rowsAffected);
+                objSql.ExecuteNonQuery("SPVRT090_TIPO_FORMA_PAGAMENTO_PR_INCLUIR", lstSqlParameter.ToArray(), null, out rowsAffected);
 
                 return rowsAffected > 0;
             }
@@ -119,11 +119,11 @@ namespace InfoTech2u.Verithus.DA
                 objSql.ConnectionString = objSql.GetConnectionString(objSql.Sigla);
                 objSql.Open();
 
-                lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_CARGO", param.CodigoTipoFormaPagamento));
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_FORMA_PAGAMENTO", param.CodigoTipoFormaPagamento));
 
                 int rowsAffected = 0;
 
-                objSql.ExecuteNonQuery("SPVRT048_TIPO_BENEFICIO_PR_EXCLUIR", lstSqlParameter.ToArray(), null, out rowsAffected);
+                objSql.ExecuteNonQuery("SPVRT092_TIPO_FORMA_PAGAMENTO_PR_EXCLUIR", lstSqlParameter.ToArray(), null, out rowsAffected);
 
                 foiExcluido = rowsAffected > 0;
             }

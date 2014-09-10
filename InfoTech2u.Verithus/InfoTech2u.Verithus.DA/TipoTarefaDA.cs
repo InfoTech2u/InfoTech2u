@@ -90,7 +90,7 @@ namespace InfoTech2u.Verithus.DA
                 dt = new DataTable();
 
                 int rowsAffected = 0;
-                objSql.ExecuteNonQuery("SPVRT046_TIPO_BENEFICIO_PR_INCLUIR", lstSqlParameter.ToArray(), null, out rowsAffected);
+                objSql.ExecuteNonQuery("SPVRT085_TIPO_TAREFA_PR_INCLUIR", lstSqlParameter.ToArray(), null, out rowsAffected);
 
                 return rowsAffected > 0;
             }
@@ -123,7 +123,7 @@ namespace InfoTech2u.Verithus.DA
 
                 int rowsAffected = 0;
 
-                objSql.ExecuteNonQuery("SPVRT048_TIPO_BENEFICIO_PR_EXCLUIR", lstSqlParameter.ToArray(), null, out rowsAffected);
+                objSql.ExecuteNonQuery("SPVRT088_TIPO_TAREFA_PR_EXCLUIR", lstSqlParameter.ToArray(), null, out rowsAffected);
 
                 foiExcluido = rowsAffected > 0;
             }
