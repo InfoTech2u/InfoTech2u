@@ -1,11 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Modulos/InfoTech2u.Master" AutoEventWireup="true" CodeBehind="ManterCargo.aspx.cs" Inherits="InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.ManterCargo" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderInfoTech2u" runat="server">
+     <script type="text/javascript">
+        
+
+        
+    </script>
     <div class="rightpanel">
 
-        <ul class="breadcrumbs">
+       <ul class="breadcrumbs">
             <li><a href="dashboard.html"><i class="iconfa-home"></i></a><span class="separator"></span></li>
             <li><a href="forms.html">Forms</a> <span class="separator"></span></li>
             <li>Form Styles</li>
@@ -21,33 +25,61 @@
             </div>
         </div>
         <!--pageheader-->
-
         <div class="maincontent">
             <div class="maincontentinner">
-                <div class="widgetbox box-inverse">
-                    <h4 class="widgettitle">Dados Cargo</h4>
-                    <div class="widgetcontent nopadding">
-                        <div class="stdform stdform2">
-                          
-                            <p id="validaDescricao">
-                                <label>Descrição</label>
-                                <span class="field">
+                 <asp:HiddenField ID="hdnCodigoFuncionario" runat="server" ClientIDMode="Static"/>
+                <div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal hide fade in" id="myModal">
+                    <div class="modal-header widgettitle">
+                        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">&times;</button>
+                        <h4 class="widgettitle">Dados Cargo</h4>
+                       
+                    </div>
+                    <div class="modal-body">
+                        <div class="widgetbox box-inverse">
+
+                            <div class="par control-group">
+                                <label class="control-label" for="txtDescricaoTipoBeneficio">Descrição</label>
+                                <div class="controls">
                                     <asp:TextBox runat="server" ID="txtDescricao" class="input-small" ClientIDMode="Static" />
                                     <span class="help-inline" id="msgDescricao"></span>
-                                </span>
-                            </p>
-
-
-                            <p class="stdformbutton">
-                                <a href="#"  id="btnConcluir"  class="btn btn-primary btn-rounded">Concluir</a>
-                                <a href="#" id="btnLimpar" class="btn btn-rounded"><i class="iconfa-refresh iconsweets-black"></i>&nbsp; limpar</a>
-                            </p>
-
+                                </div>
+                            </div>
+                            <!--widgetcontent-->
                         </div>
                     </div>
-                </div>
-                <!--widget-->
 
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn">&nbsp; Sair</button>
+                        <a class="btn btn-primary" id="btnIncluir" href="#" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Incluir</a>
+                        <a href="#" id="btnLimpar" class="btn btn-rounded"><i class="iconfa-refresh iconsweets-black"></i>&nbsp; limpar</a>
+                    </div>
+                </div>
+                <!--#myModal-->
+
+                <div class="row-fluid">
+                    <a class="btn btn-primary" href="#myModal" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Incluir</a>                   
+                </div>
+
+                <h4 class="widgettitle">Benefício</h4>
+            	<table id="dyntable" class="table table-bordered responsive">
+                    <colgroup>
+                        <col class="con0" style="align: center; width: 4%" />
+                        <col class="con1" />
+                        <col class="con0" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Descrição</th>
+                            <th>Excluir</th
+                        </tr>
+                    </thead>
+                    <tbody>
+                       
+                       
+                    </tbody>
+                </table>
+            <!--widget-->
                 <div class="footer">
                     <div class="footer-left">
                         <span>&copy; 2013. Shamcey Admin Template. All Rights Reserved.</span>
@@ -59,10 +91,8 @@
                 <!--footer-->
 
             </div>
-            <!--maincontentinner-->
-        </div>
-        <!--maincontent-->
-
+    <!--maincontentinner-->
     </div>
-    <!--rightpanel-->
+    <!--maincontent-->
+    </div>
 </asp:Content>

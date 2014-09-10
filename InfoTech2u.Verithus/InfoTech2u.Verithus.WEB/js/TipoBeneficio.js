@@ -54,7 +54,6 @@ function validar() {
 };
 
 function CarregarTipoBeneficioLista() {
-
     jQuery.ajax({
         type: "GET",
         crossDomain: true,

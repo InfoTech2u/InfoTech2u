@@ -2,7 +2,9 @@
 
 jQuery(document).ready(function () {
 
-    jQuery('#btnConcluir').click(function (event) {
+    CarregarLista();
+
+    jQuery('#btnIncluir').click(function (event) {
         if (ValidarFormulario()) {
             jQuery.ajax({
                 type: "GET",
@@ -16,7 +18,7 @@ jQuery(document).ready(function () {
                     Descricao: jQuery('#txtDescricao').val()
                 },
                 success: function (data) {
-
+                    alert("Incluído com Sucesso!");                    
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrow) {
                     errorAjax(textStatus);
@@ -31,6 +33,42 @@ jQuery(document).ready(function () {
         jQuery('#msgDescricao').html('').hide();
         jQuery("#validaDescricao").removeClass("par control-group error").addClass("input-small");
     });
+
+    // delete row in a table
+    jQuery(".deleterow").click(function () {
+        var conf = confirm('Deseja Deletar este Registro?');
+        if (conf)
+            jQuery(this).parents('tr').fadeOut(function () {
+                var id = jQuery(this).children('td:first').text();
+
+                jQuery.ajax({
+                    type: "GET",
+                    crossDomain: true,
+                    url: "../../Handler/ManterSecao.ashx",
+                    contentType: "json",
+                    cache: false,
+                    data: {
+                        Metodo: 'Excluir',
+                        Acao: 'Exclusao',
+                        Id: id
+                    },
+                    success: function (data) {
+
+                        if (data) {
+                            jQuery(this).remove();
+                            // do some other stuff here
+                        }
+                        FormatarGrid();
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrow) {
+                        errorAjax(textStatus);
+                        alert(textStatus);
+                    }
+                });
+            });
+        return false;
+    });
+
 
     function ValidarFormulario() {
 
@@ -48,4 +86,48 @@ jQuery(document).ready(function () {
 
     }
 
+    function CarregarLista() {
+        jQuery.ajax({
+            type: "GET",
+            crossDomain: true,
+            url: "../../Handler/ManterSecao.ashx",
+            contentType: "json",
+            cache: false,
+            data: {
+                Metodo: 'Lista',
+                Acao: 'Consulta'
+            },
+            success: function (data) {
+
+                var tipos = eval(data);
+                for (x in tipos) {
+                    var row = '<tr><td>' + tipos[x].CodigoTipoSecao + '</td><td>' + tipos[x].Descricao + '</td><td class="centeralign"><a title="Excluir" href="#" class="deleterow"><i class="icon-trash"></i></a></td></tr>';
+                    jQuery('tbody').append(row);
+                }
+                FormatarGrid();
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrow) {
+                errorAjax(textStatus);
+                alert(textStatus);
+            }
+        });
+    }
+
+    function FormatarGrid() {
+        // dynamic table
+        jQuery('#dyntable').dataTable({
+            "sPaginationType": "full_numbers",
+            "aaSortingFixed": [[0, 'asc']],
+            "fnDrawCallback": function (oSettings) {
+                jQuery.uniform.update();
+            }
+        });
+    };
+
+
+
+
 });
+
+
+
