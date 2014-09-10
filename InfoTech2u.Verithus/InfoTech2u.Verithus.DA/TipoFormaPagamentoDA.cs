@@ -87,6 +87,9 @@ namespace InfoTech2u.Verithus.DA
                 lstSqlParameter.Add(new SqlParameter("@DATA_ALTERACAO", param.DataAlteracao));
                 lstSqlParameter.Add(new SqlParameter("@CODIGO_STATUS", param.CodigoStatus));
 
+                lstSqlParameter.Add(new SqlParameter("@C_ERR", DBNull.Value));
+                lstSqlParameter.Add(new SqlParameter("@T_ERR", DBNull.Value));
+
                 dt = new DataTable();
 
                 int rowsAffected = 0;
