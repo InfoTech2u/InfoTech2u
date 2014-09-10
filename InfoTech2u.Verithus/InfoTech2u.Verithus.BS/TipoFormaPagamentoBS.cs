@@ -70,5 +70,6 @@ namespace InfoTech2u.Verithus.BS
                 objRetorno = null;
             }
         }
+
     }
 }

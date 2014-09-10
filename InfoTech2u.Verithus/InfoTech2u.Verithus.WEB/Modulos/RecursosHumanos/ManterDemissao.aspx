@@ -87,7 +87,7 @@
                             <p id="validaFormaPagamento">
                                 <label>Forma de Pagamento</label>
                                 <span class="field">
-                                    <asp:TextBox runat="server" ID="txtFormaPagamento" class="input-small" ClientIDMode="Static" />
+                                    <asp:DropDownList runat="server" ID="ddlFormaPagamento" class="uniformselect" ClientIDMode="Static" />
                                     <span class="help-inline" id="msgFormaPagamento"></span>
                                 </span>
                             </p>

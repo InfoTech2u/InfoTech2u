@@ -20,10 +20,26 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
                 CarregarTarefa();
                 CarregarCargo();
                 CarregarSecao();
+                CarregarFormaPagamento();
             }
         }
 
 
+
+        private void CarregarFormaPagamento()
+        {
+            TipoFormaPagamentoBS retornoFormaPagamentoBS = new TipoFormaPagamentoBS();
+            TipoFormaPagamentoVO objEntrada = new TipoFormaPagamentoVO();
+            List<TipoFormaPagamentoVO> listaFormaPagamentoVO = new List<TipoFormaPagamentoVO>();
+
+            listaFormaPagamentoVO = retornoFormaPagamentoBS.SelecionarFormaPagamentoLista(objEntrada);
+
+            this.ddlFormaPagamento.DataSource = listaFormaPagamentoVO;
+            this.ddlFormaPagamento.DataValueField = "CodigoTipoFormaPagamento";
+            this.ddlFormaPagamento.DataTextField = "Descricao";
+            this.ddlFormaPagamento.DataBind();
+            this.ddlFormaPagamento.Items.Insert(0, new ListItem("Selecionar", "0"));
+        }
 
         private void CarregarTarefa()
         {
@@ -101,7 +117,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery.maskMoney.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "custom.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "CadastroFuncionario.js");
-            InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "CadastroAdmissaoDemissao.js");
+            InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "CadastroDemissao.js");
 
         }
     }

@@ -10,5 +10,25 @@ namespace InfoTech2u.Verithus.BS
 {
     public class DadosDemissaoBS
     {
+        public bool IncluirDemissao(DadosDemissaoVO param)
+        {
+            DadosDemissaoDA objRetorno = null;
+
+            try
+            {
+                objRetorno = new DadosDemissaoDA();
+
+                return objRetorno.IncluirDemissao(param);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                objRetorno = null;
+            }
+        }
     }
 }
