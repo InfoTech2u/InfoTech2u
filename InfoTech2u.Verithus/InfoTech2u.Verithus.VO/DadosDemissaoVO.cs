@@ -16,7 +16,7 @@ namespace InfoTech2u.Verithus.VO
     {
         public int CodigoDEMISSAO { get; set; }
         public Nullable<int> CodigoFuncionario { get; set; }
-        public Nullable<System.DateTime> DataDEMISSAO { get; set; }
+        public Nullable<System.DateTime> DataDemissao { get; set; }
         public Nullable<System.DateTime> DataRegistro { get; set; }
         public Nullable<int> CodigoTipoCargo { get; set; }
         public Nullable<int> CodigoTipoSecao { get; set; }

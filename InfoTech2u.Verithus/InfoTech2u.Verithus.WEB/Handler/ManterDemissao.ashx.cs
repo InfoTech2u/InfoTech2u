@@ -29,7 +29,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
             {
                 DadosDemissaoVO param = new DadosDemissaoVO();
 
-                param.DataCadastro = Convert.ToDateTime(context.Request.QueryString["DataAdmissao"].ToString());
+                param.DataDemissao = Convert.ToDateTime(context.Request.QueryString["DataDemissao"].ToString());
                 param.DataRegistro = Convert.ToDateTime(context.Request.QueryString["DataRegistro"].ToString());
                 param.CodigoTipoCargo = Convert.ToInt32(context.Request.QueryString["Cargo"].ToString());
                 param.CodigoTipoSecao = Convert.ToInt32(context.Request.QueryString["Secao"].ToString());

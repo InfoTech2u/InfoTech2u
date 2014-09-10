@@ -25,8 +25,7 @@ jQuery(document).ready(function () {
                 data: {
                     Metodo: 'Incluir',
                     Acao: 'Inclusao',
-
-                    DataAdmissao:   jQuery('#DataAdmissao').val(),
+                    DataDemissao: jQuery('#txtDataDemissao').val(),
                     DataRegistro:   jQuery('#txtDataRegistro').val(),
                     Cargo:          jQuery('#ddlCargo').val(),
                     Secao:          jQuery('#ddlSecao').val(),
@@ -48,9 +47,9 @@ jQuery(document).ready(function () {
 
     jQuery("#btnLimparDemissao").click(function () {
 
-        jQuery('#txtDataAdmissao').val("");
-        jQuery('#msgDataDeAdmissao').html('').hide();
-        jQuery("#validaDataDeAdmissao").removeClass("par control-group error").addClass("input-small");
+        jQuery('#txtDataDemissao').val("");
+        jQuery('#msgDataDemissao').html('').hide();
+        jQuery("#validaDataDemissao").removeClass("par control-group error").addClass("input-small");
 
         jQuery('#txtDataRegistro').val("");
         jQuery('#msgDataRegistro').html('').hide();
@@ -83,15 +82,16 @@ jQuery(document).ready(function () {
 
     function ValidarFormularioDemissao() {
 
-        var dataDeAdmissao = jQuery('#txtDataAdmissao').val();
-        if (!dataDeAdmissao && dataDeAdmissao.length <= 0) {
-            jQuery('#msgDataDeAdmissao').html('O Campo Data de Admissão Deve ser preenchido').show();
-            jQuery("#validaDataDeAdmissao").removeClass("par control-group success").addClass("par control-group error");
-            retorno = false;
+        var dataDemissao = jQuery('#txtDataDemissao').val();
+        if (!dataDemissao && dataDemissao.length <= 0) {
+            jQuery('#msgDataDemissao').html('O Campo Data de Admissão Deve ser preenchido').show();
+            jQuery("#validaDataDemissao").removeClass("par control-group success").addClass("par control-group error");
+            return false;
         }
         else {
-            jQuery('#msgDataDeAdmissao').html('').hide();
-            jQuery("#validaDataDeAdmissao").removeClass("par control-group error").addClass("par control-group success");
+            jQuery('#msgDataDemissao').html('').hide();
+            jQuery("#validaDataDemissao").removeClass("par control-group error").addClass("par control-group success");
+            return true;
         }
 
 
@@ -99,11 +99,12 @@ jQuery(document).ready(function () {
         if (!dataDeRegistro && dataDeRegistro.length <= 0) {
             jQuery('#msgDataRegistro').html('O Campo Data de Registro Deve ser preenchido').show();
             jQuery("#validaDataRegistro").removeClass("par control-group success").addClass("par control-group error");
-            retorno = false;
+            return false;
         }
         else {
             jQuery('#msgDataRegistro').html('').hide();
             jQuery("#validaDataRegistro").removeClass("par control-group error").addClass("par control-group success");
+            return true;
         }
 
 
@@ -111,35 +112,38 @@ jQuery(document).ready(function () {
         if (ddlCargo == 'Selecionar') {
             jQuery('#msgCargo').html('O Campo Cargo Deve ser preenchido').show();
             jQuery("#validaCargo").removeClass("par control-group success").addClass("par control-group error");
-            retorno = false;
+            return false;
         }
         else {
             jQuery('#msgCargo').html('').hide();
             jQuery("#validaCargo").removeClass("par control-group error").addClass("par control-group success");
+            return true;
         }
 
-
+        /*
         var ddlSecao = jQuery('#ddlSecao option:selected').text();
         if (ddlSecao == 'Selecionar') {
             jQuery('#msgSecao').html('O Campo Seção Deve ser preenchido').show();
             jQuery("#validaSecao").removeClass("par control-group success").addClass("par control-group error");
-            retorno = false;
+            return false;
         }
         else {
             jQuery('#msgSecao').html('').hide();
             jQuery("#validaSecao").removeClass("par control-group error").addClass("par control-group success");
+            return true;
         }
-
+        */
 
         var salarioInicial = jQuery("#txtSalarioInicial").val();
         if (!salarioInicial && salarioInicial.length <= 0) {
             jQuery('#msgSalarioInicial').html('O Campo Salário Inicial Deve ser preenchido').show();
             jQuery("#validaSalarioInicial").removeClass("par control-group success").addClass("par control-group error");
-            retorno = false;
+            return false;
         }
         else {
             jQuery('#msgSalarioInicial').html('').hide();
             jQuery("#validaSalarioInicial").removeClass("par control-group error").addClass("par control-group success");
+            return true;
         }
 
 
@@ -147,11 +151,12 @@ jQuery(document).ready(function () {
         if (!comissao && comissao.length <= 0) {
             jQuery('#msgComissao').html('O Campo Comissão Deve ser preenchido').show();
             jQuery("#validaComissao").removeClass("par control-group success").addClass("par control-group error");
-            retorno = false;
+            return false;
         }
         else {
             jQuery('#msgComissao').html('').hide();
             jQuery("#validaComissao").removeClass("par control-group error").addClass("par control-group success");
+            return true;
         }
 
 
@@ -159,11 +164,12 @@ jQuery(document).ready(function () {
         if (ddlTarefa == 'Selecionar') {
             jQuery('#msgTarefa').html('O Campo Tarefa Deve ser preenchido').show();
             jQuery("#validaTarefa").removeClass("par control-group success").addClass("par control-group error");
-            retorno = false;
+            return false;
         }
         else {
             jQuery('#msgTarefa').html('').hide();
             jQuery("#validaTarefa").removeClass("par control-group error").addClass("par control-group success");
+            return true;
         }
 
 
@@ -171,11 +177,12 @@ jQuery(document).ready(function () {
         if (ddlFormaPagamento == 'Selecionar') {
             jQuery('#msgFormaPagamento').html('O Campo Forma de Pagamento Deve ser preenchido').show();
             jQuery("#validaFormaPagamento").removeClass("par control-group success").addClass("par control-group error");
-            retorno = false;
+            return false;
         }
         else {
             jQuery('#msgFormaPagamento').html('').hide();
             jQuery("#validaFormaPagamento").removeClass("par control-group error").addClass("par control-group success");
+            return true;
         }
 
     }

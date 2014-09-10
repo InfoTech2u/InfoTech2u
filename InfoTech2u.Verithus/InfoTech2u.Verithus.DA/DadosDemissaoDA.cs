@@ -29,9 +29,9 @@ namespace InfoTech2u.Verithus.DA
                 objSql.ConnectionString = objSql.GetConnectionString(objSql.Sigla);
                 objSql.Open();
 
-                lstSqlParameter.Add(new SqlParameter("@COD_DETL_FUNC", param.CodigoFuncionario));
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_FUNCIONARIO", param.CodigoFuncionario));
 
-                lstSqlParameter.Add(new SqlParameter("@DATA_DEMISSAO", param.DataCadastro));
+                lstSqlParameter.Add(new SqlParameter("@DATA_DEMISSAO", param.DataDemissao));
                 lstSqlParameter.Add(new SqlParameter("@DATA_REGISTRO", param.DataRegistro));
 
                 lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_CARGO", param.CodigoTipoCargo));
@@ -42,6 +42,8 @@ namespace InfoTech2u.Verithus.DA
 
                 lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_TAREFA", param.CodigoTipoTarefa));
                 lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_FORMA_PAGAMENTO", param.CodigoTipoFormaPagamento));
+
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_FORMA_PAGAMENTO", param.CodigoFormaPagamento));
 
                 lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO_CADASTRO", param.CodigoUsuarioCadastro));
                 lstSqlParameter.Add(new SqlParameter("@DATA_CADASTRO", param.DataCadastro));

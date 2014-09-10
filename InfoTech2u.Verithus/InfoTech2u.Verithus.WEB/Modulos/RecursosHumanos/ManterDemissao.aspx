@@ -28,11 +28,11 @@
                     <div class="widgetcontent nopadding">
                         <div class="stdform stdform2">
 
-                            <p id="validaDataDeAdmissao">
-                                <label>Data de Admissão</label>
+                            <p id="validaDataDemissao">
+                                <label>Data de Demissão</label>
                                 <span class="field">
-                                    <asp:TextBox runat="server" ID="txtDataAdmissao" class="input-small dataddmmaaaa" ClientIDMode="Static" />
-                                    <span class="help-inline" id="msgDataDeAdmissao"></span>
+                                    <asp:TextBox runat="server" ID="txtDataDemissao" class="input-small dataddmmaaaa" ClientIDMode="Static" />
+                                    <span class="help-inline" id="msgDataDemissao"></span>
                                 </span>
                             </p>
 
