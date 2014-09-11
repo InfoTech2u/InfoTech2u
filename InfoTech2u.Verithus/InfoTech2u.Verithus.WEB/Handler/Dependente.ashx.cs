@@ -17,6 +17,9 @@ namespace InfoTech2u.Verithus.WEB.Handler
         public void ProcessRequest(HttpContext context)
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
+           
+            var a = serializer.Deserialize<String[]>(context.Request.QueryString["Beneficio"]);
+
             if (context.Request.QueryString["Metodo"] == "Lista")
             {
                 if (!String.IsNullOrEmpty(context.Request.QueryString["CodigoFuncionario"]))

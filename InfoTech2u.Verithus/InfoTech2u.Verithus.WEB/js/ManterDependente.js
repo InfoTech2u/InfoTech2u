@@ -13,7 +13,7 @@
     jQuery(".dataddmmaaaa").mask("99/99/9999");
 
     // Dual Box Select
-    var db = jQuery('#dualselect').find('.ds_arrow button');	//get arrows of dual select
+    var db = jQuery('#dualselect').find('.ds_arrow a');	//get arrows of dual select
     var sel1 = jQuery('#dualselect select:first-child');		//get first select element
     var sel2 = jQuery('#dualselect select:last-child');			//get second select element
 
@@ -44,15 +44,54 @@
 
     jQuery('#btnIncluir').click(function (event) {
         if (validar()) {
+            var selected = jQuery('#lstBeneficioSelected option');
+            var arraySel = [];
 
-            jQuery('#dyntable > tbody:last').append('<tr class="gradeX"><td class="aligncenter"><span class="center"><input type="checkbox" /></span></td><td>Trident</td><td>Internet Explorer 4.0</td><td>Win 95+</td><td class="center">4</td></tr>');
-            jQuery('#dyntable > tbody:last').append('<tr class="gradeX"><td class="aligncenter"><span class="center"><input type="checkbox" /></span></td><td>Trident</td><td>Internet Explorer 4.0</td><td>Win 95+</td><td class="center">4</td></tr>');
-            jQuery('#dyntable > tbody:last').append('<tr class="gradeX"><td class="aligncenter"><span class="center"><input type="checkbox" /></span></td><td>Trident</td><td>Internet Explorer 4.0</td><td>Win 95+</td><td class="center">4</td></tr>');
-            jQuery('#dyntable > tbody:last').append('<tr class="gradeX"><td class="aligncenter"><span class="center"><input type="checkbox" /></span></td><td>Trident</td><td>Internet Explorer 4.0</td><td>Win 95+</td><td class="center">4</td></tr>');
+            for (var i = 0; i < selected.length; i++) {
+                arraySel.push(selected[i].value);
+            }
 
-            jQuery('#myModal').modal('hide')
+
+            jQuery.ajax({
+                type: "GET",
+                crossDomain: true,
+                url: "../../Handler/Dependente.ashx",
+                contentType: "json",
+                cache: false,
+                data: {
+                    Metodo: 'Incluir',
+                    Acao: 'Inclusao',
+                    Descricao: jQuery('#txtNomeDependente').val(),
+                    Parentesco: jQuery('#ddlTipoParentesco').val(),
+                    DataNascimento: jQuery('#txtDataNascimento').val(),
+                    CodigoFuncionario: jQuery('#hdnCodigoFuncionario').val(),
+                    Beneficios: JSON.stringify(arraySel)
+                },
+                success: function (data) {
+
+                    if (data) {
+                        LimparGrid();
+                        FormatarGrid();
+
+
+
+                        jQuery('#myModal').modal('hide')
+                    }
+                    else {
+                        alert("Não foi possível incluir.");
+                    }
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrow) {
+                    errorAjax(textStatus);
+                    alert(textStatus);
+                }
+            });
         }
     });
+
+
+
 
     /*
     <tr class="gradeX"><td class="aligncenter"><span class="center"><input type="checkbox" /></span></td><td>Trident</td><td>Internet Explorer 4.0</td><td>Win 95+</td><td class="center">4</td></tr>
@@ -61,10 +100,19 @@
 });
 
 function validar() {
-    var codFuncionario = 
 
-    return false;
-}
+    if (jQuery('#txtNomeDependente').val() == "") {
+        alert("Preencha o nome do dependente.");
+        return false;
+    }
+    else if (jQuery('#txtDataNascimento').val() == "") {
+        alert("Preencha o nome do dependente.");
+        return false;
+    }
+    else {
+        return true;
+    }
+};
 
 function IncluirDependente() {
 

@@ -19,7 +19,7 @@ namespace InfoTech2u.Verithus.VO
             this.ContribuicaoSindicalVO = new HashSet<ContribuicaoSindicalVO>();
         }
     
-        public int CodigoSindicato { get; set; }
+        public int? CodigoSindicato { get; set; }
         public string Nome { get; set; }
         public Nullable<int> CodigoUsuarioCadastro { get; set; }
         public Nullable<System.DateTime> DataCadastro { get; set; }

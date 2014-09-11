@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using InfoTech2u.Verithus.VO;
 using InfoTech2u.Verithus.DA;
+using System.Data;
 
 namespace InfoTech2u.Verithus.BS
 {
@@ -52,7 +53,7 @@ namespace InfoTech2u.Verithus.BS
             }
         }
 
-        public bool IncluirTipoBeneficio(TipoBeneficioVO param)
+        public DataTable IncluirTipoBeneficio(TipoBeneficioVO param)
         {
             TipoBeneficioDA objRetorno = null;
 

@@ -12,12 +12,12 @@ namespace InfoTech2u.Verithus.DA
 {
     public class TipoBeneficioDA
     {
-        public bool IncluirTipoBeneficio(TipoBeneficioVO param)
+        public DataTable IncluirTipoBeneficio(TipoBeneficioVO param)
         {
             InfoTech2uSQLUtil objSql = null;
             StringBuilder query = null;
             List<SqlParameter> lstSqlParameter = null;
-            DataTable dt = null;
+            DataTable dtRetorno = null;
 
             try
             {
@@ -37,19 +37,17 @@ namespace InfoTech2u.Verithus.DA
                 lstSqlParameter.Add(new SqlParameter("@DATA_ALTERACAO", param.DataAlteracao));
                 lstSqlParameter.Add(new SqlParameter("@CODIGO_STATUS", param.CodigoStatus));
 
-                dt = new DataTable();
+                dtRetorno = new DataTable();
 
-                int rowsAffected = 0;
-                objSql.ExecuteNonQuery("SPVRT046_TIPO_BENEFICIO_PR_INCLUIR", lstSqlParameter.ToArray(), null, out rowsAffected);
-
-                return rowsAffected > 0;
+                objSql.Execute("SPVRT046_TIPO_BENEFICIO_PR_INCLUIR", lstSqlParameter.ToArray(), null, ref dtRetorno);
+                
             }
             catch (Exception ex)
             {
-                return false;
+                return null;
             }
 
-            return true;
+            return dtRetorno;
         }
 
         public List<TipoBeneficioVO> SelecionarTipoBeneficio(TipoBeneficioVO param)

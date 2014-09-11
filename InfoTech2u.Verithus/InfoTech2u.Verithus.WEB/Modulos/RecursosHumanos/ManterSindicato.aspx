@@ -1,7 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Modulos/InfoTech2u.Master" AutoEventWireup="true" CodeBehind="ManterTipoBeneficio.aspx.cs" Inherits="InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.ManterTipoBeneficio" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Modulos/InfoTech2u.Master" AutoEventWireup="true" CodeBehind="ManterSindicato.aspx.cs" Inherits="InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.ManterSindicato" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderInfoTech2u" runat="server">
+     
     <div class="rightpanel">
 
         <ul class="breadcrumbs">
@@ -23,16 +24,16 @@
                 <div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal hide fade in" id="myModal">
                     <div class="modal-header widgettitle">
                         <button aria-hidden="true" data-dismiss="modal" class="close" type="button">&times;</button>
-                        <h3 id="myModalLabel">Benefício</h3>
+                        <h3 id="myModalLabel">Sindicato</h3>
                        
                     </div>
                     <div class="modal-body">
                         <div class="widgetbox box-inverse">
                             
                             <div class="par control-group">
-                                <label class="control-label" for="txtDescricaoTipoBeneficio">Descrição</label>
+                                <label class="control-label" for="txtNomeSindicato">Descrição</label>
                                 <div class="controls">
-                                    <asp:TextBox runat="server" ID="txtDescricaoTipoBeneficio" class="input-block-level" ClientIDMode="Static" />
+                                    <asp:TextBox runat="server" ID="txtNomeSindicato" class="input-block-level" ClientIDMode="Static" />
                                 </div>
                             </div>
                             <!--widgetcontent-->
@@ -50,7 +51,7 @@
                     <a class="btn btn-primary" href="#myModal" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Incluir</a>                   
                 </div>
 
-                <h4 class="widgettitle">Benefício</h4>
+                <h4 class="widgettitle">Sindicato</h4>
             	<table id="dyntable" class="table table-bordered responsive">
                     <colgroup>
                         <col class="con0" style="align: center; width: 4%" />
@@ -60,7 +61,7 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Descrição</th>
+                            <th>Nome</th>
                             <th>Excluir</th
                         </tr>
                     </thead>

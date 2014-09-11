@@ -74,6 +74,7 @@
     <Content Include="js\jquery.maskedinput-1.3.js" />
     <Content Include="js\jquery.maskMoney.js" />
     <Content Include="js\ManterDependente.js" />
+    <Content Include="js\ManterSindicato.js" />
     <Content Include="js\TipoBeneficio.js" />
     <Content Include="Modulos\InfoTech2u.Master" />
     <Content Include="fonts\fontawesome\fontawesome-webfont.eot" />
@@ -169,6 +170,7 @@
     <Content Include="Handler\ManterTarefa.ashx" />
     <Content Include="Handler\ManterFormaDePagamento.ashx" />
     <Content Include="Handler\ManterDemissao.ashx" />
+    <Content Include="Handler\ManterSindicato.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -697,6 +699,7 @@
     <Content Include="Modulos\RecursosHumanos\ManterDependente.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterFormaDePagamento.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterSecao.aspx" />
+    <Content Include="Modulos\RecursosHumanos\ManterSindicato.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterTarefa.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterTipoBeneficio.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterUsuario.aspx" />
@@ -794,6 +797,8 @@
     </Compile>
     <Compile Include="Handler\ManterTarefa.ashx.cs">
       <DependentUpon>ManterTarefa.ashx</DependentUpon>
+    <Compile Include="Handler\ManterSindicato.ashx.cs">
+      <DependentUpon>ManterSindicato.ashx</DependentUpon>
     </Compile>
     <Compile Include="Handler\TipoBeneficio.ashx.cs">
       <DependentUpon>TipoBeneficio.ashx</DependentUpon>
@@ -883,6 +888,13 @@
     </Compile>
     <Compile Include="Modulos\RecursosHumanos\ManterSecao.aspx.designer.cs">
       <DependentUpon>ManterSecao.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\ManterSindicato.aspx.cs">
+      <DependentUpon>ManterSindicato.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\ManterSindicato.aspx.designer.cs">
+      <DependentUpon>ManterSindicato.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\RecursosHumanos\ManterTarefa.aspx.cs">
       <DependentUpon>ManterTarefa.aspx</DependentUpon>

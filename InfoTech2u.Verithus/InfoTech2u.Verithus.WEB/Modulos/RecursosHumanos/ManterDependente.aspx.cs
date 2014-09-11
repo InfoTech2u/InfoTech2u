@@ -18,7 +18,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
             {
                 CarregarDependentes();
             }
-
+            
             CarregarIncludes();
             CarregarTipoParentesco();
             CarregarTipoBeneficio();
@@ -26,12 +26,15 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
 
         protected void CarregarDependentes()
         {
+            //TODO: Pegar Codigo Funcionario
             //var id = Request.QueryString["CodigoFuncionario"].ToString();
+            //hdnCodigoFuncionario.Value = id
             DependenteBS objDependenteBS = new DependenteBS();
 
             List<DependenteVO> objDependenteVO = new List<DependenteVO>();
             FuncionariosVO objFuncionariosVO = new FuncionariosVO();
             objFuncionariosVO.CodigoFuncionario = 1;
+            hdnCodigoFuncionario.Value = objFuncionariosVO.CodigoFuncionario.ToString();
             objDependenteVO = objDependenteBS.SelecionarDependentesDoFuncionario(objFuncionariosVO);
             
         }

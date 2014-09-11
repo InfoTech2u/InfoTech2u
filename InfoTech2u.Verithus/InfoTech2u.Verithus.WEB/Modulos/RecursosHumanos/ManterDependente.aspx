@@ -4,95 +4,22 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderInfoTech2u" runat="server">
     <script type="text/javascript">
-        Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(BeginRequest);
+        //Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(BeginRequest);
         function BeginRequest(sender, e) {
             e.get_postBackElement().disabled = true;
 
         }
 
         jQuery(document).ready(function () {
-            CarregarDependentes();
-
-            jQuery('#btnIncluir').click(function (event) {
-                if (validar()) {
-
-                    jQuery.ajax({
-                        type: "GET",
-                        crossDomain: true,
-                        url: "../../Handler/TipoBeneficio.ashx?Incluir",
-                        contentType: "json",
-                        cache: false,
-                        data: {
-                            Metodo: 'Incluir',
-                            Acao: 'Inclusao',
-                            Descricao: jQuery('#txtDescricaoTipoBeneficio').val()
-                        },
-                        success: function (data) {
-
-                            if (data) {
-                                LimparGrid();
-                                FormatarGrid();
-                                CarregarTipoBeneficioLista();
+            //CarregarDependentes();
 
 
-                                jQuery('#myModal').modal('hide')
-                            }
-                            else {
-                                alert("Não foi possível incluir.");
-                            }
-
-                        },
-                        error: function (XMLHttpRequest, textStatus, errorThrow) {
-                            errorAjax(textStatus);
-                            alert(textStatus);
-                        }
-                    });
-                }
-            });
 
 
         });
 
-        function validar() {
+       
 
-            if (jQuery('#txtDescricaoTipoBeneficio').val() == "") {
-                alert("Preencha a descrição do benefício.")
-                return false;
-            }
-            else {
-                return true;
-            }
-        };
-
-        function CarregarDependentes() {
-
-            jQuery.ajax({
-                type: "GET",
-                crossDomain: true,
-                url: "../../Handler/Dependente.ashx",
-                contentType: "json",
-                cache: false,
-                data: {
-                    Metodo: 'Lista',
-                    Acao: 'Consulta',
-                    CodigoFuncionario: jQuery('#hdnCodigoFuncionario').val()
-                },
-                success: function (data) {
-
-                    var tiposBeneficios = eval(data);
-                    for (x in tiposBeneficios) {
-                        var row = '<tr><td>' + tiposBeneficios[x].CodigoTipoBeneficio + '</td><td>' + tiposBeneficios[x].Descricao + '</td><td class="centeralign"><a title="Excluir" href="#" class="deleterow"><i class="icon-trash"></i></a></td></tr>';
-                        jQuery('tbody').append(row);
-                    }
-                    FormatarGrid();
-                    Excluir();
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrow) {
-                    errorAjax(textStatus);
-                    alert(textStatus);
-                }
-            });
-        }
 
         function FormatarGrid() {
             // dynamic table
@@ -151,14 +78,13 @@
             jQuery('#dyntable tbody tr').remove();
         };
 
-     </script>
+    </script>
     <div class="rightpanel">
 
         <ul class="breadcrumbs">
             <li><a href="dashboard.html"><i class="iconfa-home"></i></a><span class="separator"></span></li>
             <li><a href="forms.html">Forms</a> <span class="separator"></span></li>
             <li>Form Styles</li>
-
         </ul>
 
         <div class="pageheader">
@@ -172,7 +98,7 @@
 
         <div class="maincontent">
             <div class="maincontentinner">
-
+                <asp:HiddenField ID="hdnCodigoFuncionario" runat="server" ClientIDMode="Static" />
                 <div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal hide fade in" id="myModal">
                     <div class="modal-header widgettitle">
                         <button aria-hidden="true" data-dismiss="modal" class="close" type="button">&times;</button>
@@ -209,9 +135,9 @@
                                     <asp:ListBox ID="lstBeneficioSelect" runat="server" SelectionMode="Multiple" ClientIDMode="Static">
                                     </asp:ListBox>
                                     <span class="ds_arrow">
-                                        <button class="btn ds_prev"><i class="iconfa-chevron-left"></i></button>
+                                        <a href="#" class="btn ds_prev"><i class="iconfa-chevron-left"></i></a>
                                         <br />
-                                        <button class="btn ds_next"><i class="iconfa-chevron-right"></i></button>
+                                        <a href="#" class="btn ds_next"><i class="iconfa-chevron-right"></i></a>
                                     </span>
                                      <asp:ListBox ID="lstBeneficioSelected" runat="server" SelectionMode="Multiple" ClientIDMode="Static">
                                         
@@ -240,8 +166,6 @@
                         <col class="con1" />
                         <col class="con0" />
                         <col class="con1" />
-                        <col class="con0" />
-                        <col class="con1" />
                     </colgroup>
                     <thead>
                         <tr>
@@ -250,7 +174,6 @@
                             <th class="head0">Nome Dependente</th>
                             <th class="head1">Parentesco</th>
                             <th class="head0">Data Nascimento</th>
-                            <th class="head1">Benefício</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -261,16 +184,6 @@
                             <td>Trident</td>
                             <td>Internet Explorer 4.0</td>
                             <td>Win 95+</td>
-                            <td class="center">4</td>
-                        </tr>
-                        <tr class="gradeC">
-                            <td class="aligncenter"><span class="center">
-                                <input type="checkbox" />
-                            </span></td>
-                            <td>Trident</td>
-                            <td>Internet Explorer 5.0</td>
-                            <td>Win 95+</td>
-                            <td class="center">5</td>
                         </tr>
                     </tbody>
                 </table>

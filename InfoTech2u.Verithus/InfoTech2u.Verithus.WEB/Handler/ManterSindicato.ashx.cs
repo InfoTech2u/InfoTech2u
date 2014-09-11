@@ -14,38 +14,38 @@ namespace InfoTech2u.Verithus.WEB.Handler
     /// <summary>
     /// Summary description for ManterTipoBeneficio
     /// </summary>
-    public class ManterTipoBeneficio : IHttpHandler
+    public class ManterSindicato : IHttpHandler
     {
 
         public void ProcessRequest(HttpContext context)
         {
             if (context.Request.QueryString["Metodo"] == "Lista")
             {
-                var retorno = SelecionarTipoBeneficio(new TipoBeneficioVO());
-                 
+                var retorno = SelecionarSindicato(new SindicatoVO());
+
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
-                                
+
                 context.Response.Write(serializer.Serialize(retorno));
             }
             else if (context.Request.QueryString["Metodo"] == "Incluir")
             {
-                TipoBeneficioVO param = new TipoBeneficioVO();
-                param.Descricao = context.Request.QueryString["Descricao"].ToString();
-               
-                context.Response.Write(IncluirTipoBeneficio(param).DataTableSerializer());
+                SindicatoVO param = new SindicatoVO();
+                param.Nome = context.Request.QueryString["Nome"].ToString();
+
+                context.Response.Write(IncluirSindicato(param).DataTableSerializer());
             }
             else if (context.Request.QueryString["Metodo"] == "Excluir")
             {
-                TipoBeneficioVO param = new TipoBeneficioVO();
+                SindicatoVO param = new SindicatoVO();
                 int numconvertido = 0;
 
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
 
                 if (Int32.TryParse(context.Request.QueryString["Id"].ToString(), out numconvertido))
                 {
-                    param.CodigoTipoBeneficio = numconvertido;
+                    param.CodigoSindicato = numconvertido;
 
-                    context.Response.Write(serializer.Serialize(ExcluirTipoBeneficio(param)));
+                    context.Response.Write(serializer.Serialize(ExcluirSindicato(param)));
                 }
                 else
                 {
@@ -54,22 +54,22 @@ namespace InfoTech2u.Verithus.WEB.Handler
             }
         }
 
-        private List<TipoBeneficioVO> SelecionarTipoBeneficio(TipoBeneficioVO param)
+        private List<SindicatoVO> SelecionarSindicato(SindicatoVO param)
         {
-            TipoBeneficioBS objBS = new TipoBeneficioBS();
-            return objBS.SelecionarTipoBeneficio(param);
+            SindicatoBS objBS = new SindicatoBS();
+            return objBS.SelecionarSindicato(param);
         }
 
-        private DataTable IncluirTipoBeneficio(TipoBeneficioVO param)
-        { 
-            TipoBeneficioBS objBS = new TipoBeneficioBS();
-            return objBS.IncluirTipoBeneficio(param);
+        private DataTable IncluirSindicato(SindicatoVO param)
+        {
+            SindicatoBS objBS = new SindicatoBS();
+            return objBS.IncluirSindicato(param);
         }
 
-        private bool ExcluirTipoBeneficio(TipoBeneficioVO param)
+        private bool ExcluirSindicato(SindicatoVO param)
         {
-            TipoBeneficioBS objBS = new TipoBeneficioBS();
-            return objBS.ExcluirTipoBeneficio(param);
+            SindicatoBS objBS = new SindicatoBS();
+            return objBS.ExcluirSindicato(param);
         }
 
         public bool IsReusable
@@ -80,17 +80,5 @@ namespace InfoTech2u.Verithus.WEB.Handler
             }
         }
     }
-   
-    public class Teste
-    {
-        
-        public Teste()
-        { }
-       
-        public String dados1 { get; set; }
-       
-        public int dados2 { get; set; }
-        
-        public DateTime dados3 { get; set; }
-    }
+
 }
