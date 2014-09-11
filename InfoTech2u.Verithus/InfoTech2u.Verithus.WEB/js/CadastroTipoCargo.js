@@ -101,7 +101,7 @@ jQuery(document).ready(function () {
 
                 var tipos = eval(data);
                 for (x in tipos) {
-                    var row = '<tr><td>' + tipos[x].CodigoTipoCargo + '</td><td>' + tipos[x].Descricao + '</td><td class="centeralign"><a title="Excluir" href="#" class="deleterow"><i class="icon-trash"></i></a></td></tr>';
+                    var row = '<tr><td>' + tipos[x].CodigoTipoCargo + '</td><td>' + tipos[x].Descricao + '</td><td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + tipos[x].CodigoTipoCargo + ');" class="deleterow"><i class="icon-trash"></i></a></td></tr>';
                     jQuery('tbody').append(row);
                 }
                 FormatarGrid();                
@@ -124,10 +124,16 @@ jQuery(document).ready(function () {
         });
     };
 
+    
+
+    
+
 
 
 
 });
 
 
-
+function Excluir(Id) {
+    alert(Id);
+}
