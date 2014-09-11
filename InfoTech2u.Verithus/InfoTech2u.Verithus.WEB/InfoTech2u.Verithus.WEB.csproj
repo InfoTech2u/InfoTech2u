@@ -797,6 +797,7 @@
     </Compile>
     <Compile Include="Handler\ManterTarefa.ashx.cs">
       <DependentUpon>ManterTarefa.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Handler\ManterSindicato.ashx.cs">
       <DependentUpon>ManterSindicato.ashx</DependentUpon>
     </Compile>
