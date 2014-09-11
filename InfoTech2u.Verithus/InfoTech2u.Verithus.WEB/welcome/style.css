@@ -30,7 +30,7 @@ a,button,input,select, a:focus, .btn:focus { outline: none; text-decoration: non
 
 h1,h2,h3,h4,h5,h6 { font-weight: normal; font-family: 'LatoLight','Helvetica Neue', sans-serif; }
 
-.header { background: #0866c6; width: 100%; position: fixed; z-index: 300; top: 0; left: 0; }
+.header { background: #733180; width: 100%; position: fixed; z-index: 300; top: 0; left: 0; }
 .header-inner { padding: 20px; 0; width: 980px; margin: auto; position: relative; }
 
 .head-menu { list-style: none; position: absolute; top: 27px; right: 0; }
@@ -43,7 +43,7 @@ h1,h2,h3,h4,h5,h6 { font-weight: normal; font-family: 'LatoLight','Helvetica Neu
 .banner-inner { padding: 40px 0; width: 980px; margin: auto; position: relative; }
 .banner-inner .about { width: 440px; }
 .banner-inner h1 { font-weight: normal; line-height: 50px; font-size: 42px; font-family: 'LatoLight', sans-serif; }
-.banner-inner h1 span { color: #0866c6; }
+.banner-inner h1 span { color: #733180; }
 .banner-inner p { font-size: 14px; margin: 20px 0; line-height: 24px; }
 .banner-inner p.btns { margin-top: 40px; }
 .banner-inner small { display: block; margin: 20px 0 0 22px; font-size: 11px; font-style: italic; color: #999; }
@@ -63,13 +63,13 @@ h1,h2,h3,h4,h5,h6 { font-weight: normal; font-family: 'LatoLight','Helvetica Neu
 
 .btn {
 	padding: 10px 20px; -moz-border-radius: 50px; -webkit-border-radius: 50px; border-radius: 50px;
-	background: #fff; border: 3px solid #0866c6; color: #0866c6; font-size: 14px; }
-.btn:hover { background: #fff; color :#0866c6; opacity: 0.8; }
+	background: #fff; border: 3px solid #733180; color: #733180; font-size: 14px; }
+.btn:hover { background: #fff; color :#733180; opacity: 0.8; }
 .btn-success { border-color: #6fba2d; color: #6fba2d; }
 .btn-success:hover { color: #6fba2d; }
 
 .title { font-family: 'LatoLight','Helvetica Neue', sans-serif; font-size: 28px; margin-bottom: 15px; }
-.subtitle { font-family: 'LatoLight', 'Helvetica Neue', sans-serif; font-size: 18px; color: #0866c6; }
+.subtitle { font-family: 'LatoLight', 'Helvetica Neue', sans-serif; font-size: 18px; color: #733180; }
 
 .screen { background: #272727; color: #ccc; }
 .screen-inner { width: 980px; margin: auto; padding: 40px 0; }

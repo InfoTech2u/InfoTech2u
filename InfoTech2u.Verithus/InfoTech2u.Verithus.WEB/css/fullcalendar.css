@@ -134,7 +134,7 @@ html .fc,
 	}
 	
 .fc-widget-header {
-	background: #0866c6;
+	background: #733180;
 	color: #fff;
 	border-color: rgba(255,255,255,0.1);
 }
@@ -152,7 +152,7 @@ html .fc,
 }
 
 .fc-widget-header.fc-agenda-gutter.fc-last {
-	background: #0866c6;
+	background: #733180;
 }
 
 	
