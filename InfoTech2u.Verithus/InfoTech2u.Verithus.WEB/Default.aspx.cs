@@ -15,23 +15,26 @@ namespace InfoTech2u.Verithus.WEB
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            UsuariosBS retorno = new UsuariosBS();
             UsuariosVO param = new UsuariosVO();
-            List<UsuariosVO> listParam = new List<UsuariosVO>();
 
-            param.CodigoUsuario = 1;
+            param.CodigoUsuario = Convert.ToInt32(HttpContext.Current.Session["CodigoUsuario"].ToString());
+            param.Nome = HttpContext.Current.Session["Nome"].ToString();
+            param.Mail = HttpContext.Current.Session["Mail"].ToString();
+            param.LoginUsuario = HttpContext.Current.Session["LoginUsuario"].ToString();
+            param.Senha = HttpContext.Current.Session["Senha"].ToString();
+            param.CodigoUsuario = Convert.ToInt32(HttpContext.Current.Session["CodigoTipoAcesso"].ToString());
+            param.CodigoUsuario = Convert.ToInt32(HttpContext.Current.Session["CodigoStatus"].ToString());
 
-            listParam = retorno.SelecionarUsuarioLista(param);
+            this.lblCodigoUsuario.Text = param.CodigoUsuario.ToString();
+            this.lblNome.Text = param.Nome.ToString();
+            this.lblMail.Text = param.Mail.ToString();
+            this.lblLogin.Text = param.LoginUsuario.ToString();
+            this.lblSenha.Text = param.Senha.ToString();
+            
 
-            this.lblCodigoUsuario.Text = listParam[0].CodigoUsuario.ToString();
-            this.lblNome.Text = listParam[0].Nome.ToString();
-            this.lblMail.Text = listParam[0].Mail.ToString();
-            this.lblLogin.Text = listParam[0].LoginUsuario.ToString();
-            this.lblSenha.Text = listParam[0].Senha.ToString();
-            this.lblDataCadastro.Text = listParam[0].DataCadastro.ToString();
+            
 
-            this.grdListaUsuario.DataSource = listParam;
-            this.grdListaUsuario.DataBind();
+
 
 
         }

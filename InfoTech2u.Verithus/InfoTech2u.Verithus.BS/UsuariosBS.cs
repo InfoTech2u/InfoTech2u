@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using InfoTech2u.Verithus.VO;
 using InfoTech2u.Verithus.DA;
+using System.Data;
 
 namespace InfoTech2u.Verithus.BS
 {
@@ -46,6 +47,13 @@ namespace InfoTech2u.Verithus.BS
             {
                 objRetorno = null;
             }
+        }
+
+        public DataTable VerificarUsuario(UsuariosVO param)
+        {
+            UsuariosDA objRetorno = new UsuariosDA();
+
+            return objRetorno.VerificarUsuario(param);
         }
     }
 }

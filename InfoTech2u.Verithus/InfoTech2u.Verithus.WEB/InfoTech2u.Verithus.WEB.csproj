@@ -76,6 +76,7 @@
     <Content Include="js\ManterDependente.js" />
     <Content Include="js\ManterSindicato.js" />
     <Content Include="js\TipoBeneficio.js" />
+    <Content Include="Modulos\Default.aspx" />
     <Content Include="Modulos\InfoTech2u.Master" />
     <Content Include="fonts\fontawesome\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome\fontawesome-webfont.ttf" />
@@ -171,6 +172,7 @@
     <Content Include="Handler\ManterFormaDePagamento.ashx" />
     <Content Include="Handler\ManterDemissao.ashx" />
     <Content Include="Handler\ManterSindicato.ashx" />
+    <Content Include="Handler\VerificarUsuario.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -807,12 +809,22 @@
     <Compile Include="Handler\ManutencaoFuncionario.ashx.cs">
       <DependentUpon>ManutencaoFuncionario.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Handler\VerificarUsuario.ashx.cs">
+      <DependentUpon>VerificarUsuario.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Dashboard\DashboardGerente.aspx.cs">
       <DependentUpon>DashboardGerente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Modulos\Dashboard\DashboardGerente.aspx.designer.cs">
       <DependentUpon>DashboardGerente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\InfoTech2u.Master.cs">
       <DependentUpon>InfoTech2u.Master</DependentUpon>

@@ -84,7 +84,7 @@ namespace InfoTech2u.Verithus.DA
                 int i = 0;
                 while (i < dtRetorno.Rows.Count)
                 {
-                    
+
 
                     retorno = new UsuariosVO();
 
@@ -123,9 +123,9 @@ namespace InfoTech2u.Verithus.DA
                     listaRetorno.Add(retorno);
                     i++;
                 }
-                
-                
-                
+
+
+
                 return listaRetorno;
             }
             catch (Exception ex)
@@ -139,6 +139,52 @@ namespace InfoTech2u.Verithus.DA
                 dtRetorno = null;
                 param = null;
             }
+        }
+
+        public DataTable VerificarUsuario(UsuariosVO param)
+        {
+            InfoTech2uSQLUtil objSql = null;
+            List<SqlParameter> lstSqlParameter = null;
+            DataTable dtRetorno = null;
+
+            try
+            {
+                objSql = new InfoTech2uSQLUtil();
+                lstSqlParameter = new List<SqlParameter>();
+                dtRetorno = new DataTable();
+
+                objSql.Sigla = objSql.GetDataBase();
+                objSql.ConnectionString = objSql.GetConnectionString(objSql.Sigla);
+                objSql.Open();
+
+
+                if (param.LoginUsuario == null)
+                    lstSqlParameter.Add(new SqlParameter("@LOGIN_USUARIO", DBNull.Value));
+                else
+                    lstSqlParameter.Add(new SqlParameter("@LOGIN_USUARIO", param.LoginUsuario));
+
+                if (param.Senha == null)
+                    lstSqlParameter.Add(new SqlParameter("@SENHA", DBNull.Value));
+                else
+                    lstSqlParameter.Add(new SqlParameter("@SENHA", param.Senha));
+
+
+                objSql.Execute("dbo.[SPVRT002_USUARIOS_PR_VERIFICAR]", lstSqlParameter.ToArray(), null, ref dtRetorno);
+
+                return dtRetorno;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objSql = null;
+                lstSqlParameter = null;
+                dtRetorno = null;
+            }
+
+
         }
     }
 }

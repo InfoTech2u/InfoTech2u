@@ -16,16 +16,63 @@
     <script type="text/javascript" src="js/jquery.cookie.js"></script>
     <script type="text/javascript" src="js/custom.js"></script>
     <script type="text/javascript">
+        var pagina;
         jQuery(document).ready(function () {
-            jQuery('#frmInfotech2uLogin').submit(function () {
+            jQuery('#btnEntrar').click(function () {
                 var u = jQuery('#username').val();
                 var p = jQuery('#password').val();
                 if (u == '' && p == '') {
                     jQuery('.login-alert').fadeIn();
                     return false;
                 }
+                else
+                {
+                    VerificarUsuario(u, p);
+                    
+                    //redirecionar();
+                }
             });
+
+            function VerificarUsuario(user, pass) {
+                jQuery.ajax({
+                    type: "GET",
+                    crossDomain: true,
+                    url: "Handler/VerificarUsuario.ashx",
+                    contentType: "json",
+                    cache: false,
+                    data: {
+                        usuario: user,
+                        senha: pass
+                    },
+                    success: function (data) {
+
+                        //alert(data);
+                        
+                        var dadosUsuario = eval(data);
+
+                        
+                        for (i in dadosUsuario) {
+                            
+                            alert(dadosUsuario[i].CODIGO_TIPO_ACESSO);
+
+                        }
+                        
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrow) {
+                        errorAjax(textStatus);
+                        alert(textStatus);
+                    }
+                });
+            }
+            function redirecionar() {
+                //alert('Teste' + pagina);
+                jQuery(window.document.location).attr('href', 'Modulos/Default.aspx');
+            }
+
         });
+
+        
+        
     </script>
 </head>
 <body class="loginpage">
@@ -36,7 +83,7 @@
             </div>
             <form id="frmInfotech2uLogin" runat="server">
                 <div class="inputwrapper login-alert">
-                    <div class="alert alert-error">Invalid username or password</div>
+                    <div class="alert alert-error">Usuario ou senha Invalidas</div>
                 </div>
                 <div class="inputwrapper animate1 bounceIn">
                     <input type="text" name="username" id="username" placeholder="Entre com seu Usuario" />
@@ -45,7 +92,7 @@
                     <input type="password" name="password" id="password" placeholder="Entre com sua Senha" />
                 </div>
                 <div class="inputwrapper animate3 bounceIn">
-                    <button name="submit" runat="server">Entrar</button>
+                    <button name="submit" id="btnEntrar" runat="server">Entrar</button>
                 </div>
                 <div class="inputwrapper animate4 bounceIn">
                     <label>
