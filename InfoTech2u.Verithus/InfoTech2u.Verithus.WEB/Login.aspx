@@ -16,7 +16,7 @@
     <script type="text/javascript" src="js/jquery.cookie.js"></script>
     <script type="text/javascript" src="js/custom.js"></script>
     <script type="text/javascript">
-        var pagina;
+        var tipoAcesso;
         jQuery(document).ready(function () {
             jQuery('#btnEntrar').click(function () {
                 var u = jQuery('#username').val();
@@ -29,49 +29,59 @@
                 {
                     VerificarUsuario(u, p);
                     
-                    //redirecionar();
+                    
                 }
+
+                return false;
             });
 
-            function VerificarUsuario(user, pass) {
-                jQuery.ajax({
-                    type: "GET",
-                    crossDomain: true,
-                    url: "Handler/VerificarUsuario.ashx",
-                    contentType: "json",
-                    cache: false,
-                    data: {
-                        usuario: user,
-                        senha: pass
-                    },
-                    success: function (data) {
-
-                        //alert(data);
-                        
-                        var dadosUsuario = eval(data);
-
-                        
-                        for (i in dadosUsuario) {
-                            
-                            alert(dadosUsuario[i].CODIGO_TIPO_ACESSO);
-
-                        }
-                        
-                    },
-                    error: function (XMLHttpRequest, textStatus, errorThrow) {
-                        errorAjax(textStatus);
-                        alert(textStatus);
-                    }
-                });
-            }
-            function redirecionar() {
-                //alert('Teste' + pagina);
-                jQuery(window.document.location).attr('href', 'Modulos/Default.aspx');
-            }
+            
+            
 
         });
 
-        
+        function  VerificarUsuario(user, pass) {
+            jQuery.ajax({
+                type: "GET",
+                crossDomain: true,
+                url: "Handler/VerificarUsuario.ashx",
+                contentType: "json",
+                cache: false,
+                data: {
+                    usuario: user,
+                    senha: pass
+                },
+                success: function (data) {
+
+                    //alert(data);
+
+                    var dadosUsuario = eval(data);
+
+
+                    for (i in dadosUsuario) {
+
+                        alert(dadosUsuario[i].CODIGO_TIPO_ACESSO);
+                        tipoAcesso = dadosUsuario[i].CODIGO_TIPO_ACESSO;
+                        redirecionar();
+
+
+
+                    }
+
+                  
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrow) {
+                    errorAjax(textStatus);
+                    alert(textStatus);
+                }
+            });
+        }
+
+        function redirecionar() {
+            alert('Teste' + tipoAcesso);
+            jQuery(window.document.location).attr('href', 'Modulos/Default.aspx');
+        }
         
     </script>
 </head>
