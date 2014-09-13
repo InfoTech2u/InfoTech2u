@@ -13,6 +13,7 @@
     <script type="text/javascript" src="js/jquery-ui-1.9.2.min.js"></script>
     <script type="text/javascript" src="js/modernizr.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.alerts.js"></script>
     <script type="text/javascript" src="js/jquery.cookie.js"></script>
     <script type="text/javascript" src="js/custom.js"></script>
     <script type="text/javascript">
@@ -25,22 +26,21 @@
                     jQuery('.login-alert').fadeIn();
                     return false;
                 }
-                else
-                {
+                else {
                     VerificarUsuario(u, p);
-                    
-                    
+
+
                 }
 
                 return false;
             });
 
-            
-            
+
+
 
         });
 
-        function  VerificarUsuario(user, pass) {
+        function VerificarUsuario(user, pass) {
             jQuery.ajax({
                 type: "GET",
                 crossDomain: true,
@@ -54,13 +54,19 @@
                 success: function (data) {
 
                     //alert(data);
+                    if (data == "Erro") {
+                        jQuery.alerts.dialogClass = 'alert-warning';
+                        jAlert('O Usuario ou a senha estão incorretos', 'Alerta', function () {
+                            jQuery.alerts.dialogClass = null; // reset to default
+                        });
+                    }
 
                     var dadosUsuario = eval(data);
 
 
                     for (i in dadosUsuario) {
 
-                        alert(dadosUsuario[i].CODIGO_TIPO_ACESSO);
+                        //alert(dadosUsuario[i].CODIGO_TIPO_ACESSO);
                         tipoAcesso = dadosUsuario[i].CODIGO_TIPO_ACESSO;
                         redirecionar();
 
@@ -68,7 +74,7 @@
 
                     }
 
-                  
+
 
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -79,10 +85,10 @@
         }
 
         function redirecionar() {
-            alert('Teste' + tipoAcesso);
+           // alert('Teste' + tipoAcesso);
             jQuery(window.document.location).attr('href', 'Modulos/Default.aspx');
         }
-        
+
     </script>
 </head>
 <body class="loginpage">

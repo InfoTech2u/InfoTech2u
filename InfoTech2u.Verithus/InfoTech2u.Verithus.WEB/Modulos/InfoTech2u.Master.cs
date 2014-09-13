@@ -17,11 +17,9 @@ namespace InfoTech2u.Verithus.WEB
         {
             if (Session["LoginUsuario"] == null)
                 Response.Redirect("../../Login.aspx", true);
+
+            CarregarUrlAmigavel();
             
-            if (!IsPostBack)
-            {
-                CarregarUrlAmigavel();
-            }
 
             this.lblNomeUsuario.Text = HttpContext.Current.Session["Nome"].ToString();
             this.lblMailUsuario.Text = HttpContext.Current.Session["Mail"].ToString();
