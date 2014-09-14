@@ -239,16 +239,16 @@ jQuery(document).ready(function () {
 
                 jQuery("#ddlCidadeFuncionario").each(function () {
 
-                    alert('3');
+                   // alert('3');
 
                     
 
                     jQuery('option', this).each(function () {
 
-                        alert('4');
+                       // alert('4');
 
-                        alert(jQuery(this).text().toLowerCase());
-                        alert(jQuery('#ddlCidadeFuncionario option').filter(function () { return jQuery(this).html() == arrCEP[0].Cidade; }).text().toLowerCase());
+                        //alert(jQuery(this).text().toLowerCase());
+                       // alert(jQuery('#ddlCidadeFuncionario option').filter(function () { return jQuery(this).html() == arrCEP[0].Cidade; }).text().toLowerCase());
 
                         if (jQuery(this).text().toLowerCase() == jQuery('#ddlCidadeFuncionario option').filter(function () { return jQuery(this).html() == arrCEP[0].Cidade }).text().toLowerCase()) {
                             jQuery(this).attr('selected', 'selected')
@@ -258,7 +258,7 @@ jQuery(document).ready(function () {
 
                 jQuery('#ddlCidadeFuncionario_chzn .chzn-single span').text(arrCEP[0].Cidade);
 
-                alert('1');
+               // alert('1');
                 
 
             },
@@ -1019,11 +1019,11 @@ function IncluirDadosFuncionario() {
         contentType: "json",
         cache: false,
         success: function (data) {
-            alert(data);
+           // alert(data);
 
 
             for (var i = 0; i < data.length; i++) {
-                alert(data[i].FUNC_NOME_FUNCIONARIO)
+               // alert(data[i].FUNC_NOME_FUNCIONARIO)
             }
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -1035,7 +1035,7 @@ function IncluirDadosFuncionario() {
 
 function CarregaComboCidade(str, tipo) {
 
-    alert(2);
+   // alert(2);
 
     jQuery.ajax({
         type: "GET",
