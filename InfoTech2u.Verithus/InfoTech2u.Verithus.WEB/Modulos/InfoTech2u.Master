@@ -10,7 +10,7 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="frmInfotech2u" runat="server">
+    <form id="frmInfotech2u" runat="server" class="frmInfotech2u">
         <div class="mainwrapper">
             <div class="header">
                 <div class="logo">
@@ -124,22 +124,24 @@
                             <ul>
                                 <li class="dropdown"><a href="">Funcionário</a>
                                     <ul>
-                                        <li><asp:HyperLink NavigateUrl="../RecursosHumanos/ManterUsuario.aspx" runat="server" ID="hlkManterUsuario">Cadastro de Usuarios</asp:HyperLink></li>
+                                        <li><asp:HyperLink NavigateUrl="RecursosHumanos/PesquisaFuncionario.aspx" runat="server" ID="hlkPesquisaFuncionario">Pesquisar Funcionário</asp:HyperLink></li>
+                                        <li><asp:HyperLink NavigateUrl="RecursosHumanos/ManterFuncionario.aspx" runat="server" ID="hlkManterUsuario">Cadastrar Funcionario</asp:HyperLink></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a href="">Empresa</a>
                                     <ul>
-                                        <li><asp:HyperLink NavigateUrl="../RecursosHumanos/PesquisaEmpresa.aspx" runat="server" ID="hlkPesquisaEmpresa">Pesquisar Empresa</asp:HyperLink></li>
+                                        <li><asp:HyperLink NavigateUrl="RecursosHumanos/PesquisaEmpresa.aspx" runat="server" ID="hlkPesquisaEmpresa">Pesquisar Empresa</asp:HyperLink></li>
+                                        <li><asp:HyperLink NavigateUrl="RecursosHumanos/ManterEmpresa.aspx" runat="server" ID="hlkManterEmpresa">Cadastrar Empresa</asp:HyperLink></li>
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a href="">Funcionário</a>
+                                <li class="dropdown"><a href="">Configuração RH</a>
                                     <ul>
-                                        <li><asp:HyperLink NavigateUrl="../RecursosHumanos/PesquisaFuncionario.aspx" runat="server" ID="hlkPesquisaFuncionario">Pesquisar Funcionário</asp:HyperLink></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="">Benefícios</a>
-                                    <ul>
-                                        <li><asp:HyperLink NavigateUrl="../RecursosHumanos/PesquisaBeneficios.aspx" runat="server" ID="hlkPesquisaBeneficios">Pesquisar Benefícios</asp:HyperLink></li>
+                                        <li><asp:HyperLink NavigateUrl="RecursosHumanos/ManterTipoBeneficio.aspx" runat="server" ID="hlkTipoBeneficio">Tipo de Beneficio</asp:HyperLink></li>
+                                        <li><asp:HyperLink NavigateUrl="RecursosHumanos/ManterTarefa.aspx" runat="server" ID="hlkTipoTarefa">Tipo  de Tarefa</asp:HyperLink></li>
+                                        <li><asp:HyperLink NavigateUrl="RecursosHumanos/ManterSindicato.aspx" runat="server" ID="hlkSindicato">Sindicato</asp:HyperLink></li>
+                                        <li><asp:HyperLink NavigateUrl="RecursosHumanos/ManterSecao.aspx" runat="server" ID="hlkSecao">Tipo de Seção</asp:HyperLink></li>
+                                        <li><asp:HyperLink NavigateUrl="RecursosHumanos/ManterCargo.aspx" runat="server" ID="hlkCargo">Tipo  de Cargo</asp:HyperLink></li>
+                                        <li><asp:HyperLink NavigateUrl="RecursosHumanos/ManterFormaDePagamento.aspx" runat="server" ID="hlkFormaPagamento">Tipo  de Forma de Pagamento</asp:HyperLink></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -148,25 +150,25 @@
                             <ul>
                                 <li class="dropdown"><a href="">Acessos</a>
                                     <ul>
-                                        <li><asp:HyperLink NavigateUrl="../RecursosHumanos/ManterUsuario.aspx" runat="server" ID="hlkConsultaAcesso">Consulta de Acessos</asp:HyperLink></li>
-                                        <li><asp:HyperLink NavigateUrl="../RecursosHumanos/ManterUsuario.aspx" runat="server" ID="hlkCadastroAcesso">Cadastro de Acessos</asp:HyperLink></li>
+                                        <li><asp:HyperLink NavigateUrl="RecursosHumanos/ManterUsuario.aspx" runat="server" ID="hlkConsultaAcesso">Consulta de Acessos</asp:HyperLink></li>
+                                        <li><asp:HyperLink NavigateUrl="RecursosHumanos/ManterUsuario.aspx" runat="server" ID="hlkCadastroAcesso">Cadastro de Acessos</asp:HyperLink></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a href="">Dominios</a>
                                     <ul>
-                                        <li><asp:HyperLink NavigateUrl="../RecursosHumanos/PesquisaEmpresa.aspx" runat="server" ID="HyperLink2">Pesquisar Empresa</asp:HyperLink></li>
+                                        <li><asp:HyperLink NavigateUrl="RecursosHumanos/PesquisaEmpresa.aspx" runat="server" ID="HyperLink2">Pesquisar Empresa</asp:HyperLink></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a href="">Usuarios</a>
                                     <ul>
-                                        <li><asp:HyperLink NavigateUrl="../RecursosHumanos/PesquisaFuncionario.aspx" runat="server" ID="hlkConsultaUsuario">Consulta de Usuarios</asp:HyperLink></li>
-                                        <li><asp:HyperLink NavigateUrl="../RecursosHumanos/PesquisaFuncionario.aspx" runat="server" ID="hlkCadastroUsuario">Cadastro de Usuarios</asp:HyperLink></li>
+                                        <li><asp:HyperLink NavigateUrl="RecursosHumanos/PesquisaFuncionario.aspx" runat="server" ID="hlkConsultaUsuario">Consulta de Usuarios</asp:HyperLink></li>
+                                        <li><asp:HyperLink NavigateUrl="RecursosHumanos/PesquisaFuncionario.aspx" runat="server" ID="hlkCadastroUsuario">Cadastro de Usuarios</asp:HyperLink></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a href="">Log</a>
                                     <ul>
-                                        <li><asp:HyperLink NavigateUrl="../RecursosHumanos/PesquisaBeneficios.aspx" runat="server" ID="hlkConsultaLogAcao">Consulta Log Acao</asp:HyperLink></li>
-                                        <li><asp:HyperLink NavigateUrl="../RecursosHumanos/PesquisaBeneficios.aspx" runat="server" ID="hlkCOnsultaLogErro">Consulta Log Erro</asp:HyperLink></li>
+                                        <li><asp:HyperLink NavigateUrl="RecursosHumanos/PesquisaBeneficios.aspx" runat="server" ID="hlkConsultaLogAcao">Consulta Log Acao</asp:HyperLink></li>
+                                        <li><asp:HyperLink NavigateUrl="RecursosHumanos/PesquisaBeneficios.aspx" runat="server" ID="hlkCOnsultaLogErro">Consulta Log Erro</asp:HyperLink></li>
                                     </ul>
                                 </li>
                             </ul>

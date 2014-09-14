@@ -58,6 +58,15 @@ namespace InfoTech2u.Verithus.WEB {
         protected global::System.Web.UI.WebControls.HyperLink hlkDashboard;
         
         /// <summary>
+        /// hlkPesquisaFuncionario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlkPesquisaFuncionario;
+        
+        /// <summary>
         /// hlkManterUsuario control.
         /// </summary>
         /// <remarks>
@@ -76,22 +85,67 @@ namespace InfoTech2u.Verithus.WEB {
         protected global::System.Web.UI.WebControls.HyperLink hlkPesquisaEmpresa;
         
         /// <summary>
-        /// hlkPesquisaFuncionario control.
+        /// hlkManterEmpresa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlkPesquisaFuncionario;
+        protected global::System.Web.UI.WebControls.HyperLink hlkManterEmpresa;
         
         /// <summary>
-        /// hlkPesquisaBeneficios control.
+        /// hlkTipoBeneficio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlkPesquisaBeneficios;
+        protected global::System.Web.UI.WebControls.HyperLink hlkTipoBeneficio;
+        
+        /// <summary>
+        /// hlkTipoTarefa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlkTipoTarefa;
+        
+        /// <summary>
+        /// hlkSindicato control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlkSindicato;
+        
+        /// <summary>
+        /// hlkSecao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlkSecao;
+        
+        /// <summary>
+        /// hlkCargo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlkCargo;
+        
+        /// <summary>
+        /// hlkFormaPagamento control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlkFormaPagamento;
         
         /// <summary>
         /// hlkConsultaAcesso control.

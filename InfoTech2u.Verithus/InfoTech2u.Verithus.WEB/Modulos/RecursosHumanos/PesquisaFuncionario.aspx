@@ -7,6 +7,9 @@
     <script type="text/javascript">
         jQuery(document).ready(function () {
             // dynamic table
+
+            GridFake();
+
             jQuery('#dyntable').dataTable({
                 "sPaginationType": "full_numbers",
                 "aaSortingFixed": [[0, 'asc']],
@@ -15,9 +18,84 @@
                 }
             });
 
+            jQuery("#btnIncluir").click(function () {
+
+                var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
+                jQuery(window.document.location).attr('href', 'ManterFuncionario.aspx?idUser=' + codigoSel);
+                
+                return false;
+            });
+
+            jQuery("#btnAlterar").click(function () {
+
+                var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
+                jQuery(window.document.location).attr('href', 'ManterFuncionario.aspx?idUser=' + codigoSel);
+
+                return false;
+            });
+
+            jQuery("#btnDetalhar").click(function () {
+
+                var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
+                jQuery(window.document.location).attr('href', 'ManterFuncionario.aspx?idUser=' + codigoSel);
+
+                return false;
+            });
+
+            jQuery("#btnExcluir").click(function () {
+
+                var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
+                jQuery(window.document.location).attr('href', 'ManterFuncionario.aspx?idUser=' + codigoSel);
+
+                return false;
+            });
+
+            jQuery("#btnAdmisao").click(function () {
+
+                var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
+                jQuery(window.document.location).attr('href', 'ManterAdmissao.aspx?idUser=' + codigoSel);
+
+                return false;
+            });
+
+            jQuery("#btnDemissao").click(function () {
+
+                var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
+                jQuery(window.document.location).attr('href', 'ManterDemissao.aspx?idUser=' + codigoSel);
+
+                return false;
+            });
+
+            jQuery("#btnDependente").click(function () {
+
+                var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
+                jQuery(window.document.location).attr('href', 'ManterDependente.aspx?idUser=' + codigoSel);
+
+                return false;
+            });
+
+            jQuery("#btnSindical").click(function () {
+
+                var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
+                jQuery(window.document.location).attr('href', 'ManterContribuicaoSindicaol.aspx?idUser=' + codigoSel);
+
+                return false;
+            });
+
 
 
         });
+
+        function GridFake() {
+
+            for (i = 0; i < 50; i++) {
+                var row = '<tr class="gradeX"><td><input type="radio" name="rdbFuncionario" value="' + i + '" /></td><td>' + i + '</td><td>' + i + '</td><td>' + i + '</td><td class="center">Nome do Funcionario ' + i + '</td></tr>';
+                jQuery('tbody').append(row);
+            }
+        }
+
+       
+
     </script>
     <div class="rightpanel">
 
@@ -95,18 +173,21 @@
                     </colgroup>
                     <thead>
                         <tr>
-                            <th class="head0">Nome Dependente</th>
-                            <th class="head1">Parentesco</th>
-                            <th class="head0">Data Nascimento</th>
-                            <th class="head1">Benefício</th>
+                            <th class="head0">Selecionar</th>
+                            <th class="head1">Código Funcionario</th>
+                            <th class="head0">Ordem de Matricula</th>
+                            <th class="head1">Matricula</th>
+                            <th class="head0">Nome Completo</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody></tbody>
+                    <!--<tbody>
                         <tr class="gradeX">
-                            <td>Trident</td>
-                            <td>Internet Explorer 4.0</td>
-                            <td>Win 95+</td>
-                            <td class="center">4</td>
+                            <td><input type="radio" name="rdbFuncionario" value="1" /></td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1001</td>
+                            <td class="center">Nome do Funcionario 1</td>
                         </tr>
                         <tr class="gradeC">
                             <td>Trident</td>
@@ -283,14 +364,18 @@
                             <td class="center">522.1</td>
                         </tr>
                        
-                    </tbody>
+                    </tbody>-->
                 </table>
                 <br />
                 <div class="row-fluid">
-                    <button class="btn btn-primary"><i class="iconsweets-magnifying"></i>&nbsp; Incluir</button>
-                    <button class="btn"><i class="iconsweets-magnifying"></i>&nbsp; Alterar</button>
-                    <button class="btn"><i class="iconsweets-magnifying"></i>&nbsp; Excluir</button>
-                    <button class="btn"><i class="iconsweets-magnifying"></i>&nbsp; Detalhar</button>
+                    <button class="btn btn-primary" id="btnIncluir"><i class="iconsweets-magnifying"></i>&nbsp; Incluir</button>
+                    <button class="btn" id="btnAlterar"><i class="iconsweets-magnifying"></i>&nbsp; Alterar</button>
+                    <button class="btn" id="btnExcluir"><i class="iconsweets-magnifying"></i>&nbsp; Excluir</button>
+                    <button class="btn" id="btnDetalhar"><i class="iconsweets-magnifying"></i>&nbsp; Detalhar</button>
+                    <button class="btn" id="btnAdmisao"><i class="iconsweets-magnifying"></i>&nbsp; Admissão</button>
+                    <button class="btn" id="btnDemissao"><i class="iconsweets-magnifying"></i>&nbsp; Demissão</button>
+                    <button class="btn" id="btnDependente"><i class="iconsweets-magnifying"></i>&nbsp; Dependentes</button>
+                    <button class="btn" id="btnSindical"><i class="iconsweets-magnifying"></i>&nbsp; Contribuição Sindical</button>
                 </div>
             </div>
             <!--widget-->
