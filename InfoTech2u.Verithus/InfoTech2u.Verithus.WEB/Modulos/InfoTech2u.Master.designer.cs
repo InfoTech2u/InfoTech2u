@@ -58,15 +58,6 @@ namespace InfoTech2u.Verithus.WEB {
         protected global::System.Web.UI.WebControls.HyperLink lnkSair;
         
         /// <summary>
-        /// hlkDashboard control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlkDashboard;
-        
-        /// <summary>
         /// hlkPesquisaFuncionario control.
         /// </summary>
         /// <remarks>

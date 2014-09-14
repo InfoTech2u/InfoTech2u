@@ -28,7 +28,7 @@ namespace InfoTech2u.Verithus.WEB
         protected void CarregarUrlAmigavel()
         {
             //Paginas de Dashboard
-            InfoTech2uControlHtmlUtil.AdicionarUrlAmigavel("Modulos/Dashboard/Dashboard-Gerente", "DashboardGerente.aspx", this.hlkDashboard);
+            //InfoTech2uControlHtmlUtil.AdicionarUrlAmigavel("Modulos/Dashboard/Dashboard-Gerente", "DashboardGerente.aspx", this.hlkDashboard);
             
 
             InfoTech2uControlHtmlUtil.AdicionarUrlAmigavel("Modulos/RecursosHumanos/Pesquisa-Funcionário", "PesquisaFuncionario.aspx", this.hlkPesquisaFuncionario);

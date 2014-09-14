@@ -119,7 +119,6 @@
                 <div class="leftmenu">
                     <ul class="nav nav-tabs nav-stacked">
                         <li class="nav-header">Navigation</li>
-                        <li><asp:HyperLink NavigateUrl="../Dashboard/DashboardGerente.aspx" runat="server" ID="hlkDashboard"><span class="iconfa-laptop"></span>Dashboard</asp:HyperLink></li>
                         <li class="dropdown"><a href=""><span class="iconfa-th-list"></span>Recursos Humanos</a>
                             <ul>
                                 <li class="dropdown"><a href="">Funcionário</a>
