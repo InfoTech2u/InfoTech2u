@@ -416,6 +416,8 @@ function validarFuncionario(passoAtivo) {
 
         var TipoEndereco = jQuery('#ddlTipoEndereco option:selected').text();
         var TipoLogradouro = jQuery('#ddlTipoLogradouro option:selected').text();
+        var CidadeFuncionario = jQuery('#ddlCidadeFuncionario option:selected').text();
+        var EstadoFuncionario = jQuery('#ddlEstadoFuncionario option:selected').text();
         var Logradouro = jQuery('#txtLogradouro').val();
         var NumeroEndereco = jQuery('#txtNumeroEndereco').val();
         var Bairro = jQuery('#txtBairro').val();
@@ -696,6 +698,8 @@ function validarFuncionario(passoAtivo) {
         var Digito = jQuery('#txtDigito').val();
         var TipoEnderecoPIS = jQuery('#ddlTipoEnderecoPIS').val();
         var TipoLogradouroPIS = jQuery('#ddlTipoLogradouroPIS').val();
+        var CidadePIS = jQuery('#ddlCidadePIS option:selected').text();
+        var EstadoPIS = jQuery('#ddlEstadoPIS option:selected').text();
         var LogradouroPIS = jQuery('#txtLogradouroPIS').val();
         var NumeroEnderecoPIS = jQuery('#txtNumeroEnderecoPIS').val();
         var BairroPIS = jQuery('#txtBairroPIS').val();
@@ -953,6 +957,8 @@ function IncluirDadosFuncionario() {
             QtdFilhos: jQuery('#txtQtdFilhos').val(),
             TipoEndereco: jQuery('#ddlTipoEndereco option:selected').val(),
             TipoLogradouro: jQuery('#ddlTipoLogradouro option:selected').val(),
+            EstadoFuncionario: jQuery('#ddlEstadoFuncionario option:selected').val(),
+            CidadeFuncionario: jQuery('#ddlCidadeFuncionario option:selected').val(),
             Logradouro: jQuery('#txtLogradouro').val(),
             NumeroEndereco: jQuery('#txtNumeroEndereco').val(),
             Bairro: jQuery('#txtBairro').val(),
@@ -988,6 +994,8 @@ function IncluirDadosFuncionario() {
             Digito: jQuery('#txtDigito').val(),
             TipoEnderecoPIS: jQuery('#ddlTipoEnderecoPIS').val(),
             TipoLogradouroPIS: jQuery('#ddlTipoLogradouroPIS').val(),
+            EstadoPIS: jQuery('#ddlEstadoPIS option:selected').val(),
+            CidadePIS: jQuery('#ddlCidadePIS option:selected').val(),
             LogradouroPIS: jQuery('#txtLogradouroPIS').val(),
             NumeroEnderecoPIS: jQuery('#txtNumeroEnderecoPIS').val(),
             BairroPIS: jQuery('#txtBairroPIS').val(),
