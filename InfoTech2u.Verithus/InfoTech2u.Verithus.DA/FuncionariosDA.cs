@@ -136,6 +136,16 @@ namespace InfoTech2u.Verithus.DA
                 else
                     lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_LOGRADOURO_FUNCIONARIO", param.Endereco.DetalheEndereco.CodigoTipoLogradouro));
 
+                if (param.Endereco.DetalheEndereco.CodigoCidade == null)
+                    lstSqlParameter.Add(new SqlParameter("@CODIGO_CIDADE_FUNCIONARIO", DBNull.Value));
+                else
+                    lstSqlParameter.Add(new SqlParameter("@CODIGO_CIDADE_FUNCIONARIO", param.Endereco.DetalheEndereco.CodigoCidade));
+
+                if (param.Endereco.DetalheEndereco.CodigoEstado == null)
+                    lstSqlParameter.Add(new SqlParameter("@CODIGO_ESTADO_FUNCIONARIO", DBNull.Value));
+                else
+                    lstSqlParameter.Add(new SqlParameter("@CODIGO_ESTADO_FUNCIONARIO", param.Endereco.DetalheEndereco.CodigoEstado));
+
                 if (param.Endereco.DetalheEndereco.Logradouro == null)
                     lstSqlParameter.Add(new SqlParameter("@LOGRADOURO_FUNCIONARIO", DBNull.Value));
                 else
@@ -284,10 +294,21 @@ namespace InfoTech2u.Verithus.DA
                     lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_ENDERECO_PIS", DBNull.Value));
                 else
                     lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_ENDERECO_PIS", param.DocumentoPIS.EnderecoVO.DetalheEndereco.TipoEnderecoVO.CodigoTipoEndereco));
+                
                 if (param.DocumentoPIS.EnderecoVO.DetalheEndereco.TipoLogradouroVO.CodigoTipoLogradouro == null)
                     lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_LOGRADOURO_PIS", DBNull.Value));
                 else
                     lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_LOGRADOURO_PIS", param.DocumentoPIS.EnderecoVO.DetalheEndereco.TipoLogradouroVO.CodigoTipoLogradouro));
+
+                if (param.DocumentoPIS.EnderecoVO.DetalheEndereco.CodigoCidade == null)
+                    lstSqlParameter.Add(new SqlParameter("@CODIGO_CIDADE_PIS", DBNull.Value));
+                else
+                    lstSqlParameter.Add(new SqlParameter("@CODIGO_CIDADE_PIS", param.DocumentoPIS.EnderecoVO.DetalheEndereco.CodigoCidade));
+
+                if (param.DocumentoPIS.EnderecoVO.DetalheEndereco.CodigoEstado == null)
+                    lstSqlParameter.Add(new SqlParameter("@CODIGO_ESTADO_PIS", DBNull.Value));
+                else
+                    lstSqlParameter.Add(new SqlParameter("@CODIGO_ESTADO_PIS", param.DocumentoPIS.EnderecoVO.DetalheEndereco.CodigoEstado));
 
                 if (param.DocumentoPIS.EnderecoVO.DetalheEndereco.Logradouro == null)
                     lstSqlParameter.Add(new SqlParameter("@LOGRADOURO_PIS", DBNull.Value));

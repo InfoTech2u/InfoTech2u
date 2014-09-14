@@ -18,6 +18,8 @@ namespace InfoTech2u.Verithus.VO
         public Nullable<int> CodigoEndereco { get; set; }
         public Nullable<int> CodigoTipoEndereco { get; set; }
         public Nullable<int> CodigoTipoLogradouro { get; set; }
+        public Nullable<int> CodigoCidade { get; set; }
+        public Nullable<int> CodigoEstado { get; set; }
         public string Logradouro { get; set; }
         public string Numero { get; set; }
         public string Bairro { get; set; }

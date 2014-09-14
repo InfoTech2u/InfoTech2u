@@ -76,6 +76,9 @@ namespace InfoTech2u.Verithus.WEB.Handler
             //Endereço
             string TipoEndereco = context.Request.QueryString["TipoEndereco"].ToString();
             string TipoLogradouro = context.Request.QueryString["TipoLogradouro"].ToString();
+            string CidadeFuncionario = context.Request.QueryString["CidadeFuncionario"].ToString();
+            string EstadoFuncionario = context.Request.QueryString["EstadoFuncionario"].ToString();
+
             string Logradouro = context.Request.QueryString["Logradouro"].ToString();
             string NumeroEndereco = context.Request.QueryString["NumeroEndereco"].ToString();
             string Bairro = context.Request.QueryString["Bairro"].ToString();
@@ -111,6 +114,8 @@ namespace InfoTech2u.Verithus.WEB.Handler
             string Digito = context.Request.QueryString["Digito"].ToString();
             string TipoEnderecoPIS = context.Request.QueryString["TipoEnderecoPIS"].ToString();
             string TipoLogradouroPIS = context.Request.QueryString["TipoLogradouroPIS"].ToString();
+            string CidadePIS = context.Request.QueryString["CidadePIS"].ToString();
+            string EstadoPIS = context.Request.QueryString["EstadoPIS"].ToString();
             string LogradouroPIS = context.Request.QueryString["LogradouroPIS"].ToString();
             string NumeroEnderecoPIS = context.Request.QueryString["NumeroEnderecoPIS"].ToString();
             string BairroPIS = context.Request.QueryString["BairroPIS"].ToString();
@@ -161,6 +166,13 @@ namespace InfoTech2u.Verithus.WEB.Handler
 
             objDetalheEnderecoFuncionario.TipoEnderecoVO = objTipoEnderecoFuncionario;
             objDetalheEnderecoFuncionario.TipoLogradouroVO = objTipoLogradouroFuncionario;
+
+            if (!String.IsNullOrWhiteSpace(CidadeFuncionario))
+                objDetalheEnderecoFuncionario.CodigoCidade = Convert.ToInt32(CidadeFuncionario);
+
+            if (!String.IsNullOrWhiteSpace(EstadoFuncionario))
+                objDetalheEnderecoFuncionario.CodigoEstado = Convert.ToInt32(EstadoFuncionario);
+
             objDetalheEnderecoFuncionario.Logradouro = Logradouro;
             objDetalheEnderecoFuncionario.Numero = NumeroEndereco;
             objDetalheEnderecoFuncionario.Bairro = Bairro;
@@ -211,6 +223,13 @@ namespace InfoTech2u.Verithus.WEB.Handler
 
             if (!String.IsNullOrWhiteSpace(TipoLogradouroPIS))
                 objTipoLogradouroPIS.CodigoTipoLogradouro = Convert.ToInt32(TipoLogradouroPIS);
+
+
+            if (!String.IsNullOrWhiteSpace(CidadePIS))
+                objDetalheEnderecoPIS.CodigoCidade = Convert.ToInt32(CidadePIS);
+
+            if (!String.IsNullOrWhiteSpace(EstadoPIS))
+                objDetalheEnderecoPIS.CodigoEstado = Convert.ToInt32(EstadoPIS);
 
             objDetalheEnderecoPIS.TipoEnderecoVO = objTipoEnderecoPIS;
             objDetalheEnderecoPIS.TipoLogradouroVO = objTipoLogradouroPIS;
