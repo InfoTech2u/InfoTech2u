@@ -111,6 +111,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
             string SobNumero = context.Request.QueryString["SobNumero"].ToString();
             string BancoPIS = context.Request.QueryString["BancoPIS"].ToString();
             string Agencia = context.Request.QueryString["Agencia"].ToString();
+            string Conta = context.Request.QueryString["Conta"].ToString();
             string Digito = context.Request.QueryString["Digito"].ToString();
             string TipoEnderecoPIS = context.Request.QueryString["TipoEnderecoPIS"].ToString();
             string TipoLogradouroPIS = context.Request.QueryString["TipoLogradouroPIS"].ToString();
@@ -127,6 +128,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
             string DataRetratacao = context.Request.QueryString["DataRetratacao"].ToString();
             string BancoFGTS = context.Request.QueryString["BancoFGTS"].ToString();
             string AgenciaFGTS = context.Request.QueryString["AgenciaFGTS"].ToString();
+            string ContaFGTS = context.Request.QueryString["ContaFGTS"].ToString();
             string DigitoFGTS = context.Request.QueryString["DigitoFGTS"].ToString();
             //Caracteristicas Fisicas
             string Cor = context.Request.QueryString["Cor"].ToString();

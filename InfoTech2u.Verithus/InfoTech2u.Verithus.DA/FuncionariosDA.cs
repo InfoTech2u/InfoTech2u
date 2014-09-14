@@ -285,6 +285,11 @@ namespace InfoTech2u.Verithus.DA
                 else
                     lstSqlParameter.Add(new SqlParameter("@AGENCIA_PIS", param.DocumentoPIS.BancoVO.Agencia));
 
+                if (param.DocumentoPIS.BancoVO.Conta == null)
+                    lstSqlParameter.Add(new SqlParameter("@CONTA_PIS", DBNull.Value));
+                else
+                    lstSqlParameter.Add(new SqlParameter("@CONTA_PIS", param.DocumentoPIS.BancoVO.Conta));
+
                 if (param.DocumentoPIS.BancoVO.Digito == null)
                     lstSqlParameter.Add(new SqlParameter("@DIGITO_PIS", DBNull.Value));
                 else
@@ -358,6 +363,11 @@ namespace InfoTech2u.Verithus.DA
                     lstSqlParameter.Add(new SqlParameter("@AGENCIA_FUNDO_GARANTIA", DBNull.Value));
                 else
                     lstSqlParameter.Add(new SqlParameter("@AGENCIA_FUNDO_GARANTIA", param.DocumentoFundoGarantia.BancoVO.Agencia));
+
+                if (param.DocumentoFundoGarantia.BancoVO.Conta == null)
+                    lstSqlParameter.Add(new SqlParameter("@CONTA_FUNDO_GARANTIA", DBNull.Value));
+                else
+                    lstSqlParameter.Add(new SqlParameter("@CONTA_FUNDO_GARANTIA", param.DocumentoFundoGarantia.BancoVO.Conta));
 
                 if (param.DocumentoFundoGarantia.BancoVO.Digito == null)
                     lstSqlParameter.Add(new SqlParameter("@DIGITO_FUNDO_GARANTIA", DBNull.Value));

@@ -382,6 +382,15 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario {
         protected global::System.Web.UI.WebControls.TextBox txtAgencia;
         
         /// <summary>
+        /// txtConta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtConta;
+        
+        /// <summary>
         /// txtDigito control.
         /// </summary>
         /// <remarks>
@@ -515,6 +524,15 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAgenciaFGTS;
+        
+        /// <summary>
+        /// txtContaFGTS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtContaFGTS;
         
         /// <summary>
         /// txtDigitoFGTS control.

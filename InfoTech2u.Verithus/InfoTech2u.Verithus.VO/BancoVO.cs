@@ -23,6 +23,7 @@ namespace InfoTech2u.Verithus.VO
         public int CodigoBanco { get; set; }
         public string NumeroBanco { get; set; }
         public string Agencia { get; set; }
+        public string Conta { get; set; }
         public string Digito { get; set; }
         public Nullable<int> CodigoEndereco { get; set; }
         public Nullable<int> CodigoContato { get; set; }

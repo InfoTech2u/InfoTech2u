@@ -454,6 +454,14 @@
                             </span>
                         </p>
 
+                        <p id="validaConta">
+                            <label>Conta</label>
+                            <span class="field">
+                                <asp:TextBox runat="server" ID="txtConta" CssClass="input-small" ClientIDMode="Static" />
+                                <span class="help-inline" id="msgConta"></span>
+                            </span>
+                        </p>
+
                         <p id="validaDigito">
                             <label>Digito</label>
                             <span class="field">
@@ -583,6 +591,14 @@
                             <span class="field">
                                 <asp:TextBox runat="server" ID="txtAgenciaFGTS" CssClass="input-small" ClientIDMode="Static" />
                                 <span class="help-inline" id="msgAgenciaFGTS"></span>
+                            </span>
+                        </p>
+
+                        <p id="validaContaFGTS">
+                            <label>Conta</label>
+                            <span class="field">
+                                <asp:TextBox runat="server" ID="txtContaFGTS" CssClass="input-small" ClientIDMode="Static" />
+                                <span class="help-inline" id="msgContaFGTS"></span>
                             </span>
                         </p>
 
