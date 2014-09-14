@@ -122,7 +122,7 @@
     <!--loginpanel-->
 
     <div class="loginfooter">
-        <p>&copy; 2013. Shamcey Admin Template. All Rights Reserved.</p>
+        <p>&copy; 2014. Infotech2u. All Rights Reserved.</p>
     </div>
 </body>
 </html>

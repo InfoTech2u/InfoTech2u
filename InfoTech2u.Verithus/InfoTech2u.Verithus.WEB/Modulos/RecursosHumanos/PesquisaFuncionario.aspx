@@ -382,10 +382,10 @@
 
             <div class="footer">
                 <div class="footer-left">
-                    <span>&copy; 2013. Shamcey Admin Template. All Rights Reserved.</span>
+                    <span>&copy; 2014. Infotech2u. All Rights Reserved.</span>
                 </div>
                 <div class="footer-right">
-                    <span>Designed by: <a href="http://themepixels.com/">ThemePixels</a></span>
+                    <span>Developer by: <a href="http://infotech2u.com.br/">InfoTech2U</a></span>
                 </div>
             </div>
             <!--footer-->
