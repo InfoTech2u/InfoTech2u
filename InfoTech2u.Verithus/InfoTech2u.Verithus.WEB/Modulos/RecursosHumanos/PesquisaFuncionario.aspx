@@ -8,28 +8,32 @@
         jQuery(document).ready(function () {
             // dynamic table
 
-            GridFake();
+            //GridFake();
 
-            jQuery('#dyntable').dataTable({
-                "sPaginationType": "full_numbers",
-                "aaSortingFixed": [[0, 'asc']],
-                "fnDrawCallback": function (oSettings) {
-                    jQuery.uniform.update();
-                }
+            jQuery("#btnPesquisar").click(function () {
+
+                Pesquisar();
+
+
+                //return false;
             });
+
+            
+
+
 
             jQuery("#btnIncluir").click(function () {
 
                 var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
-                jQuery(window.document.location).attr('href', 'ManterFuncionario.aspx?idUser=' + codigoSel);
-                
+                jQuery(window.document.location).attr('href', 'ManterFuncionario.aspx?tpAcao=1');
+
                 return false;
             });
 
             jQuery("#btnAlterar").click(function () {
 
                 var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
-                jQuery(window.document.location).attr('href', 'ManterFuncionario.aspx?idUser=' + codigoSel);
+                jQuery(window.document.location).attr('href', 'ManterFuncionario.aspx?tpAcao=2&idUser=' + codigoSel);
 
                 return false;
             });
@@ -37,7 +41,7 @@
             jQuery("#btnDetalhar").click(function () {
 
                 var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
-                jQuery(window.document.location).attr('href', 'ManterFuncionario.aspx?idUser=' + codigoSel);
+                jQuery(window.document.location).attr('href', 'ManterFuncionario.aspx?tpAcao=3&idUser=' + codigoSel);
 
                 return false;
             });
@@ -86,6 +90,45 @@
 
         });
 
+        function Pesquisar() {
+
+            jQuery.ajax({
+                type: "GET",
+                url: "../../Handler/PesquisarFuncionario.ashx",
+                data: {
+                    CodigoFuncionario: jQuery('#txtCodigoFuncionario').val(),
+                    NumeroOrdemMatricula: jQuery('#txtNumeroOrdemMatricula').val(),
+                    NumeroMatricula: jQuery('#txtNumeroMatricula').val(),
+                    NomeFuncionario: jQuery('#txtNomeFuncionario').val()
+                },
+                contentType: "json",
+                cache: false,
+                success: function (data) {
+
+                    var arrFuncionario = eval(data);
+
+                    for (var i = 0; i < arrFuncionario.length; i++) {
+
+                        var row = '<tr class="gradeX"><td><input type="radio" name="rdbFuncionario" value="' + arrFuncionario[i].FUNC_CODIGO_FUNCIONARIO + '" /></td><td>' + arrFuncionario[i].FUNC_CODIGO_FUNCIONARIO + '</td><td>' + arrFuncionario[i].FUNC_NUMERO_ORDEM_MATRICULA + '</td><td>' + arrFuncionario[i].FUNC_NUMERO_MATRICULA + '</td><td class="center">' + arrFuncionario[i].FUNC_NOME_FUNCIONARIO + '</td></tr>';
+                        jQuery('tbody').append(row);
+
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrow) {
+                    errorAjax(textStatus);
+                }
+            });
+
+
+            jQuery('#dyntable').dataTable({
+                "sPaginationType": "full_numbers",
+                "aaSortingFixed": [[0, 'asc']],
+                "fnDrawCallback": function (oSettings) {
+                    jQuery.uniform.update();
+                }
+            });
+        }
+
         function GridFake() {
 
             for (i = 0; i < 50; i++) {
@@ -94,7 +137,7 @@
             }
         }
 
-       
+
 
     </script>
     <div class="rightpanel">
@@ -154,7 +197,7 @@
                             </p>
 
                             <p class="stdformbutton">
-                                <a href="#" class="btn btn-primary btn-rounded"><i class="iconsweets-magnifying iconsweets-white"></i>&nbsp; Pesquisar</a>
+                                <a href="#" class="btn btn-primary btn-rounded" id="btnPesquisar"><i class="iconsweets-magnifying iconsweets-white"></i>&nbsp; Pesquisar</a>
                                 <a href="#" class="btn btn-rounded"><i class="iconfa-refresh iconsweets-black"></i>&nbsp; limpar</a>
                             </p>
 
