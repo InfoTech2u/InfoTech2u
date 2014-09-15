@@ -62,12 +62,12 @@ namespace InfoTech2u.Verithus.DA
             }
         }
 
-        public bool IncluirTipoTarefa(TipoTarefaVO param)
+        public DataTable IncluirTipoTarefa(TipoTarefaVO param)
         {
             InfoTech2uSQLUtil objSql = null;
             StringBuilder query = null;
             List<SqlParameter> lstSqlParameter = null;
-            DataTable dt = null;
+            DataTable dtRetorno = null;
 
             try
             {
@@ -87,22 +87,17 @@ namespace InfoTech2u.Verithus.DA
                 lstSqlParameter.Add(new SqlParameter("@DATA_ALTERACAO", param.DataAlteracao));
                 lstSqlParameter.Add(new SqlParameter("@CODIGO_STATUS", param.CodigoStatus));
 
-                lstSqlParameter.Add(new SqlParameter("@C_ERR", DBNull.Value));
-                lstSqlParameter.Add(new SqlParameter("@T_ERR", DBNull.Value));
+                dtRetorno = new DataTable();
 
-                dt = new DataTable();
+                objSql.Execute("SPVRT085_TIPO_TAREFA_PR_INCLUIR", lstSqlParameter.ToArray(), null, ref dtRetorno);
 
-                int rowsAffected = 0;
-                objSql.ExecuteNonQuery("SPVRT085_TIPO_TAREFA_PR_INCLUIR", lstSqlParameter.ToArray(), null, out rowsAffected);
-
-                return rowsAffected > 0;
             }
             catch (Exception ex)
             {
-                return false;
+                return null;
             }
 
-            return true;
+            return dtRetorno;
         }
         public bool ExcluirTipoTarefa(TipoTarefaVO param)
         {

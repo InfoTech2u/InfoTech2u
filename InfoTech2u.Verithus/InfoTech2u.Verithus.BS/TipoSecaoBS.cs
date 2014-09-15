@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using InfoTech2u.Verithus.VO;
 using InfoTech2u.Verithus.DA;
+using System.Data;
 
 namespace InfoTech2u.Verithus.BS
 {
@@ -28,7 +29,7 @@ namespace InfoTech2u.Verithus.BS
             }
         }
 
-        public bool IncluirTipoSecao(TipoSecaoVO param)
+        public DataTable IncluirTipoSecao(TipoSecaoVO param)
         {
             TipoSecaoDA objRetorno = null;
 

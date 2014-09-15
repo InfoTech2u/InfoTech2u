@@ -5,7 +5,7 @@ CREATE PROCEDURE SPVRT082_TIPO_SECAO_PR_INCLUIR
 	@CODIGO_USUARIO_CADASTRO	int				=   null,
 	@DATA_CADASTRO				datetime		=	null,
 	@CODIGO_USUARIO_ATUALIZACAO int				=   null,
-	@DATA_ALTERACAO			datetime        =   null,
+	@DATA_ALTERACAO			datetime        	=   null,
 	@CODIGO_STATUS				int             =	null
 )
 AS

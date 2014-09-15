@@ -2,9 +2,13 @@
 using InfoTech2u.Verithus.VO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Web;
 using System.Web.Script.Serialization;
+using InfoTech2u.Verithus.Util;
+
 
 namespace InfoTech2u.Verithus.WEB.Handler
 {
@@ -29,9 +33,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
                 TipoFormaPagamentoVO param = new TipoFormaPagamentoVO();
                 param.Descricao = context.Request.QueryString["Descricao"].ToString();
 
-                JavaScriptSerializer serializer = new JavaScriptSerializer();
-
-                context.Response.Write(serializer.Serialize(IncluirTipoFormaPagamento(param)));
+                context.Response.Write(IncluirTipoFormaPagamento(param).DataTableSerializer());
 
             }
             else if (context.Request.QueryString["Metodo"] == "Excluir")
@@ -60,7 +62,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
             return objBS.SelecionarFormaPagamentoLista(param);
         }
 
-        private bool IncluirTipoFormaPagamento(TipoFormaPagamentoVO param)
+        private DataTable IncluirTipoFormaPagamento(TipoFormaPagamentoVO param)
         {
             TipoFormaPagamentoBS objBS = new TipoFormaPagamentoBS();
             return objBS.IncluirTipoFormaPagamento(param);

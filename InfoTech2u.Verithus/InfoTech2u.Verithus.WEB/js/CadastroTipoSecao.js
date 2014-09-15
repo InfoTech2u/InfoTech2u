@@ -18,7 +18,16 @@ jQuery(document).ready(function () {
                     Descricao: jQuery('#txtDescricao').val()
                 },
                 success: function (data) {
-                    alert("Incluído com Sucesso!");                    
+                    var tipos = eval(data);
+                    Limpar();
+                    if (tipos.length > 0) {
+                        var row = '<tr id="' + tipos[0].CODIGO_TIPO_SECAO + '"><td>' + tipos[0].CODIGO_TIPO_SECAO + '</td><td>' + tipos[0].DESCRICAO + '</td><td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + tipos[0].CODIGO_TIPO_SECAO + ');" class="deleterow"><i class="icon-trash"></i></a></td></tr>';
+                        jQuery('tbody').append(row);
+                        jQuery('#myModal').modal('hide');
+                    }
+                    else {
+                        alert("Não foi possível incluir.");
+                    }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrow) {
                     errorAjax(textStatus);
@@ -29,46 +38,15 @@ jQuery(document).ready(function () {
     });
 
     jQuery("#btnLimpar").click(function () {
+        Limpar();
+    });
+
+
+    function Limpar() {
         jQuery('#txtDescricao').val("");
         jQuery('#msgDescricao').html('').hide();
         jQuery("#validaDescricao").removeClass("par control-group error").addClass("input-small");
-    });
-
-    // delete row in a table
-    jQuery(".deleterow").click(function () {
-        var conf = confirm('Deseja Deletar este Registro?');
-        if (conf)
-            jQuery(this).parents('tr').fadeOut(function () {
-                var id = jQuery(this).children('td:first').text();
-
-                jQuery.ajax({
-                    type: "GET",
-                    crossDomain: true,
-                    url: "../../Handler/ManterSecao.ashx",
-                    contentType: "json",
-                    cache: false,
-                    data: {
-                        Metodo: 'Excluir',
-                        Acao: 'Exclusao',
-                        Id: id
-                    },
-                    success: function (data) {
-
-                        if (data) {
-                            jQuery(this).remove();
-                            // do some other stuff here
-                        }
-                        FormatarGrid();
-                    },
-                    error: function (XMLHttpRequest, textStatus, errorThrow) {
-                        errorAjax(textStatus);
-                        alert(textStatus);
-                    }
-                });
-            });
-        return false;
-    });
-
+    }
 
     function ValidarFormulario() {
 
@@ -123,11 +101,34 @@ jQuery(document).ready(function () {
             }
         });
     };
-
-
-
-
 });
 
+function Excluir(Id) {
+    var conf = confirm('Deseja Deletar este Registro?');
+    if (conf) {
+        jQuery.ajax({
+            type: "GET",
+            crossDomain: true,
+            url: "../../Handler/ManterCargo.ashx",
+            contentType: "json",
+            cache: false,
+            data: {
+                Metodo: 'Excluir',
+                Acao: 'Exclusao',
+                Id: Id
+            },
+            success: function (data) {
 
-
+                if (data) {
+                    jQuery('table tbody tr[id="' + Id + '"]').remove();
+                    // do some other stuff here
+                }
+                FormatarGrid();
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrow) {
+                errorAjax(textStatus);
+                alert(textStatus);
+            }
+        });
+    }
+}

@@ -2,9 +2,13 @@
 using InfoTech2u.Verithus.VO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Web;
 using System.Web.Script.Serialization;
+using InfoTech2u.Verithus.Util;
+
 
 namespace InfoTech2u.Verithus.WEB.Handler
 {
@@ -29,9 +33,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
                 TipoSecaoVO param = new TipoSecaoVO();
                 param.Descricao = context.Request.QueryString["Descricao"].ToString();
 
-                JavaScriptSerializer serializer = new JavaScriptSerializer();
-
-                context.Response.Write(serializer.Serialize(IncluirTipoSecao(param)));
+                context.Response.Write(IncluirTipoSecao(param).DataTableSerializer());
 
             }
             else if (context.Request.QueryString["Metodo"] == "Excluir")
@@ -60,7 +62,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
             return objBS.SelecionarSecaoLista(param);
         }
 
-        private bool IncluirTipoSecao(TipoSecaoVO param)
+        private DataTable IncluirTipoSecao(TipoSecaoVO param)
         {
             TipoSecaoBS objBS = new TipoSecaoBS();
             return objBS.IncluirTipoSecao(param);
