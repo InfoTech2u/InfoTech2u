@@ -2,9 +2,12 @@
 using InfoTech2u.Verithus.VO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Web;
 using System.Web.Script.Serialization;
+using InfoTech2u.Verithus.Util;
 
 namespace InfoTech2u.Verithus.WEB.Handler
 {
@@ -28,9 +31,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
                 TipoCargoVO param = new TipoCargoVO();
                 param.Descricao = context.Request.QueryString["Descricao"].ToString();
 
-                JavaScriptSerializer serializer = new JavaScriptSerializer();
-
-                context.Response.Write(serializer.Serialize(IncluirTipoCargo(param)));
+                context.Response.Write(IncluirTipoCargo(param).DataTableSerializer());
 
             }
             else if (context.Request.QueryString["Metodo"] == "Excluir")
@@ -59,7 +60,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
             return objBS.SelecionarCargoLista(param);
         }
 
-        private bool IncluirTipoCargo(TipoCargoVO param)
+        private DataTable IncluirTipoCargo(TipoCargoVO param)
         {
             TipoCargoBS objBS = new TipoCargoBS();
             return objBS.IncluirTipoCargo(param);

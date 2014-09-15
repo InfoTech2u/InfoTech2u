@@ -5,10 +5,7 @@ CREATE PROCEDURE SPVRT078_TIPO_CARGO_PR_INCLUIR
     @DATA_CADASTRO        datetime         =    null,
     @CODIGO_USUARIO_ALTERACAO int          =    null,
     @CODIGO_ALTERACAO     datetime         =    null,
-    @CODIGO_STATUS        int              =    null,
-
-	@C_ERR INT			 OUTPUT,
-	@T_ERR VARCHAR(255)  OUTPUT 
+    @CODIGO_STATUS        int              =    null
 )
 AS
 BEGIN
@@ -30,16 +27,10 @@ BEGIN
 		@CODIGO_STATUS
 	)
 
-	IF(@@ERROR <>0)
-		BEGIN
-			SELECT @C_ERR = @@ERROR
-			SELECT @T_ERR = 'ERRO NO SELECT DA TABELA TBVRT020_TIPO_CARGO.'
-			RETURN
-		END
-	ELSE
-		BEGIN
-			SELECT @C_ERR = 0
-			SELECT @T_ERR = 'TIPO CARGO INSERIDO COM SUCESSO.'
-			RETURN
-		END
+	IF(@@ERROR = 0)
+	BEGIN
+		SELECT * FROM  TBVRT020_TIPO_CARGO
+		WHERE CODIGO_TIPO_CARGO = @@IDENTITY
+	END	
+
 END

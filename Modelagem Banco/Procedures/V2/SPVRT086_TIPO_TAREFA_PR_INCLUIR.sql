@@ -6,10 +6,7 @@ CREATE PROCEDURE SPVRT085_TIPO_TAREFA_PR_INCLUIR
 		@DATA_CADASTRO				 datetime		=         null,
 		@CODIGO_USUARIO_ALTERACAO	 int			=	      null,
 		@DATA_ALTERACAO			     datetime       =	      null,
-		@CODIGO_STATUS				 int            =		  null,
-
-		@C_ERR INT			 OUTPUT,
-		@T_ERR VARCHAR(255)  OUTPUT 
+		@CODIGO_STATUS				 int            =		  null
 )		
 AS
 	BEGIN
@@ -30,16 +27,10 @@ AS
 			@CODIGO_STATUS				
 		)
 
-		IF(@@ERROR <>0)
-			BEGIN
-				SELECT @C_ERR = @@ERROR
-				SELECT @T_ERR = 'ERRO NO SELECT DA TABELA TBVRT022_TIPO_TAREFA.'
-				RETURN
-			END
-		ELSE
-			BEGIN
-				SELECT @C_ERR = 0
-				SELECT @T_ERR = 'TIPO TAREFA INSERIDO COM SUCESSO.'
-				RETURN
-			END
+			IF(@@ERROR = 0)
+	BEGIN
+		SELECT * FROM  TBVRT022_TIPO_TAREFA
+		WHERE CODIGO_TIPO_TAREFA = @@IDENTITY
+	END	
+
 	END

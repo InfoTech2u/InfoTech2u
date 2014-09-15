@@ -3,7 +3,6 @@
 
     jQuery('#btnIncluir').click(function (event) {
         if (validar()) {
-
             jQuery.ajax({
                 type: "GET",
                 crossDomain: true,
@@ -103,8 +102,8 @@ function CarregarTipoBeneficioLista() {
                 var row = '<tr><td>' + tiposBeneficios[x].CodigoTipoBeneficio + '</td><td>' + tiposBeneficios[x].Descricao + '</td><td class="centeralign"><a title="Excluir" href="#" class="deleterow"><i class="icon-trash"></i></a></td></tr>';
                 jQuery('tbody').append(row);
             }
-           
-           
+
+
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
             errorAjax(textStatus);
