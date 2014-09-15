@@ -101,41 +101,35 @@ jQuery(document).ready(function () {
             }
         });
     };
-
-
-
-
-
-
-
-
 });
 
 
 function Excluir(Id) {
-    jQuery.ajax({
-        type: "GET",
-        crossDomain: true,
-        url: "../../Handler/ManterCargo.ashx",
-        contentType: "json",
-        cache: false,
-        data: {
-            Metodo: 'Excluir',
-            Acao: 'Exclusao',
-            Id: Id
-        },
-        success: function (data) {
+    var conf = confirm('Deseja Deletar este Registro?');
+    if (conf) {
+        jQuery.ajax({
+            type: "GET",
+            crossDomain: true,
+            url: "../../Handler/ManterCargo.ashx",
+            contentType: "json",
+            cache: false,
+            data: {
+                Metodo: 'Excluir',
+                Acao: 'Exclusao',
+                Id: Id
+            },
+            success: function (data) {
 
-            if (data) {
-                jQuery('table tbody tr[id="' + Id + '"]').remove();
-                // do some other stuff here
+                if (data) {
+                    jQuery('table tbody tr[id="' + Id + '"]').remove();
+                    // do some other stuff here
+                }
+                FormatarGrid();
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrow) {
+                errorAjax(textStatus);
+                alert(textStatus);
             }
-            FormatarGrid();
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrow) {
-            errorAjax(textStatus);
-            alert(textStatus);
-        }
-    });
-
+        });
+    }
 }
