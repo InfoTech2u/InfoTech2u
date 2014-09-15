@@ -169,8 +169,6 @@ namespace InfoTech2u.Verithus.DA
                     listaRetorno.Add(retorno);
                     i++;
                 }
-
-                return listaRetorno;
             }
             catch (Exception ex)
             {
@@ -182,6 +180,8 @@ namespace InfoTech2u.Verithus.DA
                 lstSqlParameter = null;
                 dtRetorno = null;
             }
+
+            return listaRetorno;
         }
 
         public bool ExcluirSindicato(SindicatoVO param)

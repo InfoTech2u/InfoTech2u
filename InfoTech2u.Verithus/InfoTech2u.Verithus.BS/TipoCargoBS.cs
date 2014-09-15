@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using InfoTech2u.Verithus.VO;
 using InfoTech2u.Verithus.DA;
-using System.Data;
 
 namespace InfoTech2u.Verithus.BS
 {
@@ -29,7 +28,7 @@ namespace InfoTech2u.Verithus.BS
             }
         }
 
-        public DataTable IncluirTipoCargo(TipoCargoVO param)
+        public bool IncluirTipoCargo(TipoCargoVO param)
         {
             TipoCargoDA objRetorno = null;
 

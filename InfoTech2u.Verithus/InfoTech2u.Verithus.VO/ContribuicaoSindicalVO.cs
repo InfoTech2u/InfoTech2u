@@ -14,7 +14,7 @@ namespace InfoTech2u.Verithus.VO
     
     public partial class ContribuicaoSindicalVO
     {
-        public int CodigoContribuicaoSindical { get; set; }
+        public int? CodigoContribuicaoSindical { get; set; }
         public Nullable<int> CodigoFuncionario { get; set; }
         public Nullable<System.DateTime> PeriodoAno { get; set; }
         public Nullable<int> CodigoSindicato { get; set; }
