@@ -697,7 +697,6 @@
     <Content Include="Modulos\RecursosHumanos\ManterAdmissao.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterBeneficios.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterCargo.aspx" />
-    <Content Include="Modulos\RecursosHumanos\ManterContribuicaoSindicaol.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterDemissao.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterDependente.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterFormaDePagamento.aspx" />
@@ -871,13 +870,6 @@
     </Compile>
     <Compile Include="Modulos\RecursosHumanos\ManterCargo.aspx.designer.cs">
       <DependentUpon>ManterCargo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Modulos\RecursosHumanos\ManterContribuicaoSindicaol.aspx.cs">
-      <DependentUpon>ManterContribuicaoSindicaol.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Modulos\RecursosHumanos\ManterContribuicaoSindicaol.aspx.designer.cs">
-      <DependentUpon>ManterContribuicaoSindicaol.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\RecursosHumanos\ManterDemissao.aspx.cs">
       <DependentUpon>ManterDemissao.aspx</DependentUpon>
