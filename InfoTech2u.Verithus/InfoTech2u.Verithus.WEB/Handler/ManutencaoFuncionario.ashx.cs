@@ -149,8 +149,8 @@ namespace InfoTech2u.Verithus.WEB.Handler
 
             if (!String.IsNullOrWhiteSpace(DataNascimento))
                 objFuncionario.DataNascimento = Convert.ToDateTime(DataNascimento);
-            
-            objFuncionario.LocalNascimento = objPaisFuncionario.CodigoPais.ToString();
+
+            objFuncionario.LocalNascimento = NacionalidadeFuncionario;
 
             if (!String.IsNullOrWhiteSpace(EstadoCivil))
                 objFuncionario.CodigoEstadoCivil = Convert.ToInt32(EstadoCivil);

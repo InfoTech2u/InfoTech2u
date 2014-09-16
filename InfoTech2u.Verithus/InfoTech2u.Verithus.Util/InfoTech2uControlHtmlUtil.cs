@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace InfoTech2u.Verithus.Util
 {
-    public class InfoTech2uControlHtmlUtil
+    public static class InfoTech2uControlHtmlUtil
     {
         //Incluir JavaScript ou Css Dinamicamente e em tempo de execução para resolver problema de caminhos de arquivo na master page Solution by Lex Luthor
         public static void IncludeHtmlGenericControl(Page pagina, string tipo, string caminho, string arquivo)
@@ -49,6 +49,17 @@ namespace InfoTech2u.Verithus.Util
             //Alterar HyperLink
             link.NavigateUrl = "~/" + UrlAmigavel;
             
+        }
+
+        public static Boolean SetSelectedValue(this DropDownList dropDownList, String selectedValue)
+        {
+            ListItem selectedListItem = dropDownList.Items.FindByValue(selectedValue);
+
+            if (selectedListItem != null)
+                selectedListItem.Selected = true;
+
+            return true;
+
         }
     }
 }

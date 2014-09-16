@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using InfoTech2u.Verithus.VO;
 using InfoTech2u.Verithus.BS;
+using System.Data;
 
 namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
 {
@@ -14,19 +15,209 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-                CarregarIncludes();
-                CarregarPais();
-                CarregarEstadoCivil();
-                CarregarTipoEndereco();
-                CarregarTipoLogradouro();
-                CarregarTipoCor();
-                CarregarTipoCabelo();
-                CarregarTipoOlho();
-                CarregarTipoBancoPIS();
-                CarregarTipoBancoFGTS();
-                CarregarEstado();
-            
+
+            CarregarIncludes();
+            CarregarPais();
+            CarregarEstadoCivil();
+            CarregarTipoEndereco();
+            CarregarTipoLogradouro();
+            CarregarTipoCor();
+            CarregarTipoCabelo();
+            CarregarTipoOlho();
+            CarregarTipoBancoPIS();
+            CarregarTipoBancoFGTS();
+            CarregarEstado();
+            ConfiguracaoInicialPagina();
+
+
+        }
+
+        protected void ConfiguracaoInicialPagina()
+        {
+            string tpAcao = Request.QueryString["tpAcao"].ToString();
+            string idUser;
+
+            if (tpAcao != "1")
+                idUser = Request.QueryString["idUser"].ToString();
+            else
+                idUser = null;
+
+            switch (tpAcao)
+            {
+                case "1":
+
+                    break;
+
+                case "2":
+                    CarregarCampos(idUser);
+                    break;
+
+                case "3":
+                    CarregarCampos(idUser);
+                    BloquearCampos();
+                    break;
+            }
+
+        }
+
+        protected void CarregarCampos(string idUser)
+        {
+
+            if (!string.IsNullOrWhiteSpace(idUser))
+            {
+                FuncionariosVO param = new FuncionariosVO();
+                FuncionariosBS retorno = new FuncionariosBS();
+                DataTable dtRetorno = new DataTable();
+
+                param.CodigoFuncionario = Convert.ToInt32(idUser);
+
+                dtRetorno = retorno.SelecionarFuncionario(param);
+
+                //dtRetorno.Rows[i]["NOME"].ToString()
+
+                //DataTable dt = dtRetorno;
+
+                int i = 0;
+                while (i < dtRetorno.Rows.Count)
+                {
+
+                    this.txtAgencia.Text = dtRetorno.Rows[i]["BANCO_PIS_AGENCIA"].ToString();
+                    this.txtAgenciaFGTS.Text = dtRetorno.Rows[i]["BANCO_FGTS_AGENCIA"].ToString();
+                    this.txtAltura.Text = dtRetorno.Rows[i]["CARACTERISTICA_FUNC_ALTURA"].ToString();
+                    this.txtBairro.Text = dtRetorno.Rows[i]["DETL_END_BAIRRO"].ToString();
+                    this.txtBairroPIS.Text = dtRetorno.Rows[i]["DETL_PIS_BAIRRO"].ToString();
+                    this.txtBancoFGTS.Text = dtRetorno.Rows[i]["BANCO_FGTS_NUMERO_BANCO"].ToString();
+                    this.txtBancoPIS.Text = dtRetorno.Rows[i]["BANCO_PIS_NUMERO_BANCO"].ToString();
+                    this.txtCadastroPIS.Text = dtRetorno.Rows[i]["BANCO_PIS_NUMERO_BANCO"].ToString();
+                    this.txtCarteira19.Text = dtRetorno.Rows[i]["DOC_EST_FUNC_NUMERO_CARTEIRA_19"].ToString();
+                    this.txtCarteiraTrabalho.Text = dtRetorno.Rows[i]["DOC_FUNC_NUMERO_CARTEIRA_TRABALHO"].ToString();
+                    this.txtCategoria.Text = dtRetorno.Rows[i]["DOC_FUNC_CATEGORIA"].ToString();
+                    this.txtCateiraSaude.Text = dtRetorno.Rows[i]["DOC_FUNC_NUMERO_CARTEIRA_SAUDE"].ToString();
+                    this.txtCBO.Text = dtRetorno.Rows[i]["DOC_EST_FUNC_NUMERO_CBO"].ToString();
+                    this.txtCEP.Text = dtRetorno.Rows[i]["DETL_END_CEP"].ToString();
+                    this.txtCEPPIS.Text = dtRetorno.Rows[i]["DETL_PIS_CEP"].ToString();
+                    this.txtComplemento.Text = dtRetorno.Rows[i]["DETL_END_COMPLEMENTO"].ToString();
+                    this.txtComplementoPIS.Text = dtRetorno.Rows[i]["DETL_PIS_COMPLEMENTO"].ToString();
+                    this.txtConta.Text = dtRetorno.Rows[i]["BANCO_PIS_CONTA"].ToString();
+                    this.txtContaFGTS.Text = dtRetorno.Rows[i]["BANCO_FGTS_CONTA"].ToString();
+                    this.txtCPF.Text = dtRetorno.Rows[i]["DOC_FUNC_NUMERO_CPF"].ToString();
+                    this.txtDataNascimento.Text = dtRetorno.Rows[i]["FUNC_DATA_NASCIMENTO"].ToString();
+                    this.txtDataOpcao.Text = dtRetorno.Rows[i]["DOC_FGTS_FUNC_DATA_OPCAO"].ToString();
+                    this.txtDataRetratacao.Text = dtRetorno.Rows[i]["DOC_FGTS_FUNC_DATA_RETRATACAO"].ToString();
+                    this.txtDigito.Text = dtRetorno.Rows[i]["BANCO_PIS_DIGITO"].ToString();
+                    this.txtDigitoFGTS.Text = dtRetorno.Rows[i]["BANCO_FGTS_DIGITO"].ToString();
+                    this.txtLogradouro.Text = dtRetorno.Rows[i]["DETL_END_LOGRADOURO"].ToString();
+                    this.txtLogradouroPIS.Text = dtRetorno.Rows[i]["DETL_PIS_LOGRADOURO"].ToString();
+                    this.txtNomeConjuge.Text = dtRetorno.Rows[i]["FUNC_NOME_CONJUGE"].ToString();
+                    this.txtNomeFuncionario.Text = dtRetorno.Rows[i]["FUNC_NOME_FUNCIONARIO"].ToString();
+                    this.txtNomeMae.Text = dtRetorno.Rows[i]["FUNC_NOME_MAE"].ToString();
+                    this.txtNomePai.Text = dtRetorno.Rows[i]["FUNC_NOME_PAI"].ToString();
+                    this.txtNumeroCertificadoReservista.Text = dtRetorno.Rows[i]["DOC_FUNC_NUMERO_CERTIFICADO_RESERVISTA"].ToString();
+                    this.txtNumeroEndereco.Text = dtRetorno.Rows[i]["DETL_END_NUMERO"].ToString();
+                    this.txtNumeroEnderecoPIS.Text = dtRetorno.Rows[i]["DETL_PIS_NUMERO"].ToString();
+                    this.txtNumeroMatricula.Text = dtRetorno.Rows[i]["FUNC_NUMERO_MATRICULA"].ToString();
+                    this.txtNumeroOrdemMatricula.Text = dtRetorno.Rows[i]["FUNC_NUMERO_ORDEM_MATRICULA"].ToString();
+                    this.txtNumeroSerie.Text = dtRetorno.Rows[i]["DOC_FUNC_NUMERO_SERIE"].ToString();
+                    this.txtPeso.Text = dtRetorno.Rows[i]["CARACTERISTICA_FUNC_PESO"].ToString();
+                    this.txtQtdFilhos.Text = dtRetorno.Rows[i]["FUNC_QUANTOS_FILHOS"].ToString();
+                    this.txtRegistroGeral.Text = dtRetorno.Rows[i]["DOC_EST_FUNC_NUMERO_RESISTRO_GERAL"].ToString();
+                    this.txtRG.Text = dtRetorno.Rows[i]["DOC_FUNC_NUMERO_IDENTIDADE"].ToString();
+                    this.txtSinais.Text = dtRetorno.Rows[i]["CARACTERISTICA_FUNC_SINAIS"].ToString();
+                    this.txtSobNumero.Text = dtRetorno.Rows[i]["DOC_PIS_FUNC_SOB_NUMERO"].ToString();
+                    this.txtTituloEleitor.Text = dtRetorno.Rows[i]["DOC_FUNC_TITULO_ELEITOR"].ToString();
+
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlBancoFGTS, dtRetorno.Rows[i]["BANCO_FGTS_NUMERO_BANCO"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlBancoPIS, dtRetorno.Rows[i]["BANCO_PIS_NUMERO_BANCO"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlCabelo, dtRetorno.Rows[i]["CARACTERISTICA_FUNC_CODIGO_TIPO_CABELO"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlCor, dtRetorno.Rows[i]["CARACTERISTICA_FUNC_CODIGO_TIPO_COR"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlEstadoCivil, dtRetorno.Rows[i]["FUNC_CODIGO_ESTADO_CIVIL"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlEstadoFuncionario, dtRetorno.Rows[i]["FUNC_CODIGO_ESTADO_CIVIL"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlEstadoPIS, dtRetorno.Rows[i]["FUNC_CODIGO_ESTADO_CIVIL"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlNacionalidadeFuncionario, dtRetorno.Rows[i]["FUNC_CODIGO_ESTADO_CIVIL"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlNacionalidadeMae, dtRetorno.Rows[i]["FUNC_CODIGO_ESTADO_CIVIL"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlNacionalidadePai, dtRetorno.Rows[i]["FUNC_CODIGO_ESTADO_CIVIL"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlOlho, dtRetorno.Rows[i]["FUNC_CODIGO_ESTADO_CIVIL"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlTipoEndereco, dtRetorno.Rows[i]["FUNC_CODIGO_ESTADO_CIVIL"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlTipoEnderecoPIS, dtRetorno.Rows[i]["FUNC_CODIGO_ESTADO_CIVIL"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlTipoLogradouro, dtRetorno.Rows[i]["FUNC_CODIGO_ESTADO_CIVIL"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlTipoLogradouroPIS, dtRetorno.Rows[i]["FUNC_CODIGO_ESTADO_CIVIL"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlCidadePIS, dtRetorno.Rows[i]["FUNC_CODIGO_ESTADO_CIVIL"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlCidadeFuncionario, dtRetorno.Rows[i]["FUNC_CODIGO_ESTADO_CIVIL"].ToString());
+                    
+                    i++;
+                }
+
+            }
+        }
+
+        
+
+        protected void BloquearCampos()
+        {
+            this.txtAgencia.ReadOnly = true;
+            this.txtAgenciaFGTS.ReadOnly = true;
+            this.txtAltura.ReadOnly = true;
+            this.txtBairro.ReadOnly = true;
+            this.txtBairroPIS.ReadOnly = true;
+            this.txtBancoFGTS.ReadOnly = true;
+            this.txtBancoPIS.ReadOnly = true;
+            this.txtCadastroPIS.ReadOnly = true;
+            this.txtCarteira19.ReadOnly = true;
+            this.txtCarteiraTrabalho.ReadOnly = true;
+            this.txtCategoria.ReadOnly = true;
+            this.txtCateiraSaude.ReadOnly = true;
+            this.txtCBO.ReadOnly = true;
+            this.txtCEP.ReadOnly = true;
+            this.txtCEPPIS.ReadOnly = true;
+            this.txtComplemento.ReadOnly = true;
+            this.txtComplementoPIS.ReadOnly = true;
+            this.txtConta.ReadOnly = true;
+            this.txtContaFGTS.ReadOnly = true;
+            this.txtCPF.ReadOnly = true;
+            this.txtDataNascimento.ReadOnly = true;
+            this.txtDataOpcao.ReadOnly = true;
+            this.txtDataRetratacao.ReadOnly = true;
+            this.txtDigito.ReadOnly = true;
+            this.txtDigitoFGTS.ReadOnly = true;
+            this.txtLogradouro.ReadOnly = true;
+            this.txtLogradouroPIS.ReadOnly = true;
+            this.txtNomeConjuge.ReadOnly = true;
+            this.txtNomeFuncionario.ReadOnly = true;
+            this.txtNomeMae.ReadOnly = true;
+            this.txtNomePai.ReadOnly = true;
+            this.txtNumeroCertificadoReservista.ReadOnly = true;
+            this.txtNumeroEndereco.ReadOnly = true;
+            this.txtNumeroEnderecoPIS.ReadOnly = true;
+            this.txtNumeroMatricula.ReadOnly = true;
+            this.txtNumeroOrdemMatricula.ReadOnly = true;
+            this.txtNumeroSerie.ReadOnly = true;
+            this.txtPeso.ReadOnly = true;
+            this.txtQtdFilhos.ReadOnly = true;
+            this.txtRegistroGeral.ReadOnly = true;
+            this.txtRG.ReadOnly = true;
+            this.txtSinais.ReadOnly = true;
+            this.txtSobNumero.ReadOnly = true;
+            this.txtTituloEleitor.ReadOnly = true;
+            this.ddlBancoFGTS.Enabled = false;
+            this.ddlBancoPIS.Enabled = false;
+            this.ddlCabelo.Enabled = false;
+            this.ddlCor.Enabled = false;
+            this.ddlEstadoCivil.Enabled = false;
+            this.ddlEstadoFuncionario.Enabled = false;
+            this.ddlEstadoPIS.Enabled = false;
+            this.ddlNacionalidadeFuncionario.Enabled = false;
+            this.ddlNacionalidadeMae.Enabled = false;
+            this.ddlNacionalidadePai.Enabled = false;
+            this.ddlOlho.Enabled = false;
+            this.ddlTipoEndereco.Enabled = false;
+            this.ddlTipoEnderecoPIS.Enabled = false;
+            this.ddlTipoLogradouro.Enabled = false;
+            this.ddlTipoLogradouroPIS.Enabled = false;
+            this.rblFilhoBrasileiro.Enabled = false;
+            this.rblNaturalizado.Enabled = false;
+            this.rdbCasadoBrasileiro.Enabled = false;
+            this.rdpOptanteFGTS.Enabled = false;
+
 
 
         }
@@ -198,7 +389,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
 
             retornoLista = retorno.SelecionarPaisLista(entrada);
 
-            
+
             this.ddlNacionalidadePai.DataSource = retornoLista;
             this.ddlNacionalidadePai.DataValueField = "CodigoPais";
             this.ddlNacionalidadePai.DataTextField = "Descricao";

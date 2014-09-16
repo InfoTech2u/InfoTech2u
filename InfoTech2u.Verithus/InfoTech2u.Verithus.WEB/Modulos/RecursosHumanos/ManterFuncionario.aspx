@@ -179,7 +179,7 @@
                         <p>
                             <label>Cidade</label>
                             <span class="field" id="spCidadeFuncionario">
-                                <asp:DropDownList ID="ddlCidadeFuncionario" data-placeholder="Escolha uma Cidade..." Style="width: 350px"  TabIndex="2" ClientIDMode="Static" />
+                                <asp:DropDownList ID="ddlCidadeFuncionario" runat="server" data-placeholder="Escolha uma Cidade..." Style="width: 350px"  TabIndex="2" ClientIDMode="Static" />
                             </span>
                         </p>
 
@@ -488,7 +488,7 @@
                         <p>
                             <label>Cidade</label>
                             <span class="field" id="spCidadePIS">
-                                <asp:DropDownList ID="ddlCidadePIS" data-placeholder="Escolha uma Cidade..." Style="width: 350px"  TabIndex="2" ClientIDMode="Static" />
+                                <asp:DropDownList ID="ddlCidadePIS" runat="server" data-placeholder="Escolha uma Cidade..." Style="width: 350px"  TabIndex="2" ClientIDMode="Static" />
                             </span>
                         </p>
 
