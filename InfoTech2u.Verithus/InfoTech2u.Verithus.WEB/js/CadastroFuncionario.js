@@ -11,6 +11,8 @@
 
 jQuery(document).ready(function () {
 
+    //var tpAcao = getUrlVars()["tpAcao"];
+
 
     //Mascaras Campos
     //CEP
@@ -86,22 +88,35 @@ jQuery(document).ready(function () {
     // Spinner
     jQuery("#txtQtdFilhos").spinner({ min: 0, max: 100, increment: 2 });
 
+    if (getUrlVars()["tpAcao"] == "3") {
 
-    //jQuery('#wizard3').smartWizard({ onFinish: onFinishCallback });
-    jQuery('#wizard3').smartWizard({ transitionEffect: 'slideleft', onLeaveStep: leaveAStepCallback, onFinish: onFinishCallback });
+        jQuery('#wizard3').smartWizard({ onFinish: onFinishCallback });
 
-    function onFinishCallback() {
-        if (verificaValidacao) {
-            IncluirDadosFuncionario();
-            //alert('Finish Clicked');
+        jQuery('#wiz3step8Tab').hide();
+        
+        jQuery('.buttonFinish   ').hide();
 
-        }
+        //buttonFinish buttonDisabled
     }
+    else {
+
+        //jQuery('#wizard3').smartWizard({ onFinish: onFinishCallback });
+        jQuery('#wizard3').smartWizard({ transitionEffect: 'slideleft', onLeaveStep: leaveAStepCallback, onFinish: onFinishCallback });
+
+        function onFinishCallback() {
+            if (verificaValidacao) {
+                IncluirDadosFuncionario();
+                //alert('Finish Clicked');
+
+            }
+        }
+    
 
     function leaveAStepCallback(obj) {
         passoAtivo = obj.attr('rel');
         verificaValidacao = validarFuncionario(passoAtivo);
         return verificaValidacao;
+    }
     }
     //ddlNacionalidadeFuncionario
 
@@ -148,7 +163,7 @@ jQuery(document).ready(function () {
         jQuery('#spCidadeFuncionario').empty();
 
         jQuery('#spCidadeFuncionario').append('<select id ="ddlCidadeFuncionario" data-placeholder="Escolha uma Cidade..." Style="width: 350px"  TabIndex="2">');
-        
+
         CarregaComboCidade(str, 1);
 
     });
@@ -230,7 +245,7 @@ jQuery(document).ready(function () {
                 jQuery('#spCidadeFuncionario').append('<select id ="ddlCidadeFuncionario" data-placeholder="Escolha uma Cidade..." Style="width: 350px"  TabIndex="2">');
                 CarregaComboCidade(str, 1);
 
-                
+
                 jQuery('#ddlCidadeFuncionario option:selected').removeAttr('selected');
 
                 //alert(arrCEP[0].Cidade);
@@ -239,16 +254,16 @@ jQuery(document).ready(function () {
 
                 jQuery("#ddlCidadeFuncionario").each(function () {
 
-                   // alert('3');
+                    // alert('3');
 
-                    
+
 
                     jQuery('option', this).each(function () {
 
-                       // alert('4');
+                        // alert('4');
 
                         //alert(jQuery(this).text().toLowerCase());
-                       // alert(jQuery('#ddlCidadeFuncionario option').filter(function () { return jQuery(this).html() == arrCEP[0].Cidade; }).text().toLowerCase());
+                        // alert(jQuery('#ddlCidadeFuncionario option').filter(function () { return jQuery(this).html() == arrCEP[0].Cidade; }).text().toLowerCase());
 
                         if (jQuery(this).text().toLowerCase() == jQuery('#ddlCidadeFuncionario option').filter(function () { return jQuery(this).html() == arrCEP[0].Cidade }).text().toLowerCase()) {
                             jQuery(this).attr('selected', 'selected')
@@ -258,8 +273,8 @@ jQuery(document).ready(function () {
 
                 jQuery('#ddlCidadeFuncionario_chzn .chzn-single span').text(arrCEP[0].Cidade);
 
-               // alert('1');
-                
+                // alert('1');
+
 
             },
             error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -1019,11 +1034,11 @@ function IncluirDadosFuncionario() {
         contentType: "json",
         cache: false,
         success: function (data) {
-           // alert(data);
+            // alert(data);
 
 
             for (var i = 0; i < data.length; i++) {
-               // alert(data[i].FUNC_NOME_FUNCIONARIO)
+                // alert(data[i].FUNC_NOME_FUNCIONARIO)
             }
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -1035,7 +1050,7 @@ function IncluirDadosFuncionario() {
 
 function CarregaComboCidade(str, tipo) {
 
-   // alert(2);
+    // alert(2);
 
     jQuery.ajax({
         type: "GET",
@@ -1051,8 +1066,7 @@ function CarregaComboCidade(str, tipo) {
 
 
 
-            if (tipo == 1) 
-            {
+            if (tipo == 1) {
                 jQuery('#ddlCidadeFuncionario').empty();
 
                 for (var i = 0; i < arrCidade.length; i++) {
@@ -1067,8 +1081,7 @@ function CarregaComboCidade(str, tipo) {
 
                 jQuery('#ddlCidadeFuncionario').trigger("chosen:updated");
             }
-            else if (tipo = 2)
-            {
+            else if (tipo = 2) {
                 jQuery('#ddlCidadePIS').empty();
 
                 for (var i = 0; i < arrCidade.length; i++) {
@@ -1083,15 +1096,26 @@ function CarregaComboCidade(str, tipo) {
 
                 jQuery('#ddlCidadePIS').trigger("chosen:updated");
             }
-            
+
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
             errorAjax(textStatus);
         }
     });
 
-    
 
+
+}
+
+function getUrlVars() {
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for (var i = 0; i < hashes.length; i++) {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
 }
 
 function validarCPF(strCPF) {

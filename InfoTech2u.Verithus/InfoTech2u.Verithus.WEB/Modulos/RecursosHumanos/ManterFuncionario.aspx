@@ -72,7 +72,7 @@
                                 <span class="label">caracteristicas Fisicas</span>
                             </a>
                         </li>
-                        <li>
+                        <li id="wiz3step8Tab">
                             <a href="#wiz3step8">
                                 <span class="h2">PASSO 8</span>
                                 <span class="label">Finalizar</span>
