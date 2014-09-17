@@ -126,6 +126,30 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
                     this.txtSobNumero.Text = dtRetorno.Rows[i]["DOC_PIS_FUNC_SOB_NUMERO"].ToString();
                     this.txtTituloEleitor.Text = dtRetorno.Rows[i]["DOC_FUNC_TITULO_ELEITOR"].ToString();
 
+                    CidadeBS retornoCidade = new CidadeBS();
+                    CidadeVO entradaFuncionario = new CidadeVO();
+                    CidadeVO entradaPIS = new CidadeVO();
+                    DataTable retornoListaFuncionario = new DataTable();
+                    DataTable retornoListaPIS = new DataTable();
+
+                    entradaFuncionario.CodigoEstado = Convert.ToInt32(dtRetorno.Rows[i]["DETL_END_CODIGO_ESTADO"].ToString());
+                    entradaPIS.CodigoEstado = Convert.ToInt32(dtRetorno.Rows[i]["DETL_END_CODIGO_ESTADO"].ToString());
+
+                    retornoListaFuncionario = retornoCidade.SelecionarCidade(entradaFuncionario);
+                    retornoListaPIS = retornoCidade.SelecionarCidade(entradaPIS);
+
+                    this.ddlCidadeFuncionario.DataSource = retornoListaFuncionario;
+                    this.ddlCidadeFuncionario.DataValueField = "CODIGO_CIDADE";
+                    this.ddlCidadeFuncionario.DataTextField = "DESCRICAO";
+                    this.ddlCidadeFuncionario.DataBind();
+                    this.ddlCidadeFuncionario.Items.Insert(0, new ListItem("Selecionar", "0"));
+
+                    this.ddlCidadePIS.DataSource = retornoListaPIS;
+                    this.ddlCidadePIS.DataValueField = "CODIGO_CIDADE";
+                    this.ddlCidadePIS.DataTextField = "DESCRICAO";
+                    this.ddlCidadePIS.DataBind();
+                    this.ddlCidadePIS.Items.Insert(0, new ListItem("Selecionar", "0"));
+
                     InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlBancoFGTS, dtRetorno.Rows[i]["BANCO_FGTS_NUMERO_BANCO"].ToString());
                     InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlBancoPIS, dtRetorno.Rows[i]["BANCO_PIS_NUMERO_BANCO"].ToString());
                     InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlCabelo, dtRetorno.Rows[i]["CARACTERISTICA_FUNC_CODIGO_TIPO_CABELO"].ToString());
@@ -143,6 +167,11 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
                     InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlTipoLogradouroPIS, dtRetorno.Rows[i]["DETL_PIS_CODIGO_TIPO_LOGRADOURO"].ToString());
                     InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlCidadePIS, dtRetorno.Rows[i]["DETL_PIS_CODIGO_CIDADE"].ToString());
                     InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlCidadeFuncionario, dtRetorno.Rows[i]["DETL_END_CODIGO_CIDADE"].ToString());
+
+
+
+                    
+
                     
                     i++;
                 }
