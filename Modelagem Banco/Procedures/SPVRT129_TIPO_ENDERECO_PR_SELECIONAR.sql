@@ -1,16 +1,18 @@
 USE [DBVERITHUS]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SPVRT129_TIPO_ENDERECO_PR_SELECIONAR]    Script Date: 23/08/2014 00:27:08 ******/
+/****** Object:  StoredProcedure [dbo].[SPVRT129_TIPO_ENDERECO_PR_SELECIONAR]    Script Date: 16/09/2014 21:57:49 ******/
 DROP PROCEDURE [dbo].[SPVRT129_TIPO_ENDERECO_PR_SELECIONAR]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SPVRT129_TIPO_ENDERECO_PR_SELECIONAR]    Script Date: 23/08/2014 00:27:08 ******/
+/****** Object:  StoredProcedure [dbo].[SPVRT129_TIPO_ENDERECO_PR_SELECIONAR]    Script Date: 16/09/2014 21:57:49 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
+
 
 -- TBVRT033_TIPO_ENDERECO
 CREATE PROCEDURE [dbo].[SPVRT129_TIPO_ENDERECO_PR_SELECIONAR]
@@ -27,6 +29,8 @@ BEGIN
 		END
 	RETURN
 END
+
+
 GO
 
 

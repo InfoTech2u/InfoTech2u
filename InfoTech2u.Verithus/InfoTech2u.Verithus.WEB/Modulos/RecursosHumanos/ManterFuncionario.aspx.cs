@@ -131,18 +131,18 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
                     InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlCabelo, dtRetorno.Rows[i]["CARACTERISTICA_FUNC_CODIGO_TIPO_CABELO"].ToString());
                     InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlCor, dtRetorno.Rows[i]["CARACTERISTICA_FUNC_CODIGO_TIPO_COR"].ToString());
                     InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlEstadoCivil, dtRetorno.Rows[i]["FUNC_CODIGO_ESTADO_CIVIL"].ToString());
-                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlEstadoFuncionario, dtRetorno.Rows[i]["FUNC_CODIGO_ESTADO_CIVIL"].ToString());
-                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlEstadoPIS, dtRetorno.Rows[i]["FUNC_CODIGO_ESTADO_CIVIL"].ToString());
-                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlNacionalidadeFuncionario, dtRetorno.Rows[i]["FUNC_CODIGO_ESTADO_CIVIL"].ToString());
-                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlNacionalidadeMae, dtRetorno.Rows[i]["FUNC_CODIGO_ESTADO_CIVIL"].ToString());
-                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlNacionalidadePai, dtRetorno.Rows[i]["FUNC_CODIGO_ESTADO_CIVIL"].ToString());
-                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlOlho, dtRetorno.Rows[i]["FUNC_CODIGO_ESTADO_CIVIL"].ToString());
-                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlTipoEndereco, dtRetorno.Rows[i]["FUNC_CODIGO_ESTADO_CIVIL"].ToString());
-                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlTipoEnderecoPIS, dtRetorno.Rows[i]["FUNC_CODIGO_ESTADO_CIVIL"].ToString());
-                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlTipoLogradouro, dtRetorno.Rows[i]["FUNC_CODIGO_ESTADO_CIVIL"].ToString());
-                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlTipoLogradouroPIS, dtRetorno.Rows[i]["FUNC_CODIGO_ESTADO_CIVIL"].ToString());
-                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlCidadePIS, dtRetorno.Rows[i]["FUNC_CODIGO_ESTADO_CIVIL"].ToString());
-                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlCidadeFuncionario, dtRetorno.Rows[i]["FUNC_CODIGO_ESTADO_CIVIL"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlEstadoFuncionario, dtRetorno.Rows[i]["DETL_END_CODIGO_ESTADO"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlEstadoPIS, dtRetorno.Rows[i]["DETL_PIS_CODIGO_ESTADO"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlNacionalidadeFuncionario, dtRetorno.Rows[i]["FUNC_LOCAL_NASCIMENTO"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlNacionalidadeMae, dtRetorno.Rows[i]["FUNC_NACIONALIDADE_MAE"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlNacionalidadePai, dtRetorno.Rows[i]["FUNC_NACIONALIDADE_PAI"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlOlho, dtRetorno.Rows[i]["CARACTERISTICA_FUNC_CODIGO_TIPO_OLHO"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlTipoEndereco, dtRetorno.Rows[i]["DETL_END_CODIGO_TIPO_ENDERECO"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlTipoEnderecoPIS, dtRetorno.Rows[i]["DETL_PIS_CODIGO_TIPO_ENDERECO"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlTipoLogradouro, dtRetorno.Rows[i]["DETL_END_CODIGO_TIPO_LOGRADOURO"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlTipoLogradouroPIS, dtRetorno.Rows[i]["DETL_PIS_CODIGO_TIPO_LOGRADOURO"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlCidadePIS, dtRetorno.Rows[i]["DETL_PIS_CODIGO_CIDADE"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlCidadeFuncionario, dtRetorno.Rows[i]["DETL_END_CODIGO_CIDADE"].ToString());
                     
                     i++;
                 }

@@ -1,16 +1,17 @@
 USE [DBVERITHUS]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SPVRT045_TIPO_BENEFICIO_PR_SELECIONAR]    Script Date: 31/08/2014 03:50:48 ******/
+/****** Object:  StoredProcedure [dbo].[SPVRT045_TIPO_BENEFICIO_PR_SELECIONAR]    Script Date: 16/09/2014 21:52:50 ******/
 DROP PROCEDURE [dbo].[SPVRT045_TIPO_BENEFICIO_PR_SELECIONAR]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SPVRT045_TIPO_BENEFICIO_PR_SELECIONAR]    Script Date: 31/08/2014 03:50:48 ******/
+/****** Object:  StoredProcedure [dbo].[SPVRT045_TIPO_BENEFICIO_PR_SELECIONAR]    Script Date: 16/09/2014 21:52:50 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 CREATE PROCEDURE [dbo].[SPVRT045_TIPO_BENEFICIO_PR_SELECIONAR]
@@ -27,6 +28,7 @@ BEGIN
 		END
 	RETURN	
 END
+
 
 GO
 

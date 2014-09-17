@@ -1,16 +1,18 @@
 USE [DBVERITHUS]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SPVRT133_TIPO_LOGRADOURO_PR_SELECIONAR]    Script Date: 26/08/2014 09:42:19 ******/
+/****** Object:  StoredProcedure [dbo].[SPVRT133_TIPO_LOGRADOURO_PR_SELECIONAR]    Script Date: 16/09/2014 21:57:58 ******/
 DROP PROCEDURE [dbo].[SPVRT133_TIPO_LOGRADOURO_PR_SELECIONAR]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SPVRT133_TIPO_LOGRADOURO_PR_SELECIONAR]    Script Date: 26/08/2014 09:42:19 ******/
+/****** Object:  StoredProcedure [dbo].[SPVRT133_TIPO_LOGRADOURO_PR_SELECIONAR]    Script Date: 16/09/2014 21:57:58 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
+
 
 
 
@@ -44,6 +46,8 @@ BEGIN
 			RETURN
 		
 END
+
+
 
 
 

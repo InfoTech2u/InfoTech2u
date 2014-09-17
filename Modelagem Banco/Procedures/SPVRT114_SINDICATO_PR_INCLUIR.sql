@@ -1,0 +1,59 @@
+USE [DBVERITHUS]
+GO
+
+/****** Object:  StoredProcedure [dbo].[SPVRT114_SINDICATO_PR_INCLUIR]    Script Date: 16/09/2014 21:57:32 ******/
+DROP PROCEDURE [dbo].[SPVRT114_SINDICATO_PR_INCLUIR]
+GO
+
+/****** Object:  StoredProcedure [dbo].[SPVRT114_SINDICATO_PR_INCLUIR]    Script Date: 16/09/2014 21:57:32 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+
+CREATE PROCEDURE [dbo].[SPVRT114_SINDICATO_PR_INCLUIR]
+(
+	@NOME            nvarchar(80)   =      null,
+    @CODIGO_USUARIO_CADASTRO int         =      null,
+    @DATA_CADASTRO        datetime       =      null,
+    @CODIGO_USUARIO_ALTERACAO int      =      null,
+    @DATA_ALTERACAO     datetime       =      null,
+    @CODIGO_STATUS        int            =      null
+)
+AS
+BEGIN
+
+	INSERT INTO TBVRT029_SINDICATO(
+		NOME,
+		CODIGO_USUARIO_CADASTRO,
+		DATA_CADASTRO,
+		CODIGO_USUARIO_ALTERACAO,
+		DATA_ALTERACAO,
+		CODIGO_STATUS
+	)
+	VALUES(
+		@NOME,
+		@CODIGO_USUARIO_CADASTRO,
+		@DATA_CADASTRO,
+		@CODIGO_USUARIO_ALTERACAO,
+		@DATA_ALTERACAO,
+		@CODIGO_STATUS
+	)
+
+
+	IF(@@ERROR = 0)
+	BEGIN
+		SELECT * FROM  TBVRT029_SINDICATO
+		WHERE CODIGO_SINDICATO = @@IDENTITY
+	END	
+END
+
+
+
+GO
+
+
