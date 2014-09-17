@@ -105,7 +105,12 @@ jQuery(document).ready(function () {
 
         function onFinishCallback() {
             if (verificaValidacao) {
-                IncluirDadosFuncionario();
+
+                if (getUrlVars()["tpAcao"] == "1")
+                    IncluirDadosFuncionario();
+                else if (getUrlVars()["tpAcao"] == "2")
+                    AlterarDadosFuncionario();
+
                 //alert('Finish Clicked');
 
             }
@@ -951,6 +956,11 @@ function validarFuncionario(passoAtivo) {
 
         return retorno;
     }
+
+}
+
+function AlterarDadosFuncionario()
+{
 
 }
 
