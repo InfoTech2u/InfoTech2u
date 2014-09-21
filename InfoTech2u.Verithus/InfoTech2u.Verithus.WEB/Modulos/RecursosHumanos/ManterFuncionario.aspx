@@ -161,11 +161,20 @@
                         <h4>Passo 2: Endereço</h4>
 
 
+
                         <p id="validaTipoEndereco">
                             <label>Tipo de Endereço</label>
                             <span class="field">
                                 <asp:DropDownList runat="server" ID="ddlTipoEndereco" data-placeholder="Escolha um tipo de Endereço..." Style="width: 350px" class="chzn-select" TabIndex="2" ClientIDMode="Static" />
                                 <span class="help-inline" id="msgTipoEndereco"></span>
+                            </span>
+                        </p>
+
+                        <p>
+                            <label>CEP</label>
+                            <span class="input-append">
+                                <asp:TextBox runat="server" ID="txtCEP" CssClass="input-small CEP" ClientIDMode="Static" />
+                                <button type="button" class="btn" id="btnBuscarCEP">Buscar</button>
                             </span>
                         </p>
 
@@ -222,13 +231,7 @@
                             </span>
                         </p>
 
-                        <p>
-                            <label>CEP</label>
-                            <span class="input-append">
-                                <asp:TextBox runat="server" ID="txtCEP" CssClass="input-small CEP" ClientIDMode="Static" />
-                                <button type="button" class="btn" id="btnBuscarCEP">Buscar</button>
-                            </span>
-                        </p>
+                        
 
 
 
@@ -315,7 +318,7 @@
                             <p id="validaCategoria">
                                 <label>Categoria</label>
                                 <span class="field">
-                                    <asp:TextBox runat="server" ID="txtCategoria" CssClass="input-small" ClientIDMode="Static" />
+                                    <asp:TextBox runat="server" ID="txtCategoria" CssClass="input-medium" ClientIDMode="Static" MaxLength="15" />
                                     <span class="help-inline" id="msgCategoria"></span>
                                 </span>
                             </p>
@@ -440,8 +443,6 @@
                             <span class="field">
                                 <asp:DropDownList runat="server" ID="ddlBancoPIS" data-placeholder="Escolha um Banco..." Style="width: 350px" class="chzn-select" TabIndex="2" ClientIDMode="Static">
                                 </asp:DropDownList>
-                                <br />
-                                <asp:TextBox runat="server" ID="txtBancoPIS" CssClass="input-small" ClientIDMode="Static" />
                                 <span class="help-inline" id="msgBancoPIS"></span>
                             </span>
                         </p>
@@ -478,6 +479,14 @@
                             </span>
                         </p>
 
+                        <p id="validaCEPPIS">
+                            <label>CEP</label>
+                            <span class="input-append">
+                                <asp:TextBox runat="server" ID="txtCEPPIS" CssClass="input-small CEP" ClientIDMode="Static" />
+                                <button type="button" class="btn" id="btnBuscarCEPPIS">Buscar</button>
+                            </span>
+                        </p>
+
                         <p>
                             <label>Estado</label>
                             <span class="field">
@@ -485,7 +494,7 @@
                             </span>
                         </p>
 
-                        <p>
+                        <p> 
                             <label>Cidade</label>
                             <span class="field" id="spCidadePIS">
                                 <asp:DropDownList ID="ddlCidadePIS" runat="server" data-placeholder="Escolha uma Cidade..." Style="width: 350px"  TabIndex="2" ClientIDMode="Static" />
@@ -532,13 +541,7 @@
                             </span>
                         </p>
 
-                        <p id="validaCEPPIS">
-                            <label>CEP</label>
-                            <span class="input-append">
-                                <asp:TextBox runat="server" ID="txtCEPPIS" CssClass="input-small CEP" ClientIDMode="Static" />
-                                <button type="button" class="btn" id="btnBuscarCEPPIS">Buscar</button>
-                            </span>
-                        </p>
+                        
 
 
 
@@ -580,8 +583,6 @@
                             <span class="field">
                                 <asp:DropDownList runat="server" ID="ddlBancoFGTS" data-placeholder="Escolha um Banco..." Style="width: 350px" class="chzn-select" TabIndex="2" ClientIDMode="Static">
                                 </asp:DropDownList>
-                                <br />
-                                <asp:TextBox runat="server" ID="txtBancoFGTS" CssClass="input-small" ClientIDMode="Static" />
                                 <span class="help-inline" id="msgBancoFGTS"></span>
                             </span>
                         </p>
@@ -628,7 +629,7 @@
                         <p id="validaAltura">
                             <label>Altura</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtAltura" CssClass="input-small Altura" ClientIDMode="Static" />
+                                <asp:TextBox runat="server" ID="txtAltura" CssClass="input-small Altura" ClientIDMode="Static" MaxLength="3" />
                                 <span class="help-inline" id="msgAltura"></span>
                             </span>
                         </p>
@@ -636,7 +637,7 @@
                         <p id="validaPeso">
                             <label>Peso</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtPeso" CssClass="input-small Peso" ClientIDMode="Static" />
+                                <asp:TextBox runat="server" ID="txtPeso" CssClass="input-small Peso" ClientIDMode="Static" MaxLength="3" />
                                 <span class="help-inline" id="msgPeso"></span>
                             </span>
                         </p>
@@ -660,7 +661,7 @@
                         <p id="validaSinais">
                             <label>Sinais</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtSinais" CssClass="input-small" ClientIDMode="Static" />
+                                <asp:TextBox runat="server" ID="txtSinais" CssClass="input-xxlarge" ClientIDMode="Static" MaxLength="80" />
                                 <span class="help-inline" id="msgSinais"></span>
                             </span>
                         </p>

@@ -94,6 +94,15 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario {
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoEndereco;
         
         /// <summary>
+        /// txtCEP control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCEP;
+        
+        /// <summary>
         /// ddlEstadoFuncionario control.
         /// </summary>
         /// <remarks>
@@ -155,15 +164,6 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtComplemento;
-        
-        /// <summary>
-        /// txtCEP control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCEP;
         
         /// <summary>
         /// txtNomePai control.
@@ -373,15 +373,6 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario {
         protected global::System.Web.UI.WebControls.DropDownList ddlBancoPIS;
         
         /// <summary>
-        /// txtBancoPIS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBancoPIS;
-        
-        /// <summary>
         /// txtAgencia control.
         /// </summary>
         /// <remarks>
@@ -416,6 +407,15 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoEnderecoPIS;
+        
+        /// <summary>
+        /// txtCEPPIS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCEPPIS;
         
         /// <summary>
         /// ddlEstadoPIS control.
@@ -481,15 +481,6 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario {
         protected global::System.Web.UI.WebControls.TextBox txtComplementoPIS;
         
         /// <summary>
-        /// txtCEPPIS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCEPPIS;
-        
-        /// <summary>
         /// rdpOptanteFGTS control.
         /// </summary>
         /// <remarks>
@@ -524,15 +515,6 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlBancoFGTS;
-        
-        /// <summary>
-        /// txtBancoFGTS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBancoFGTS;
         
         /// <summary>
         /// txtAgenciaFGTS control.

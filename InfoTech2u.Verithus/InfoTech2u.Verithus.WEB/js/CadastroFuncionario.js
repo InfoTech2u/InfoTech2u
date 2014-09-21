@@ -29,8 +29,11 @@ jQuery(document).ready(function () {
     //Data dataddmmaaaa
     jQuery(".dataddmmaaaa").mask("99/99/9999");
 
+    //txtAltura
+    //txtPeso
 
-
+    jQuery("#txtAltura").ForceNumericOnly();
+    jQuery("#txtPeso").ForceNumericOnly();
 
     jQuery("#txtCarteiraTrabalho").mask("99999");
 
@@ -90,11 +93,38 @@ jQuery(document).ready(function () {
 
     if (getUrlVars()["tpAcao"] == "3") {
 
-        jQuery('#wizard3').smartWizard({ onFinish: onFinishCallback });
+        var nacionalidade = jQuery("#ddlNacionalidadeFuncionario option:selected").text();
+
+        if (nacionalidade == "Brasil") {
+            jQuery('.divBrasil').show();
+            jQuery('.divEstrangeiro').hide();
+        }
+        else {
+            //divBrasil
+            //divEstrangeiro
+            jQuery('.divBrasil').hide();
+            jQuery('.divEstrangeiro').show();
+        }
+
+        jQuery('#btnBuscarCEPPIS').hide();
+        jQuery('#btnBuscarCEP').hide();
+
+        jQuery('#wizard3').smartWizard({ transitionEffect: 'slideleft', onLeaveStep: leaveAStepCallback, onFinish: onFinishCallback });
 
         jQuery('#wiz3step8Tab').hide();
-        
-        jQuery('.buttonFinish   ').hide();
+
+        jQuery('.buttonFinish').hide();
+
+        //alert(leaveAStepCallback);
+
+        function leaveAStepCallback(obj) {
+            passoAtivo = obj.attr('rel');
+            //verificaValidacao = validarFuncionario(passoAtivo);
+            alert(passoAtivo);
+            if (passoAtivo == 6)
+                jQuery('.buttonNext').hide();
+            return true;
+        }
 
         //buttonFinish buttonDisabled
     }
@@ -115,13 +145,13 @@ jQuery(document).ready(function () {
 
             }
         }
-    
 
-    function leaveAStepCallback(obj) {
-        passoAtivo = obj.attr('rel');
-        verificaValidacao = validarFuncionario(passoAtivo);
-        return verificaValidacao;
-    }
+
+        function leaveAStepCallback(obj) {
+            passoAtivo = obj.attr('rel');
+            verificaValidacao = validarFuncionario(passoAtivo);
+            return verificaValidacao;
+        }
     }
     //ddlNacionalidadeFuncionario
 
@@ -163,13 +193,15 @@ jQuery(document).ready(function () {
     jQuery("#ddlEstadoFuncionario").change(function () {
         var str = "";
 
+        //alert('Teste 1');
+
         str += jQuery("#ddlEstadoFuncionario option:selected").val();
 
         jQuery('#spCidadeFuncionario').empty();
 
         jQuery('#spCidadeFuncionario').append('<select id ="ddlCidadeFuncionario" data-placeholder="Escolha uma Cidade..." Style="width: 350px"  TabIndex="2">');
 
-        CarregaComboCidade(str, 1);
+        CarregaComboCidade(str, 1, '');
 
     });
 
@@ -182,7 +214,7 @@ jQuery(document).ready(function () {
 
         jQuery('#spCidadePIS').append('<select id ="ddlCidadePIS" data-placeholder="Escolha uma Cidade..." Style="width: 350px"  TabIndex="2">');
 
-        CarregaComboCidade(str, 2);
+        CarregaComboCidade(str, 2, '');
 
     });
 
@@ -246,39 +278,14 @@ jQuery(document).ready(function () {
                 //Cidade
                 var str = "";
                 str += jQuery("#ddlEstadoFuncionario option:selected").val();
+
+                //alert('Teste 2');
+
                 jQuery('#spCidadeFuncionario').empty();
                 jQuery('#spCidadeFuncionario').append('<select id ="ddlCidadeFuncionario" data-placeholder="Escolha uma Cidade..." Style="width: 350px"  TabIndex="2">');
-                CarregaComboCidade(str, 1);
 
+                CarregaComboCidade(str, 1, arrCEP[0].Cidade);
 
-                jQuery('#ddlCidadeFuncionario option:selected').removeAttr('selected');
-
-                //alert(arrCEP[0].Cidade);
-
-                jQuery(jQuery('#ddlCidadeFuncionario option').filter(function () { return jQuery(this).html() == arrCEP[0].Cidade }).text()).attr('selected', 'selected');
-
-                jQuery("#ddlCidadeFuncionario").each(function () {
-
-                    // alert('3');
-
-
-
-                    jQuery('option', this).each(function () {
-
-                        // alert('4');
-
-                        //alert(jQuery(this).text().toLowerCase());
-                        // alert(jQuery('#ddlCidadeFuncionario option').filter(function () { return jQuery(this).html() == arrCEP[0].Cidade; }).text().toLowerCase());
-
-                        if (jQuery(this).text().toLowerCase() == jQuery('#ddlCidadeFuncionario option').filter(function () { return jQuery(this).html() == arrCEP[0].Cidade }).text().toLowerCase()) {
-                            jQuery(this).attr('selected', 'selected')
-                        };
-                    });
-                });
-
-                jQuery('#ddlCidadeFuncionario_chzn .chzn-single span').text(arrCEP[0].Cidade);
-
-                // alert('1');
 
 
             },
@@ -318,6 +325,33 @@ jQuery(document).ready(function () {
                 });
 
                 jQuery('#ddlTipoLogradouroPIS_chzn .chzn-single span').text(arrCEP[0].Tipo_logradouro);
+
+                //Estado
+                jQuery('#ddlEstadoPIS option:selected').removeAttr('selected');
+
+                jQuery("#ddlEstadoPIS").each(function () {
+                    jQuery('option', this).each(function () {
+
+                        if (jQuery(this).text().toLowerCase() == jQuery('#ddlEstadoPIS option').filter(function () { return jQuery(this).html() == arrCEP[0].Uf; }).text().toLowerCase()) {
+                            jQuery(this).attr('selected', 'selected')
+                        };
+
+                    });
+                });
+
+                jQuery('#ddlEstadoPIS_chzn .chzn-single span').text(arrCEP[0].Uf);
+
+
+                //Cidade
+                var str = "";
+                str += jQuery("#ddlEstadoPIS option:selected").val();
+
+                //alert('Teste 2');
+
+                jQuery('#spCidadePIS').empty();
+                jQuery('#spCidadePIS').append('<select id ="ddlCidadePIS" data-placeholder="Escolha uma Cidade..." Style="width: 350px"  TabIndex="2">');
+
+                CarregaComboCidade(str, 2, arrCEP[0].Cidade);
 
 
 
@@ -713,8 +747,9 @@ function validarFuncionario(passoAtivo) {
 
         var CadastroPIS = jQuery('#txtCadastroPIS').val();
         var SobNumero = jQuery('#txtSobNumero').val();
-        var BancoPIS = jQuery('#txtBancoPIS').val();
+        var BancoPIS = jQuery('#ddlBancoPIS').val();
         var Agencia = jQuery('#txtAgencia').val();
+        var Conta = jQuery('#txtConta').val();
         var Digito = jQuery('#txtDigito').val();
         var TipoEnderecoPIS = jQuery('#ddlTipoEnderecoPIS').val();
         var TipoLogradouroPIS = jQuery('#ddlTipoLogradouroPIS').val();
@@ -765,6 +800,19 @@ function validarFuncionario(passoAtivo) {
             jQuery('#msgAgencia').html('').hide();
             jQuery("#validaAgencia").removeClass("par control-group error").addClass("par control-group success");
         }
+
+        if (!Conta && Conta.length <= 0) {
+            jQuery('#msgConta').html('O Campo Conta Deve ser preenchido').show();
+            jQuery("#validaConta").removeClass("par control-group success").addClass("par control-group error");
+            retorno = false;
+        }
+        else {
+            jQuery('#msgConta').html('').hide();
+            jQuery("#validaConta").removeClass("par control-group error").addClass("par control-group success");
+        }
+
+        
+
 
         if (!Digito && Digito.length <= 0) {
             jQuery('#msgDigito').html('O Campo Digito Deve ser preenchido').show();
@@ -837,12 +885,13 @@ function validarFuncionario(passoAtivo) {
         var OptanteFGTS = jQuery('#rdpOptanteFGTS').val();
         var DataOpcao = jQuery('#txtDataOpcao').val();
         var DataRetratacao = jQuery('#txtDataRetratacao').val();
-        var BancoFGTS = jQuery('#txtBancoFGTS').val();
+        var BancoFGTS = jQuery('#ddlBancoFGTS').val();
         var AgenciaFGTS = jQuery('#txtAgenciaFGTS').val();
+        var ContaFGTS = jQuery('#txtContaFGTS').val();
         var DigitoFGTS = jQuery('#txtDigitoFGTS').val();
 
         if (!DataOpcao && DataOpcao.length <= 0) {
-            jQuery('#msgDataOpcao').html('O Campo DataOpcao Deve ser preenchido').show();
+            jQuery('#msgDataOpcao').html('O Campo Data Opção Deve ser preenchido').show();
             jQuery("#validaDataOpcao").removeClass("par control-group success").addClass("par control-group error");
             retorno = false;
         }
@@ -852,7 +901,7 @@ function validarFuncionario(passoAtivo) {
         }
 
         if (!BancoFGTS && BancoFGTS.length <= 0) {
-            jQuery('#msgBancoFGTS').html('O Campo BancoFGTS Deve ser preenchido').show();
+            jQuery('#msgBancoFGTS').html('O Campo Banco Deve ser preenchido').show();
             jQuery("#validaBancoFGTS").removeClass("par control-group success").addClass("par control-group error");
             retorno = false;
         }
@@ -862,7 +911,7 @@ function validarFuncionario(passoAtivo) {
         }
 
         if (!AgenciaFGTS && AgenciaFGTS.length <= 0) {
-            jQuery('#msgAgenciaFGTS').html('O Campo AgenciaFGTS Deve ser preenchido').show();
+            jQuery('#msgAgenciaFGTS').html('O Campo Agencia Deve ser preenchido').show();
             jQuery("#validaAgenciaFGTS").removeClass("par control-group success").addClass("par control-group error");
             retorno = false;
         }
@@ -871,8 +920,20 @@ function validarFuncionario(passoAtivo) {
             jQuery("#validaAgenciaFGTS").removeClass("par control-group error").addClass("par control-group success");
         }
 
+
+        if (!ContaFGTS && ContaFGTS.length <= 0) {
+            jQuery('#msgContaFGTS').html('O Campo Conta Deve ser preenchido').show();
+            jQuery("#validaContaFGTS").removeClass("par control-group success").addClass("par control-group error");
+            retorno = false;
+        }
+        else {
+            jQuery('#msgContaFGTS').html('').hide();
+            jQuery("#validaContaFGTS").removeClass("par control-group error").addClass("par control-group success");
+        }
+
+
         if (!DigitoFGTS && DigitoFGTS.length <= 0) {
-            jQuery('#msgDigitoFGTS').html('O Campo DigitoFGTS Deve ser preenchido').show();
+            jQuery('#msgDigitoFGTS').html('O Campo Digito Deve ser preenchido').show();
             jQuery("#validaDigitoFGTS").removeClass("par control-group success").addClass("par control-group error");
             retorno = false;
         }
@@ -959,8 +1020,7 @@ function validarFuncionario(passoAtivo) {
 
 }
 
-function AlterarDadosFuncionario()
-{
+function AlterarDadosFuncionario() {
 
 }
 
@@ -988,22 +1048,22 @@ function IncluirDadosFuncionario() {
             NumeroEndereco: jQuery('#txtNumeroEndereco').val(),
             Bairro: jQuery('#txtBairro').val(),
             Complemento: jQuery('#txtComplemento').val(),
-            CEP: jQuery('#txtCEP').val(),
+            CEP: jQuery('#txtCEP').val().replace(/[\-]/g, ""),
             NomePai: jQuery('#txtNomePai').val(),
             NacionalidadePai: jQuery('#ddlNacionalidadePai option:selected').val(),
             NomeMae: jQuery('#txtNomeMae').val(),
             NacionalidadeMae: jQuery('#ddlNacionalidadeMae option:selected').val(),
-            RG: jQuery('#txtRG').val(),
-            CarteiraTrabalho: jQuery('#txtCarteiraTrabalho').val(),
-            NumeroSerie: jQuery('#txtNumeroSerie').val(),
-            NumeroCertificadoReservista: jQuery('#txtNumeroCertificadoReservista').val(),
-            Categoria: jQuery('#txtCategoria').val(),
-            CPF: jQuery('#txtCPF').val(),
-            TituloEleitor: jQuery('#txtTituloEleitor').val(),
-            CateiraSaude: jQuery('#txtCateiraSaude').val(),
-            CBO: jQuery('#txtCBO').val(),
-            Carteira19: jQuery('#txtCarteira19').val(),
-            RegistroGeral: jQuery('#txtRegistroGeral').val(),
+            RG: jQuery('#txtRG').val().replace(/[\.-]/g, ""),
+            CarteiraTrabalho: jQuery('#txtCarteiraTrabalho').val().replace(/[\.-]/g, ""),
+            NumeroSerie: jQuery('#txtNumeroSerie').val().replace(/[\.-]/g, ""),
+            NumeroCertificadoReservista: jQuery('#txtNumeroCertificadoReservista').val().replace(/[\.-]/g, ""),
+            Categoria: jQuery('#txtCategoria').val().replace(/[\.-]/g, ""),
+            CPF: jQuery('#txtCPF').val().replace(/[\.-]/g, ""),
+            TituloEleitor: jQuery('#txtTituloEleitor').val().replace(/[\.-]/g, ""),
+            CateiraSaude: jQuery('#txtCateiraSaude').val().replace(/[\.-]/g, ""),
+            CBO: jQuery('#txtCBO').val().replace(/[\.-]/g, ""),
+            Carteira19: jQuery('#txtCarteira19').val().replace(/[\.-]/g, ""),
+            RegistroGeral: jQuery('#txtRegistroGeral').val().replace(/[\.-]/g, ""),
             CasadoBrasileiro: jQuery('input[@name=<%=rdbCasadoBrasileiro.ClientID%>]:radio:checked').val(),
             //CasadoBrasileiro: jQuery('input[name$:rdbCasadoBrasileiro]:checked').val(),
             //$("input[@name=<%=rdlMinor.ClientID%>]:radio:checked").val();
@@ -1013,11 +1073,11 @@ function IncluirDadosFuncionario() {
             //FilhoBrasileiro: jQuery('input[name$:rblFilhoBrasileiro]:checked').val(),
             DataChegadaBrasil: jQuery('#txtDataChegadaBrasil').val(),
             CadastroPIS: jQuery('#txtCadastroPIS').val(),
-            SobNumero: jQuery('#txtSobNumero').val(),
-            BancoPIS: jQuery('#txtBancoPIS').val(),
-            Agencia: jQuery('#txtAgencia').val(),
-            Conta: jQuery('#txtConta').val(),
-            Digito: jQuery('#txtDigito').val(),
+            SobNumero: jQuery('#txtSobNumero').val().replace(/[\.-]/g, ""),
+            BancoPIS: jQuery('#ddlBancoPIS option:selected').val(),
+            Agencia: jQuery('#txtAgencia').val().replace(/[\.-]/g, ""),
+            Conta: jQuery('#txtConta').val().replace(/[\.-]/g, ""),
+            Digito: jQuery('#txtDigito').val().replace(/[\.-]/g, ""),
             TipoEnderecoPIS: jQuery('#ddlTipoEnderecoPIS').val(),
             TipoLogradouroPIS: jQuery('#ddlTipoLogradouroPIS').val(),
             CidadePIS: jQuery('#ddlCidadePIS option:selected').val(),
@@ -1030,7 +1090,7 @@ function IncluirDadosFuncionario() {
             OptanteFGTS: jQuery('#rdpOptanteFGTS').val(),
             DataOpcao: jQuery('#txtDataOpcao').val(),
             DataRetratacao: jQuery('#txtDataRetratacao').val(),
-            BancoFGTS: jQuery('#txtBancoFGTS').val(),
+            BancoFGTS: jQuery('#ddlBancoFGTS option:selected').val(),
             AgenciaFGTS: jQuery('#txtAgenciaFGTS').val(),
             ContaFGTS: jQuery('#txtContaFGTS').val(),
             DigitoFGTS: jQuery('#txtDigitoFGTS').val(),
@@ -1046,9 +1106,11 @@ function IncluirDadosFuncionario() {
         success: function (data) {
             // alert(data);
 
+            var arrFuncionario = eval(data);
 
-            for (var i = 0; i < data.length; i++) {
-                // alert(data[i].FUNC_NOME_FUNCIONARIO)
+
+            for (var i = 0; i < arrFuncionario.length; i++) {
+                alert(arrFuncionario[i].FUNC_NOME_FUNCIONARIO);
             }
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -1058,7 +1120,7 @@ function IncluirDadosFuncionario() {
 
 }
 
-function CarregaComboCidade(str, tipo) {
+function CarregaComboCidade(str, tipo, strCidade) {
 
     // alert(2);
 
@@ -1090,6 +1152,24 @@ function CarregaComboCidade(str, tipo) {
                 jQuery('#ddlCidadeFuncionario_chzn .chzn-single span').text('Selecione');
 
                 jQuery('#ddlCidadeFuncionario').trigger("chosen:updated");
+
+                if (strCidade != '') {
+                    jQuery('#ddlCidadeFuncionario option:selected').removeAttr('selected');
+
+                    jQuery("#ddlCidadeFuncionario").each(function () {
+                        jQuery('option', this).each(function () {
+
+                            if (jQuery(this).text().toLowerCase() == jQuery('#ddlCidadeFuncionario option').filter(function () { return jQuery(this).html() == strCidade; }).text().toLowerCase()) {
+                                jQuery(this).attr('selected', 'selected')
+                            };
+
+                        });
+                    });
+
+                    jQuery('#ddlCidadeFuncionario_chzn .chzn-single span').text(strCidade);
+                }
+
+
             }
             else if (tipo = 2) {
                 jQuery('#ddlCidadePIS').empty();
@@ -1105,6 +1185,24 @@ function CarregaComboCidade(str, tipo) {
                 jQuery('#ddlCidadePIS_chzn .chzn-single span').text('Selecione');
 
                 jQuery('#ddlCidadePIS').trigger("chosen:updated");
+
+
+                if (strCidade != '') {
+                    jQuery('#ddlCidadePIS option:selected').removeAttr('selected');
+
+                    jQuery("#ddlCidadePIS").each(function () {
+                        jQuery('option', this).each(function () {
+
+                            if (jQuery(this).text().toLowerCase() == jQuery('#ddlCidadePIS option').filter(function () { return jQuery(this).html() == strCidade; }).text().toLowerCase()) {
+                                jQuery(this).attr('selected', 'selected')
+                            };
+
+                        });
+                    });
+
+                    jQuery('#ddlCidadePIS_chzn .chzn-single span').text(strCidade);
+                }
+
             }
 
         },
@@ -1154,3 +1252,62 @@ function validarCPF(strCPF) {
     return true;
 }
 
+/* Brazilian initialisation for the jQuery UI date picker plugin. */
+/* Written by Leonildo Costa Silva (leocsilva@gmail.com). */
+(function (factory) {
+    if (typeof define === "function" && define.amd) {
+
+        // AMD. Register as an anonymous module.
+        define(["../datepicker"], factory);
+    } else {
+
+        // Browser globals
+        factory(jQuery.datepicker);
+    }
+}(function (datepicker) {
+
+    datepicker.regional['pt-BR'] = {
+        closeText: 'Fechar',
+        prevText: '&#x3C;Anterior',
+        nextText: 'Próximo&#x3E;',
+        currentText: 'Hoje',
+        monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+        monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
+        'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+        dayNames: ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'],
+        dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
+        dayNamesMin: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
+        weekHeader: 'Sm',
+        dateFormat: 'dd/mm/yy',
+        firstDay: 0,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: ''
+    };
+    datepicker.setDefaults(datepicker.regional['pt-BR']);
+
+    return datepicker.regional['pt-BR'];
+
+}));
+
+jQuery.fn.ForceNumericOnly =
+function () {
+    return this.each(function () {
+        jQuery(this).keydown(function (e) {
+            var key = e.charCode || e.keyCode || 0;
+            // allow backspace, tab, delete, enter, arrows, numbers and keypad numbers ONLY
+            // home, end, period, and numpad decimal
+            return (
+                key == 8 ||
+                key == 9 ||
+                key == 13 ||
+                key == 46 ||
+                key == 110 ||
+                key == 190 ||
+                (key >= 35 && key <= 40) ||
+                (key >= 48 && key <= 57) ||
+                (key >= 96 && key <= 105));
+        });
+    });
+};

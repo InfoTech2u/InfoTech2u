@@ -214,9 +214,12 @@ namespace InfoTech2u.Verithus.WEB.Handler
             //Passo 5 Documentos PIS
             if (!String.IsNullOrWhiteSpace(CadastroPIS))
                 objDocumentosPIS.DataCadastroPIS = Convert.ToDateTime(CadastroPIS);
+
+
             objDocumentosPIS.SOBNumero = SobNumero;
             objBancoPIS.NumeroBanco = BancoPIS;
             objBancoPIS.Agencia = Agencia;
+            objBancoPIS.Conta = Conta;
             objBancoPIS.Digito = Digito;
             objDocumentosPIS.BancoVO = objBancoPIS;
 
@@ -255,6 +258,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
 
             objBancoFGTS.NumeroBanco = BancoFGTS;
             objBancoFGTS.Agencia = AgenciaFGTS;
+            objBancoFGTS.Conta = ContaFGTS;
             objBancoFGTS.Digito = DigitoFGTS;
             objDocumentoFundoGarantia.BancoVO = objBancoFGTS;
             //objListaDocumentoFundoGarantia.Add(objDocumentoFundoGarantia);

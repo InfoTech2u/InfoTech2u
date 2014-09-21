@@ -86,9 +86,9 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
                     this.txtAltura.Text = dtRetorno.Rows[i]["CARACTERISTICA_FUNC_ALTURA"].ToString();
                     this.txtBairro.Text = dtRetorno.Rows[i]["DETL_END_BAIRRO"].ToString();
                     this.txtBairroPIS.Text = dtRetorno.Rows[i]["DETL_PIS_BAIRRO"].ToString();
-                    this.txtBancoFGTS.Text = dtRetorno.Rows[i]["BANCO_FGTS_NUMERO_BANCO"].ToString();
-                    this.txtBancoPIS.Text = dtRetorno.Rows[i]["BANCO_PIS_NUMERO_BANCO"].ToString();
-                    this.txtCadastroPIS.Text = dtRetorno.Rows[i]["BANCO_PIS_NUMERO_BANCO"].ToString();
+                    //this.txtBancoFGTS.Text = dtRetorno.Rows[i]["BANCO_FGTS_NUMERO_BANCO"].ToString();
+                    //this.txtBancoPIS.Text = dtRetorno.Rows[i]["BANCO_PIS_NUMERO_BANCO"].ToString();
+                    this.txtCadastroPIS.Text = dtRetorno.Rows[i]["DOC_PIS_FUNC_DATA_CADASTRO_PIS"].ToString();
                     this.txtCarteira19.Text = dtRetorno.Rows[i]["DOC_EST_FUNC_NUMERO_CARTEIRA_19"].ToString();
                     this.txtCarteiraTrabalho.Text = dtRetorno.Rows[i]["DOC_FUNC_NUMERO_CARTEIRA_TRABALHO"].ToString();
                     this.txtCategoria.Text = dtRetorno.Rows[i]["DOC_FUNC_CATEGORIA"].ToString();
@@ -168,6 +168,9 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
                     InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlCidadePIS, dtRetorno.Rows[i]["DETL_PIS_CODIGO_CIDADE"].ToString());
                     InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlCidadeFuncionario, dtRetorno.Rows[i]["DETL_END_CODIGO_CIDADE"].ToString());
 
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlBancoPIS, dtRetorno.Rows[i]["BANCO_FGTS_NUMERO_BANCO"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlBancoFGTS, dtRetorno.Rows[i]["BANCO_PIS_NUMERO_BANCO"].ToString());
+
 
 
                     
@@ -188,8 +191,8 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
             this.txtAltura.ReadOnly = true;
             this.txtBairro.ReadOnly = true;
             this.txtBairroPIS.ReadOnly = true;
-            this.txtBancoFGTS.ReadOnly = true;
-            this.txtBancoPIS.ReadOnly = true;
+            //this.txtBancoFGTS.ReadOnly = true;
+            //this.txtBancoPIS.ReadOnly = true;
             this.txtCadastroPIS.ReadOnly = true;
             this.txtCarteira19.ReadOnly = true;
             this.txtCarteiraTrabalho.ReadOnly = true;
@@ -233,6 +236,8 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
             this.ddlCor.Enabled = false;
             this.ddlEstadoCivil.Enabled = false;
             this.ddlEstadoFuncionario.Enabled = false;
+            this.ddlCidadeFuncionario.Enabled = false;
+            this.ddlCidadePIS.Enabled = false;
             this.ddlEstadoPIS.Enabled = false;
             this.ddlNacionalidadeFuncionario.Enabled = false;
             this.ddlNacionalidadeMae.Enabled = false;

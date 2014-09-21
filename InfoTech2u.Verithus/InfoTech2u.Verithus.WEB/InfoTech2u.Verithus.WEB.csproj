@@ -176,6 +176,7 @@
     <Content Include="Handler\VerificarUsuario.ashx" />
     <Content Include="Handler\PesquisarFuncionario.ashx" />
     <Content Include="Handler\ManterContribuicaoSindical.ashx" />
+    <Content Include="js\jquery-migrate.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -879,6 +880,7 @@
     </Compile>
     <Compile Include="Modulos\RecursosHumanos\ManterContribuicaoSindical.aspx.cs">
       <DependentUpon>ManterContribuicaoSindical.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Modulos\RecursosHumanos\ManterContribuicaoSindical.aspx.designer.cs">
       <DependentUpon>ManterContribuicaoSindical.aspx</DependentUpon>

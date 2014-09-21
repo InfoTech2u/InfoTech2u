@@ -126,15 +126,15 @@ namespace InfoTech2u.Verithus.DA
                 else
                     lstSqlParameter.Add(new SqlParameter("@QUANTOS_FILHOS_FUNCIONARIO", param.QuantosFilhos));
 
-                if (param.Endereco.DetalheEndereco.CodigoTipoEndereco == null)
+                if (param.Endereco.DetalheEndereco.TipoEnderecoVO.CodigoTipoEndereco == null)
                     lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_ENDERECO_FUNCIONARIO", DBNull.Value));
                 else
-                    lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_ENDERECO_FUNCIONARIO", param.Endereco.DetalheEndereco.CodigoTipoEndereco));
+                    lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_ENDERECO_FUNCIONARIO", param.Endereco.DetalheEndereco.TipoEnderecoVO.CodigoTipoEndereco));
 
-                if (param.Endereco.DetalheEndereco.CodigoTipoLogradouro == null)
+                if (param.Endereco.DetalheEndereco.TipoLogradouroVO.CodigoTipoLogradouro == null)
                     lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_LOGRADOURO_FUNCIONARIO", DBNull.Value));
                 else
-                    lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_LOGRADOURO_FUNCIONARIO", param.Endereco.DetalheEndereco.CodigoTipoLogradouro));
+                    lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_LOGRADOURO_FUNCIONARIO", param.Endereco.DetalheEndereco.TipoLogradouroVO.CodigoTipoLogradouro));
 
                 if (param.Endereco.DetalheEndereco.CodigoCidade == null)
                     lstSqlParameter.Add(new SqlParameter("@CODIGO_CIDADE_FUNCIONARIO", DBNull.Value));
@@ -265,20 +265,20 @@ namespace InfoTech2u.Verithus.DA
                 else
                     lstSqlParameter.Add(new SqlParameter("@DATA_CHEGADA_BRASIL", param.DocumentoEstrangeiro.DataChegadaBrasil));
 
-                if (param.DocumentoPIS.DataCadastro == null)
+                if (param.DocumentoPIS.DataCadastroPIS == null)
                     lstSqlParameter.Add(new SqlParameter("@DATA_CADASTRO_PIS", DBNull.Value));
                 else
-                    lstSqlParameter.Add(new SqlParameter("@DATA_CADASTRO_PIS", param.DocumentoPIS.DataCadastro));
+                    lstSqlParameter.Add(new SqlParameter("@DATA_CADASTRO_PIS", param.DocumentoPIS.DataCadastroPIS));
 
                 if (param.DocumentoPIS.SOBNumero == null)
                     lstSqlParameter.Add(new SqlParameter("@SOB_NUMERO_PIS", DBNull.Value));
                 else
                     lstSqlParameter.Add(new SqlParameter("@SOB_NUMERO_PIS", param.DocumentoPIS.SOBNumero));
 
-                if (param.DocumentoPIS.BancoVO.CodigoBanco == null)
+                if (param.DocumentoPIS.BancoVO.NumeroBanco == null)
                     lstSqlParameter.Add(new SqlParameter("@NUMERO_BANCO_PIS", DBNull.Value));
                 else
-                    lstSqlParameter.Add(new SqlParameter("@NUMERO_BANCO_PIS", param.DocumentoPIS.BancoVO.CodigoBanco));
+                    lstSqlParameter.Add(new SqlParameter("@NUMERO_BANCO_PIS", param.DocumentoPIS.BancoVO.NumeroBanco));
 
                 if (param.DocumentoPIS.BancoVO.Agencia == null)
                     lstSqlParameter.Add(new SqlParameter("@AGENCIA_PIS", DBNull.Value));
@@ -355,10 +355,10 @@ namespace InfoTech2u.Verithus.DA
                 else
                     lstSqlParameter.Add(new SqlParameter("@DATA_RETRATACAO", param.DocumentoFundoGarantia.DataRetratacao));
 
-                if (param.DocumentoFundoGarantia.BancoVO.CodigoBanco == null)
+                if (param.DocumentoFundoGarantia.BancoVO.NumeroBanco == null)
                     lstSqlParameter.Add(new SqlParameter("@NUMERO_BANCO_FUNDO_GARANTIA", DBNull.Value));
                 else
-                    lstSqlParameter.Add(new SqlParameter("@NUMERO_BANCO_FUNDO_GARANTIA", param.DocumentoFundoGarantia.BancoVO.CodigoBanco));
+                    lstSqlParameter.Add(new SqlParameter("@NUMERO_BANCO_FUNDO_GARANTIA", param.DocumentoFundoGarantia.BancoVO.NumeroBanco));
                 if (param.DocumentoFundoGarantia.BancoVO.Agencia == null)
                     lstSqlParameter.Add(new SqlParameter("@AGENCIA_FUNDO_GARANTIA", DBNull.Value));
                 else
