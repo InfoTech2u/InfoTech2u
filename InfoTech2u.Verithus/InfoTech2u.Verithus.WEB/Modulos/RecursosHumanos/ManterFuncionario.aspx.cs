@@ -168,8 +168,8 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
                     InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlCidadePIS, dtRetorno.Rows[i]["DETL_PIS_CODIGO_CIDADE"].ToString());
                     InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlCidadeFuncionario, dtRetorno.Rows[i]["DETL_END_CODIGO_CIDADE"].ToString());
 
-                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlBancoPIS, dtRetorno.Rows[i]["BANCO_FGTS_NUMERO_BANCO"].ToString());
-                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlBancoFGTS, dtRetorno.Rows[i]["BANCO_PIS_NUMERO_BANCO"].ToString());
+                    //InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlBancoPIS, dtRetorno.Rows[i]["BANCO_FGTS_NUMERO_BANCO"].ToString());
+                    //InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlBancoFGTS, dtRetorno.Rows[i]["BANCO_PIS_NUMERO_BANCO"].ToString());
 
 
 

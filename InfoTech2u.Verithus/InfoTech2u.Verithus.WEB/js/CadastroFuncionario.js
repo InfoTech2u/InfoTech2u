@@ -120,9 +120,11 @@ jQuery(document).ready(function () {
         function leaveAStepCallback(obj) {
             passoAtivo = obj.attr('rel');
             //verificaValidacao = validarFuncionario(passoAtivo);
-            alert(passoAtivo);
+            //alert(passoAtivo);
             if (passoAtivo == 6)
                 jQuery('.buttonNext').hide();
+            else
+                jQuery('.buttonNext').show();
             return true;
         }
 
@@ -1026,6 +1028,8 @@ function AlterarDadosFuncionario() {
 
 function IncluirDadosFuncionario() {
 
+    var tpAcao = getUrlVars()["tpAcao"]
+
     jQuery.ajax({
         type: "GET",
         url: "../../Handler/ManutencaoFuncionario.ashx",
@@ -1107,11 +1111,18 @@ function IncluirDadosFuncionario() {
             // alert(data);
 
             var arrFuncionario = eval(data);
-
+            var idFuncionario;
 
             for (var i = 0; i < arrFuncionario.length; i++) {
-                alert(arrFuncionario[i].FUNC_NOME_FUNCIONARIO);
+
+                //tpAcao
+                idFuncionario = arrFuncionario[i].FUNC_CODIGO_FUNCIONARIO;
             }
+
+            jQuery(window.document.location).attr('href', 'ManterFuncionario.aspx?tpAcao=3&idUser=' + idFuncionario);
+
+            return false;
+
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
             errorAjax(textStatus);
