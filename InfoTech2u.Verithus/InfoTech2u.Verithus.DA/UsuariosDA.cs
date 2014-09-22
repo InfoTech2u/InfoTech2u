@@ -12,11 +12,11 @@ namespace InfoTech2u.Verithus.DA
 {
     public class UsuariosDA
     {
-        public string SelecionarUsuario(UsuariosVO param)
+        public DataTable SelecionarUsuario(UsuariosVO param)
         {
             InfoTech2uSQLUtil objSql = new InfoTech2uSQLUtil();
             List<SqlParameter> lstSqlParameter = new List<SqlParameter>();
-            DataSet dtRetorno = new DataSet();
+            DataTable dtRetorno = new DataTable();
 
             try
             {
@@ -24,7 +24,7 @@ namespace InfoTech2u.Verithus.DA
                 objSql.ConnectionString = objSql.GetConnectionString(objSql.Sigla);
                 objSql.Open();
 
-                if (param.CodigoUsuario != null)
+                if (param.CodigoUsuario == null)
                     lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO", DBNull.Value));
                 else
                     lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO", param.CodigoUsuario));
@@ -32,14 +32,14 @@ namespace InfoTech2u.Verithus.DA
 
                 objSql.Execute("dbo.[SPVRT001_USUARIOS_PR_SELECIONAR]", lstSqlParameter.ToArray(), null, ref dtRetorno);
 
-                DataSet ds = dtRetorno;
+                //DataSet ds = dtRetorno;
 
-                string xmlRetorno = ds.GetXml();
+                //string xmlRetorno = ds.GetXml();
 
-                xmlRetorno = xmlRetorno.Replace("NewDataSet", "usuario");
-                xmlRetorno = xmlRetorno.Replace("Table", "row");
+                //xmlRetorno = xmlRetorno.Replace("NewDataSet", "usuario");
+                //xmlRetorno = xmlRetorno.Replace("Table", "row");
 
-                return xmlRetorno;
+                return dtRetorno;
             }
             catch (Exception ex)
             {
@@ -185,6 +185,163 @@ namespace InfoTech2u.Verithus.DA
             }
 
 
+        }
+
+        public DataTable VerificarLogin(string login)
+        {
+            InfoTech2uSQLUtil objSql = null;
+            List<SqlParameter> lstSqlParameter = null;
+            DataTable dtRetorno = null;
+
+            try
+            {
+                objSql = new InfoTech2uSQLUtil();
+                lstSqlParameter = new List<SqlParameter>();
+                dtRetorno = new DataTable();
+
+                objSql.Sigla = objSql.GetDataBase();
+                objSql.ConnectionString = objSql.GetConnectionString(objSql.Sigla);
+                objSql.Open();
+                
+                lstSqlParameter.Add(new SqlParameter("@LOGIN_USUARIO", login));
+
+                objSql.Execute("dbo.[SPVRT001_USUARIOS_PR_SELECIONAR]", lstSqlParameter.ToArray(), null, ref dtRetorno);
+
+                return dtRetorno;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objSql = null;
+                lstSqlParameter = null;
+                dtRetorno = null;
+            }
+        }
+
+        public DataTable IncluirUsuario(UsuariosVO usuario)
+        {
+            InfoTech2uSQLUtil objSql = null;
+            StringBuilder query = null;
+            List<SqlParameter> lstSqlParameter = null;
+            DataTable dtRetorno = null;
+
+            try
+            {
+
+                objSql = new InfoTech2uSQLUtil();
+                lstSqlParameter = new List<SqlParameter>();
+                query = new StringBuilder();
+
+                objSql.Sigla = objSql.GetDataBase();
+                objSql.ConnectionString = objSql.GetConnectionString(objSql.Sigla);
+                objSql.Open();
+
+                lstSqlParameter.Add(new SqlParameter("@NOME", usuario.Nome));
+                lstSqlParameter.Add(new SqlParameter("@MAIL", usuario.Mail));
+                lstSqlParameter.Add(new SqlParameter("@LOGIN_USUARIO", usuario.LoginUsuario));
+                lstSqlParameter.Add(new SqlParameter("@SENHA", usuario.Senha));
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_ACESSO", usuario.CodigoTipoAcesso));
+
+                //TODO: Pegar Usuario da SESSION
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO_CADASTRO", usuario.CodigoUsuarioCadastro));
+                lstSqlParameter.Add(new SqlParameter("@DATA_CADASTRO", usuario.DataCadastro));
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO_ALTERACAO", usuario.CodigoUsuarioAlteracao));
+                lstSqlParameter.Add(new SqlParameter("@DATA_ALTERACAO", usuario.DataAlteracao));
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_STATUS", usuario.CodigoStatus));
+
+                dtRetorno = new DataTable();
+
+                objSql.Execute("SPVRT002_USUARIOS_PR_INCLUIR", lstSqlParameter.ToArray(), null, ref dtRetorno);
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+            return dtRetorno;
+        }
+
+        public bool ExcluirUsuario(UsuariosVO usuario)
+        {
+            InfoTech2uSQLUtil objSql = null;
+            StringBuilder query = null;
+            List<SqlParameter> lstSqlParameter = null;
+            bool foiExcluido = false;
+
+            try
+            {
+
+                objSql = new InfoTech2uSQLUtil();
+                lstSqlParameter = new List<SqlParameter>();
+                query = new StringBuilder();
+
+                objSql.Sigla = objSql.GetDataBase();
+                objSql.ConnectionString = objSql.GetConnectionString(objSql.Sigla);
+                objSql.Open();
+
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO", usuario.CodigoUsuario));
+
+                int rowsAffected = 0;
+
+                objSql.ExecuteNonQuery("SPVRT004_USUARIOS_PR_EXCLUIR", lstSqlParameter.ToArray(), null, out rowsAffected);
+
+                foiExcluido = rowsAffected > 0;
+            }
+            catch (Exception ex)
+            {
+                foiExcluido = false;
+            }
+            finally
+            {
+                objSql = null;
+                lstSqlParameter = null;
+                query = null;
+            }
+
+            return foiExcluido;
+        }
+
+        public DataTable AlterarUsuario(UsuariosVO usuario)
+        {
+            InfoTech2uSQLUtil objSql = null;
+            StringBuilder query = null;
+            List<SqlParameter> lstSqlParameter = null;
+            DataTable dtRetorno = null;
+
+            try
+            {
+
+                objSql = new InfoTech2uSQLUtil();
+                lstSqlParameter = new List<SqlParameter>();
+                query = new StringBuilder();
+
+                objSql.Sigla = objSql.GetDataBase();
+                objSql.ConnectionString = objSql.GetConnectionString(objSql.Sigla);
+                objSql.Open();
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO", usuario.CodigoUsuario));
+                lstSqlParameter.Add(new SqlParameter("@NOME", usuario.Nome));
+                lstSqlParameter.Add(new SqlParameter("@MAIL", usuario.Mail));
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_ACESSO", usuario.CodigoTipoAcesso));
+
+                //TODO: Pegar Usuario da SESSION
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO_ALTERACAO", usuario.CodigoUsuarioAlteracao));
+                lstSqlParameter.Add(new SqlParameter("@DATA_ALTERACAO", usuario.DataAlteracao));
+
+                dtRetorno = new DataTable();
+
+                objSql.Execute("SPVRT003_USUARIOS_PR_ALTERAR", lstSqlParameter.ToArray(), null, ref dtRetorno);
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+            return dtRetorno;
         }
     }
 }

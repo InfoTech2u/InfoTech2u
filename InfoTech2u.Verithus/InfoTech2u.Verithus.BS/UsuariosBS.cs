@@ -11,7 +11,7 @@ namespace InfoTech2u.Verithus.BS
 {
     public class UsuariosBS
     {
-        public string SelecionarUsuario(UsuariosVO param)
+        public DataTable SelecionarUsuario(UsuariosVO param)
         {
 
             UsuariosDA objRetorno = new UsuariosDA();
@@ -31,13 +31,13 @@ namespace InfoTech2u.Verithus.BS
 
         }
 
-        public List<UsuariosVO> SelecionarUsuarioLista(UsuariosVO param)
+        public DataTable SelecionarUsuarioLista(UsuariosVO param)
         {
             UsuariosDA objRetorno = new UsuariosDA();
 
             try
             {
-                return objRetorno.SelecionarUsuarioLista(param);
+                return objRetorno.SelecionarUsuario(param);
             }
             catch (Exception ex)
             {
@@ -54,6 +54,34 @@ namespace InfoTech2u.Verithus.BS
             UsuariosDA objRetorno = new UsuariosDA();
 
             return objRetorno.VerificarUsuario(param);
+        }
+
+        public DataTable VerificarLogin(string login)
+        {
+            UsuariosDA objRetorno = new UsuariosDA();
+
+            return objRetorno.VerificarLogin(login);
+        }
+
+        public DataTable IncluirUsuario(UsuariosVO usuario)
+        {
+            UsuariosDA objRetorno = new UsuariosDA();
+
+            return objRetorno.IncluirUsuario(usuario);
+        }
+
+        public bool ExcluirUsuario(UsuariosVO usuario)
+        {
+            UsuariosDA objRetorno = new UsuariosDA();
+
+            return objRetorno.ExcluirUsuario(usuario);
+        }
+
+        public DataTable AlterarUsuario(UsuariosVO usuario)
+        {
+            UsuariosDA objRetorno = new UsuariosDA();
+
+            return objRetorno.AlterarUsuario(usuario);
         }
     }
 }

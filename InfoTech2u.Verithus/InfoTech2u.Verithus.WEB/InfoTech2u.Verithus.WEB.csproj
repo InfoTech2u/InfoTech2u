@@ -76,6 +76,7 @@
     <Content Include="js\ManterContribuicaoSindical.js" />
     <Content Include="js\ManterDependente.js" />
     <Content Include="js\ManterSindicato.js" />
+    <Content Include="js\ManterUsuario.js" />
     <Content Include="js\TipoBeneficio.js" />
     <Content Include="Modulos\Default.aspx" />
     <Content Include="Modulos\InfoTech2u.Master" />
@@ -176,7 +177,8 @@
     <Content Include="Handler\VerificarUsuario.ashx" />
     <Content Include="Handler\PesquisarFuncionario.ashx" />
     <Content Include="Handler\ManterContribuicaoSindical.ashx" />
-    <Content Include="js\jquery-migrate.min.map" />
+    <Content Include="Handler\ManterTipoAcesso.ashx" />
+    <Content Include="Handler\ManterUsuario.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -809,6 +811,12 @@
     </Compile>
     <Compile Include="Handler\ManterSindicato.ashx.cs">
       <DependentUpon>ManterSindicato.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\ManterTipoAcesso.ashx.cs">
+      <DependentUpon>ManterTipoAcesso.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\ManterUsuario.ashx.cs">
+      <DependentUpon>ManterUsuario.ashx</DependentUpon>
     </Compile>
     <Compile Include="Handler\PesquisarFuncionario.ashx.cs">
       <DependentUpon>PesquisarFuncionario.ashx</DependentUpon>

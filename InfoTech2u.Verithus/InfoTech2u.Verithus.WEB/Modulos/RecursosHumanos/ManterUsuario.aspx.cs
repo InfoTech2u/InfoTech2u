@@ -15,7 +15,18 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
             if (!IsPostBack)
             {
                 CarregarIncludes();
+                LimparMsgErro();
             }
+        }
+
+        protected void LimparMsgErro()
+        {
+            lblErrorNome.Style.Add("display", "none");
+            lblErrorEmail.Style.Add("display", "none");
+            lblErrorLogin.Style.Add("display", "none");
+            lblErrorSenhaI.Style.Add("display", "none");
+            lblErrorSenhaII.Style.Add("display", "none");
+            lblErrorTipoAcesso.Style.Add("display", "none");
         }
         protected void CarregarIncludes()
         {
@@ -29,6 +40,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery-1.9.1.min.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery-migrate-1.1.1.min.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery-ui-1.9.2.min.js");
+            InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery.dataTables.min.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "bootstrap.min.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "bootstrap-fileupload.min.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "bootstrap-timepicker.min.js");
@@ -45,7 +57,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "modernizr.min.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "custom.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "forms.js");
-
+            InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "ManterUsuario.js");
 
         }
     }

@@ -1,9 +1,20 @@
 ﻿jQuery(document).ready(function () {
-    jQuery('#hdnCodigoFuncionario').val("1");
+    jQuery('#hdnCodigoFuncionario').val(getUrlVars()["codigofuncionario"]);
     CarregarMascaras();
     CarregarSindicatoLista();
     CarregarContribuicaoExistente();
 });
+
+function getUrlVars() {
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for (var i = 0; i < hashes.length; i++) {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
 
 function CarregarMascaras()
 {
@@ -60,7 +71,7 @@ function CarregarContribuicaoExistente()
             {
                 jQuery('#hdnCodigoFuncionario').val(lista[0].CODIGO_FUNCIONARIO);
                 jQuery('#hdnCodigoContribuicaoSindical').val(lista[0].CODIGO_CONTRIBUICAO_SINDICAL);
-                //jQuery('#datepicker').val(lista[0].PERIODO_ANO);
+                jQuery('#datepicker').val(lista[0].PERIODO_ANO_STR);
                 jQuery('#ddlSindicato option[value="'+ lista[0].CODIGO_SINDICATO +'"]').prop('selected', true);
                 jQuery('#txtVlrContribuicao').val(lista[0].VALOR_RECOLHIDO)
                 CarregarMascaras();

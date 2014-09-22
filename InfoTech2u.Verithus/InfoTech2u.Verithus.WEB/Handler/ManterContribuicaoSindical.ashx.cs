@@ -21,15 +21,15 @@ namespace InfoTech2u.Verithus.WEB.Handler
             {
                 var retorno = SelecionarContribuicaoFuncionario(Convert.ToInt32(context.Request.QueryString["CodigoFuncionario"]));                
 
-                context.Response.Write(retorno.DataTableSerializer());
+                context.Response.Write(retorno.Serializer());
             }
             else if (context.Request.QueryString["Metodo"] == "Incluir")
             {
-                context.Response.Write(IncluirContribuicaoSindical(context).DataTableSerializer());
+                context.Response.Write(IncluirContribuicaoSindical(context).Serializer());
             }
             else if (context.Request.QueryString["Metodo"] == "Alterar")
             {
-                context.Response.Write(AlterarContribuicaoSindical(context).DataTableSerializer());
+                context.Response.Write(AlterarContribuicaoSindical(context).Serializer());
             }
             else if (context.Request.QueryString["Metodo"] == "Excluir")
             {

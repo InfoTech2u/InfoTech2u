@@ -31,5 +31,28 @@ namespace InfoTech2u.Verithus.Util
 
             return serializer.Serialize(rows);
         }
+
+        public static String Serializer(this Object obj)
+        {
+            try
+            {
+                if (obj.GetType() == typeof(DataTable))
+                {
+                    return ((DataTable)obj).DataTableSerializer();
+                }
+                else
+                {
+                    JavaScriptSerializer serializer = new JavaScriptSerializer();
+
+                    return serializer.Serialize(obj);
+                }
+            }
+            catch (Exception)
+            {
+                return String.Empty;
+            }
+
+            
+        }
     }
 }

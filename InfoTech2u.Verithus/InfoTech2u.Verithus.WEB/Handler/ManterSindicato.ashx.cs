@@ -23,16 +23,14 @@ namespace InfoTech2u.Verithus.WEB.Handler
             {
                 var retorno = SelecionarSindicato(new SindicatoVO());
 
-                JavaScriptSerializer serializer = new JavaScriptSerializer();
-
-                context.Response.Write(serializer.Serialize(retorno));
+                context.Response.Write(retorno.Serializer());
             }
             else if (context.Request.QueryString["Metodo"] == "Incluir")
             {
                 SindicatoVO param = new SindicatoVO();
                 param.Nome = context.Request.QueryString["Nome"].ToString();
 
-                context.Response.Write(IncluirSindicato(param).DataTableSerializer());
+                context.Response.Write(IncluirSindicato(param).Serializer());
             }
             else if (context.Request.QueryString["Metodo"] == "Excluir")
             {
