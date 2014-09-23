@@ -7,19 +7,112 @@
     <script type="text/javascript">
         jQuery(document).ready(function () {
             // dynamic table
+            /*jQuery('#dyntable').dataTable({
+                "sPaginationType": "full_numbers",
+                "aaSortingFixed": [[0, 'asc']],
+                "fnDrawCallback": function (oSettings) {
+                    jQuery.uniform.update();
+                }
+            });*/
+
+                
+            
 
             //GridFake();
 
+            jQuery('#dyntable').hide();
+            jQuery('.dyntable').hide();
+            jQuery('.btnAcao').hide();
+            
+
             jQuery("#btnPesquisar").click(function () {
 
-                Pesquisar();
+                
+
+                jQuery('#dyntable').show();
+                jQuery('.dyntable').show();
+                jQuery('.btnAcao').show();
+                jQuery("tbody").empty();
+                jQuery('tbody').remove();
+                jQuery('#dyntable').append('<tbody></tbody>');
+
+                jQuery.ajax({
+                    type: "GET",
+                    url: "../../Handler/PesquisarFuncionario.ashx",
+                    data: {
+                        CodigoFuncionario: jQuery('#txtCodigoFuncionario').val(),
+                        NumeroOrdemMatricula: jQuery('#txtNumeroOrdemMatricula').val(),
+                        NumeroMatricula: jQuery('#txtNumeroMatricula').val(),
+                        NomeFuncionario: jQuery('#txtNomeFuncionario').val()
+                    },
+                    contentType: "json",
+                    cache: false,
+                    success: function (data) {
+
+                        var arrFuncionario = eval(data);
+
+                        //jQuery('tbody').remove();
+                        //('#dyntable').append('<tbody></tbody>');
 
 
-                //return false;
+                        for (var i = 0; i < arrFuncionario.length; i++) {
+
+                            var row = '<tr class="gradeX"><td><input type="radio" name="rdbFuncionario" class="rdbFuncionario" value="' + arrFuncionario[i].FUNC_CODIGO_FUNCIONARIO + '" /></td><td>' + arrFuncionario[i].FUNC_CODIGO_FUNCIONARIO + '</td><td>' + arrFuncionario[i].FUNC_NUMERO_ORDEM_MATRICULA + '</td><td>' + arrFuncionario[i].FUNC_NUMERO_MATRICULA + '</td><td class="center">' + arrFuncionario[i].FUNC_NOME_FUNCIONARIO + '</td></tr>';
+                            jQuery('tbody').append(row);
+
+                        }
+
+
+                        jQuery('#dyntable').dataTable().fnDestroy();
+
+                        jQuery('#dyntable').dataTable({
+                            "sPaginationType": "full_numbers",
+                            "aaSortingFixed": [[0, 'asc']],
+                            "fnDrawCallback": function (oSettings) {
+                                jQuery.uniform.update();
+                            },
+                            "language": {
+                                "lengthMenu": "Display _MENU_ records per page",
+                                "zeroRecords": "Nothing found - sorry",
+                                "info": "Showing page _PAGE_ of _PAGES_",
+                                "infoEmpty": "No records available",
+                                "infoFiltered": "(filtered from _MAX_ total records)",
+                                "sInfoEmpty": "Mostrando 0-0 de 0 Funcionários"
+                            }
+                            //"sInfoEmpty": "Mostrando 0-0 de 0 Funcionários"
+                        });
+
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrow) {
+                        errorAjax(textStatus);
+                    }
+                });
+
+
+
+                //Pesquisar();
+
+
+                return false;
             });
 
             
 
+            //rdbFuncionario
+
+
+            jQuery("input[type=radio][name=suporte]").click(function() {
+                var suporte = $("input[type=radio][name=rdbFuncionario]:checked").val();
+                if (suporte != null) { //com suporte
+                    //se o suporte não tiver sido adicionado a sacola, insiro no carrinho
+                
+                    alert('1');
+                } else { //sem suporte
+                    //removo o suporte do carrinho
+                    alert('2');
+                }
+            });
+            
 
 
             jQuery("#btnIncluir").click(function () {
@@ -90,7 +183,12 @@
 
         });
 
+       
+
         function Pesquisar() {
+
+            
+            jQuery("tbody").empty();
 
             jQuery.ajax({
                 type: "GET",
@@ -107,6 +205,10 @@
 
                     var arrFuncionario = eval(data);
 
+                    //jQuery('tbody').remove();
+                    //('#dyntable').append('<tbody></tbody>');
+                    
+
                     for (var i = 0; i < arrFuncionario.length; i++) {
 
                         var row = '<tr class="gradeX"><td><input type="radio" name="rdbFuncionario" value="' + arrFuncionario[i].FUNC_CODIGO_FUNCIONARIO + '" /></td><td>' + arrFuncionario[i].FUNC_CODIGO_FUNCIONARIO + '</td><td>' + arrFuncionario[i].FUNC_NUMERO_ORDEM_MATRICULA + '</td><td>' + arrFuncionario[i].FUNC_NUMERO_MATRICULA + '</td><td class="center">' + arrFuncionario[i].FUNC_NOME_FUNCIONARIO + '</td></tr>';
@@ -119,7 +221,7 @@
                 }
             });
 
-
+            jQuery('#dyntable').dataTable().fnDestroy();
             jQuery('#dyntable').dataTable({
                 "sPaginationType": "full_numbers",
                 "aaSortingFixed": [[0, 'asc']],
@@ -127,6 +229,7 @@
                     jQuery.uniform.update();
                 }
             });
+            
         }
 
         function GridFake() {
@@ -205,7 +308,7 @@
                     </div>
                 </div>
 
-                <h4 class="widgettitle">Data Table</h4>
+                <h4 class="widgettitle dyntable">Funcionários</h4>
                 <table id="dyntable" class="table table-bordered responsive">
                     <colgroup>
                         <col class="con0" style="align: center; width: 4%" />
@@ -410,7 +513,7 @@
                     </tbody>-->
                 </table>
                 <br />
-                <div class="row-fluid">
+                <div class="row-fluid btnAcao">
                     <button class="btn btn-primary" id="btnIncluir"><i class="iconsweets-magnifying"></i>&nbsp; Incluir</button>
                     <button class="btn" id="btnAlterar"><i class="iconsweets-magnifying"></i>&nbsp; Alterar</button>
                     <button class="btn" id="btnExcluir"><i class="iconsweets-magnifying"></i>&nbsp; Excluir</button>
