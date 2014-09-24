@@ -15,19 +15,19 @@
                 }
             });*/
 
-                
-            
+
+
 
             //GridFake();
 
             jQuery('#dyntable').hide();
             jQuery('.dyntable').hide();
             jQuery('.btnAcao').hide();
-            
+
 
             jQuery("#btnPesquisar").click(function () {
 
-                
+
 
                 jQuery('#dyntable').show();
                 jQuery('.dyntable').show();
@@ -57,7 +57,7 @@
 
                         for (var i = 0; i < arrFuncionario.length; i++) {
 
-                            var row = '<tr class="gradeX"><td><input type="radio" name="rdbFuncionario" class="rdbFuncionario" value="' + arrFuncionario[i].FUNC_CODIGO_FUNCIONARIO + '" /></td><td>' + arrFuncionario[i].FUNC_CODIGO_FUNCIONARIO + '</td><td>' + arrFuncionario[i].FUNC_NUMERO_ORDEM_MATRICULA + '</td><td>' + arrFuncionario[i].FUNC_NUMERO_MATRICULA + '</td><td class="center">' + arrFuncionario[i].FUNC_NOME_FUNCIONARIO + '</td></tr>';
+                            var row = '<tr id="' + arrFuncionario[i].FUNC_CODIGO_FUNCIONARIO + '" class="gradeX"><td><input type="radio" name="rdbFuncionario" class="rdbFuncionario" value="' + arrFuncionario[i].FUNC_CODIGO_FUNCIONARIO + '" /></td><td>' + arrFuncionario[i].FUNC_CODIGO_FUNCIONARIO + '</td><td>' + arrFuncionario[i].FUNC_NUMERO_ORDEM_MATRICULA + '</td><td>' + arrFuncionario[i].FUNC_NUMERO_MATRICULA + '</td><td class="center">' + arrFuncionario[i].FUNC_NOME_FUNCIONARIO + '</td></tr>';
                             jQuery('tbody').append(row);
 
                         }
@@ -96,23 +96,13 @@
                 return false;
             });
 
-            
+
 
             //rdbFuncionario
 
 
-            jQuery("input[type=radio][name=suporte]").click(function() {
-                var suporte = $("input[type=radio][name=rdbFuncionario]:checked").val();
-                if (suporte != null) { //com suporte
-                    //se o suporte não tiver sido adicionado a sacola, insiro no carrinho
-                
-                    alert('1');
-                } else { //sem suporte
-                    //removo o suporte do carrinho
-                    alert('2');
-                }
-            });
-            
+
+
 
 
             jQuery("#btnIncluir").click(function () {
@@ -126,7 +116,15 @@
             jQuery("#btnAlterar").click(function () {
 
                 var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
-                jQuery(window.document.location).attr('href', 'ManterFuncionario.aspx?tpAcao=2&idUser=' + codigoSel);
+                //jQuery(window.document.location).attr('href', 'ManterFuncionario.aspx?tpAcao=2&idUser=' + codigoSel);
+                if (codigoSel != null)
+                    jQuery(window.document.location).attr('href', 'ManterFuncionario.aspx?tpAcao=2&idUser=' + codigoSel);
+                else {
+                    jQuery.alerts.dialogClass = 'alert-warning';
+                    jAlert('Selecione um funcionario', 'Alerta', function () {
+                        jQuery.alerts.dialogClass = null; // reset to default
+                    });
+                }
 
                 return false;
             });
@@ -134,7 +132,14 @@
             jQuery("#btnDetalhar").click(function () {
 
                 var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
-                jQuery(window.document.location).attr('href', 'ManterFuncionario.aspx?tpAcao=3&idUser=' + codigoSel);
+                if (codigoSel != null)
+                    jQuery(window.document.location).attr('href', 'ManterFuncionario.aspx?tpAcao=3&idUser=' + codigoSel);
+                else {
+                    jQuery.alerts.dialogClass = 'alert-warning';
+                    jAlert('Selecione um funcionario', 'Alerta', function () {
+                        jQuery.alerts.dialogClass = null; // reset to default
+                    });
+                }
 
                 return false;
             });
@@ -142,7 +147,44 @@
             jQuery("#btnExcluir").click(function () {
 
                 var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
-                jQuery(window.document.location).attr('href', 'ManterFuncionario.aspx?idUser=' + codigoSel);
+
+                jQuery.ajax({
+                    type: "GET",
+                    url: "../../Handler/ExcluirFuncionario.ashx",
+                    data: {
+                        CodigoFuncionario: codigoSel
+                    },
+                    contentType: "json",
+                    cache: false,
+                    success: function (data) {
+
+                        var arrFuncionario = eval(data);
+
+                        if (arrFuncionario[0].CodigoErro = '1') {
+
+                            jQuery('table tbody tr[id="' + codigoSel + '"]').remove();
+
+                            jQuery.alerts.dialogClass = 'alert-warning';
+                            jAlert(arrFuncionario[0].Mensagem, 'Mensagem', function () {
+                                jQuery.alerts.dialogClass = null; // reset to default
+                            });
+                        }
+                        else if (arrFuncionario[0].CodigoErro = '2') {
+                            jQuery.alerts.dialogClass = 'alert-warning';
+                            jAlert(arrFuncionario[0].Mensagem, 'Mensagem', function () {
+                                jQuery.alerts.dialogClass = null; // reset to default
+                            });
+                        }
+
+                        //jQuery('#dyntable').dataTable().fnDestroy();
+
+                       
+
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrow) {
+                        errorAjax(textStatus);
+                    }
+                });
 
                 return false;
             });
@@ -150,7 +192,15 @@
             jQuery("#btnAdmisao").click(function () {
 
                 var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
-                jQuery(window.document.location).attr('href', 'ManterAdmissao.aspx?idUser=' + codigoSel);
+                //jQuery(window.document.location).attr('href', 'ManterAdmissao.aspx?idUser=' + codigoSel);
+                if (codigoSel != null)
+                    jQuery(window.document.location).attr('href', 'ManterAdmissao.aspx?idUser=' + codigoSel);
+                else {
+                    jQuery.alerts.dialogClass = 'alert-warning';
+                    jAlert('Selecione um funcionario', 'Alerta', function () {
+                        jQuery.alerts.dialogClass = null; // reset to default
+                    });
+                }
 
                 return false;
             });
@@ -158,7 +208,15 @@
             jQuery("#btnDemissao").click(function () {
 
                 var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
-                jQuery(window.document.location).attr('href', 'ManterDemissao.aspx?idUser=' + codigoSel);
+                //jQuery(window.document.location).attr('href', 'ManterDemissao.aspx?idUser=' + codigoSel);
+                if (codigoSel != null)
+                    jQuery(window.document.location).attr('href', 'ManterDemissao.aspx?idUser=' + codigoSel);
+                else {
+                    jQuery.alerts.dialogClass = 'alert-warning';
+                    jAlert('Selecione um funcionario', 'Alerta', function () {
+                        jQuery.alerts.dialogClass = null; // reset to default
+                    });
+                }
 
                 return false;
             });
@@ -166,7 +224,15 @@
             jQuery("#btnDependente").click(function () {
 
                 var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
-                jQuery(window.document.location).attr('href', 'ManterDependente.aspx?idUser=' + codigoSel);
+                //jQuery(window.document.location).attr('href', 'ManterDependente.aspx?idUser=' + codigoSel);
+                if (codigoSel != null)
+                    jQuery(window.document.location).attr('href', 'ManterDependente.aspx?idUser=' + codigoSel);
+                else {
+                    jQuery.alerts.dialogClass = 'alert-warning';
+                    jAlert('Selecione um funcionario', 'Alerta', function () {
+                        jQuery.alerts.dialogClass = null; // reset to default
+                    });
+                }
 
                 return false;
             });
@@ -174,8 +240,15 @@
             jQuery("#btnSindical").click(function () {
 
                 var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
-                jQuery(window.document.location).attr('href', 'ManterContribuicaoSindicaol.aspx?idUser=' + codigoSel);
-
+                //jQuery(window.document.location).attr('href', 'ManterContribuicaoSindicaol.aspx?idUser=' + codigoSel);
+                if (codigoSel != null)
+                    jQuery(window.document.location).attr('href', 'ManterContribuicaoSindicaol.aspx?idUser=' + codigoSel);
+                else {
+                    jQuery.alerts.dialogClass = 'alert-warning';
+                    jAlert('Selecione um funcionario', 'Alerta', function () {
+                        jQuery.alerts.dialogClass = null; // reset to default
+                    });
+                }
                 return false;
             });
 
@@ -183,11 +256,11 @@
 
         });
 
-       
+
 
         function Pesquisar() {
 
-            
+
             jQuery("tbody").empty();
 
             jQuery.ajax({
@@ -207,7 +280,7 @@
 
                     //jQuery('tbody').remove();
                     //('#dyntable').append('<tbody></tbody>');
-                    
+
 
                     for (var i = 0; i < arrFuncionario.length; i++) {
 
@@ -229,7 +302,7 @@
                     jQuery.uniform.update();
                 }
             });
-            
+
         }
 
         function GridFake() {

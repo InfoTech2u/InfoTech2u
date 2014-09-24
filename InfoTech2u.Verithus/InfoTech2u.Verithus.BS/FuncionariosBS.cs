@@ -18,6 +18,13 @@ namespace InfoTech2u.Verithus.BS
             return objRetorno.SelecionarFuncionario(param);
         }
 
+       public DataTable ExcluirFuncionario(FuncionariosVO param)
+       {
+           FuncionariosDA objRetorno = new FuncionariosDA();
+
+           return objRetorno.ExcluirFuncionario(param);
+       }
+
        public DataTable IncluirFuncionario(FuncionariosVO param)
         {
             FuncionariosDA objFuncionario = new FuncionariosDA();

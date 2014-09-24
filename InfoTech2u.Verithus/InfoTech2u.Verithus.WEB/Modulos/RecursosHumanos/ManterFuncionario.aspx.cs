@@ -56,9 +56,17 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
                     CarregarCampos(idUser);
                     BloquearCampos();
                     break;
+                case "4":
+                    CarregarCampos(idUser);
+                    BloquearCampos();
+                    HabilitarExcluir();
+                    break;
             }
 
         }
+
+        protected void HabilitarExcluir()
+        { }
 
         protected void CarregarCampos(string idUser)
         {

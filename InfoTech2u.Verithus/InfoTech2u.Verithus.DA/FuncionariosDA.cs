@@ -66,6 +66,46 @@ namespace InfoTech2u.Verithus.DA
             }
 
         }
+
+        //SPVRT023_FUNCIONARIO_PR_EXCLUIR
+        public DataTable ExcluirFuncionario(FuncionariosVO param)
+        {
+            InfoTech2uSQLUtil objSql = null;
+            List<SqlParameter> lstSqlParameter = null;
+            DataTable dtRetorno = null;
+
+            try
+            {
+                objSql = new InfoTech2uSQLUtil();
+                lstSqlParameter = new List<SqlParameter>();
+                dtRetorno = new DataTable();
+
+                objSql.Sigla = objSql.GetDataBase();
+                objSql.ConnectionString = objSql.GetConnectionString(objSql.Sigla);
+                objSql.Open();
+
+                if (param.CodigoFuncionario == null)
+                    lstSqlParameter.Add(new SqlParameter("@CODIGO_FUNCIONARIO", DBNull.Value));
+                else
+                    lstSqlParameter.Add(new SqlParameter("@CODIGO_FUNCIONARIO", param.CodigoFuncionario));
+
+
+                objSql.Execute("dbo.[SPVRT023_FUNCIONARIO_PR_EXCLUIR]", lstSqlParameter.ToArray(), null, ref dtRetorno);
+
+                return dtRetorno;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objSql = null;
+                lstSqlParameter = null;
+                dtRetorno = null;
+            }
+
+        }
         
         //SPVRT022_FUNCIONARIO_PR_INCLUIR
         public DataTable IncluirFuncionario(FuncionariosVO param)

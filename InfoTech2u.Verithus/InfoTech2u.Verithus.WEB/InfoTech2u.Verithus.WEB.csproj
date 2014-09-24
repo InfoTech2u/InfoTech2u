@@ -179,6 +179,8 @@
     <Content Include="Handler\ManterContribuicaoSindical.ashx" />
     <Content Include="Handler\ManterTipoAcesso.ashx" />
     <Content Include="Handler\ManterUsuario.ashx" />
+    <Content Include="Handler\ExcluirFuncionario.ashx" />
+    <Content Include="Handler\AlterarFuncionario.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -864,6 +866,12 @@
     </Compile>
     <Compile Include="Logoff.aspx.designer.cs">
       <DependentUpon>Logoff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\AlterarFuncionario.ashx.cs">
+      <DependentUpon>AlterarFuncionario.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\ExcluirFuncionario.ashx.cs">
+      <DependentUpon>ExcluirFuncionario.ashx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\RecursosHumanos\ManterAdmissao.aspx.cs">
       <DependentUpon>ManterAdmissao.aspx</DependentUpon>
