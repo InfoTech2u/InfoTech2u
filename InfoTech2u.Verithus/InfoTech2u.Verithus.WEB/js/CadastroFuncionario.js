@@ -46,7 +46,7 @@ jQuery(document).ready(function () {
     jQuery("#txtTituloEleitor").mask("999999999999");
 
     //Carteira de Saude
-    jQuery("#txtCateiraSaude").mask("99999999999 9999");
+    //jQuery("#txtCateiraSaude").mask("999999999999999");
 
     //Monetario
     jQuery(".Monetario").maskMoney({
@@ -1023,19 +1023,13 @@ function validarFuncionario(passoAtivo) {
 }
 
 function AlterarDadosFuncionario() {
-
-}
-
-function IncluirDadosFuncionario() {
-
-    var tpAcao = getUrlVars()["tpAcao"]
-
     jQuery.ajax({
         type: "GET",
         url: "../../Handler/ManutencaoFuncionario.ashx",
         data: {
             Metodo: 'CadastroFuncionario',
-            Acao: 'Inclusao',
+            Acao: 'Alteração',
+            Status: jQuery('#ddlStatus option:selected').val(),
             NumeroOrdemMatricula: jQuery('#txtNumeroOrdemMatricula').val(),
             NumeroMatricula: jQuery('#txtNumeroMatricula').val(),
             NomeFuncionario: jQuery('#txtNomeFuncionario').val(),
@@ -1064,7 +1058,119 @@ function IncluirDadosFuncionario() {
             Categoria: jQuery('#txtCategoria').val().replace(/[\.-]/g, ""),
             CPF: jQuery('#txtCPF').val().replace(/[\.-]/g, ""),
             TituloEleitor: jQuery('#txtTituloEleitor').val().replace(/[\.-]/g, ""),
-            CateiraSaude: jQuery('#txtCateiraSaude').val().replace(/[\.-]/g, ""),
+            CateiraSaude: jQuery('#txtCateiraSaude').val().replace(" ", ""),
+            CBO: jQuery('#txtCBO').val().replace(/[\.-]/g, ""),
+            Carteira19: jQuery('#txtCarteira19').val().replace(/[\.-]/g, ""),
+            RegistroGeral: jQuery('#txtRegistroGeral').val().replace(/[\.-]/g, ""),
+            CasadoBrasileiro: jQuery('input[@name=<%=rdbCasadoBrasileiro.ClientID%>]:radio:checked').val(),
+            Naturalizado: jQuery('input[@name=<%=rblNaturalizado.ClientID%>]:radio:checked').val(),
+            FilhoBrasileiro: jQuery('input[@name=<%=rblFilhoBrasileiro.ClientID%>]:radio:checked').val(),
+            DataChegadaBrasil: jQuery('#txtDataChegadaBrasil').val(),
+            CadastroPIS: jQuery('#txtCadastroPIS').val(),
+            SobNumero: jQuery('#txtSobNumero').val().replace(/[\.-]/g, ""),
+            BancoPIS: jQuery('#ddlBancoPIS option:selected').val(),
+            Agencia: jQuery('#txtAgencia').val().replace(/[\.-]/g, ""),
+            Conta: jQuery('#txtConta').val().replace(/[\.-]/g, ""),
+            Digito: jQuery('#txtDigito').val().replace(/[\.-]/g, ""),
+            TipoEnderecoPIS: jQuery('#ddlTipoEnderecoPIS').val(),
+            TipoLogradouroPIS: jQuery('#ddlTipoLogradouroPIS').val(),
+            CidadePIS: jQuery('#ddlCidadePIS option:selected').val(),
+            EstadoPIS: jQuery('#ddlEstadoPIS option:selected').val(),
+            LogradouroPIS: jQuery('#txtLogradouroPIS').val(),
+            NumeroEnderecoPIS: jQuery('#txtNumeroEnderecoPIS').val(),
+            BairroPIS: jQuery('#txtBairroPIS').val(),
+            ComplementoPIS: jQuery('#txtComplementoPIS').val(),
+            CEPPIS: jQuery('#txtCEPPIS').val(),
+            OptanteFGTS: jQuery('#rdpOptanteFGTS').val(),
+            DataOpcao: jQuery('#txtDataOpcao').val(),
+            DataRetratacao: jQuery('#txtDataRetratacao').val(),
+            BancoFGTS: jQuery('#ddlBancoFGTS option:selected').val(),
+            AgenciaFGTS: jQuery('#txtAgenciaFGTS').val(),
+            ContaFGTS: jQuery('#txtContaFGTS').val(),
+            DigitoFGTS: jQuery('#txtDigitoFGTS').val(),
+            Cor: jQuery('#ddlCor').val(),
+            Altura: jQuery('#txtAltura').val(),
+            Peso: jQuery('#txtPeso').val(),
+            Cabelo: jQuery('#ddlCabelo').val(),
+            Olho: jQuery('#ddlOlho').val(),
+            Sinais: jQuery('#txtSinais').val(),
+            CodigoDocumento: jQuery('#hdnCodigoDocumento').val(),
+            CodigoUsuarioAlteracao: jQuery('#hdnCodigoUsuarioAlteracao').val(),
+            CodigoDocumentoEstrangeiro: jQuery('#hdnCodigoDocumentoEstrangeiro').val(),
+            CodigoPIS: jQuery('#hdnCodigoPIS').val(),
+            CodigoDocumentoFundoGarantia: jQuery('#hdnCodigoDocumentoFundoGarantia').val(),
+            CodigoCaracteristicaFisica: jQuery('#hdnCodigoCaracteristicaFisica').val(),
+            DetalheEndereco: jQuery('#hdnDetalheEndereco').val(),
+            DetalheEnderecoPIS: jQuery('#hdnDetalheEnderecoPIS').val(),
+            CodigoBancoPIS: jQuery('#hdnCodigoBancoPIS').val(),
+            CodigoBancoFGTS: jQuery('#hdnCodigoBancoFGTS').val(),
+            CodigoFuncionario: jQuery('#txtCodigoFuncionario').val()
+        },
+        contentType: "json",
+        cache: false,
+        success: function (data) {
+            // alert(data);
+
+            var arrFuncionario = eval(data);
+            var idFuncionario;
+
+            for (var i = 0; i < arrFuncionario.length; i++) {
+
+                //tpAcao
+                idFuncionario = arrFuncionario[i].FUNC_CODIGO_FUNCIONARIO;
+            }
+
+            jQuery(window.document.location).attr('href', 'ManterFuncionario.aspx?tpAcao=3&idUser=' + idFuncionario);
+
+            return false;
+
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrow) {
+            errorAjax(textStatus);
+        }
+    });
+}
+
+function IncluirDadosFuncionario() {
+
+    var tpAcao = getUrlVars()["tpAcao"]
+
+    jQuery.ajax({
+        type: "GET",
+        url: "../../Handler/ManutencaoFuncionario.ashx",
+        data: {
+            Metodo: 'CadastroFuncionario',
+            Acao: 'Inclusao',
+            Status: jQuery('#ddlStatus option:selected').val(),
+            NumeroOrdemMatricula: jQuery('#txtNumeroOrdemMatricula').val(),
+            NumeroMatricula: jQuery('#txtNumeroMatricula').val(),
+            NomeFuncionario: jQuery('#txtNomeFuncionario').val(),
+            DataNascimento: jQuery('#txtDataNascimento').val(),
+            NacionalidadeFuncionario: jQuery('#ddlNacionalidadeFuncionario option:selected').val(),
+            EstadoCivil: jQuery('#ddlEstadoCivil  option:selected').val(),
+            NomeConjuge: jQuery('#txtNomeConjuge').val(),
+            QtdFilhos: jQuery('#txtQtdFilhos').val(),
+            TipoEndereco: jQuery('#ddlTipoEndereco option:selected').val(),
+            TipoLogradouro: jQuery('#ddlTipoLogradouro option:selected').val(),
+            CidadeFuncionario: jQuery('#ddlCidadeFuncionario option:selected').val(),
+            EstadoFuncionario: jQuery('#ddlEstadoFuncionario option:selected').val(),
+            Logradouro: jQuery('#txtLogradouro').val(),
+            NumeroEndereco: jQuery('#txtNumeroEndereco').val(),
+            Bairro: jQuery('#txtBairro').val(),
+            Complemento: jQuery('#txtComplemento').val(),
+            CEP: jQuery('#txtCEP').val().replace(/[\-]/g, ""),
+            NomePai: jQuery('#txtNomePai').val(),
+            NacionalidadePai: jQuery('#ddlNacionalidadePai option:selected').val(),
+            NomeMae: jQuery('#txtNomeMae').val(),
+            NacionalidadeMae: jQuery('#ddlNacionalidadeMae option:selected').val(),
+            RG: jQuery('#txtRG').val().replace(/[\.-]/g, ""),
+            CarteiraTrabalho: jQuery('#txtCarteiraTrabalho').val().replace(/[\.-]/g, ""),
+            NumeroSerie: jQuery('#txtNumeroSerie').val().replace(/[\.-]/g, ""),
+            NumeroCertificadoReservista: jQuery('#txtNumeroCertificadoReservista').val().replace(/[\.-]/g, ""),
+            Categoria: jQuery('#txtCategoria').val().replace(/[\.-]/g, ""),
+            CPF: jQuery('#txtCPF').val().replace(/[\.-]/g, ""),
+            TituloEleitor: jQuery('#txtTituloEleitor').val().replace(/[\.-]/g, ""),
+            CateiraSaude: jQuery('#txtCateiraSaude').val().replace(" ", ""),
             CBO: jQuery('#txtCBO').val().replace(/[\.-]/g, ""),
             Carteira19: jQuery('#txtCarteira19').val().replace(/[\.-]/g, ""),
             RegistroGeral: jQuery('#txtRegistroGeral').val().replace(/[\.-]/g, ""),
@@ -1103,7 +1209,8 @@ function IncluirDadosFuncionario() {
             Peso: jQuery('#txtPeso').val(),
             Cabelo: jQuery('#ddlCabelo').val(),
             Olho: jQuery('#ddlOlho').val(),
-            Sinais: jQuery('#txtSinais').val()
+            Sinais: jQuery('#txtSinais').val(),
+            CodigoUsuarioCadastro: jQuery('#hdnCodigoUsuarioCadastro').val()
         },
         contentType: "json",
         cache: false,

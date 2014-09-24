@@ -30,6 +30,9 @@
                     <td><asp:TextBox runat="server" ID="txtpassword" Width="500" /></td>
                     <td><asp:Label runat="server" ID="lblpasswordResultado" /></td>
                 </tr>
+                <tr>
+                    <td colspan="3"><asp:TextBox TextMode="MultiLine" runat="server" ID="txtXmlDatabase" /></td>
+                </tr>
                 <tr >
                     <td colspan="3">
                         <asp:Button runat="server" ID="btnEncrypt" Text="Encrypt" OnClick="btnEncrypt_Click" />

@@ -14,7 +14,7 @@ namespace InfoTech2u.Verithus.VO
     
     public partial class StatusVO
     {
-        public int CodigoStatus { get; set; }
+        public int? CodigoStatus { get; set; }
         public string Descricao { get; set; }
         public Nullable<int> CodigoUsuarioCadastro { get; set; }
         public Nullable<System.DateTime> DataCadastro { get; set; }

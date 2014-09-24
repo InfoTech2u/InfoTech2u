@@ -27,6 +27,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
             CarregarTipoBancoPIS();
             CarregarTipoBancoFGTS();
             CarregarEstado();
+            CarregarStatus();
             ConfiguracaoInicialPagina();
 
 
@@ -45,11 +46,12 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
             switch (tpAcao)
             {
                 case "1":
-
+                    this.hdnCodigoUsuarioCadastro.Value = HttpContext.Current.Session["CodigoUsuario"].ToString();
                     break;
 
                 case "2":
                     CarregarCampos(idUser);
+                    this.hdnCodigoUsuarioAlteracao.Value = HttpContext.Current.Session["CodigoUsuario"].ToString();
                     break;
 
                 case "3":
@@ -94,8 +96,6 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
                     this.txtAltura.Text = dtRetorno.Rows[i]["CARACTERISTICA_FUNC_ALTURA"].ToString();
                     this.txtBairro.Text = dtRetorno.Rows[i]["DETL_END_BAIRRO"].ToString();
                     this.txtBairroPIS.Text = dtRetorno.Rows[i]["DETL_PIS_BAIRRO"].ToString();
-                    //this.txtBancoFGTS.Text = dtRetorno.Rows[i]["BANCO_FGTS_NUMERO_BANCO"].ToString();
-                    //this.txtBancoPIS.Text = dtRetorno.Rows[i]["BANCO_PIS_NUMERO_BANCO"].ToString();
                     this.txtCadastroPIS.Text = dtRetorno.Rows[i]["DOC_PIS_FUNC_DATA_CADASTRO_PIS"].ToString();
                     this.txtCarteira19.Text = dtRetorno.Rows[i]["DOC_EST_FUNC_NUMERO_CARTEIRA_19"].ToString();
                     this.txtCarteiraTrabalho.Text = dtRetorno.Rows[i]["DOC_FUNC_NUMERO_CARTEIRA_TRABALHO"].ToString();
@@ -175,14 +175,23 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
                     InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlTipoLogradouroPIS, dtRetorno.Rows[i]["DETL_PIS_CODIGO_TIPO_LOGRADOURO"].ToString());
                     InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlCidadePIS, dtRetorno.Rows[i]["DETL_PIS_CODIGO_CIDADE"].ToString());
                     InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlCidadeFuncionario, dtRetorno.Rows[i]["DETL_END_CODIGO_CIDADE"].ToString());
+                    InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlStatus, dtRetorno.Rows[i]["FUNC_CODIGO_STATUS"].ToString());
 
                     //InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlBancoPIS, dtRetorno.Rows[i]["BANCO_FGTS_NUMERO_BANCO"].ToString());
                     //InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlBancoFGTS, dtRetorno.Rows[i]["BANCO_PIS_NUMERO_BANCO"].ToString());
 
+                    this.txtCodigoFuncionario.Text = dtRetorno.Rows[i]["FUNC_CODIGO_FUNCIONARIO"].ToString();
+                    this.hdnCodigoDocumento.Value = dtRetorno.Rows[i]["DOC_FUNC_CODIGO_DOCUMENTO"].ToString();
+                    this.hdnCodigoDocumentoEstrangeiro.Value = dtRetorno.Rows[i]["DOC_EST_FUNC_CODIGO_DOCUMENTO_ESTRAGEIRO"].ToString();
+                    this.hdnCodigoPIS.Value = dtRetorno.Rows[i]["DOC_PIS_FUNC_CODIGO_PIS"].ToString();
+                    this.hdnCodigoDocumentoFundoGarantia.Value = dtRetorno.Rows[i]["DOC_FGTS_FUNC_CODIGO_DOCUMENTO_FUNDO_GARANTIA"].ToString();
+                    this.hdnCodigoCaracteristicaFisica.Value = dtRetorno.Rows[i]["CARACTERISTICA_FUNC_CODIGO_CARACTERISTICA_FISICA"].ToString();
+                    this.hdnDetalheEndereco.Value = dtRetorno.Rows[i]["DETL_END_CODIGO_ENDERECO"].ToString();
 
-
+                    this.hdnDetalheEnderecoPIS.Value = dtRetorno.Rows[i]["DETL_PIS_CODIGO_ENDERECO"].ToString();
+                    this.hdnCodigoBancoPIS.Value = dtRetorno.Rows[i]["BANCO_PIS_CODIGO_BANCO"].ToString();
+                    this.hdnCodigoBancoFGTS.Value = dtRetorno.Rows[i]["BANCO_FGTS_CODIGO_BANCO"].ToString();
                     
-
                     
                     i++;
                 }
@@ -322,6 +331,21 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
             this.ddlOlho.DataTextField = "Descricao";
             this.ddlOlho.DataBind();
             this.ddlOlho.Items.Insert(0, new ListItem("Selecionar", "0"));
+        }
+
+        protected void CarregarStatus()
+        {
+            StatusBS retorno = new StatusBS();
+            StatusVO entrada = new StatusVO();
+            List<StatusVO> retornoLista = new List<StatusVO>();
+
+            retornoLista = retorno.SelecionarStatus(entrada);
+
+            this.ddlStatus.DataSource = retornoLista;
+            this.ddlStatus.DataValueField = "CodigoStatus";
+            this.ddlStatus.DataTextField = "Descricao";
+            this.ddlStatus.DataBind();
+            this.ddlStatus.Items.Insert(0, new ListItem("Selecionar", "0"));
         }
 
         protected void CarregarTipoCabelo()

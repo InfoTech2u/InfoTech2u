@@ -31,5 +31,12 @@ namespace InfoTech2u.Verithus.BS
 
             return objFuncionario.IncluirFuncionario(param);
         }
+
+       public DataTable AlterarFuncionario(FuncionariosVO param)
+       {
+           FuncionariosDA objFuncionario = new FuncionariosDA();
+
+           return objFuncionario.AlterarFuncionario(param);
+       }
     }
 }

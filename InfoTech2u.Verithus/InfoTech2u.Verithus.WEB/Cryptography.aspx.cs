@@ -21,6 +21,10 @@ namespace InfoTech2u.Verithus.WEB
         {
             InfoTech2uCryptographyUtil oCrypt = new InfoTech2uCryptographyUtil(EncryptionAlgorithm.TripleDes);
 
+            string xmlDatabase = "";
+
+            
+
             if (!String.IsNullOrWhiteSpace(this.txtdatabase.Text) || !String.IsNullOrEmpty(this.txtdatabase.Text))
                 this.lbldatabaseResultado.Text = oCrypt.Encrypt(this.txtdatabase.Text);
 
@@ -32,6 +36,21 @@ namespace InfoTech2u.Verithus.WEB
 
             if (!String.IsNullOrWhiteSpace(this.txtpassword.Text) || !String.IsNullOrEmpty(this.txtpassword.Text))
                 this.lblpasswordResultado.Text = oCrypt.Encrypt(this.txtpassword.Text);
+
+            xmlDatabase = xmlDatabase + "<dataset>";
+            xmlDatabase = xmlDatabase + "<ConnectionString>";
+            xmlDatabase = xmlDatabase + "<database>" + oCrypt.Encrypt(this.txtdatabase.Text) + "</database>";
+            xmlDatabase = xmlDatabase + "<server>" + oCrypt.Encrypt(this.txtserver.Text) + "</server>";
+            xmlDatabase = xmlDatabase + "<port></port>";
+            xmlDatabase = xmlDatabase + "<user>" + oCrypt.Encrypt(this.txtuser.Text) + "</user>";
+            xmlDatabase = xmlDatabase + "<password>" + oCrypt.Encrypt(this.txtpassword.Text) + "</password>";
+            xmlDatabase = xmlDatabase + "<winapli></winapli>";
+            xmlDatabase = xmlDatabase + "</ConnectionString>";
+            xmlDatabase = xmlDatabase + "</dataset>";
+
+            this.txtXmlDatabase.Text = xmlDatabase;
+
+
         }
 
         protected void btnDecrypt_Click(object sender, EventArgs e)

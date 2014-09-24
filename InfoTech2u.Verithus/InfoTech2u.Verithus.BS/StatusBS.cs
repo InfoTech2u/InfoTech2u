@@ -10,5 +10,26 @@ namespace InfoTech2u.Verithus.BS
 {
     public class StatusBS
     {
+        public List<StatusVO> SelecionarStatus(StatusVO param)
+        {
+
+            StatusDA objRetorno = null;
+
+            try
+            {
+                objRetorno = new StatusDA();
+
+                return objRetorno.SelecionarStatus(param);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objRetorno = null;
+            }
+
+        }
     }
 }

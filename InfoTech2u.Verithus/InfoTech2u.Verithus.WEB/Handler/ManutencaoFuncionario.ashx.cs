@@ -65,6 +65,29 @@ namespace InfoTech2u.Verithus.WEB.Handler
             //string UsuarioAcao = context.Request.QueryString["UsuarioAcao"].ToString();
 
             //Dados Pessoais
+            string CodigoUsuarioCadastro = null;
+            string CodigoUsuarioAlteracao = null;
+
+            string CodigoFuncionario = null, CodigoDocumento = null, CodigoDocumentoEstrangeiro = null, CodigoPIS = null, CodigoDocumentoFundoGarantia = null, CodigoCaracteristicaFisica = null, DetalheEndereco = null, DetalheEnderecoPIS = null, CodigoBancoPIS = null, CodigoBancoFGTS = null;
+
+            if(Acao == "Inclusao")
+                CodigoUsuarioCadastro = context.Request.QueryString["CodigoUsuarioCadastro"].ToString();
+            else if (Acao == "Alteração")
+            { 
+                CodigoUsuarioAlteracao = context.Request.QueryString["CodigoUsuarioAlteracao"].ToString();
+                CodigoFuncionario = context.Request.QueryString["CodigoFuncionario"].ToString();
+                CodigoDocumento = context.Request.QueryString["CodigoUsuarioAlteracao"].ToString();
+                CodigoDocumentoEstrangeiro = context.Request.QueryString["CodigoDocumentoEstrangeiro"].ToString();
+                CodigoPIS = context.Request.QueryString["CodigoPIS"].ToString();
+                CodigoDocumentoFundoGarantia = context.Request.QueryString["CodigoDocumentoFundoGarantia"].ToString();
+                CodigoCaracteristicaFisica = context.Request.QueryString["CodigoCaracteristicaFisica"].ToString();
+                DetalheEndereco = context.Request.QueryString["DetalheEndereco"].ToString();
+                DetalheEnderecoPIS = context.Request.QueryString["DetalheEnderecoPIS"].ToString();
+                CodigoBancoPIS = context.Request.QueryString["CodigoBancoPIS"].ToString();
+                CodigoBancoFGTS = context.Request.QueryString["CodigoBancoFGTS"].ToString();
+            }
+
+            string Status = context.Request.QueryString["Status"].ToString();
             string NumeroOrdemMatricula = context.Request.QueryString["NumeroOrdemMatricula"].ToString();
             string NumeroMatricula = context.Request.QueryString["NumeroMatricula"].ToString();
             string NomeFuncionario = context.Request.QueryString["NomeFuncionario"].ToString();
@@ -138,8 +161,11 @@ namespace InfoTech2u.Verithus.WEB.Handler
             string Olho = context.Request.QueryString["Olho"].ToString();
             string Sinais = context.Request.QueryString["Sinais"].ToString();
 
-
+            
             //Passo 1 - Dados Pessoais
+            if (!String.IsNullOrWhiteSpace(Status))
+                objFuncionario.CodigoStatus = Convert.ToInt32(Status);
+
             if (!String.IsNullOrWhiteSpace(NumeroOrdemMatricula))
                 objFuncionario.NumeroOrdemMatricula = Convert.ToInt32(NumeroOrdemMatricula);
 
@@ -175,6 +201,10 @@ namespace InfoTech2u.Verithus.WEB.Handler
             if (!String.IsNullOrWhiteSpace(EstadoFuncionario))
                 objDetalheEnderecoFuncionario.CodigoEstado = Convert.ToInt32(EstadoFuncionario);
 
+            if (!String.IsNullOrWhiteSpace(DetalheEndereco))
+                objDetalheEnderecoFuncionario.CodigoDetalheEndereco = Convert.ToInt32(DetalheEndereco);
+
+
             objDetalheEnderecoFuncionario.Logradouro = Logradouro;
             objDetalheEnderecoFuncionario.Numero = NumeroEndereco;
             objDetalheEnderecoFuncionario.Bairro = Bairro;
@@ -189,6 +219,10 @@ namespace InfoTech2u.Verithus.WEB.Handler
             objFuncionario.NomeMae = NomeMae;
             objFuncionario.NacionalidadeMae = NacionalidadeMae;
             //Passo 4 - Documentos
+
+            if (!String.IsNullOrWhiteSpace(CodigoDocumento))
+                objDocumentos.CodigoDocumento= Convert.ToInt32(CodigoDocumento);
+
             objDocumentos.NumeroIdentidade = RG;
             objDocumentos.NumeroCarteiraTrabalho = CarteiraTrabalho;
             objDocumentos.NumeroSerie = NumeroSerie;
@@ -200,6 +234,10 @@ namespace InfoTech2u.Verithus.WEB.Handler
             //objListaDocumentos.Add(objDocumentos);
             objFuncionario.Documento = objDocumentos;
             //Passo 4 - Documentos Estrangeiro
+
+            if (!String.IsNullOrWhiteSpace(CodigoDocumentoEstrangeiro))
+                objDocumentoEstrangeiro.CodigoDocumentoEstrangeiro = Convert.ToInt32(CodigoDocumentoEstrangeiro);
+
             objDocumentoEstrangeiro.NumeroCBO = CBO;
             objDocumentoEstrangeiro.NumeroCarteira19 = Carteira19;
             objDocumentoEstrangeiro.NumeroRegistroGeral = RegistroGeral;
@@ -212,6 +250,9 @@ namespace InfoTech2u.Verithus.WEB.Handler
             //objListDocumentoEstrangeiro.Add(objDocumentoEstrangeiro);
             objFuncionario.DocumentoEstrangeiro = objDocumentoEstrangeiro;
             //Passo 5 Documentos PIS
+            if (!String.IsNullOrWhiteSpace(CodigoPIS))
+                objDocumentosPIS.CodigoPIS = Convert.ToInt32(CodigoPIS);
+
             if (!String.IsNullOrWhiteSpace(CadastroPIS))
                 objDocumentosPIS.DataCadastroPIS = Convert.ToDateTime(CadastroPIS);
 
@@ -236,6 +277,9 @@ namespace InfoTech2u.Verithus.WEB.Handler
             if (!String.IsNullOrWhiteSpace(EstadoPIS))
                 objDetalheEnderecoPIS.CodigoEstado = Convert.ToInt32(EstadoPIS);
 
+            if (!String.IsNullOrWhiteSpace(DetalheEnderecoPIS))
+                objDetalheEnderecoPIS.CodigoDetalheEndereco = Convert.ToInt32(DetalheEnderecoPIS);
+
             objDetalheEnderecoPIS.TipoEnderecoVO = objTipoEnderecoPIS;
             objDetalheEnderecoPIS.TipoLogradouroVO = objTipoLogradouroPIS;
             objDetalheEnderecoPIS.Logradouro = LogradouroPIS;
@@ -249,12 +293,19 @@ namespace InfoTech2u.Verithus.WEB.Handler
             //objListaDocumentosPIS.Add(objDocumentosPIS);
             objFuncionario.DocumentoPIS = objDocumentosPIS;
             //Passo 6 Documentos Fundo de Garantia
+
+            if (!String.IsNullOrWhiteSpace(CodigoDocumentoFundoGarantia))
+                objDocumentoFundoGarantia.CodigoDocumentoFundoGarantia = Convert.ToInt32(CodigoDocumentoFundoGarantia);
+
             objDocumentoFundoGarantia.Optante = OptanteFGTS;
             if (!String.IsNullOrWhiteSpace(DataOpcao))
                 objDocumentoFundoGarantia.DataOpcao = Convert.ToDateTime(DataOpcao);
 
             if (!String.IsNullOrWhiteSpace(DataRetratacao))
                 objDocumentoFundoGarantia.DataRetratacao = Convert.ToDateTime(DataRetratacao);
+
+            if (!String.IsNullOrWhiteSpace(CodigoBancoFGTS))
+                objBancoFGTS.CodigoBanco = Convert.ToInt32(CodigoBancoFGTS);
 
             objBancoFGTS.NumeroBanco = BancoFGTS;
             objBancoFGTS.Agencia = AgenciaFGTS;
@@ -264,6 +315,10 @@ namespace InfoTech2u.Verithus.WEB.Handler
             //objListaDocumentoFundoGarantia.Add(objDocumentoFundoGarantia);
             objFuncionario.DocumentoFundoGarantia = objDocumentoFundoGarantia;
             //Passo 7 - Caracteristicas Fisicas
+
+            if (!String.IsNullOrWhiteSpace(CodigoCaracteristicaFisica))
+                objCaractesristicaFisica.CodigoCARACTERISTICAFISICA = Convert.ToInt32(CodigoCaracteristicaFisica);
+
             if (!String.IsNullOrWhiteSpace(Altura))
                 objCaractesristicaFisica.Altura = Altura;
 
@@ -289,12 +344,43 @@ namespace InfoTech2u.Verithus.WEB.Handler
             //objListaCaractesristicaFisica.Add(objCaractesristicaFisica);
             objFuncionario.CaractesristicaFisica = objCaractesristicaFisica;
 
-            objFuncionario.CodigoUsuarioCadastro = null;
-            objFuncionario.DataCadastro = null;
-            objFuncionario.CodigoUsuarioAlteracao = null;
-            objFuncionario.DataAlteracao = null;
+            if (Acao == "Inclusao")
+            {
+                if (!String.IsNullOrWhiteSpace(CodigoUsuarioCadastro))
+                    objFuncionario.CodigoUsuarioCadastro = Convert.ToInt32(CodigoUsuarioCadastro);
+                else
+                    objFuncionario.CodigoUsuarioCadastro = null;
 
-            dtRetorno = objRetorno.IncluirFuncionario(objFuncionario);
+                objFuncionario.DataCadastro = null;
+                objFuncionario.CodigoUsuarioAlteracao = null;
+                objFuncionario.DataAlteracao = null;
+
+                
+
+                dtRetorno = objRetorno.IncluirFuncionario(objFuncionario);
+            }
+            else if (Acao == "Alteração")
+            {
+                objFuncionario.CodigoUsuarioCadastro = null;
+                objFuncionario.DataCadastro = null;
+
+                if (!String.IsNullOrWhiteSpace(CodigoUsuarioAlteracao))
+                    objFuncionario.CodigoUsuarioAlteracao = Convert.ToInt32(CodigoUsuarioAlteracao);
+                else
+                    objFuncionario.CodigoUsuarioAlteracao = null;
+                
+                objFuncionario.DataAlteracao = null;
+                
+                
+
+                objFuncionario.CodigoFuncionario = Convert.ToInt32(CodigoFuncionario);
+
+                dtRetorno = objRetorno.AlterarFuncionario(objFuncionario);
+            }
+           
+
+
+            //dtRetorno = objRetorno.IncluirFuncionario(objFuncionario);
 
 
             context.Response.Write(dtRetorno.DataTableSerializer());

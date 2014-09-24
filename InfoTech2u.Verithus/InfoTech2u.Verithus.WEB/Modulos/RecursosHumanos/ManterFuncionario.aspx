@@ -83,6 +83,56 @@
                     <div id="wiz3step1" class="formwiz">
                         <h4>Passo 1: Dados Pessoais</h4>
 
+                        <!--Hiden
+                            CODIGO_DOCUMENTO
+                            CODIGO_DOCUMENTO_ESTRAGEIRO
+                            CODIGO_PIS
+                            CODIGO_DOCUMENTO_FUNDO_GARANTIA
+                            CODIGO_CARACTERISTICA_FISICA
+                            CODIGO_USUARIO_CADASTRO
+                            CODIGO_USUARIO_ALTERACAO
+                            CODIGO_STATUS
+                            CODIGO_EMPRESA
+                        -->
+                        <asp:HiddenField runat="server" ID="hdnCodigoDocumento" ClientIDMode="Static" />
+                        <asp:HiddenField runat="server" ID="hdnCodigoDocumentoEstrangeiro" ClientIDMode="Static" />
+                        <asp:HiddenField runat="server" ID="hdnCodigoPIS" ClientIDMode="Static" />
+                        <asp:HiddenField runat="server" ID="hdnCodigoDocumentoFundoGarantia" ClientIDMode="Static" />
+                        <asp:HiddenField runat="server" ID="hdnCodigoCaracteristicaFisica" ClientIDMode="Static" />
+                        <asp:HiddenField runat="server" ID="hdnDetalheEndereco" ClientIDMode="Static" />
+                        <asp:HiddenField runat="server" ID="hdnCodigoUsuarioCadastro" ClientIDMode="Static" />
+                        <asp:HiddenField runat="server" ID="hdnCodigoUsuarioAlteracao" ClientIDMode="Static" />
+
+                        <asp:HiddenField runat="server" ID="hdnDetalheEnderecoPIS" ClientIDMode="Static" />
+                        <asp:HiddenField runat="server" ID="hdnCodigoBancoPIS" ClientIDMode="Static" />
+                        <asp:HiddenField runat="server" ID="hdnCodigoBancoFGTS" ClientIDMode="Static" />
+                        
+                        
+
+                        <br />
+                        <p>
+                            <label>Codigo Funcionario</label>
+                            <span class="field">
+                                <asp:TextBox runat="server" ID="txtCodigoFuncionario" CssClass="input-small" ClientIDMode="Static" MaxLength="10" ReadOnly="true" />
+                            </span>
+                        </p>
+
+                        <p id="validaEmpresa">
+                            <label>Empresa</label>
+                            <span class="field">
+                                <asp:DropDownList runat="server" ID="ddlEmpresa" class="uniformselect" ClientIDMode="Static" />
+                                <span class="help-inline" id="msgEmpresa"></span>
+                            </span>
+                        </p>
+
+                        <p id="validaStatus">
+                            <label>Status</label>
+                            <span class="field">
+                                <asp:DropDownList runat="server" ID="ddlStatus" class="uniformselect" ClientIDMode="Static" />
+                                <span class="help-inline" id="msgStatus"></span>
+                            </span>
+                        </p>
+
                         <br />
                         <p id="validaNumeroOrdemMatricula">
                             <label>Numero Ordem(Matricula)</label>
