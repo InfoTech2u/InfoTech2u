@@ -29,7 +29,11 @@ namespace InfoTech2u.Verithus.WEB.Handler
             }
             else if (context.Request.QueryString["Metodo"] == "Lista")
             {
+               
+                
                 context.Response.Write(SelecionarUsuario(context).Serializer());
+
+
             }
             else if (context.Request.QueryString["Metodo"] == "Excluir")
             {

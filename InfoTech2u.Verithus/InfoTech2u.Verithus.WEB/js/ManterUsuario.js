@@ -346,9 +346,11 @@ function LimparCadastrar() {
 function MontarGrid() {
     jQuery('#gridUsuarios').dataTable().fnDestroy();
     jQuery('#gridUsuarios').dataTable({
-        "bScrollInfinite": true,
-        "bScrollCollapse": true,
-        "sScrollY": "300px"
+        "sPaginationType": "full_numbers",
+        "aaSortingFixed": [[0, 'asc']],
+        "fnDrawCallback": function (oSettings) {
+            jQuery.uniform.update();
+        }
     });
 }
 

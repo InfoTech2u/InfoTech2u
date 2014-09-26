@@ -149,25 +149,19 @@
                             <ul>
                                 <li class="dropdown"><a href="">Acessos</a>
                                     <ul>
-                                        <li><asp:HyperLink NavigateUrl="RecursosHumanos/ManterUsuario.aspx" runat="server" ID="hlkConsultaAcesso">Consulta de Acessos</asp:HyperLink></li>
-                                        <li><asp:HyperLink NavigateUrl="RecursosHumanos/ManterUsuario.aspx" runat="server" ID="hlkCadastroAcesso">Cadastro de Acessos</asp:HyperLink></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="">Dominios</a>
-                                    <ul>
-                                        <li><asp:HyperLink NavigateUrl="RecursosHumanos/PesquisaEmpresa.aspx" runat="server" ID="HyperLink2">Pesquisar Empresa</asp:HyperLink></li>
+                                        <li><asp:HyperLink NavigateUrl="~/Modulos/Configuracao/PesquisaAcesso.aspx" runat="server" ID="hlkConsultaAcesso">Consulta de Acessos</asp:HyperLink></li>
+                                        <li><asp:HyperLink NavigateUrl="~/Modulos/Configuracao/ManterAcesso.aspx" runat="server" ID="hlkCadastroAcesso">Cadastro de Acessos</asp:HyperLink></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a href="">Usuarios</a>
                                     <ul>
-                                        <li><asp:HyperLink NavigateUrl="RecursosHumanos/PesquisaFuncionario.aspx" runat="server" ID="hlkConsultaUsuario">Consulta de Usuarios</asp:HyperLink></li>
-                                        <li><asp:HyperLink NavigateUrl="RecursosHumanos/PesquisaFuncionario.aspx" runat="server" ID="hlkCadastroUsuario">Cadastro de Usuarios</asp:HyperLink></li>
+                                        <li><asp:HyperLink NavigateUrl="~/Modulos/Configuracao/ManterUsuario.aspx" runat="server" ID="hlkCadastroUsuario">Cadastro de Usuarios</asp:HyperLink></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a href="">Log</a>
                                     <ul>
-                                        <li><asp:HyperLink NavigateUrl="RecursosHumanos/PesquisaBeneficios.aspx" runat="server" ID="hlkConsultaLogAcao">Consulta Log Acao</asp:HyperLink></li>
-                                        <li><asp:HyperLink NavigateUrl="RecursosHumanos/PesquisaBeneficios.aspx" runat="server" ID="hlkCOnsultaLogErro">Consulta Log Erro</asp:HyperLink></li>
+                                        <li><asp:HyperLink NavigateUrl="~/Modulos/Configuracao/ConsultaLogAcao.aspx" runat="server" ID="hlkConsultaLogAcao">Consulta Log Acao</asp:HyperLink></li>
+                                        <li><asp:HyperLink NavigateUrl="~/Modulos/Configuracao/ConsultaLogErro.aspx" runat="server" ID="hlkCOnsultaLogErro">Consulta Log Erro</asp:HyperLink></li>
                                     </ul>
                                 </li>
                             </ul>

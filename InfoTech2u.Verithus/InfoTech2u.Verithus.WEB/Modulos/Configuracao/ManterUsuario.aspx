@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Modulos/InfoTech2u.Master" AutoEventWireup="true" CodeBehind="ManterUsuario.aspx.cs" Inherits="InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.ManterUsuario" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Modulos/InfoTech2u.Master" AutoEventWireup="true" CodeBehind="ManterUsuario.aspx.cs" Inherits="InfoTech2u.Verithus.WEB.Modulos.Configuracao.ManterUsuario" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -8,15 +8,15 @@
 
         <ul class="breadcrumbs">
             <li><a href="dashboard.html"><i class="iconfa-home"></i></a><span class="separator"></span></li>
-            <li><a href="forms.html">Forms</a> <span class="separator"></span></li>
-            <li>Form Styles</li>
+            <li><a href="forms.html">Formulario</a> <span class="separator"></span></li>
+            <li>Cadastro de Usuário</li>
         </ul>
 
         <div class="pageheader">
             <div class="pageicon"><span class="iconfa-pencil"></span></div>
             <div class="pagetitle">
-                <h5>Forms</h5>
-                <h1>Form Styles</h1>
+                <h5>Configurações</h5>
+                <h1>Cadastro de Usuário</h1>
             </div>
         </div>
         <!--pageheader-->
@@ -94,7 +94,7 @@
 
 
 
-                <h4 class="widgettitle">Scroll Y Infinite</h4>
+                <h4 class="widgettitle">Usuarios</h4>
                 <table class="table table-bordered table-infinite" id="gridUsuarios">
                     <colgroup>
                         <col class="con0" style="align: center; width: 30%" />

@@ -78,6 +78,10 @@
     <Content Include="js\ManterSindicato.js" />
     <Content Include="js\ManterUsuario.js" />
     <Content Include="js\TipoBeneficio.js" />
+    <Content Include="Modulos\Configuracao\ConsultaLogAcao.aspx" />
+    <Content Include="Modulos\Configuracao\ConsultaLogErro.aspx" />
+    <Content Include="Modulos\Configuracao\ManterAcesso.aspx" />
+    <Content Include="Modulos\Configuracao\PesquisaAcesso.aspx" />
     <Content Include="Modulos\Default.aspx" />
     <Content Include="Modulos\InfoTech2u.Master" />
     <Content Include="fonts\fontawesome\fontawesome-webfont.eot" />
@@ -712,7 +716,7 @@
     <Content Include="Modulos\RecursosHumanos\ManterSindicato.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterTarefa.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterTipoBeneficio.aspx" />
-    <Content Include="Modulos\RecursosHumanos\ManterUsuario.aspx" />
+    <Content Include="Modulos\Configuracao\ManterUsuario.aspx" />
     <Content Include="Modulos\RecursosHumanos\PesquisaBeneficios.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterEmpresa.aspx" />
     <Content Include="Modulos\RecursosHumanos\PesquisaEmpresa.aspx" />
@@ -832,6 +836,34 @@
     <Compile Include="Handler\VerificarUsuario.ashx.cs">
       <DependentUpon>VerificarUsuario.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Configuracao\ConsultaLogAcao.aspx.cs">
+      <DependentUpon>ConsultaLogAcao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Configuracao\ConsultaLogAcao.aspx.designer.cs">
+      <DependentUpon>ConsultaLogAcao.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Configuracao\ConsultaLogErro.aspx.cs">
+      <DependentUpon>ConsultaLogErro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Configuracao\ConsultaLogErro.aspx.designer.cs">
+      <DependentUpon>ConsultaLogErro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Configuracao\ManterAcesso.aspx.cs">
+      <DependentUpon>ManterAcesso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Configuracao\ManterAcesso.aspx.designer.cs">
+      <DependentUpon>ManterAcesso.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Configuracao\PesquisaAcesso.aspx.cs">
+      <DependentUpon>PesquisaAcesso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Configuracao\PesquisaAcesso.aspx.designer.cs">
+      <DependentUpon>PesquisaAcesso.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Dashboard\DashboardGerente.aspx.cs">
       <DependentUpon>DashboardGerente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -950,11 +982,11 @@
     <Compile Include="Modulos\RecursosHumanos\ManterTipoBeneficio.aspx.designer.cs">
       <DependentUpon>ManterTipoBeneficio.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\RecursosHumanos\ManterUsuario.aspx.cs">
+    <Compile Include="Modulos\Configuracao\ManterUsuario.aspx.cs">
       <DependentUpon>ManterUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Modulos\RecursosHumanos\ManterUsuario.aspx.designer.cs">
+    <Compile Include="Modulos\Configuracao\ManterUsuario.aspx.designer.cs">
       <DependentUpon>ManterUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\RecursosHumanos\PesquisaBeneficios.aspx.cs">
@@ -1005,7 +1037,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="include\xml\" />
     <Folder Include="Models\" />
-    <Folder Include="Modulos\Configuracao\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\InfoTech2u.Verithus.BS\InfoTech2u.Verithus.BS.csproj">

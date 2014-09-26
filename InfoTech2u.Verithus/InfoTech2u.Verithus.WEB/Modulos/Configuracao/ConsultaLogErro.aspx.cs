@@ -6,19 +6,15 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Empresa
+namespace InfoTech2u.Verithus.WEB.Modulos.Configuracao
 {
-    public partial class ManterEmpresa : System.Web.UI.Page
+    public partial class ConsultaLogErro : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                
-            }
-
             CarregarIncludes();
         }
+
         protected void CarregarIncludes()
         {
             string pachCss = "../../css/";
