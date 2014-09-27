@@ -6,7 +6,7 @@
 <head runat="server">
     <title>Verithus</title>
     <link rel="stylesheet" href="css/style.default.css" type="text/css" />
-    <link rel="stylesheet" href="css/style.shinyblue.css" type="text/css" />
+    <!--link rel="stylesheet" href="css/style.shinyblue.css" type="text/css" /-->
 
     <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="js/jquery-migrate-1.1.1.min.js"></script>
