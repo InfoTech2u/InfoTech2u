@@ -11,8 +11,8 @@
 
        <ul class="breadcrumbs">
             <li><a href="dashboard.html"><i class="iconfa-home"></i></a><span class="separator"></span></li>
-            <li><a href="forms.html">Forms</a> <span class="separator"></span></li>
-            <li>Form Styles</li>
+            <li><a href="forms.html">Formulario</a> <span class="separator"></span></li>
+            <li>Tarefa</li>
 
         </ul>
 
@@ -40,7 +40,7 @@
                             <div class="par control-group">
                                 <label class="control-label" for="txtDescricaoTipoBeneficio">Descrição</label>
                                 <div class="controls">
-                                    <asp:TextBox runat="server" ID="txtDescricao" class="input-small" ClientIDMode="Static" />
+                                    <asp:TextBox runat="server" ID="txtDescricao" class="input-Large" ClientIDMode="Static" />
                                     <span class="help-inline" id="msgDescricao"></span>
                                 </div>
                             </div>
