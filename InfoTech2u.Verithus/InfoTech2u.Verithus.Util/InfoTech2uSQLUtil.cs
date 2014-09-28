@@ -352,6 +352,24 @@ namespace InfoTech2u.Verithus.Util
             { throw ex; }
         }
 
+        public SqlConnection GetConnection()
+        {
+            if (clsSqlConnection != null && clsSqlConnection.State == ConnectionState.Closed)
+            {
+                Open();
+            }
+
+            return clsSqlConnection;
+        }
+
+        private void ClearParameters()
+        {
+            if (this.clsSqlCommand != null)
+            {
+                this.clsSqlCommand.Parameters.Clear();
+            }
+        }
+
         /// <summary>
         /// Executa procedure no banco de dados
         /// </summary>
@@ -385,6 +403,7 @@ namespace InfoTech2u.Verithus.Util
                 dt.BeginLoadData();
                 DA.Fill(dt);
                 dt.EndLoadData();
+                ClearParameters();
             }
             catch (SqlException sex)
             { throw sex; }
@@ -430,6 +449,7 @@ namespace InfoTech2u.Verithus.Util
             {
                 ds.EnforceConstraints = false;
                 DA.Fill(ds);
+                ClearParameters();
             }
             catch (SqlException sex)
             { throw sex; }
@@ -675,6 +695,7 @@ namespace InfoTech2u.Verithus.Util
             try
             {
                 this.clsSqlCommand.ExecuteNonQuery();
+                ClearParameters();
             }
             catch (SqlException sex)
             { throw sex; }
@@ -715,6 +736,7 @@ namespace InfoTech2u.Verithus.Util
             try
             {
                 rowsAffected = this.clsSqlCommand.ExecuteNonQuery();
+                ClearParameters();
             }
             catch (SqlException sex)
             { throw sex; }

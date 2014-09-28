@@ -192,6 +192,7 @@
     <Content Include="Handler\AlterarFuncionario.ashx" />
     <Content Include="Handler\ManterSistema.ashx" />
     <Content Include="Handler\ManterTipoSistema.ashx" />
+    <Content Include="Handler\TipoParentesco.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -845,6 +846,9 @@
     </Compile>
     <Compile Include="Handler\ManutencaoFuncionario.ashx.cs">
       <DependentUpon>ManutencaoFuncionario.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\TipoParentesco.ashx.cs">
+      <DependentUpon>TipoParentesco.ashx</DependentUpon>
     </Compile>
     <Compile Include="Handler\VerificarUsuario.ashx.cs">
       <DependentUpon>VerificarUsuario.ashx</DependentUpon>

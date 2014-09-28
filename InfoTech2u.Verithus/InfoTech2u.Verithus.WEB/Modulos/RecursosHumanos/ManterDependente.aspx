@@ -3,82 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderInfoTech2u" runat="server">
-    <script type="text/javascript">
-        //Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(BeginRequest);
-        function BeginRequest(sender, e) {
-            e.get_postBackElement().disabled = true;
-
-        }
-
-        jQuery(document).ready(function () {
-            //CarregarDependentes();
-
-
-
-
-        });
-
-       
-
-
-        function FormatarGrid() {
-            // dynamic table
-            jQuery('#dyntable').dataTable({
-                "sPaginationType": "full_numbers",
-                "aaSortingFixed": [[0, 'asc']],
-                "fnDrawCallback": function (oSettings) {
-                    jQuery.uniform.update();
-                }
-            });
-        };
-
-        function Excluir() {
-            // delete row in a table
-            jQuery('.deleterow').click(function () {
-                var conf = confirm('Continue delete?');
-                if (conf)
-                    jQuery(this).parents('tr').fadeOut(function () {
-                        var id = jQuery(this).children('td:first').text();
-
-                        jQuery.ajax({
-                            type: "GET",
-                            crossDomain: true,
-                            url: "../../Handler/TipoBeneficio.ashx",
-                            contentType: "json",
-                            cache: false,
-                            data: {
-                                Metodo: 'Excluir',
-                                Acao: 'Exclusao',
-                                Id: id
-                            },
-                            success: function (data) {
-
-                                if (data) {
-                                    jQuery(this).remove();
-                                    // do some other stuff here
-                                }
-
-                                FormatarGrid();
-                                Excluir();
-                            },
-                            error: function (XMLHttpRequest, textStatus, errorThrow) {
-                                errorAjax(textStatus);
-                                alert(textStatus);
-                            }
-                        });
-
-
-                    });
-                return false;
-            });
-        }
-
-        function LimparGrid() {
-            // dynamic table
-            jQuery('#dyntable tbody tr').remove();
-        };
-
-    </script>
     <div class="rightpanel">
 
         <ul class="breadcrumbs">
@@ -99,11 +23,11 @@
         <div class="maincontent">
             <div class="maincontentinner">
                 <asp:HiddenField ID="hdnCodigoFuncionario" runat="server" ClientIDMode="Static" />
-                <div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal hide fade in" id="myModal">
+                <div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal hide fade in" id="modalDependente">
                     <div class="modal-header widgettitle">
                         <button aria-hidden="true" data-dismiss="modal" class="close" type="button">&times;</button>
-                        <h3 id="myModalLabel">Dependente</h3>
-
+                        <h3 id="modalDependenteLabel">Dependente</h3>
+                        <asp:HiddenField ID="hdnFuncaoTela" runat="server" ClientIDMode="Static" />
                     </div>
                     <div class="modal-body">
                         <div class="widgetbox box-inverse">
@@ -111,21 +35,24 @@
                             <div class="par control-group">
                                 <label class="control-label" for="nomedependente">Nome Dependente</label>
                                 <div class="controls">
-                                    <asp:TextBox runat="server" ID="txtNomeDependente" class="input-block-level" ClientIDMode="Static" />
+                                    <asp:TextBox runat="server" ID="txtNomeDependente" CssClass="input-large" ClientIDMode="Static" />
+                                     <asp:Label ID="lblErrorNomeDependente" CssClass="help-inline" runat="server" ClientIDMode="Static">Informe o nome.</asp:Label>
                                 </div>
                             </div>
 
                             <div class="par control-group">
                                 <label>Parentesco</label>
                                 <span class="field">
-                                    <asp:DropDownList runat="server" ID="ddlTipoParentesco" data-placeholder="Escolha o parentesco..." Style="width: 350px" class="chzn-select" TabIndex="2" ClientIDMode="Static" ></asp:DropDownList>
+                                    <asp:DropDownList runat="server" ID="ddlTipoParentesco" CssClass="input-large chzn-select" TabIndex="2" ClientIDMode="Static" ></asp:DropDownList>
+                                     <asp:Label ID="lblErrorTipoParentesco" CssClass="help-inline" runat="server" ClientIDMode="Static">Escolha uma opção.</asp:Label>
                                 </span>
                             </div>
                             
                             <div class="control-group">
                                 <label class="control-label" for="txtDataNascimento">Data Nascimento</label>
                                 <div class="controls">
-                                    <asp:TextBox runat="server" ID="txtDataNascimento" class="input-small dataddmmaaaa" ClientIDMode="Static" />
+                                    <asp:TextBox runat="server" ID="txtDataNascimento" CssClass="input-small dataddmmaaaa" ClientIDMode="Static" />
+                                     <asp:Label ID="lblErrorDataNascimento" CssClass="help-inline" runat="server" ClientIDMode="Static">Data inválida.</asp:Label>
                                 </div>
                             </div>
 
@@ -150,41 +77,35 @@
                     </div>
                     <div class="modal-footer">
                         <button data-dismiss="modal" class="btn">&nbsp; Sair</button>
-                        <a class="btn btn-primary" id="btnIncluir" href="#" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Incluir</a>
+                        <a class="btn btn-primary" id="btnIncluir" href="#" onclick="javascript:Incluir();" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Gravar</a>
                     </div>
                 </div>
                 <!--#myModal-->
 
                 <div class="row-fluid">
-                    <a class="btn btn-primary" href="#myModal" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Incluir</a>                   
+                    <a class="btn btn-primary" href="#modalDependente" onclick="javascript:FuncaoTelaModal('Incluir', 0);" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Incluir</a>                   
                 </div>
 
                 <h4 class="widgettitle">Dependentes</h4>
-                <table id="dyntable" class="table table-bordered responsive">
+                <table id="gridDependentes" class="table table-bordered responsive">
                     <colgroup>
-                        <col class="con0" style="align: center; width: 4%" />
-                        <col class="con1" />
-                        <col class="con0" />
-                        <col class="con1" />
+                        <col class="con0" style="align: center; width: 30%" />
+                        <col class="con1" style="align: center; width: 30%" />
+                        <col class="con0" style="align: center; width: 20%" />
+                        <col class="con1" style="align: center; width: 10%" />
+                        <col class="con0" style="align: center; width: 10%" />
                     </colgroup>
                     <thead>
                         <tr>
-                            <th class="head0 nosort">
-                                <input type="checkbox" class="checkall" /></th>
-                            <th class="head0">Nome Dependente</th>
+                            <th class="head0">Nome</th>
                             <th class="head1">Parentesco</th>
                             <th class="head0">Data Nascimento</th>
+                            <th class="head1">Alterar</th>
+                            <th class="head0">Excluir</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="gradeX">
-                            <td class="aligncenter"><span class="center">
-                                <input type="checkbox" />
-                            </span></td>
-                            <td>Trident</td>
-                            <td>Internet Explorer 4.0</td>
-                            <td>Win 95+</td>
-                        </tr>
+                        
                     </tbody>
                 </table>
             </div>
@@ -192,10 +113,10 @@
 
             <div class="footer">
                 <div class="footer-left">
-                    <span>&copy; 2014. Infotech2u. All Rights Reserved.</span>
+                    <span>&copy; 2013. Shamcey Admin Template. All Rights Reserved.</span>
                 </div>
                 <div class="footer-right">
-                    <span>Developer by: <a href="http://infotech2u.com.br/">InfoTech2U</a></span>
+                    <span>Designed by: <a href="http://themepixels.com/">ThemePixels</a></span>
                 </div>
             </div>
             <!--footer-->

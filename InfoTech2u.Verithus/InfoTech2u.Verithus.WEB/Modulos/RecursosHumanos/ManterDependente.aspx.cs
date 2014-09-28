@@ -16,58 +16,16 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
         {
             if (!IsPostBack)
             {
-                CarregarDependentes();
+                CarregarIncludes();
+                LimparMsgErro();
             }
-            
-            CarregarIncludes();
-            CarregarTipoParentesco();
-            CarregarTipoBeneficio();
         }
 
-        protected void CarregarDependentes()
+        protected void LimparMsgErro()
         {
-            //TODO: Pegar Codigo Funcionario
-            //var id = Request.QueryString["CodigoFuncionario"].ToString();
-            //hdnCodigoFuncionario.Value = id
-            DependenteBS objDependenteBS = new DependenteBS();
-
-            List<DependenteVO> objDependenteVO = new List<DependenteVO>();
-            FuncionariosVO objFuncionariosVO = new FuncionariosVO();
-            objFuncionariosVO.CodigoFuncionario = 1;
-            hdnCodigoFuncionario.Value = objFuncionariosVO.CodigoFuncionario.ToString();
-            objDependenteVO = objDependenteBS.SelecionarDependentesDoFuncionario(objFuncionariosVO);
-            
-        }
-
-        protected void CarregarTipoParentesco()
-        {
-
-            TipoParentescoBS retorno = new TipoParentescoBS();
-            TipoParentescoVO entrada = new TipoParentescoVO();
-            List<TipoParentescoVO> retornoLista = new List<TipoParentescoVO>();
-
-            retornoLista = retorno.SelecionarTipoParentesco(entrada);
-
-            this.ddlTipoParentesco.DataSource = retornoLista;
-            this.ddlTipoParentesco.DataValueField = "CodigoTipoParentesco";
-            this.ddlTipoParentesco.DataTextField = "Descricao";
-            this.ddlTipoParentesco.DataBind();
-            this.ddlTipoParentesco.Items.Insert(0, new ListItem("Selecionar", "0"));
-        }
-
-        protected void CarregarTipoBeneficio()
-        {
-            TipoBeneficioBS retorno = new TipoBeneficioBS();
-            TipoBeneficioVO entrada = new TipoBeneficioVO();
-            List<TipoBeneficioVO> retornoLista = new List<TipoBeneficioVO>();
-
-            retornoLista = retorno.SelecionarTipoBeneficio(entrada);
-
-            this.lstBeneficioSelect.DataSource = retornoLista;
-            this.lstBeneficioSelect.DataValueField = "CodigoTipoBeneficio";
-            this.lstBeneficioSelect.DataTextField = "Descricao";
-            this.lstBeneficioSelect.DataBind();
-            this.lstBeneficioSelect.Items.Insert(0, new ListItem("Selecionar", "0"));
+            lblErrorNomeDependente.Style.Add("display", "none");
+            lblErrorTipoParentesco.Style.Add("display", "none");
+            lblErrorDataNascimento.Style.Add("display", "none");
         }
 
         protected void CarregarIncludes()

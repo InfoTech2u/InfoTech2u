@@ -19,7 +19,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
 
         public void ProcessRequest(HttpContext context)
         {
-            if (context.Request.QueryString["Metodo"] == "Lista")
+            if (context.Request.QueryString["Metodo"] == "Listar")
             {
                 var retorno = SelecionarTipoBeneficio(new TipoBeneficioVO());
                  
