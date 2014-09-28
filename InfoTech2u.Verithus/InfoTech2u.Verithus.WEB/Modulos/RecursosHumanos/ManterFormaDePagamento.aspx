@@ -40,7 +40,7 @@
                             <div class="par control-group">
                                 <label class="control-label" for="txtDescricaoTipoBeneficio">Descrição</label>
                                 <div class="controls">
-                                    <asp:TextBox runat="server" ID="txtDescricao" class="input-small" ClientIDMode="Static" />
+                                    <asp:TextBox runat="server" ID="txtDescricao" class="input-block-level" ClientIDMode="Static" />
                                     <span class="help-inline" id="msgDescricao"></span>
                                 </div>
                             </div>
