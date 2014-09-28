@@ -1,29 +1,19 @@
 USE [DBVERITHUS]
 GO
-
-/****** Object:  StoredProcedure [dbo].[SPVRT085_TIPO_TAREFA_PR_INCLUIR]    Script Date: 16/09/2014 21:55:39 ******/
-DROP PROCEDURE [dbo].[SPVRT085_TIPO_TAREFA_PR_INCLUIR]
-GO
-
-/****** Object:  StoredProcedure [dbo].[SPVRT085_TIPO_TAREFA_PR_INCLUIR]    Script Date: 16/09/2014 21:55:39 ******/
+/****** Object:  StoredProcedure [dbo].[SPVRT085_TIPO_TAREFA_PR_INCLUIR]    Script Date: 27/09/2014 21:37:38 ******/
 SET ANSI_NULLS ON
 GO
-
 SET QUOTED_IDENTIFIER ON
 GO
-
 -- TBVRT022_TIPO_TAREFA
-CREATE PROCEDURE [dbo].[SPVRT085_TIPO_TAREFA_PR_INCLUIR]
+ALTER PROCEDURE [dbo].[SPVRT085_TIPO_TAREFA_PR_INCLUIR]
 (
 		@DESCRICAO					 nvarchar(80)	=         null,
 		@CODIGO_USUARIO_CADASTRO	 int			=         null,
 		@DATA_CADASTRO				 datetime		=         null,
 		@CODIGO_USUARIO_ALTERACAO	 int			=	      null,
 		@DATA_ALTERACAO			     datetime       =	      null,
-		@CODIGO_STATUS				 int            =		  null,
-
-		@C_ERR INT			 OUTPUT,
-		@T_ERR VARCHAR(255)  OUTPUT 
+		@CODIGO_STATUS				 int            =		  null
 )		
 AS
 	BEGIN
@@ -44,19 +34,10 @@ AS
 			@CODIGO_STATUS				
 		)
 
-		IF(@@ERROR <>0)
-			BEGIN
-				SELECT @C_ERR = @@ERROR
-				SELECT @T_ERR = 'ERRO NO SELECT DA TABELA TBVRT022_TIPO_TAREFA.'
-				RETURN
-			END
-		ELSE
-			BEGIN
-				SELECT @C_ERR = 0
-				SELECT @T_ERR = 'TIPO TAREFA INSERIDO COM SUCESSO.'
-				RETURN
-			END
+			IF(@@ERROR = 0)
+	BEGIN
+		SELECT * FROM  TBVRT022_TIPO_TAREFA
+		WHERE CODIGO_TIPO_TAREFA = @@IDENTITY
+	END	
+
 	END
-GO
-
-
