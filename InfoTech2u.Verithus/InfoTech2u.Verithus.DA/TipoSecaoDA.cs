@@ -40,7 +40,7 @@ namespace InfoTech2u.Verithus.DA
                 {
                     retorno = new TipoSecaoVO();
 
-                    retorno.CodigoTipoSecao = Convert.ToInt32(dtRetorno.Rows[i]["@CODIGO_TIPO_SECAO"].ToString());
+                    retorno.CodigoTipoSecao = Convert.ToInt32(dtRetorno.Rows[i]["CODIGO_TIPO_SECAO"].ToString());
                     retorno.Descricao = string.IsNullOrWhiteSpace(dtRetorno.Rows[i]["DESCRICAO"].ToString()) ? null : dtRetorno.Rows[i]["DESCRICAO"].ToString();
 
                     listaRetorno.Add(retorno);

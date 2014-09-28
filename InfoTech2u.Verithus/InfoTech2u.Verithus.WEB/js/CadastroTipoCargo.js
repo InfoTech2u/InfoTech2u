@@ -124,7 +124,7 @@ function Excluir(Id) {
                     jQuery('table tbody tr[id="' + Id + '"]').remove();
                     // do some other stuff here
                 }
-                FormatarGrid();
+                //FormatarGrid();
             },
             error: function (XMLHttpRequest, textStatus, errorThrow) {
                 errorAjax(textStatus);

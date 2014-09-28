@@ -78,12 +78,15 @@ jQuery(document).ready(function () {
             },
             success: function (data) {
 
-                var tipos = eval(data);
-                for (x in tipos) {
-                    var row = '<tr id="' + tipos[x].CodigoTipoTarefa + '"><td>' + tipos[x].CodigoTipoTarefa + '</td><td>' + tipos[x].Descricao + '</td><td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + tipos[x].CodigoTipoTarefa + ');" class="deleterow"><i class="icon-trash"></i></a></td></tr>';
-                    jQuery('tbody').append(row);
+                if (data != '[]') {
+                    var tipos = eval(data);
+                    for (x in tipos) {
+                        var row = '<tr id="' + tipos[x].CodigoTipoTarefa + '"><td>' + tipos[x].CodigoTipoTarefa + '</td><td>' + tipos[x].Descricao + '</td><td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + tipos[x].CodigoTipoTarefa + ');" class="deleterow"><i class="icon-trash"></i></a></td></tr>';
+                        jQuery('tbody').append(row);
+                    }
+
+                    FormatarGrid();
                 }
-                FormatarGrid();
             },
             error: function (XMLHttpRequest, textStatus, errorThrow) {
                 errorAjax(textStatus);
