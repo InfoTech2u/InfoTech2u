@@ -125,8 +125,8 @@ function Incluir() {
                                '<td>' + lista[0].NOME + '</td>' +
                                '<td>' + lista[0].MAIL + '</td>' +
                                '<td>' + lista[0].LOGIN_USUARIO + '</td>' +
-                               '<td class="centeralign"><a title="Excluir" href="#modalCadastrar" onclick="javascript:LimparCadastrar();FuncaoTelaModal(\'Alterar\', ' + lista[0].CODIGO_USUARIO + ');CarregarUsuario(' + lista[0].CODIGO_USUARIO + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
-                               '<td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + lista[0].CODIGO_USUARIO + ')" class="deleterow"><i class="icon-trash"></i></a></td>' +
+                               '<td class="centeralign"><a title="Alterar" href="#modalCadastrar" onclick="javascript:LimparCadastrar();FuncaoTelaModal(\'Alterar\', ' + usuarios[0].CODIGO_USUARIO + ');CarregarUsuario(' + usuarios[0].CODIGO_USUARIO + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
+                               '<td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + usuarios[0].CODIGO_USUARIO + ')" class="deleterow"><i class="icon-trash"></i></a></td>' +
                              '</tr>';
 
                     jQuery('#gridUsuarios tbody').append(row);

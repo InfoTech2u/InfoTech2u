@@ -22,6 +22,15 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos {
         protected global::System.Web.UI.WebControls.HiddenField hdnCodigoFuncionario;
         
         /// <summary>
+        /// hdnFuncaoTela control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnFuncaoTela;
+        
+        /// <summary>
         /// txtNomeDependente control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNomeDependente;
+        
+        /// <summary>
+        /// lblErrorNomeDependente control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorNomeDependente;
         
         /// <summary>
         /// ddlTipoParentesco control.
@@ -40,6 +58,15 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos {
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoParentesco;
         
         /// <summary>
+        /// lblErrorTipoParentesco control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorTipoParentesco;
+        
+        /// <summary>
         /// txtDataNascimento control.
         /// </summary>
         /// <remarks>
@@ -47,6 +74,15 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDataNascimento;
+        
+        /// <summary>
+        /// lblErrorDataNascimento control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorDataNascimento;
         
         /// <summary>
         /// lstBeneficioSelect control.
