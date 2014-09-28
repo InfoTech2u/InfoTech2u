@@ -46,7 +46,7 @@ jQuery(document).ready(function () {
     jQuery("#txtTituloEleitor").mask("999999999999");
 
     //Carteira de Saude
-    //jQuery("#txtCateiraSaude").mask("999999999999999");
+    jQuery("#txtCateiraSaude").mask("999999999999999");
 
     //Monetario
     jQuery(".Monetario").maskMoney({
@@ -129,6 +129,44 @@ jQuery(document).ready(function () {
         }
 
         //buttonFinish buttonDisabled
+    }
+    else if (getUrlVars()["tpAcao"] == "2") {
+
+        var nacionalidade = jQuery("#ddlNacionalidadeFuncionario option:selected").text();
+
+        if (nacionalidade == "Brasil") {
+            jQuery('.divBrasil').show();
+            jQuery('.divEstrangeiro').hide();
+        }
+        else {
+            //divBrasil
+            //divEstrangeiro
+            jQuery('.divBrasil').hide();
+            jQuery('.divEstrangeiro').show();
+        }
+
+        jQuery('#wizard3').smartWizard({ transitionEffect: 'slideleft', onLeaveStep: leaveAStepCallback, onFinish: onFinishCallback });
+
+        function onFinishCallback() {
+            if (verificaValidacao) {
+
+                if (getUrlVars()["tpAcao"] == "1")
+                    IncluirDadosFuncionario();
+                else if (getUrlVars()["tpAcao"] == "2")
+                    AlterarDadosFuncionario();
+
+                //alert('Finish Clicked');
+
+            }
+        }
+
+
+        function leaveAStepCallback(obj) {
+            passoAtivo = obj.attr('rel');
+            verificaValidacao = validarFuncionario(passoAtivo);
+            return verificaValidacao;
+        }
+
     }
     else {
 
@@ -1080,7 +1118,7 @@ function AlterarDadosFuncionario() {
             NumeroEnderecoPIS: jQuery('#txtNumeroEnderecoPIS').val(),
             BairroPIS: jQuery('#txtBairroPIS').val(),
             ComplementoPIS: jQuery('#txtComplementoPIS').val(),
-            CEPPIS: jQuery('#txtCEPPIS').val(),
+            CEPPIS: jQuery('#txtCEPPIS').val().replace(/[\-]/g, ""),
             OptanteFGTS: jQuery('#rdpOptanteFGTS').val(),
             DataOpcao: jQuery('#txtDataOpcao').val(),
             DataRetratacao: jQuery('#txtDataRetratacao').val(),

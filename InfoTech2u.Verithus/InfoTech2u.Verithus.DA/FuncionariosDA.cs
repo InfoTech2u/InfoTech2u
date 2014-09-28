@@ -556,10 +556,10 @@ namespace InfoTech2u.Verithus.DA
                 else
                     lstSqlParameter.Add(new SqlParameter("@CODIGO_BANCO_PIS", param.DocumentoPIS.CodigoBanco));
 
-                if (param.DocumentoPIS.EnderecoVO.CodigoEndereco == null)
+                if (param.DocumentoPIS.EnderecoVO.DetalheEndereco.CodigoDetalheEndereco == null)
                     lstSqlParameter.Add(new SqlParameter("@CODIGO_DETALHE_ENDERECO_PIS", DBNull.Value));
                 else
-                    lstSqlParameter.Add(new SqlParameter("@CODIGO_DETALHE_ENDERECO_PIS", param.DocumentoPIS.EnderecoVO.CodigoEndereco));
+                    lstSqlParameter.Add(new SqlParameter("@CODIGO_DETALHE_ENDERECO_PIS", param.DocumentoPIS.EnderecoVO.DetalheEndereco.CodigoDetalheEndereco));
 
 
                 if (param.NumeroOrdemMatricula == null)

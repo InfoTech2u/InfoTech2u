@@ -483,7 +483,7 @@
                         <p id="validaSobNumero">
                             <label>Numero do PIS</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtSobNumero" CssClass="input-small" ClientIDMode="Static" />
+                                <asp:TextBox runat="server" ID="txtSobNumero" CssClass="input-small" ClientIDMode="Static" MaxLength="10" />
                                 <span class="help-inline" id="msgSobNumero"></span>
                             </span>
                         </p>
@@ -500,7 +500,7 @@
                         <p id="validaAgencia">
                             <label>Agencia</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtAgencia" CssClass="input-small" ClientIDMode="Static" />
+                                <asp:TextBox runat="server" ID="txtAgencia" CssClass="input-small" ClientIDMode="Static" MaxLength="10" />
                                 <span class="help-inline" id="msgAgencia"></span>
                             </span>
                         </p>
@@ -508,7 +508,7 @@
                         <p id="validaConta">
                             <label>Conta</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtConta" CssClass="input-small" ClientIDMode="Static" />
+                                <asp:TextBox runat="server" ID="txtConta" CssClass="input-small" ClientIDMode="Static" MaxLength="10" />
                                 <span class="help-inline" id="msgConta"></span>
                             </span>
                         </p>
@@ -516,7 +516,7 @@
                         <p id="validaDigito">
                             <label>Digito</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtDigito" CssClass="input-small" ClientIDMode="Static" />
+                                <asp:TextBox runat="server" ID="txtDigito" CssClass="input-small" ClientIDMode="Static" MaxLength="2" />
                                 <span class="help-inline" id="msgDigito"></span>
                             </span>
                         </p>
@@ -586,7 +586,7 @@
                         <p id="validaComplementoPIS">
                             <label>Complemento</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtComplementoPIS" CssClass="input-xxlarge" ClientIDMode="Static" />
+                                <asp:TextBox runat="server" ID="txtComplementoPIS" CssClass="input-xxlarge" ClientIDMode="Static" MaxLength="80" />
                                 <span class="help-inline" id="msgComplementoPIS"></span>
                             </span>
                         </p>
@@ -640,7 +640,7 @@
                         <p id="validaAgenciaFGTS">
                             <label>Agencia</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtAgenciaFGTS" CssClass="input-small" ClientIDMode="Static" />
+                                <asp:TextBox runat="server" ID="txtAgenciaFGTS" CssClass="input-small" ClientIDMode="Static" MaxLength="10" />
                                 <span class="help-inline" id="msgAgenciaFGTS"></span>
                             </span>
                         </p>
@@ -648,7 +648,7 @@
                         <p id="validaContaFGTS">
                             <label>Conta</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtContaFGTS" CssClass="input-small" ClientIDMode="Static" />
+                                <asp:TextBox runat="server" ID="txtContaFGTS" CssClass="input-small" ClientIDMode="Static" MaxLength="10" />
                                 <span class="help-inline" id="msgContaFGTS"></span>
                             </span>
                         </p>
@@ -656,7 +656,7 @@
                         <p id="validaDigitoFGTS">
                             <label>Digito</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtDigitoFGTS" CssClass="input-small" ClientIDMode="Static" />
+                                <asp:TextBox runat="server" ID="txtDigitoFGTS" CssClass="input-small" ClientIDMode="Static" MaxLength="2" />
                                 <span class="help-inline" id="msgDigitoFGTS"></span>
                             </span>
                         </p>
