@@ -85,7 +85,7 @@ jQuery(document).ready(function () {
                 if (data != '[]') {
                     var tipos = eval(data);
                     for (x in tipos) {
-                        var row = '<tr><td>' + tipos[x].CodigoTipoSecao + '</td><td>' + tipos[x].Descricao + '</td><td class="centeralign"><a title="Excluir" href="#" class="deleterow"><i class="icon-trash"></i></a></td></tr>';
+                        var row = '<tr id="' + tipos[x].CodigoTipoSecao + '"><td>' + tipos[x].CodigoTipoSecao + '</td><td>' + tipos[x].Descricao + '</td><td class="centeralign"><a title="Excluir"  href="javascript:Excluir(' + tipos[x].CodigoTipoSecao + ');"  class="deleterow"><i class="icon-trash"></i></a></td></tr>';
                         jQuery('tbody').append(row);
                     }
                     //FormatarGrid();
@@ -99,7 +99,7 @@ jQuery(document).ready(function () {
                         },
                         "language": {
                             "lengthMenu": "Display _MENU_ records per page",
-                            "zeroRecords": "Nothing found - sorry", 
+                            "zeroRecords": "Nothing found - sorry",
                             "info": "Showing page _PAGE_ of _PAGES_",
                             "infoEmpty": "No records available",
                             "infoFiltered": "(filtered from _MAX_ total records)",
@@ -134,7 +134,7 @@ function Excluir(Id) {
         jQuery.ajax({
             type: "GET",
             crossDomain: true,
-            url: "../../Handler/ManterCargo.ashx",
+            url: "../../Handler/ManterSecao.ashx",
             contentType: "json",
             cache: false,
             data: {
@@ -148,7 +148,7 @@ function Excluir(Id) {
                     jQuery('table tbody tr[id="' + Id + '"]').remove();
                     // do some other stuff here
                 }
-                FormatarGrid();
+                //FormatarGrid();
             },
             error: function (XMLHttpRequest, textStatus, errorThrow) {
                 errorAjax(textStatus);

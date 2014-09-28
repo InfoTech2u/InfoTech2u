@@ -66,6 +66,11 @@ jQuery(document).ready(function () {
     }
 
     function CarregarLista() {
+
+        jQuery("tbody").empty();
+        jQuery('tbody').remove();
+        jQuery('#dyntable').append('<tbody></tbody>');
+
         jQuery.ajax({
             type: "GET",
             crossDomain: true,
@@ -80,10 +85,29 @@ jQuery(document).ready(function () {
 
                 var tipos = eval(data);
                 for (x in tipos) {
-                    var row = '<tr id="' + tipos[0].CodigoTipoFormaPagamento + '"><td>' + tipos[0].CodigoTipoFormaPagamento + '</td><td>' + tipos[0].Descricao + '</td><td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + tipos[0].CodigoTipoFormaPagamento + ');" class="deleterow"><i class="icon-trash"></i></a></td></tr>';
+                    var row = '<tr id="' + tipos[x].CodigoTipoFormaPagamento + '"><td>' + tipos[x].CodigoTipoFormaPagamento + '</td><td>' + tipos[x].Descricao + '</td><td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + tipos[x].CodigoTipoFormaPagamento + ');" class="deleterow"><i class="icon-trash"></i></a></td></tr>';
                     jQuery('tbody').append(row);
                 }
-                FormatarGrid();
+                //FormatarGrid();
+
+                jQuery('#dyntable').dataTable().fnDestroy();
+
+                jQuery('#dyntable').dataTable({
+                    "sPaginationType": "full_numbers",
+                    "fnDrawCallback": function (oSettings) {
+                        jQuery.uniform.update();
+                    },
+                    "language": {
+                        "lengthMenu": "Display _MENU_ records per page",
+                        "zeroRecords": "Nothing found - sorry",
+                        "info": "Showing page _PAGE_ of _PAGES_",
+                        "infoEmpty": "No records available",
+                        "infoFiltered": "(filtered from _MAX_ total records)",
+                        "sInfoEmpty": "Mostrando 0-0 de 0 Funcionários"
+                    }
+                    //"sInfoEmpty": "Mostrando 0-0 de 0 Funcionários"
+                });
+
             },
             error: function (XMLHttpRequest, textStatus, errorThrow) {
                 errorAjax(textStatus);
@@ -124,7 +148,7 @@ function Excluir(Id) {
                     jQuery('table tbody tr[id="' + Id + '"]').remove();
                     // do some other stuff here
                 }
-                FormatarGrid();
+                //FormatarGrid();
             },
             error: function (XMLHttpRequest, textStatus, errorThrow) {
                 errorAjax(textStatus);
