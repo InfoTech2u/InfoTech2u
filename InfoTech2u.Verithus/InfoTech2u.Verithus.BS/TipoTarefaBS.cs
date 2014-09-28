@@ -50,7 +50,7 @@ namespace InfoTech2u.Verithus.BS
             }
         }
 
-        public bool ExcluirTipoTarefa(TipoTarefaVO param)
+        public DataTable ExcluirTipoTarefa(TipoTarefaVO param)
         {
             TipoTarefaDA objRetorno = null;
 

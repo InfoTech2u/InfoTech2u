@@ -99,46 +99,41 @@ namespace InfoTech2u.Verithus.DA
 
             return dtRetorno;
         }
-        public bool ExcluirTipoCargo(TipoCargoVO param)
+        public DataTable ExcluirTipoCargo(TipoCargoVO param)
         {
             InfoTech2uSQLUtil objSql = null;
-            StringBuilder query = null;
             List<SqlParameter> lstSqlParameter = null;
-            bool foiExcluido = false;
+            DataTable dtRetorno = null;
 
             try
             {
-
                 objSql = new InfoTech2uSQLUtil();
                 lstSqlParameter = new List<SqlParameter>();
-                query = new StringBuilder();
+                dtRetorno = new DataTable();
 
                 objSql.Sigla = objSql.GetDataBase();
                 objSql.ConnectionString = objSql.GetConnectionString(objSql.Sigla);
                 objSql.Open();
 
-                lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_CARGO", param.CodigoTipoCargo));
-                lstSqlParameter.Add(new SqlParameter("@C_ERR", DBNull.Value));
-                lstSqlParameter.Add(new SqlParameter("@T_ERR", DBNull.Value));
+                if (param.CodigoTipoCargo == null)
+                    lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_CARGO", DBNull.Value));
+                else
+                    lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_CARGO", param.CodigoTipoCargo));
 
-                int rowsAffected = 0;
+                objSql.Execute("dbo.[SPVRT080_TIPO_CARGO_PR_EXCLUIR]", lstSqlParameter.ToArray(), null, ref dtRetorno);
 
-                objSql.ExecuteNonQuery("dbo.[SPVRT080_TIPO_CARGO_PR_EXCLUIR]", lstSqlParameter.ToArray(), null, out rowsAffected);
-
-                foiExcluido = rowsAffected > 0;
+                return dtRetorno;
             }
             catch (Exception ex)
             {
-                foiExcluido = false;
+                throw ex;
             }
             finally
             {
                 objSql = null;
                 lstSqlParameter = null;
-                query = null;
+                dtRetorno = null;
             }
-
-            return foiExcluido;
         }
     }
 }

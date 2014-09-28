@@ -99,44 +99,42 @@ namespace InfoTech2u.Verithus.DA
 
             return dtRetorno;
         }
-        public bool ExcluirTipoTarefa(TipoTarefaVO param)
+
+        public DataTable ExcluirTipoTarefa(TipoTarefaVO param)
         {
             InfoTech2uSQLUtil objSql = null;
-            StringBuilder query = null;
             List<SqlParameter> lstSqlParameter = null;
-            bool foiExcluido = false;
+            DataTable dtRetorno = null;
 
             try
             {
-
                 objSql = new InfoTech2uSQLUtil();
                 lstSqlParameter = new List<SqlParameter>();
-                query = new StringBuilder();
+                dtRetorno = new DataTable();
 
                 objSql.Sigla = objSql.GetDataBase();
                 objSql.ConnectionString = objSql.GetConnectionString(objSql.Sigla);
                 objSql.Open();
 
-                lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_TAREFA", param.CodigoTipoTarefa));
+                if (param.CodigoTipoTarefa == null)
+                    lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_TAREFA", DBNull.Value));
+                else
+                    lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_TAREFA", param.CodigoTipoTarefa));
 
-                int rowsAffected = 0;
+                objSql.Execute("dbo.[SPVRT088_TIPO_TAREFA_PR_EXCLUIR]", lstSqlParameter.ToArray(), null, ref dtRetorno);
 
-                objSql.ExecuteNonQuery("SPVRT088_TIPO_TAREFA_PR_EXCLUIR", lstSqlParameter.ToArray(), null, out rowsAffected);
-
-                foiExcluido = rowsAffected > 0;
+                return dtRetorno;
             }
             catch (Exception ex)
             {
-                foiExcluido = false;
+                throw ex;
             }
             finally
             {
                 objSql = null;
                 lstSqlParameter = null;
-                query = null;
+                dtRetorno = null;
             }
-
-            return foiExcluido;
         }
     }
 }

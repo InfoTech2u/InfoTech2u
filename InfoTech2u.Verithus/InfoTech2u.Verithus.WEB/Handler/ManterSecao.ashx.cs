@@ -47,7 +47,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
                 {
                     param.CodigoTipoSecao = numconvertido;
 
-                    context.Response.Write(serializer.Serialize(ExcluirTipoSecao(param)));
+                    context.Response.Write(ExcluirTipoSecao(param).DataTableSerializer());
                 }
                 else
                 {
@@ -68,7 +68,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
             return objBS.IncluirTipoSecao(param);
         }
 
-        private bool ExcluirTipoSecao(TipoSecaoVO param)
+        private DataTable ExcluirTipoSecao(TipoSecaoVO param)
         {
             TipoSecaoBS objBS = new TipoSecaoBS();
             return objBS.ExcluirTipoSecao(param);

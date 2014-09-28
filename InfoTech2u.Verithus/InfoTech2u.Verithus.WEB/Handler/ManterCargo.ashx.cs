@@ -45,7 +45,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
                 {
                     param.CodigoTipoCargo = numconvertido;
 
-                    context.Response.Write(serializer.Serialize(ExcluirTipoCargo(param)));
+                    context.Response.Write(ExcluirTipoCargo(param).DataTableSerializer());
                 }
                 else
                 {
@@ -66,7 +66,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
             return objBS.IncluirTipoCargo(param);
         }
 
-        private bool ExcluirTipoCargo(TipoCargoVO param)
+        private DataTable ExcluirTipoCargo(TipoCargoVO param)
         {
             TipoCargoBS objBS = new TipoCargoBS();
             return objBS.ExcluirTipoCargo(param);

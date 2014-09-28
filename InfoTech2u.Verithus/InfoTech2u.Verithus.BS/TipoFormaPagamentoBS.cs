@@ -51,7 +51,7 @@ namespace InfoTech2u.Verithus.BS
             }
         }
 
-        public bool ExcluirTipoFormaPagamento(TipoFormaPagamentoVO param)
+        public DataTable ExcluirTipoFormaPagamento(TipoFormaPagamentoVO param)
         {
             TipoFormaPagamentoDA objRetorno = null;
 

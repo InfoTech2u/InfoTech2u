@@ -50,7 +50,7 @@ namespace InfoTech2u.Verithus.BS
             }
         }
 
-        public bool ExcluirTipoSecao(TipoSecaoVO param)
+        public DataTable ExcluirTipoSecao(TipoSecaoVO param)
         {
             TipoSecaoDA objRetorno = null;
 

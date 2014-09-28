@@ -50,7 +50,7 @@ namespace InfoTech2u.Verithus.BS
             }
         }
 
-        public bool ExcluirTipoCargo(TipoCargoVO param)
+        public DataTable ExcluirTipoCargo(TipoCargoVO param)
         {
             TipoCargoDA objRetorno = null;
 

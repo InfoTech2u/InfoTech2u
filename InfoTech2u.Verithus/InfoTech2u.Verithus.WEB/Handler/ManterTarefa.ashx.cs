@@ -46,7 +46,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
                 {
                     param.CodigoTipoTarefa = numconvertido;
 
-                    context.Response.Write(serializer.Serialize(ExcluirTipoTarefa(param)));
+                    context.Response.Write(ExcluirTipoTarefa(param).DataTableSerializer());
                 }
                 else
                 {
@@ -67,7 +67,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
             return objBS.IncluirTipoTarefa(param);
         }
 
-        private bool ExcluirTipoTarefa(TipoTarefaVO param)
+        private DataTable ExcluirTipoTarefa(TipoTarefaVO param)
         {
             TipoTarefaBS objBS = new TipoTarefaBS();
             return objBS.ExcluirTipoTarefa(param);

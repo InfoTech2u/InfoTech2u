@@ -47,7 +47,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
                 {
                     param.CodigoTipoFormaPagamento = numconvertido;
 
-                    context.Response.Write(serializer.Serialize(ExcluirTipoFormaPagamento(param)));
+                    context.Response.Write(ExcluirTipoFormaPagamento(param).DataTableSerializer());
                 }
                 else
                 {
@@ -68,7 +68,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
             return objBS.IncluirTipoFormaPagamento(param);
         }
 
-        private bool ExcluirTipoFormaPagamento(TipoFormaPagamentoVO param)
+        private DataTable ExcluirTipoFormaPagamento(TipoFormaPagamentoVO param)
         {
             TipoFormaPagamentoBS objBS = new TipoFormaPagamentoBS();
             return objBS.ExcluirTipoFormaPagamento(param);
