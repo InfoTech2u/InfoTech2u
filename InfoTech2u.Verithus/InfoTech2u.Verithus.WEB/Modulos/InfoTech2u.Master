@@ -158,6 +158,13 @@
                                         <li><asp:HyperLink NavigateUrl="~/Modulos/Configuracao/ManterUsuario.aspx" runat="server" ID="hlkCadastroUsuario">Cadastro de Usuarios</asp:HyperLink></li>
                                     </ul>
                                 </li>
+                                <li class="dropdown"><a href="">Funcionalidades</a>
+                                    <ul>
+                                        <li><asp:HyperLink NavigateUrl="~/Modulos/Configuracao/ManterSistema.aspx" runat="server" ID="hlkManterSistema">Manutenção de Sistema</asp:HyperLink></li>
+                                        <li><asp:HyperLink NavigateUrl="~/Modulos/Configuracao/ManterTipoFuncionalidade.aspx" runat="server" ID="hlkManterTipoFuncionalidade">Manutenção de Tipo de Funcionalidade</asp:HyperLink></li>
+                                        <li><asp:HyperLink NavigateUrl="~/Modulos/Configuracao/ManterFuncionalidade.aspx" runat="server" ID="hlkManterFuncionalidade">Manutenção de Funcionalidade</asp:HyperLink></li>
+                                    </ul>
+                                </li>
                                 <li class="dropdown"><a href="">Log</a>
                                     <ul>
                                         <li><asp:HyperLink NavigateUrl="~/Modulos/Configuracao/ConsultaLogAcao.aspx" runat="server" ID="hlkConsultaLogAcao">Consulta Log Acao</asp:HyperLink></li>

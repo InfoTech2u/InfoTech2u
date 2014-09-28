@@ -76,11 +76,16 @@
     <Content Include="js\ManterContribuicaoSindical.js" />
     <Content Include="js\ManterDependente.js" />
     <Content Include="js\ManterSindicato.js" />
+    <Content Include="js\ManterSistema.js" />
+    <Content Include="js\ManterTipoFuncionalidade.js" />
     <Content Include="js\ManterUsuario.js" />
     <Content Include="js\TipoBeneficio.js" />
     <Content Include="Modulos\Configuracao\ConsultaLogAcao.aspx" />
     <Content Include="Modulos\Configuracao\ConsultaLogErro.aspx" />
     <Content Include="Modulos\Configuracao\ManterAcesso.aspx" />
+    <Content Include="Modulos\Configuracao\ManterFuncionalidade.aspx" />
+    <Content Include="Modulos\Configuracao\ManterSistema.aspx" />
+    <Content Include="Modulos\Configuracao\ManterTipoFuncionalidade.aspx" />
     <Content Include="Modulos\Configuracao\PesquisaAcesso.aspx" />
     <Content Include="Modulos\Default.aspx" />
     <Content Include="Modulos\InfoTech2u.Master" />
@@ -185,6 +190,8 @@
     <Content Include="Handler\ManterUsuario.ashx" />
     <Content Include="Handler\ExcluirFuncionario.ashx" />
     <Content Include="Handler\AlterarFuncionario.ashx" />
+    <Content Include="Handler\ManterSistema.ashx" />
+    <Content Include="Handler\ManterTipoSistema.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -812,6 +819,9 @@
     <Compile Include="Handler\ManterSecao.ashx.cs">
       <DependentUpon>ManterSecao.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Handler\ManterSistema.ashx.cs">
+      <DependentUpon>ManterSistema.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Handler\ManterTarefa.ashx.cs">
       <DependentUpon>ManterTarefa.ashx</DependentUpon>
     </Compile>
@@ -820,6 +830,9 @@
     </Compile>
     <Compile Include="Handler\ManterTipoAcesso.ashx.cs">
       <DependentUpon>ManterTipoAcesso.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\ManterTipoSistema.ashx.cs">
+      <DependentUpon>ManterTipoSistema.ashx</DependentUpon>
     </Compile>
     <Compile Include="Handler\ManterUsuario.ashx.cs">
       <DependentUpon>ManterUsuario.ashx</DependentUpon>
@@ -856,6 +869,27 @@
     </Compile>
     <Compile Include="Modulos\Configuracao\ManterAcesso.aspx.designer.cs">
       <DependentUpon>ManterAcesso.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Configuracao\ManterFuncionalidade.aspx.cs">
+      <DependentUpon>ManterFuncionalidade.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Configuracao\ManterFuncionalidade.aspx.designer.cs">
+      <DependentUpon>ManterFuncionalidade.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Configuracao\ManterSistema.aspx.cs">
+      <DependentUpon>ManterSistema.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Configuracao\ManterSistema.aspx.designer.cs">
+      <DependentUpon>ManterSistema.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Configuracao\ManterTipoFuncionalidade.aspx.cs">
+      <DependentUpon>ManterTipoFuncionalidade.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\Configuracao\ManterTipoFuncionalidade.aspx.designer.cs">
+      <DependentUpon>ManterTipoFuncionalidade.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Configuracao\PesquisaAcesso.aspx.cs">
       <DependentUpon>PesquisaAcesso.aspx</DependentUpon>

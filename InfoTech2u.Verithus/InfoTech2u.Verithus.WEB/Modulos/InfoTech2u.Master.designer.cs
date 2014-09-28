@@ -175,6 +175,33 @@ namespace InfoTech2u.Verithus.WEB {
         protected global::System.Web.UI.WebControls.HyperLink hlkCadastroUsuario;
         
         /// <summary>
+        /// hlkManterSistema control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlkManterSistema;
+        
+        /// <summary>
+        /// hlkManterTipoFuncionalidade control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlkManterTipoFuncionalidade;
+        
+        /// <summary>
+        /// hlkManterFuncionalidade control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlkManterFuncionalidade;
+        
+        /// <summary>
         /// hlkConsultaLogAcao control.
         /// </summary>
         /// <remarks>

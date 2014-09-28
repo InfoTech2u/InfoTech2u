@@ -28,16 +28,9 @@
                 }
                 else {
                     VerificarUsuario(u, p);
-
-
                 }
-
                 return false;
             });
-
-
-
-
         });
 
         function VerificarUsuario(user, pass) {
@@ -65,17 +58,10 @@
 
 
                     for (i in dadosUsuario) {
-
                         //alert(dadosUsuario[i].CODIGO_TIPO_ACESSO);
                         tipoAcesso = dadosUsuario[i].CODIGO_TIPO_ACESSO;
                         redirecionar();
-
-
-
                     }
-
-
-
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrow) {
                     errorAjax(textStatus);
