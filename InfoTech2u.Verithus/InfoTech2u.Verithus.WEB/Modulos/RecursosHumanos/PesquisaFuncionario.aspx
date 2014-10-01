@@ -260,7 +260,7 @@
                 var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
                 //jQuery(window.document.location).attr('href', 'ManterContribuicaoSindicaol.aspx?idUser=' + codigoSel);
                 if (codigoSel != null)
-                    jQuery(window.document.location).attr('href', 'ManterContribuicaoSindicaol.aspx?idUser=' + codigoSel);
+                    jQuery(window.document.location).attr('href', 'ManterContribuicaoSindical.aspx?idUser=' + codigoSel);
                 else {
                     jQuery.alerts.dialogClass = 'alert-warning';
                     jAlert('Selecione um funcionario', 'Alerta', function () {
