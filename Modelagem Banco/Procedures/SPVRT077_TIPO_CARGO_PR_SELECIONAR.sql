@@ -1,5 +1,9 @@
 USE [DBVERITHUS]
 GO
+
+/****** Object:  StoredProcedure [dbo].[SPVRT041_DEPENDENTE_PR_SELECIONAR]    Script Date: 28/09/2014 19:04:50 ******/
+DROP PROCEDURE [dbo].[SPVRT061_TIPO_CARGO_PR_SELECIONAR]
+
 /****** Object:  StoredProcedure [dbo].[SPVRT061_TIPO_CARGO_PR_SELECIONAR]    Script Date: 27/09/2014 21:30:24 ******/
 SET ANSI_NULLS ON
 GO
