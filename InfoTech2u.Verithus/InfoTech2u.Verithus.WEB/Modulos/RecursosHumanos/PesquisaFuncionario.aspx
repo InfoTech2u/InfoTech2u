@@ -34,6 +34,14 @@
                 jQuery('#txtNumeroOrdemMatricula').attr('value', '');
                 jQuery('#txtNumeroMatricula').attr('value', '');
                 jQuery('#txtNomeFuncionario').attr('value', '');
+
+                jQuery('#dyntable').hide();
+                jQuery('.dyntable').hide();
+                jQuery('.btnAcao').hide();
+
+                jQuery("tbody").empty();
+                jQuery('tbody').remove();
+
             });
 
             jQuery("#btnPesquisar").click(function () {

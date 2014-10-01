@@ -195,7 +195,6 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
                     
                     i++;
                 }
-
             }
         }
 
@@ -268,6 +267,8 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
             this.rblNaturalizado.Enabled = false;
             this.rdbCasadoBrasileiro.Enabled = false;
             this.rdpOptanteFGTS.Enabled = false;
+            this.ddlStatus.Enabled = false;
+            this.ddlEmpresa.Enabled = false;
 
 
 

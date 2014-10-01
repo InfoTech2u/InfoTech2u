@@ -849,6 +849,7 @@ create table TBVRT011_DEPENDENTE (
    NOME                 nvarchar(100)        null,
    CODIGO_TIPO_PARENTESCO int                  null,
    DATA_NASCIMENTO      datetime             null,
+   CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
    CODIGO_USUARIO_ALTERACAO int                  null,
    DATA_ALTERACAO       datetime             null,
@@ -1429,7 +1430,7 @@ go
 /*==============================================================*/
 create table TBVRT046_TIPO_FUNCIONALIDADE_SISTEMA (
    CODIGO_TIPO_FUNCIONALIDADE int                  identity,
-   DESCRICACAO          nvarchar(120)        null,
+   DESCRICAO            nvarchar(120)        null,
    CODIGO_USUARIO_CADASTRO int                  null,
    DATA_USUARIO_CADASTRO datetime             null,
    CODIGO_USUARIO_ALTERACAO int                  null,

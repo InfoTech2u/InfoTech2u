@@ -736,8 +736,7 @@
                 <!-- END OF TABBED WIZARD -->
                 <br />
                 <div class="row-fluid btnAcao" runat="server" id="divBtnAcao">
-                    <button class="btn" id="btnExcluir"><i class="iconsweets-magnifying"></i>&nbsp; Excluir Funcionario</button>
-                    <button class="btn" id="btnVoltar"><i class="iconsweets-magnifying"></i>&nbsp; Voltar</button>
+                    <button class="btn btnVoltar" id="btnVoltar"><i class="iconsweets-magnifying"></i>&nbsp; Voltar</button>
                 </div>
 
                 <div class="footer">

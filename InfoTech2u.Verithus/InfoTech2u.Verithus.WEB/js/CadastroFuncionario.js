@@ -32,6 +32,8 @@ jQuery(document).ready(function () {
     //txtAltura
     //txtPeso
 
+
+
     jQuery("#txtAltura").ForceNumericOnly();
     jQuery("#txtPeso").ForceNumericOnly();
 
@@ -55,6 +57,11 @@ jQuery(document).ready(function () {
     });
 
 
+
+    jQuery(".btnVoltar").click(function (event) {
+        event.preventDefault();
+        history.back(1);
+    });
 
     // Data com opção de Filtro de Mes e Ano
     jQuery(".txtDataFilMesAno").datepicker({
