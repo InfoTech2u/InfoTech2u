@@ -53,12 +53,14 @@
                 <h4 class="widgettitle">Benefício</h4>
             	<table id="dyntable" class="table table-bordered responsive">
                     <colgroup>
-                        <col class="con0" style="align: center; width: 90%" />
-                        <col class="con1" />
+                        <col class="con0" style="align: center; width: 4%" />
+                        <col class="con1" style="align: center; width: 80%" />
+                        <col class="con0" />
                         
                     </colgroup>
                     <thead>
                         <tr>
+                            <th>Id</th>
                             <th>Descrição</th>
                             <th>Excluir</th>
                         </tr>

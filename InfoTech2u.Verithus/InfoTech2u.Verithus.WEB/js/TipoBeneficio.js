@@ -19,7 +19,7 @@
                     var lista = eval(data);
 
                     if (lista.length > 0) {
-                        var row = '<tr><td>' + lista[0].DESCRICAO + '</td><td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + lista[0].CODIGO_TIPO_BENEFICIO + ')" class="deleterow"><i class="icon-trash"></i></a></td></tr>';
+                        var row = '<tr id="' + lista[0].CODIGO_TIPO_BENEFICIO + '" ><td>' + lista[0].CODIGO_TIPO_BENEFICIO + '</td><td>' + lista[0].DESCRICAO + '</td><td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + lista[0].CODIGO_TIPO_BENEFICIO + ')" class="deleterow"><i class="icon-trash"></i></a></td></tr>';
                         jQuery('tbody').append(row);
                         jQuery('#myModal').modal('hide')
                     }
@@ -34,6 +34,9 @@
                 }
             });
         }
+
+        //jQuery('#txtDescricaoTipoBeneficio').val('');
+
     });
 });
 
@@ -56,14 +59,14 @@ function CarregarTipoBeneficioLista() {
         contentType: "json",
         cache: false,
         data: {
-            Metodo: 'Lista',
+            Metodo: 'Listar',
             Acao: 'Consulta'
         },
         success: function (data) {
 
             var tiposBeneficios = eval(data);
             for (x in tiposBeneficios) {
-                var row = '<tr><td>' + tiposBeneficios[x].Descricao + '</td><td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + tiposBeneficios[x].CodigoTipoBeneficio + ')" class="deleterow"><i class="icon-trash"></i></a></td></tr>';
+                var row = '<tr id="' + tiposBeneficios[x].CodigoTipoBeneficio + '"><td>' + tiposBeneficios[x].CodigoTipoBeneficio + '</td><td>' + tiposBeneficios[x].Descricao + '</td><td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + tiposBeneficios[x].CodigoTipoBeneficio + ')" class="deleterow"><i class="icon-trash"></i></a></td></tr>';
                 jQuery('tbody').append(row);
             }
            
@@ -80,7 +83,7 @@ function Excluir(id) {
 
     var conf = confirm('Continue delete?');
     if (conf)
-        jQuery(this).parents('tr').fadeOut(function () {
+        {
             jQuery.ajax({
                 type: "GET",
                 crossDomain: true,
@@ -95,7 +98,7 @@ function Excluir(id) {
                 success: function (data) {
 
                     if (data) {
-                        jQuery(this).remove();
+                        jQuery('table tbody tr[id="' + id + '"]').remove();
                         // do some other stuff here
                     }
                 },
@@ -106,6 +109,6 @@ function Excluir(id) {
             });
 
 
-        });
-    return false;
+    }
+    //return false;
 }
