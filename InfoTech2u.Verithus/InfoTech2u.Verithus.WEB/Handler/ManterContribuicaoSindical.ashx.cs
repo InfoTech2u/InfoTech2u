@@ -78,9 +78,9 @@ namespace InfoTech2u.Verithus.WEB.Handler
                 contribuicao.ValorRecolhido = context.Request.QueryString["ValorRecolhido"];
                 contribuicao.CodigoStatus = null;
                 contribuicao.CodigoUsuarioAlteracao = null;
-                contribuicao.CodigoUsuarioCadastro = null;
+                contribuicao.CodigoUsuarioCadastro = Convert.ToInt32(context.Request.QueryString["CodigoUsuario"]);
                 contribuicao.DataAlteracao = null;
-                contribuicao.DataCadastro = null;
+                contribuicao.DataCadastro = DateTime.Now;
 
                 return objBS.IncluirContribuicaoSindical(contribuicao);
                 
@@ -112,7 +112,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
                 contribuicao.CodigoSindicato = Convert.ToInt32(context.Request.QueryString["CodigoSindicato"]);
                 contribuicao.ValorRecolhido = context.Request.QueryString["ValorRecolhido"];
                 contribuicao.CodigoStatus = null;
-                contribuicao.CodigoUsuarioAlteracao = null;
+                contribuicao.CodigoUsuarioAlteracao = Convert.ToInt32(context.Request.QueryString["CodigoUsuario"]);
                 contribuicao.DataAlteracao = DateTime.Now;
 
                 return objBS.AlterarContribuicaoSindical(contribuicao);
@@ -141,6 +141,8 @@ namespace InfoTech2u.Verithus.WEB.Handler
                 contribuicao = new ContribuicaoSindicalVO();
 
                 contribuicao.CodigoContribuicaoSindical = Convert.ToInt32(context.Request.QueryString["CodigoContribuicaoSindical"]);
+                contribuicao.CodigoUsuarioAlteracao = Convert.ToInt32(context.Request.QueryString["CodigoUsuario"]);
+                contribuicao.DataAlteracao = DateTime.Now;
 
                 return objBS.ExcluirContribuicaoSindical(contribuicao);
 

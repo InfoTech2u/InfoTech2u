@@ -1,10 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Modulos/InfoTech2u.Master" AutoEventWireup="true" CodeBehind="ManterContribuicaoSindical.aspx.cs" Inherits="InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.ManterContribuicaoSindical" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderInfoTech2u" runat="server">
     <div class="rightpanel">
-
+        <asp:HiddenField ID="hdnCodigoUsuario" ClientIDMode="Static" runat="server" />
         <ul class="breadcrumbs">
             <li><a href="dashboard.html"><i class="iconfa-home"></i></a><span class="separator"></span></li>
             <li><a href="forms.html">Forms</a> <span class="separator"></span></li>
@@ -26,12 +27,18 @@
                     <div class="widgetcontent">
                         <asp:HiddenField ID="hdnCodigoFuncionario" runat="server" ClientIDMode="Static" Value="0" />
                         <asp:HiddenField ID="hdnCodigoContribuicaoSindical" Value="0" runat="server" ClientIDMode="Static" />
-                        <div class="par">
+                        
+
+
+                        <p id="validaDataNascimento">
                             <label>Período Ano</label>
                             <span class="field">
-                                <asp:TextBox ID="datepicker" runat="server"  CssClass="input-small" ClientIDMode="Static" /></span>
+                                <asp:TextBox runat="server" ID="datepicker" CssClass="input-small txtDataFilMesAno dataddmmaaaa" ClientIDMode="Static" />
                                 <asp:Label ID="lblErrorData"  CssClass="help-inline" runat="server" ClientIDMode="Static">Data inválida.</asp:Label>
-                        </div>
+                            </span>
+                        </p>
+
+
                         <p>
                             <label>Sindicato</label>
                             <span class="field">
@@ -52,6 +59,9 @@
                             </p>
 
                     </div>
+                    <div class="row-fluid btnAcao" runat="server" id="divBtnAcao">
+                    <button class="btn btnVoltar" id="btnVoltar"><i class="iconsweets-magnifying"></i>&nbsp; Voltar</button>
+                </div>
                     <!--widgetcontent-->
                 </div>
                 <!--widget-->

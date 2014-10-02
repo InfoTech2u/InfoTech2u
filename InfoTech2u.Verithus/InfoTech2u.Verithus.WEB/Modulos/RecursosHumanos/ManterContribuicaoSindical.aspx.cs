@@ -18,8 +18,13 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
             {
                 CarregarIncludes();
                 LimparMsgErro();
-                
+                CarregarParametrosIniciais();
             }
+            }
+
+        protected void CarregarParametrosIniciais()
+        {
+            this.hdnCodigoUsuario.Value = HttpContext.Current.Session["CodigoUsuario"].ToString();
         }
 
         protected void LimparMsgErro()

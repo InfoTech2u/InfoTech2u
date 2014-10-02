@@ -1,5 +1,11 @@
 ﻿jQuery(document).ready(function () {
-    jQuery('#hdnCodigoFuncionario').val(getUrlVars()["codigofuncionario"]);
+    jQuery('#hdnCodigoFuncionario').val(getUrlVars()["idUser"]);
+
+    jQuery(".btnVoltar").click(function (event) {
+        event.preventDefault();
+        history.back(1);
+    });
+
     CarregarMascaras();
     CarregarSindicatoLista();
     CarregarContribuicaoExistente();
@@ -20,6 +26,15 @@ function CarregarMascaras()
 {
     jQuery("#datepicker").mask("99/99/9999");
     jQuery("#txtVlrContribuicao").maskMoney({ showSymbol: true, symbol: "R$", decimal: ",", thousands: "." });
+    
+    jQuery("#datepicker").datepicker({
+        defaultDate: new Date(),
+        dateFormat: 'dd/mm/yy',
+        changeMonth: true,
+        changeYear: true,
+        yearRange: '-100y:c+nn',
+        maxDate: '-1d'
+    });
 }
 
 function CarregarSindicatoLista() {
@@ -112,6 +127,7 @@ function Incluir()
         data: {
             Metodo: metodo,
             Acao: acao,
+            CodigoUsuario: jQuery('#hdnCodigoUsuario').val(),
             CodigoFuncionario: jQuery('#hdnCodigoFuncionario').val(),
             CodigoContribuicaoSindical: jQuery('#hdnCodigoContribuicaoSindical').val(),
             PeriodoAno: jQuery('#datepicker').val(),
@@ -122,10 +138,12 @@ function Incluir()
 
             var lista = eval(data);
             if (lista != undefined && lista.length > 0) {
-                alert('Concluído.');
+                history.back(1);
             }
             else {
-                alert('Falha na inclusão.');
+                jAlert('Contribuição Sindical não foi gravada.', 'Alerta', function () {
+                    jQuery.alerts.dialogClass = null; // reset to default
+                });
             }
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -150,16 +168,19 @@ function Excluir()
         data: {
             Metodo: 'Excluir',
             Acao: 'Exclusao',            
+            CodigoUsuario: jQuery('#hdnCodigoUsuario').val(),
             CodigoContribuicaoSindical: jQuery('#hdnCodigoContribuicaoSindical').val()          
         },
         success: function (data) {
             if (data) {
                 Limpar();
-                alert('Concluído.')
+                history.back(1);
             }
             else
             {
-                alert('Houve falha.');
+                jAlert('Contribuição Sindical não foi excluída.', 'Alerta', function () {
+                    jQuery.alerts.dialogClass = null; // reset to default
+                });
             }
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -181,13 +202,13 @@ function DadosValidos()
 {
     var semErros = true;
 
-    if (!isDate(jQuery('#datepicker').val(), '/', 0, 1, 2)) {
-        jQuery('#lblErrorData').show();
-        semErros = false;
-    }
-    else {
-        jQuery('#lblErrorData').hide();
-    }
+    //if (!isDate(jQuery('#datepicker').val(), '/', 0, 1, 2)) {
+    //    jQuery('#lblErrorData').show();
+    //    semErros = false;
+    //}
+    //else {
+    //    jQuery('#lblErrorData').hide();
+    //}
 
     if (jQuery('#ddlSindicato').val() == 0)
     {

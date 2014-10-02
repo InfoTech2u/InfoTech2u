@@ -30,6 +30,7 @@ namespace InfoTech2u.Verithus.DA
                 objSql.Open();
 
                 lstSqlParameter.Add(new SqlParameter("@CODIGO_FUNCIONARIO", param.CodigoFuncionario));
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_CONTRIBUICAO_SINDICAL", DBNull.Value));
 
                 objSql.Execute("dbo.[SPVRT109_CONTRIBUICAO_SINDICAL_PR_SELECIONAR]", lstSqlParameter.ToArray(), null, ref dtRetorno);
 
@@ -148,6 +149,7 @@ namespace InfoTech2u.Verithus.DA
                 objSql.Open();
 
                 lstSqlParameter.Add(new SqlParameter("@CODIGO_CONTRIBUICAO_SINDICAL", param.CodigoContribuicaoSindical));
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO_ALTERACAO", param.CodigoUsuarioAlteracao));
 
                 
                 objSql.ExecuteNonQuery("dbo.[SPVRT112_CONTRIBUICAO_SINDICAL_PR_EXCLUIR]", lstSqlParameter.ToArray(), null, out rowsAffected);

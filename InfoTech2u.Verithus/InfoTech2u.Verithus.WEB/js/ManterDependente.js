@@ -1,6 +1,6 @@
 ﻿jQuery(document).ready(function () {
 
-    jQuery('#hdnCodigoFuncionario').val(getUrlVars()["codfunc"]);
+    jQuery('#hdnCodigoFuncionario').val(getUrlVars()["idUser"]);
     CarregarDependentes();
 
     //Data dataddmmaaaa
@@ -131,7 +131,6 @@ function CarregarDependentes()
         });
                     }
 }
-
 
 function CarregarCombos(id)
 {
