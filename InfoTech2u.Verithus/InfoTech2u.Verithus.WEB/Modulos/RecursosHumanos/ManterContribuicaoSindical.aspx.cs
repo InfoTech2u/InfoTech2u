@@ -14,13 +14,10 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                CarregarIncludes();
-                LimparMsgErro();
-                CarregarParametrosIniciais();
-            }
-            }
+            CarregarIncludes();
+            LimparMsgErro();
+            CarregarParametrosIniciais();
+        }
 
         protected void CarregarParametrosIniciais()
         {
@@ -33,7 +30,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
             lblErrorSindicato.Style.Add("display", "none");
             lblErrorVlrContribuicao.Style.Add("display", "none");
         }
-        
+
         protected void CarregarIncludes()
         {
             string pachCss = "../../css/";

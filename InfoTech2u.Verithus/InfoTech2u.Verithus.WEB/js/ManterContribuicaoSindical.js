@@ -22,19 +22,27 @@ function getUrlVars() {
     return vars;
 }
 
-function CarregarMascaras()
-{
+function CarregarMascaras() {
     jQuery("#datepicker").mask("99/99/9999");
     jQuery("#txtVlrContribuicao").maskMoney({ showSymbol: true, symbol: "R$", decimal: ",", thousands: "." });
-    
+
     jQuery("#datepicker").datepicker({
         defaultDate: new Date(),
         dateFormat: 'dd/mm/yy',
         changeMonth: true,
         changeYear: true,
-        yearRange: '-100y:c+nn',
-        maxDate: '-1d'
+        yearRange: '-100y:c+nn'
     });
+    
+    /*
+    jQuery("#datepicker").datepicker({
+        defaultDate: new Date(),
+        dateFormat: 'dd/mm/yy',
+        changeMonth: true,
+        changeYear: true,
+        yearRange: '-100y:c+nn'
+        
+    });*/
 }
 
 function CarregarSindicatoLista() {
@@ -65,8 +73,12 @@ function CarregarSindicatoLista() {
     });
 }
 
-function CarregarContribuicaoExistente()
-{
+function CarregarContribuicaoExistente() {
+
+    var codFunc = jQuery('#hdnCodigoFuncionario').val();
+
+    alert(codFunc);
+
     jQuery.ajax({
         type: "GET",
         crossDomain: true,
@@ -76,18 +88,17 @@ function CarregarContribuicaoExistente()
         data: {
             Metodo: 'SelecionarContribuicaoFuncionario',
             Acao: 'Inclusao',
-            CodigoFuncionario: jQuery('#hdnCodigoFuncionario').val()
+            CodigoFuncionario: codFunc
         },
         success: function (data) {
 
             var lista = eval(data);
 
-            if (lista.length > 0)
-            {
+            if (lista.length > 0) {
                 jQuery('#hdnCodigoFuncionario').val(lista[0].CODIGO_FUNCIONARIO);
                 jQuery('#hdnCodigoContribuicaoSindical').val(lista[0].CODIGO_CONTRIBUICAO_SINDICAL);
                 jQuery('#datepicker').val(lista[0].PERIODO_ANO_STR);
-                jQuery('#ddlSindicato option[value="'+ lista[0].CODIGO_SINDICATO +'"]').prop('selected', true);
+                jQuery('#ddlSindicato option[value="' + lista[0].CODIGO_SINDICATO + '"]').prop('selected', true);
                 jQuery('#txtVlrContribuicao').val(lista[0].VALOR_RECOLHIDO)
                 CarregarMascaras();
             }
@@ -99,13 +110,11 @@ function CarregarContribuicaoExistente()
     });
 }
 
-function Incluir()
-{
+function Incluir() {
     var metodo = "";
     var acao = "";
 
-    if (!DadosValidos())
-    {
+    if (!DadosValidos()) {
         return;
     }
 
@@ -153,8 +162,7 @@ function Incluir()
     });
 }
 
-function Excluir()
-{
+function Excluir() {
     if (!DadosValidos()) {
         return;
     }
@@ -167,17 +175,16 @@ function Excluir()
         cache: false,
         data: {
             Metodo: 'Excluir',
-            Acao: 'Exclusao',            
+            Acao: 'Exclusao',
             CodigoUsuario: jQuery('#hdnCodigoUsuario').val(),
-            CodigoContribuicaoSindical: jQuery('#hdnCodigoContribuicaoSindical').val()          
+            CodigoContribuicaoSindical: jQuery('#hdnCodigoContribuicaoSindical').val()
         },
         success: function (data) {
             if (data) {
                 Limpar();
                 history.back(1);
             }
-            else
-            {
+            else {
                 jAlert('Contribuição Sindical não foi excluída.', 'Alerta', function () {
                     jQuery.alerts.dialogClass = null; // reset to default
                 });
@@ -190,16 +197,14 @@ function Excluir()
     });
 }
 
-function Limpar()
-{
+function Limpar() {
     jQuery('#hdnCodigoContribuicaoSindical').val(0);
     jQuery('#datepicker').val('');
     jQuery('#ddlSindicato option[value="0"]').prop('selected', true);
     jQuery('#txtVlrContribuicao').val('');
 }
 
-function DadosValidos()
-{
+function DadosValidos() {
     var semErros = true;
 
     //if (!isDate(jQuery('#datepicker').val(), '/', 0, 1, 2)) {
@@ -210,8 +215,7 @@ function DadosValidos()
     //    jQuery('#lblErrorData').hide();
     //}
 
-    if (jQuery('#ddlSindicato').val() == 0)
-    {
+    if (jQuery('#ddlSindicato').val() == 0) {
         jQuery('#lblErrorSindicato').show();
         semErros = false;
     }
@@ -220,7 +224,7 @@ function DadosValidos()
     }
 
     return semErros;
-    
+
 }
 
 function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {

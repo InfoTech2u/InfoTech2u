@@ -112,21 +112,21 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos {
         protected global::System.Web.UI.WebControls.TextBox txtIntervaloTrabalhoSaida;
         
         /// <summary>
-        /// txtDescansoSemanalEntrada control.
+        /// ddlDescansoSemanalEntrada control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescansoSemanalEntrada;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDescansoSemanalEntrada;
         
         /// <summary>
-        /// txtDescansoSemanalSaida control.
+        /// ddlDescansoSemanalSaida control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescansoSemanalSaida;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDescansoSemanalSaida;
     }
 }

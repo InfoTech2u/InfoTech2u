@@ -68,8 +68,8 @@ jQuery(document).ready(function () {
         dateFormat: 'dd/mm/yy',
         changeMonth: true,
         changeYear: true,
-        yearRange: '-100y:c+nn',
-        maxDate: '-1d'
+        yearRange: '-100y:c+nn'
+        
     });
 
     // Data com opção de Filtro de Mes e Ano
@@ -77,8 +77,8 @@ jQuery(document).ready(function () {
         dateFormat: 'dd/mm',
         changeMonth: true,
         changeYear: false,
-        yearRange: '-100y:c+nn',
-        maxDate: '-1d'
+        yearRange: '-100y:c+nn'
+        
     });
 
     var passoAtivo;

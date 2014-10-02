@@ -10,9 +10,16 @@ jQuery(document).ready(function () {
         dateFormat: 'dd/mm/yy',
         changeMonth: true,
         changeYear: true,
-        yearRange: '-100y:c+nn',
-        maxDate: '-1d'
+        yearRange: '-100y:c+nn'
+
     });
+
+    jQuery('.horaBrasil').mask('99:99');
+
+
+    //jQuery('.horaBrasil').timepicker({ timeFormat: 'HH:mm:ss' });
+
+    jQuery("#txtSalarioInicial").maskMoney({ showSymbol: true, symbol: "R$", decimal: ",", thousands: "." });
 
     jQuery("#btnConcluirAdmissao").click(function () {
         ValidarFormularioAdmissao();
@@ -68,11 +75,11 @@ jQuery(document).ready(function () {
         jQuery('#msgIntervaloTrabalhoSaida').html('').hide();
         jQuery("#validaIntervaloTrabalhoSaida").removeClass("par control-group error").addClass("input-small");
 
-        jQuery("#txtDescansoSemanalEntrada").val("");
+        jQuery('#ddlDescansoSemanalEntrada').val(0);
         jQuery('#msgDescansoSemanalEntrada').html('').hide();
         jQuery("#validaDescansoSemanalEntrada").removeClass("par control-group error").addClass("input-small");
 
-        jQuery("#txtDescansoSemanalSaida").val("");
+        jQuery('#ddlDescansoSemanalSaida').val(0);
         jQuery('#msgDescansoSemanalSaida').html('').hide();
         jQuery("#validaDescansoSemanalSaida").removeClass("par control-group error").addClass("input-small");
     });
@@ -111,7 +118,7 @@ jQuery(document).ready(function () {
         jQuery('#msgFormaPagamento').html('').hide();
         jQuery("#validaFormaPagamento").removeClass("par control-group error").addClass("input-small");
     });
-    
+
     function ValidarFormularioAdmissao() {
 
         var dataDeAdmissao = jQuery('#txtDataAdmissao').val();
@@ -245,9 +252,8 @@ jQuery(document).ready(function () {
             jQuery("#validaIntervaloTrabalhoSaida").removeClass("par control-group error").addClass("par control-group success");
         }
 
-
-        var descansoSemanalEntrada = jQuery("#txtDescansoSemanalEntrada").val();
-        if (!descansoSemanalEntrada && descansoSemanalEntrada.length <= 0) {
+        var descansoSemanalEntrada = jQuery('#ddlDescansoSemanalEntrada option:selected').text();
+        if (!descansoSemanalEntrada == 'Selecionar') {
             jQuery('#msgDescansoSemanalEntrada').html('O Campo Descanso Semanal Deve ser preenchido').show();
             jQuery("#validaDescansoSemanalEntrada").removeClass("par control-group success").addClass("par control-group error");
             retorno = false;
@@ -258,8 +264,8 @@ jQuery(document).ready(function () {
         }
 
 
-        var descansoSemanalSaida = jQuery("#txtDescansoSemanalSaida").val();
-        if (!descansoSemanalSaida && descansoSemanalSaida.length <= 0) {
+        var descansoSemanalSaida = jQuery('#ddlDescansoSemanalSaida option:selected').text();
+        if (!descansoSemanalSaida == 'Selecionar') {
             jQuery('#msgDescansoSemanalSaida').html('O Campo Descanso Semanal Deve ser preenchido').show();
             jQuery("#validaDescansoSemanalSaida").removeClass("par control-group success").addClass("par control-group error");
             retorno = false;

@@ -1,8 +1,8 @@
-CREATE DATABASE DBVERITHUS
-GO
+/*==============================================================*/
+/* DBMS name:      Microsoft SQL Server 2008                    */
+/* Created on:     02/10/2014 16:16:05                          */
+/*==============================================================*/
 
-USE DBVERITHUS
-GO
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
@@ -974,7 +974,6 @@ create table TBVRT019_DADOS_ADMISSAO (
    INTERVALO_ALMOCO_FIM nvarchar(10)         null,
    DESCANSO_SEMANAL_INICIO char(1)              null,
    DESCANSO_SEMANAL_FIM char(1)              null,
-   CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
    CODIGO_USUARIO_ALTERACAO int                  null,
    DATA_ALTERACAO       datetime             null,
@@ -1694,3 +1693,4 @@ alter table TBVRT045_BENEFICIO
    add constraint FK_TBVRT045_REFERENCE_TBVRT011 foreign key (CODIGO_DEPENDENTE)
       references TBVRT011_DEPENDENTE (CODIGO_DEPENDENTE)
 go
+

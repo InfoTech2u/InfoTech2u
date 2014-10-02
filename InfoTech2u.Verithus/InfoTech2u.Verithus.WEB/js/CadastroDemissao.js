@@ -10,8 +10,8 @@ jQuery(document).ready(function () {
         dateFormat: 'dd/mm/yy',
         changeMonth: true,
         changeYear: true,
-        yearRange: '-100y:c+nn',
-        maxDate: '-1d'
+        yearRange: '-100y:c+nn'
+        
     });
 
     jQuery('#btnConcluirDemissao').click(function (event) {

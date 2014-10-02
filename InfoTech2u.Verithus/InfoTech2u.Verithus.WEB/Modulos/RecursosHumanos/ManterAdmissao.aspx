@@ -72,7 +72,7 @@
                             <p id="validaComissao">
                                 <label>Comissões</label>
                                 <span class="field">
-                                    <asp:TextBox runat="server" ID="txtComissao" class="input-small" ClientIDMode="Static" />
+                                    <asp:TextBox runat="server" ID="txtComissao" class="input-block-level" ClientIDMode="Static" />
                                     <span class="help-inline" id="msgComissao"></span>
                                 </span>
                             </p>
@@ -90,14 +90,14 @@
                                 <p id="validaHorarioTrabalhoEntrada">
                                     <label>Entrada</label>
                                     <span class="field">
-                                        <asp:TextBox runat="server" ID="txtHorarioTrabalhoEntrada" class="input-small" ClientIDMode="Static" />
+                                        <asp:TextBox runat="server" ID="txtHorarioTrabalhoEntrada" class="input-small horaBrasil" ClientIDMode="Static" />
                                         <span class="help-inline" id="msgHorarioTrabalhoEntrada"></span>
                                     </span>
                                 </p>
                                 <p id="validaHorarioTrabalhoSaida">
                                     <label>Saída</label>
                                     <span class="field">
-                                        <asp:TextBox runat="server" ID="txtHorarioTrabalhoSaida" class="input-small" ClientIDMode="Static" />
+                                        <asp:TextBox runat="server" ID="txtHorarioTrabalhoSaida" class="input-small horaBrasil" ClientIDMode="Static" />
                                         <span class="help-inline" id="msgHorarioTrabalhoSaida"></span>
                                     </span>
                                 </p>
@@ -108,14 +108,14 @@
                                 <p id="validaIntervaloTrabalhoEntrada">
                                     <label>Entrada</label>
                                     <span class="field">
-                                        <asp:TextBox runat="server" ID="txtIntervaloTrabalhoEntrada" class="input-small" ClientIDMode="Static" />
+                                        <asp:TextBox runat="server" ID="txtIntervaloTrabalhoEntrada" class="input-small horaBrasil" ClientIDMode="Static" />
                                         <span class="help-inline" id="msgIntervaloTrabalhoEntrada"></span>
                                     </span>
                                 </p>
                                 <p id="validaIntervaloTrabalhoSaida">
                                     <label>Saída</label>
                                     <span class="field">
-                                        <asp:TextBox runat="server" ID="txtIntervaloTrabalhoSaida" class="input-small" ClientIDMode="Static" />
+                                        <asp:TextBox runat="server" ID="txtIntervaloTrabalhoSaida" class="input-small horaBrasil" ClientIDMode="Static" />
                                         <span class="help-inline" id="msgIntervaloTrabalhoSaida"></span>
                                     </span>
                                 </p>
@@ -126,14 +126,32 @@
                                 <p id="validaDescansoSemanalEntrada">
                                     <label>Entrada</label>
                                     <span class="field">
-                                        <asp:TextBox runat="server" ID="txtDescansoSemanalEntrada" class="input-small" ClientIDMode="Static" />
+                                        <asp:DropDownList runat="server" ID="ddlDescansoSemanalEntrada" class="uniformselect" ClientIDMode="Static">
+                                            <asp:ListItem Value="0">Selecionar</asp:ListItem>
+                                            <asp:ListItem Value="1">Domingo-Feira</asp:ListItem>
+                                            <asp:ListItem Value="2">Segunda-Feira</asp:ListItem>
+                                            <asp:ListItem Value="3">Terça-Feira</asp:ListItem>
+                                            <asp:ListItem Value="4">Quarta-Feira</asp:ListItem>
+                                            <asp:ListItem Value="5">Quinta-Feira</asp:ListItem>
+                                            <asp:ListItem Value="6">Sexta-Feira</asp:ListItem>
+                                            <asp:ListItem Value="7">Sabado-Feira</asp:ListItem>
+                                        </asp:DropDownList>
                                         <span class="help-inline" id="msgDescansoSemanalEntrada"></span>
                                     </span>
                                 </p>
                                 <p id="validaDescansoSemanalSaida">
                                     <label>Saída</label>
                                     <span class="field">
-                                        <asp:TextBox runat="server" ID="txtDescansoSemanalSaida" class="input-small" ClientIDMode="Static" />
+                                        <asp:DropDownList runat="server" ID="ddlDescansoSemanalSaida" class="uniformselect" ClientIDMode="Static">
+                                            <asp:ListItem Value="0">Selecionar</asp:ListItem>
+                                            <asp:ListItem Value="1">Domingo-Feira</asp:ListItem>
+                                            <asp:ListItem Value="2">Segunda-Feira</asp:ListItem>
+                                            <asp:ListItem Value="3">Terça-Feira</asp:ListItem>
+                                            <asp:ListItem Value="4">Quarta-Feira</asp:ListItem>
+                                            <asp:ListItem Value="5">Quinta-Feira</asp:ListItem>
+                                            <asp:ListItem Value="6">Sexta-Feira</asp:ListItem>
+                                            <asp:ListItem Value="7">Sabado-Feira</asp:ListItem>
+                                        </asp:DropDownList>
                                         <span class="help-inline" id="msgDescansoSemanalSaida"></span>
                                     </span>
                                 </p>

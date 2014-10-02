@@ -19,9 +19,12 @@ namespace InfoTech2u.Verithus.WEB.Handler
         {
             if (context.Request.QueryString["Metodo"] == "SelecionarContribuicaoFuncionario")
             {
-                var retorno = SelecionarContribuicaoFuncionario(Convert.ToInt32(context.Request.QueryString["CodigoFuncionario"]));                
+                if (!String.IsNullOrWhiteSpace(context.Request.QueryString["CodigoFuncionario"]))
+                { 
+                    var retorno = SelecionarContribuicaoFuncionario(Convert.ToInt32(context.Request.QueryString["CodigoFuncionario"]));                
 
-                context.Response.Write(retorno.Serializer());
+                    context.Response.Write(retorno.Serializer());
+                }
             }
             else if (context.Request.QueryString["Metodo"] == "Incluir")
             {
