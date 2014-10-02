@@ -16,7 +16,7 @@ namespace InfoTech2u.Verithus.WEB
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["LoginUsuario"] == null)
-                Response.Redirect("../../Login.aspx", true);
+                Response.Redirect("~/Login.aspx", true);
 
            // CarregarUrlAmigavel();
             
