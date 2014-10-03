@@ -48,13 +48,13 @@
                                 </span>
                             </div>
                             
-                            <div class="control-group">
-                                <label class="control-label" for="txtDataNascimento">Data Nascimento</label>
-                                <div class="controls">
-                                    <asp:TextBox runat="server" ID="txtDataNascimento" CssClass="input-small dataddmmaaaa" ClientIDMode="Static" />
+                            <p id="validaDataNascimento">
+                            <label>Data Nascimento</label>
+                            <span class="field">
+                                <asp:TextBox runat="server" ID="txtDataNascimento" CssClass="input-small txtDataFilMesAno dataddmmaaaa" ClientIDMode="Static" />
                                      <asp:Label ID="lblErrorDataNascimento" CssClass="help-inline" runat="server" ClientIDMode="Static">Data inválida.</asp:Label>
-                                </div>
-                            </div>
+                            </span>
+                        </p>
 
                             <div class="control-group">
                                 <label>Benefícios</label>
@@ -108,6 +108,9 @@
                         
                     </tbody>
                 </table>
+                <div class="row-fluid btnAcao" runat="server" id="divBtnAcao">
+                    <button class="btn btnVoltar" id="btnVoltar"><i class="iconsweets-magnifying"></i>&nbsp; Voltar</button>
+                </div>
             </div>
             <!--widget-->
 

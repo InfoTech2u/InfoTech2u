@@ -3,8 +3,22 @@
     jQuery('#hdnCodigoFuncionario').val(getUrlVars()["idUser"]);
     CarregarDependentes();
 
+    
+
+    jQuery(".btnVoltar").click(function (event) {
+        event.preventDefault();
+        history.back(1);
+    });
+
     //Data dataddmmaaaa
     jQuery(".dataddmmaaaa").mask("99/99/9999");
+    jQuery(".txtDataFilMesAno").datepicker({
+        defaultDate: new Date(),
+        dateFormat: 'dd/mm/yy',
+        changeMonth: true,
+        changeYear: true,
+        yearRange: '-100y:c+nn'
+    });
 
     // Dual Box Select
     var db = jQuery('#dualselect').find('.ds_arrow a');	//get arrows of dual select

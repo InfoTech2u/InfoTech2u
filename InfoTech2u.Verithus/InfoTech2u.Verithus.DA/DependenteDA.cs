@@ -232,6 +232,7 @@ namespace InfoTech2u.Verithus.DA
                     param.CodigoDependente = Convert.ToInt32(dtRetornoDependente.Rows[0]["CODIGO_DEPENDENTE"]);
                     lstSqlParameter = new List<SqlParameter>();
                     lstSqlParameter.Add(new SqlParameter("@CODIGO_DEPENDENTE", param.CodigoDependente));
+                    lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO_ALTERACAO", param.CodigoUsuarioAlteracao));
                     dtRetornoExcluir = new DataTable();
 
                     //Exclui todos benefícios do dependente caso exista
@@ -252,8 +253,9 @@ namespace InfoTech2u.Verithus.DA
                             lstSqlParameter = new List<SqlParameter>();
                             lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_BENEFICIO", item.TipoBeneficio.CodigoTipoBeneficio));
                             lstSqlParameter.Add(new SqlParameter("@CODIGO_DEPENDENTE", param.CodigoDependente));
+                            lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO_CADASTRO", param.CodigoUsuarioCadastro));
 
-                            objSql.ExecuteNonQuery("SPVRT049_BENEFICIO_PR_INCLUIR", lstSqlParameter.ToArray(), transaction, out rowsAffected);
+                            objSql.ExecuteNonQuery("SPVRT050_BENEFICIO_PR_INCLUIR", lstSqlParameter.ToArray(), transaction, out rowsAffected);
 
                             if (rowsAffected <= 0)
                             {
@@ -360,6 +362,7 @@ namespace InfoTech2u.Verithus.DA
                 {
                     lstSqlParameter = new List<SqlParameter>();
                     lstSqlParameter.Add(new SqlParameter("@CODIGO_DEPENDENTE", param.CodigoDependente));
+                    lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO_ALTERACAO", param.CodigoUsuarioAlteracao));
                     dtRetornoExcluir = new DataTable();
 
                     //Exclui todos benefícios do dependente caso exista
@@ -380,8 +383,9 @@ namespace InfoTech2u.Verithus.DA
                             lstSqlParameter = new List<SqlParameter>();
                             lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_BENEFICIO", item.TipoBeneficio.CodigoTipoBeneficio));
                             lstSqlParameter.Add(new SqlParameter("@CODIGO_DEPENDENTE", param.CodigoDependente));
+                            lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO_CADASTRO", param.CodigoUsuarioCadastro));
 
-                            objSql.ExecuteNonQuery("SPVRT049_BENEFICIO_PR_INCLUIR", lstSqlParameter.ToArray(), transaction, out rowsAffected);
+                            objSql.ExecuteNonQuery("SPVRT050_BENEFICIO_PR_INCLUIR", lstSqlParameter.ToArray(), transaction, out rowsAffected);
 
                             if (rowsAffected <= 0)
                             {
