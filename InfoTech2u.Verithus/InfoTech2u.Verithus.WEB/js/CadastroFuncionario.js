@@ -56,7 +56,12 @@ jQuery(document).ready(function () {
         showSymbol: true, thousands: '.', decimal: ',', symbolStay: true
     });
 
+    //CarregarEmpresaLista
 
+
+    jQuery("#btnLupaEmpresa").click(function (event) {
+        CarregarEmpresaLista();
+    });
 
     jQuery(".btnVoltar").click(function (event) {
         event.preventDefault();
@@ -69,7 +74,7 @@ jQuery(document).ready(function () {
         changeMonth: true,
         changeYear: true,
         yearRange: '-100y:c+nn'
-        
+
     });
 
     // Data com opção de Filtro de Mes e Ano
@@ -78,7 +83,7 @@ jQuery(document).ready(function () {
         changeMonth: true,
         changeYear: false,
         yearRange: '-100y:c+nn'
-        
+
     });
 
     var passoAtivo;
@@ -858,7 +863,7 @@ function validarFuncionario(passoAtivo) {
             jQuery("#validaConta").removeClass("par control-group error").addClass("par control-group success");
         }
 
-        
+
 
 
         if (!Digito && Digito.length <= 0) {
@@ -1474,3 +1479,118 @@ function () {
         });
     });
 };
+
+function CarregarEmpresaLista() {
+
+    jQuery("tbody").empty();
+    jQuery('tbody').remove();
+    jQuery('#dyntable').append('<tbody></tbody>');
+
+    jQuery.ajax({
+        type: "GET",
+        crossDomain: true,
+        url: "../../Handler/ManterEmpresa.ashx",
+        contentType: "json",
+        cache: false,
+        data: {
+            Metodo: 'ListaEmpresa',
+            Acao: 'Selecionar',
+            CodigoEmpresa: '',
+            NomeFantasia: '',
+            RazaoSocial: '',
+            CNPJ: '',
+            InscricaoEstadual: '',
+            CodigoStatus: ''
+        },
+        success: function (data) {
+            var empresa = eval(data);
+
+
+            if (empresa != undefined && empresa.length > 0) {
+                for (var x in empresa) {
+
+                    var row = '<tr value="' + empresa[x].CODIGO_EMPRESA + '">' +
+                           '<td><input type="radio" name="rdbEmpresa" class="rdbFuncionario" value="' + empresa[x].CODIGO_EMPRESA + '" /></td>' +
+                           '<td>' + empresa[x].CODIGO_EMPRESA + '</td>' +
+                           '<td>' + empresa[x].CNJP + '</td>' +
+                           '<td>' + empresa[x].RAZAO_SOCIAL + '</td>' +
+                           '<td>' + empresa[x].NOME_FANTASIA + '</td>' +
+                         '</tr>';
+                    jQuery('#dyntable').append(row);
+                }
+
+                jQuery('#dyntable').dataTable().fnDestroy();
+
+                jQuery('#dyntable').dataTable({
+                    "sPaginationType": "full_numbers",
+                    "fnDrawCallback": function (oSettings) {
+                        jQuery.uniform.update();
+                    },
+                    "language": {
+                        "lengthMenu": "Display _MENU_ records per page",
+                        "zeroRecords": "Nothing found - sorry",
+                        "info": "Showing page _PAGE_ of _PAGES_",
+                        "infoEmpty": "No records available",
+                        "infoFiltered": "(filtered from _MAX_ total records)",
+                        "sInfoEmpty": "Mostrando 0-0 de 0 Funcionários"
+                    }
+                    //"sInfoEmpty": "Mostrando 0-0 de 0 Funcionários"
+                });
+
+            }
+
+
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrow) {
+            errorAjax(textStatus);
+            alert(textStatus);
+        }
+    });
+
+}
+
+function SelecionarEmpresa() {
+    var empresaSel = jQuery('input[name=rdbEmpresa]:checked', '.frmInfotech2u').val();
+
+    //alert(empresaSel);
+
+    if (empresaSel == undefined)
+        alert('Selecione uma Empresa');
+    else {
+        jQuery.ajax({
+            type: "GET",
+            crossDomain: true,
+            url: "../../Handler/ManterEmpresa.ashx",
+            contentType: "json",
+            cache: false,
+            data: {
+                Metodo: 'ListaEmpresa',
+                Acao: 'Selecionar',
+                CodigoEmpresa: empresaSel,
+                NomeFantasia: '',
+                RazaoSocial: '',
+                CNPJ: '',
+                InscricaoEstadual: '',
+                CodigoStatus: ''
+            },
+            success: function (data) {
+                var empresa = eval(data);
+
+
+                if (empresa != undefined && empresa.length > 0) {
+
+                    jQuery('#txtCodigoEmpresaLupa').val(empresa[0].CODIGO_EMPRESA);
+                    jQuery('#txtDescricaoEmpresaLupa').val(empresa[0].RAZAO_SOCIAL);
+
+                    jQuery('#myModal').modal('hide');
+                }
+
+
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrow) {
+                errorAjax(textStatus);
+                alert(textStatus);
+            }
+        });
+    }
+}

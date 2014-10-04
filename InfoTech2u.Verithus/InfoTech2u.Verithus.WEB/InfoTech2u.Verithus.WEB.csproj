@@ -75,6 +75,7 @@
     <Content Include="js\jquery.maskMoney.js" />
     <Content Include="js\ManterContribuicaoSindical.js" />
     <Content Include="js\ManterDependente.js" />
+    <Content Include="js\ManterEmpresa.js" />
     <Content Include="js\ManterSindicato.js" />
     <Content Include="js\ManterSistema.js" />
     <Content Include="js\ManterTipoFuncionalidade.js" />
@@ -194,6 +195,7 @@
     <Content Include="Handler\ManterTipoSistema.ashx" />
     <Content Include="Handler\TipoParentesco.ashx" />
     <Content Include="Handler\ManterAdmissao.ashx" />
+    <Content Include="Handler\ManterEmpresa.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -817,6 +819,9 @@
     </Compile>
     <Compile Include="Handler\ManterDemissao.ashx.cs">
       <DependentUpon>ManterDemissao.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\ManterEmpresa.ashx.cs">
+      <DependentUpon>ManterEmpresa.ashx</DependentUpon>
     </Compile>
     <Compile Include="Handler\ManterFormaDePagamento.ashx.cs">
       <DependentUpon>ManterFormaDePagamento.ashx</DependentUpon>

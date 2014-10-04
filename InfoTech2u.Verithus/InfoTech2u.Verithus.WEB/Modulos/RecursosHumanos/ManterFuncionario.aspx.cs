@@ -91,6 +91,8 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
                 while (i < dtRetorno.Rows.Count)
                 {
 
+                    this.txtCodigoEmpresaLupa.Text = dtRetorno.Rows[i]["EMPR_CODIGO_EMPRESA"].ToString();
+                    this.txtDescricaoEmpresaLupa.Text = dtRetorno.Rows[i]["EMPR_RAZAO_SOCIAL"].ToString();
                     this.txtAgencia.Text = dtRetorno.Rows[i]["BANCO_PIS_AGENCIA"].ToString();
                     this.txtAgenciaFGTS.Text = dtRetorno.Rows[i]["BANCO_FGTS_AGENCIA"].ToString();
                     this.txtAltura.Text = dtRetorno.Rows[i]["CARACTERISTICA_FUNC_ALTURA"].ToString();
@@ -268,7 +270,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
             this.rdbCasadoBrasileiro.Enabled = false;
             this.rdpOptanteFGTS.Enabled = false;
             this.ddlStatus.Enabled = false;
-            this.ddlEmpresa.Enabled = false;
+            
 
 
 
@@ -495,6 +497,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "bootstrap-fileupload.min.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "bootstrap-timepicker.min.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery.uniform.min.js");
+            InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery.dataTables.min.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery.validate.min.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery.tagsinput.min.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery.autogrow-textarea.js");
@@ -507,6 +510,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery.smartWizard.min.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery.maskedinput-1.3.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery.maskMoney.js");
+            InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "responsive-tables.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "custom.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "CadastroFuncionario.js");
 

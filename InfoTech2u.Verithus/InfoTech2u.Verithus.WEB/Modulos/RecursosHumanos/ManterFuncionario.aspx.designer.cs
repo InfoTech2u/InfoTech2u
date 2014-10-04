@@ -13,6 +13,15 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario {
     public partial class ManterFuncionario {
         
         /// <summary>
+        /// hdnFuncaoTela control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnFuncaoTela;
+        
+        /// <summary>
         /// hdnCodigoDocumento control.
         /// </summary>
         /// <remarks>
@@ -121,13 +130,22 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario {
         protected global::System.Web.UI.WebControls.TextBox txtCodigoFuncionario;
         
         /// <summary>
-        /// ddlEmpresa control.
+        /// txtCodigoEmpresaLupa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEmpresa;
+        protected global::System.Web.UI.WebControls.TextBox txtCodigoEmpresaLupa;
+        
+        /// <summary>
+        /// txtDescricaoEmpresaLupa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDescricaoEmpresaLupa;
         
         /// <summary>
         /// ddlStatus control.

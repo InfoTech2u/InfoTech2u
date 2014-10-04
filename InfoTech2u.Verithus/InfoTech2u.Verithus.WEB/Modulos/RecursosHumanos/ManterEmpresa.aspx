@@ -74,13 +74,13 @@
 
                     <div class="modal-footer">
                         <button data-dismiss="modal" class="btn">&nbsp; Sair</button>
-                        <a class="btn btn-primary" id="btnIncluir" href="#" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Gravar</a>
+                        <a class="btn btn-primary" id="btnIncluir" href="#" onclick="javascript:Gravar('');" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Gravar</a>
                     </div>
                 </div>
                 <!--#myModal-->
 
                 <div class="row-fluid">
-                    <a class="btn btn-primary" href="#myModal" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Incluir</a>                   
+                    <a class="btn btn-primary" href="#myModal" onclick="javascript:FuncaoTelaModal('Incluir', 0);" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Incluir</a>                   
                 </div>
 
                 <h4 class="widgettitle">Empresa</h4>

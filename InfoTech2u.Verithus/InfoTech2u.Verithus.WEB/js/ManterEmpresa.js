@@ -1,29 +1,32 @@
 ﻿jQuery(document).ready(function () {
 
     CarregarEmpresaLista();
-
-    jQuery('#btnIncluir').click(function (event) {
-
-        if (DadosValidos()) {
-            Gravar(id);
-        }
-
-    });
-
-
 });
 
-function PrepararTela(id) {
-    if (jQuery('#hdnFuncaoTela').val() == 'Incluir') {
+function PrepararTela(id, acao) {
+    if (acao == 'Incluir') {
         jQuery('#btnIncluir').attr('onclick', 'javascript:Gravar("")');
+        jQuery('#txtCodigoEmpresa').val('');
         jQuery('#txtNomeFantasia').val('');
         jQuery('#txtRazaoSocial').val('');
         jQuery('#txtCNPJ').val('');
         jQuery('#txtInscricaoEstadual').val('');
     }
-    else (jQuery('#hdnFuncaoTela').val() == 'Alterar')
+    else if (acao == 'Alterar')
     {
         CarregarEmpresa(id);
+    }
+    else if (acao == 'Detalhar') {
+        CarregarEmpresa(id);
+    }
+    else {
+
+        jQuery('#btnIncluir').attr('onclick', 'javascript:Gravar("")');
+        jQuery('#txtCodigoEmpresa').val('');
+        jQuery('#txtNomeFantasia').val('');
+        jQuery('#txtRazaoSocial').val('');
+        jQuery('#txtCNPJ').val('');
+        jQuery('#txtInscricaoEstadual').val('');
     }
 }
 
@@ -37,10 +40,16 @@ function CarregarEmpresa(id) {
         data: {
             Metodo: 'SelecionarEmpresa',
             Acao: 'Selecionar',
-            CodigoDependente: id
+            CodigoEmpresa: id,
+            NomeFantasia: '',
+            RazaoSocial: '',
+            CNPJ: '',
+            InscricaoEstadual: '',
+            CodigoStatus: ''
         },
         success: function (data) {
             var empresa = eval(data);
+
 
             if (empresa != undefined && empresa.length > 0) {
 
@@ -50,7 +59,7 @@ function CarregarEmpresa(id) {
                 jQuery('#txtCNPJ').val(empresa[0].CNJP);
                 jQuery('#txtInscricaoEstadual').val(empresa[0].INCRICAO_ESTADUAL);
 
-                jQuery('#btnIncluir').attr('onclick', 'javascript:Alterar(' + id + ');');
+                jQuery('#btnIncluir').attr('onclick', 'javascript:Gravar(' + id + ');');
 
             }
         },
@@ -72,6 +81,8 @@ function FuncaoTelaModal(funcao, id) {
         jQuery('#txtInscricaoEstadual').attr('readonly', false);
         jQuery("#btnIncluir").prop("disabled", false);
 
+        PrepararTela(id, 'incluir');
+
     }
     else if (funcao == 'Alterar') {
         jQuery('#hdnFuncaoTela').val('Alterar');
@@ -81,6 +92,9 @@ function FuncaoTelaModal(funcao, id) {
         jQuery('#txtCNPJ').attr('readonly', false);
         jQuery('#txtInscricaoEstadual').attr('readonly', false);
         jQuery("#btnIncluir").prop("disabled", false);
+
+        PrepararTela(id,'Alterar');
+
 
     }
     else if (funcao == 'Detalhar') {
@@ -92,7 +106,7 @@ function FuncaoTelaModal(funcao, id) {
         jQuery('#txtInscricaoEstadual').attr('readonly', true);
         jQuery("#btnIncluir").prop("disabled", true);
 
-
+        PrepararTela(id,'Detalhar');
     }
     else { jQuery('#hdnFuncaoTela').val(''); }
 
@@ -142,7 +156,13 @@ function CarregarEmpresaLista() {
         cache: false,
         data: {
             Metodo: 'ListaEmpresa',
-            Acao: 'Selecionar'
+            Acao: 'Selecionar',
+            CodigoEmpresa: '',
+            NomeFantasia: '',
+            RazaoSocial: '',
+            CNPJ: '',
+            InscricaoEstadual: '',
+            CodigoStatus: ''
         },
         success: function (data) {
             var empresa = eval(data);
@@ -156,11 +176,11 @@ function CarregarEmpresaLista() {
                            '<td>' + empresa[x].CODIGO_EMPRESA + '</td>' +
                            '<td>' + empresa[x].RAZAO_SOCIAL + '</td>' +
                            '<td>' + empresa[x].CNJP + '</td>' +
-                           '<td class="centeralign"><a title="Alterar" href="#modalDependente" onclick="javascript:FuncaoTelaModal(\'Detalhar\', ' + empresa[x].CODIGO_EMPRESA + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
-                           '<td class="centeralign"><a title="Alterar" href="#modalDependente" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + empresa[x].CODIGO_EMPRESA + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
+                           '<td class="centeralign"><a title="Alterar" href="#myModal" onclick="javascript:FuncaoTelaModal(\'Detalhar\', ' + empresa[x].CODIGO_EMPRESA + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
+                           '<td class="centeralign"><a title="Alterar" href="#myModal" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + empresa[x].CODIGO_EMPRESA + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
                            '<td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + empresa[x].CODIGO_EMPRESA + ')" class="deleterow"><i class="icon-trash"></i></a></td>' +
                          '</tr>';
-                    jQuery('#gridDependentes').append(row);
+                    jQuery('#dyntable').append(row);
                 }
 
                 jQuery('#dyntable').dataTable().fnDestroy();
@@ -217,17 +237,20 @@ function Gravar(id) {
 
                 var empresa = eval(data);
 
-                if (dependente != undefined && empresa.length > 0) {
+                if (empresa != undefined && empresa.length > 0) {
                     var row = '<tr value="' + empresa[0].CODIGO_EMPRESA + '">' +
                                '<td>' + empresa[0].CODIGO_EMPRESA + '</td>' +
                                '<td>' + empresa[0].RAZAO_SOCIAL + '</td>' +
                                '<td>' + empresa[0].CNJP + '</td>' +
-                               '<td class="centeralign"><a title="Alterar" href="#modalDependente" onclick="javascript:FuncaoTelaModal(\'Detalhar\', ' + empresa[0].CODIGO_EMPRESA + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
-                               '<td class="centeralign"><a title="Alterar" href="#modalDependente" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + empresa[0].CODIGO_EMPRESA + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
+                               '<td class="centeralign"><a title="Alterar" href="#myModal" onclick="javascript:FuncaoTelaModal(\'Detalhar\', ' + empresa[0].CODIGO_EMPRESA + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
+                               '<td class="centeralign"><a title="Alterar" href="#myModal" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + empresa[0].CODIGO_EMPRESA + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
                                '<td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + empresa[0].CODIGO_EMPRESA + ')" class="deleterow"><i class="icon-trash"></i></a></td>' +
                              '</tr>';
 
-                    jQuery('#dyntable').append(row);
+                    if (id != 0)
+                        jQuery('#dyntable tbody tr[value=' + id + ']').remove();
+
+                        jQuery('#dyntable').append(row);
 
                     MontarGrid();
                     jQuery('#myModal').modal('hide')
@@ -245,6 +268,18 @@ function Gravar(id) {
 
 }
 
+function MontarGrid() {
+    //jQuery('#gridDependentes').dataTable().fnDestroy();
+    //// dynamic table
+    //jQuery('#gridDependentes').dataTable({
+    //    "sPaginationType": "full_numbers",
+    //    "aaSortingFixed": [[0, 'asc']],
+    //    "fnDrawCallback": function (oSettings) {
+    //        jQuery.uniform.update();
+    //    }
+    //});
+}
+
 function Excluir(id) {
     var conf = confirm('Continue delete?');
     if (conf) {
@@ -258,7 +293,12 @@ function Excluir(id) {
             data: {
                 Metodo: 'Excluir',
                 Acao: 'Exclusao',
-                CodigoEmpresa: id
+                CodigoEmpresa: id,
+                NomeFantasia: '',
+                RazaoSocial: '',
+                CNPJ: '',
+                InscricaoEstadual: '',
+                CodigoStatus: ''
             },
             success: function (data) {
 

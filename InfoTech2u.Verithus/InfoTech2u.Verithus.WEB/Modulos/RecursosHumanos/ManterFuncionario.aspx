@@ -22,6 +22,37 @@
 
         <div class="maincontent">
             <div class="maincontentinner">
+                <div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal hide fade in" id="myModal">
+                    <div class="modal-header widgettitle">
+                        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">&times;</button>
+                        <h3 id="myModalLabel">Empresa</h3>
+                        <asp:HiddenField ID="hdnFuncaoTela" runat="server" ClientIDMode="Static" />
+                    </div>
+                    <div class="modal-body">
+                        <div class="widgetbox box-inverse">
+
+                            <table id="dyntable" class="table table-bordered responsive" style="width:530px;">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Id</th>
+                                        <th>CNPJ</th>
+                                        <th>Razão Social</th>
+                                        <th>Fantasia</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <!--widgetcontent-->
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn">&nbsp; Sair</button>
+                        <a class="btn btn-primary" href="#" onclick="javascript:SelecionarEmpresa();" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Selecionar</a>
+                    </div>
+                </div>
 
                 <!-- START OF TABBED WIZARD -->
                 <h4 class="subtitle2">Formulario de Cadastros</h4>
@@ -106,8 +137,8 @@
                         <asp:HiddenField runat="server" ID="hdnDetalheEnderecoPIS" ClientIDMode="Static" />
                         <asp:HiddenField runat="server" ID="hdnCodigoBancoPIS" ClientIDMode="Static" />
                         <asp:HiddenField runat="server" ID="hdnCodigoBancoFGTS" ClientIDMode="Static" />
-                        
-                        
+
+
 
                         <br />
                         <p>
@@ -120,8 +151,9 @@
                         <p id="validaEmpresa">
                             <label>Empresa</label>
                             <span class="field">
-                                <asp:DropDownList runat="server" ID="ddlEmpresa" class="uniformselect" ClientIDMode="Static" />
-                                <span class="help-inline" id="msgEmpresa"></span>
+                                <asp:TextBox runat="server" ID="txtCodigoEmpresaLupa" CssClass="input-small" ClientIDMode="Static" MaxLength="10" ReadOnly="true" />
+                                <asp:TextBox runat="server" ID="txtDescricaoEmpresaLupa" CssClass="input-xlarge" ClientIDMode="Static" MaxLength="10" ReadOnly="true" />
+                                <a href="#myModal" id="btnLupaEmpresa" class="btn" data-toggle="modal"><i class="iconsweets-magnifying"></i></a>
                             </span>
                         </p>
 
@@ -133,7 +165,6 @@
                             </span>
                         </p>
 
-                        <br />
                         <p id="validaNumeroOrdemMatricula">
                             <label>Numero Ordem(Matricula)</label>
                             <span class="field">
@@ -153,7 +184,7 @@
                         <p id="validaNomeFuncionario">
                             <label>Nome Funcionario</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtNomeFuncionario" CssClass="input-xxlarge" ClientIDMode="Static" MaxLength="100"  />
+                                <asp:TextBox runat="server" ID="txtNomeFuncionario" CssClass="input-xxlarge" ClientIDMode="Static" MaxLength="100" />
                                 <span class="help-inline" id="msgNomeFuncionario"></span>
                             </span>
                         </p>
@@ -238,7 +269,7 @@
                         <p>
                             <label>Cidade</label>
                             <span class="field" id="spCidadeFuncionario">
-                                <asp:DropDownList ID="ddlCidadeFuncionario" runat="server" data-placeholder="Escolha uma Cidade..." Style="width: 350px"  TabIndex="2" ClientIDMode="Static" />
+                                <asp:DropDownList ID="ddlCidadeFuncionario" runat="server" data-placeholder="Escolha uma Cidade..." Style="width: 350px" TabIndex="2" ClientIDMode="Static" />
                             </span>
                         </p>
 
@@ -281,7 +312,7 @@
                             </span>
                         </p>
 
-                        
+
 
 
 
@@ -544,10 +575,10 @@
                             </span>
                         </p>
 
-                        <p> 
+                        <p>
                             <label>Cidade</label>
                             <span class="field" id="spCidadePIS">
-                                <asp:DropDownList ID="ddlCidadePIS" runat="server" data-placeholder="Escolha uma Cidade..." Style="width: 350px"  TabIndex="2" ClientIDMode="Static" />
+                                <asp:DropDownList ID="ddlCidadePIS" runat="server" data-placeholder="Escolha uma Cidade..." Style="width: 350px" TabIndex="2" ClientIDMode="Static" />
                             </span>
                         </p>
 
@@ -591,7 +622,7 @@
                             </span>
                         </p>
 
-                        
+
 
 
 
