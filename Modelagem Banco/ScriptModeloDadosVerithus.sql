@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2008                    */
-/* Created on:     02/10/2014 16:16:05                          */
+/* Created on:     04/10/2014 07:05:06                          */
 /*==============================================================*/
 
 
@@ -974,6 +974,7 @@ create table TBVRT019_DADOS_ADMISSAO (
    INTERVALO_ALMOCO_FIM nvarchar(10)         null,
    DESCANSO_SEMANAL_INICIO char(1)              null,
    DESCANSO_SEMANAL_FIM char(1)              null,
+   CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
    CODIGO_USUARIO_ALTERACAO int                  null,
    DATA_ALTERACAO       datetime             null,
@@ -1052,11 +1053,12 @@ create table TBVRT024_DADOS_DEMISSAO (
    DATA_REGISTRO        datetime             null,
    CODIGO_TIPO_CARGO    int                  null,
    CODIGO_TIPO_SECAO    int                  null,
-   SALARIO_INICIAL      decimal(8,2)         null,
+   SALARIO_INICIAL      nvarchar(80)         null,
    COMISSAO             nvarchar(80)         null,
    CODIGO_TIPO_TAREFA   int                  null,
    CODIGO_TIPO_FORMA_PAGAMENTO int                  null,
    CODIGO_FORMA_PAGAMENTO int                  null,
+   CODIGO_USUARIO_      int                  null,
    DATA_CADASTRO        datetime             null,
    CODIGO_USUARIO_ALTERACAO int                  null,
    DATA_ALTERACAO       datetime             null,

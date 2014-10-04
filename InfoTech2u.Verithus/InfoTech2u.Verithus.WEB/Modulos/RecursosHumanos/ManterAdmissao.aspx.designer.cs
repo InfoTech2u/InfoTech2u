@@ -13,6 +13,15 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos {
     public partial class ManterAdmissao {
         
         /// <summary>
+        /// txtCodigoAdmissao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCodigoAdmissao;
+        
+        /// <summary>
         /// txtDataAdmissao control.
         /// </summary>
         /// <remarks>
@@ -74,6 +83,15 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTarefa;
+        
+        /// <summary>
+        /// ddlFormaPagamento control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlFormaPagamento;
         
         /// <summary>
         /// txtHorarioTrabalhoEntrada control.

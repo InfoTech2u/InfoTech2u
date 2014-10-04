@@ -20,16 +20,16 @@ namespace InfoTech2u.Verithus.VO
         public Nullable<System.DateTime> DataRegistro { get; set; }
         public Nullable<int> CodigoTipoCargo { get; set; }
         public Nullable<int> CodigoTipoSecao { get; set; }
-        public Nullable<decimal> SalarioInicial { get; set; }
+        public string SalarioInicial { get; set; }
         public string Comissao { get; set; }
         public Nullable<int> CodigoTipoTarefa { get; set; }
         public Nullable<int> CodigoTipoFormaPagamento { get; set; }
-        public Nullable<System.DateTime> HorarioTrabalhoInicio { get; set; }
-        public Nullable<System.DateTime> HorarioTrabalhoFim { get; set; }
-        public Nullable<System.DateTime> IntervaloAlmocoInicio { get; set; }
-        public Nullable<System.DateTime> IntervaloAlmocoFim { get; set; }
-        public Nullable<System.DateTime> DescansoSemanalInicio { get; set; }
-        public Nullable<System.DateTime> DescansoSemanalFim { get; set; }
+        public string HorarioTrabalhoInicio { get; set; }
+        public string HorarioTrabalhoFim { get; set; }
+        public string IntervaloAlmocoInicio { get; set; }
+        public string IntervaloAlmocoFim { get; set; }
+        public string DescansoSemanalInicio { get; set; }
+        public string DescansoSemanalFim { get; set; }
         public Nullable<int> CodigoUsuarioCadastro { get; set; }
         public Nullable<System.DateTime> DataCadastro { get; set; }
         public Nullable<int> CodigoUsuarioAlteracao { get; set; }

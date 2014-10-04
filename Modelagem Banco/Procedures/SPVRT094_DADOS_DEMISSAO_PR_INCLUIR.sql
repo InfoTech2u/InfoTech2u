@@ -1,16 +1,17 @@
 USE [DBVERITHUS]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SPVRT094_DADOS_DEMISSAO_PR_INCLUIR]    Script Date: 16/09/2014 21:56:59 ******/
+/****** Object:  StoredProcedure [dbo].[SPVRT094_DADOS_DEMISSAO_PR_INCLUIR]    Script Date: 04/10/2014 05:41:16 ******/
 DROP PROCEDURE [dbo].[SPVRT094_DADOS_DEMISSAO_PR_INCLUIR]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SPVRT094_DADOS_DEMISSAO_PR_INCLUIR]    Script Date: 16/09/2014 21:56:59 ******/
+/****** Object:  StoredProcedure [dbo].[SPVRT094_DADOS_DEMISSAO_PR_INCLUIR]    Script Date: 04/10/2014 05:41:16 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 -- TBVRT024_DADOS_DEMISSAO
 CREATE PROCEDURE [dbo].[SPVRT094_DADOS_DEMISSAO_PR_INCLUIR]
@@ -20,7 +21,7 @@ CREATE PROCEDURE [dbo].[SPVRT094_DADOS_DEMISSAO_PR_INCLUIR]
 	@DATA_REGISTRO					datetime       =      null,
 	@CODIGO_TIPO_CARGO				int            =      null,
 	@CODIGO_TIPO_SECAO				int            =      null,
-	@SALARIO_INICIAL				decimal(8,2)   =      null,
+	@SALARIO_INICIAL				nvarchar(80)   =      null,
 	@COMISSAO						nvarchar(80)   =      null,
 	@CODIGO_TIPO_TAREFA				int            =      null,
 	@CODIGO_TIPO_FORMA_PAGAMENTO	int            =      null,
@@ -29,10 +30,7 @@ CREATE PROCEDURE [dbo].[SPVRT094_DADOS_DEMISSAO_PR_INCLUIR]
 	@DATA_CADASTRO					datetime       =      null,
 	@CODIGO_USUARIO_ALTERACAO		int            =      null,
 	@DATA_ALTERACAO					datetime       =      null,
-	@CODIGO_STATUS					int            =      null,
-
-	@C_ERR INT			 OUTPUT,
-	@T_ERR VARCHAR(255)  OUTPUT 
+	@CODIGO_STATUS					int            =      null
 )
 AS
 BEGIN
@@ -48,6 +46,7 @@ BEGIN
 		CODIGO_TIPO_TAREFA,
 		CODIGO_TIPO_FORMA_PAGAMENTO,
 		CODIGO_FORMA_PAGAMENTO,
+		CODIGO_USUARIO_CADASTRO,
 		DATA_CADASTRO,				
 		CODIGO_USUARIO_ALTERACAO,	
 		DATA_ALTERACAO,				
@@ -64,6 +63,7 @@ BEGIN
 		@CODIGO_TIPO_TAREFA,
 		@CODIGO_TIPO_FORMA_PAGAMENTO,
 		@CODIGO_FORMA_PAGAMENTO,
+		@CODIGO_USUARIO_CADASTRO,
 		@DATA_CADASTRO,				
 		@CODIGO_USUARIO_ALTERACAO,	
 		@DATA_ALTERACAO,				
@@ -82,10 +82,7 @@ BEGIN
 
 			EXEC dbo.SPVRT168_LOG_PR_INCLUIR 'E', @DESC , @CODIGO_USUARIO_CADASTRO, 'INCLUSÃO DE DADOS DEMISSAO';
 
-			SELECT @C_ERR = @@ERROR
-			SELECT @T_ERR = 'ERRO NO INSERT DA TABELA TBVRT024_DADOS_DEMISSAO.'
-			SELECT @@ERROR as Erro, @DESC as Mensagem
-			RETURN
+			
 		END
 	ELSE
 		BEGIN
@@ -94,13 +91,12 @@ BEGIN
 
 			EXEC dbo.SPVRT168_LOG_PR_INCLUIR 'A', '' , @CODIGO_USUARIO_CADASTRO, 'INCLUSÃO DE DADOS DEMISSAO';
 
-			SELECT @C_ERR = 0
-			SELECT @T_ERR = 'DADOS DEMISSAO INSERIDO COM SUCESSO.'
-			RETURN
+			
 		END
 
 
 END
+
 GO
 
 

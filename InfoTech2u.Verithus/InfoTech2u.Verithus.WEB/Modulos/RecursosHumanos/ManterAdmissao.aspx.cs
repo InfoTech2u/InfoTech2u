@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using InfoTech2u.Verithus.VO;
 using InfoTech2u.Verithus.BS;
+using System.Data;
 
 namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
 {
@@ -18,6 +19,73 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
             CarregarTarefa();
             CarregarCargo();
             CarregarSecao();
+            CarregarFormaPagamento();
+
+            string idFuncionario = Request.QueryString["idUser"].ToString();
+
+            if (!String.IsNullOrWhiteSpace(idFuncionario))
+                CarregarCampo(idFuncionario);
+        }
+
+        private void CarregarCampo(string idFuncionario)
+        {
+            DataTable dtRetorno = new DataTable();
+
+            dtRetorno = SelecionarAdmissao();
+
+            int i = 0;
+            while (i < dtRetorno.Rows.Count)
+            {
+
+                //this.txtAgencia.Text = dtRetorno.Rows[i]["BANCO_PIS_AGENCIA"].ToString();
+                this.txtCodigoAdmissao.Text = dtRetorno.Rows[i]["CODIGO_ADMISSAO"].ToString();
+                this.txtComissao.Text = dtRetorno.Rows[i]["COMISSAO"].ToString();
+                this.txtDataAdmissao.Text = dtRetorno.Rows[i]["DATA_ADMISSAO"].ToString();
+                this.txtDataRegistro.Text = dtRetorno.Rows[i]["DATA_REGISTRO"].ToString();
+                this.txtHorarioTrabalhoEntrada.Text = dtRetorno.Rows[i]["HORARIO_TRABALHO_INICIO"].ToString();
+                this.txtHorarioTrabalhoSaida.Text = dtRetorno.Rows[i]["HORARIO_TRABALHO_FIM"].ToString();
+                this.txtIntervaloTrabalhoEntrada.Text = dtRetorno.Rows[i]["INTERVALO_ALMOCO_INICIO"].ToString();
+                this.txtIntervaloTrabalhoSaida.Text = dtRetorno.Rows[i]["INTERVALO_ALMOCO_FIM"].ToString();
+                this.txtSalarioInicial.Text = dtRetorno.Rows[i]["SALARIO_INICIAL"].ToString();
+
+                InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlCargo, dtRetorno.Rows[i]["CODIGO_TIPO_CARGO"].ToString());
+                InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlDescansoSemanalEntrada, dtRetorno.Rows[i]["DESCANSO_SEMANAL_INICIO"].ToString());
+                InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlDescansoSemanalSaida, dtRetorno.Rows[i]["DESCANSO_SEMANAL_FIM"].ToString());
+                InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlSecao, dtRetorno.Rows[i]["CODIGO_TIPO_SECAO"].ToString());
+                InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlTarefa, dtRetorno.Rows[i]["CODIGO_TIPO_TAREFA"].ToString());
+                InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlFormaPagamento, dtRetorno.Rows[i]["CODIGO_TIPO_FORMA_PAGAMENTO"].ToString());
+
+                i++;
+            }
+        }
+
+        private DataTable SelecionarAdmissao()
+        {
+            DadosAdmissaoBS objBS = new DadosAdmissaoBS();
+            DadosAdmissaoVO dadosAdmissao = new DadosAdmissaoVO();
+
+            int codigoFuncionario = 0;
+            if (Int32.TryParse(Request.QueryString["idUser"], out codigoFuncionario))
+            {
+                dadosAdmissao.CodigoFuncionario = codigoFuncionario;
+            }
+
+            return objBS.SelecionarAdmissao(dadosAdmissao);
+        }
+
+        private void CarregarFormaPagamento()
+        {
+            TipoFormaPagamentoBS retornoFormaPagamentoBS = new TipoFormaPagamentoBS();
+            TipoFormaPagamentoVO objEntrada = new TipoFormaPagamentoVO();
+            List<TipoFormaPagamentoVO> listaFormaPagamentoVO = new List<TipoFormaPagamentoVO>();
+
+            listaFormaPagamentoVO = retornoFormaPagamentoBS.SelecionarFormaPagamentoLista(objEntrada);
+
+            this.ddlFormaPagamento.DataSource = listaFormaPagamentoVO;
+            this.ddlFormaPagamento.DataValueField = "CodigoTipoFormaPagamento";
+            this.ddlFormaPagamento.DataTextField = "Descricao";
+            this.ddlFormaPagamento.DataBind();
+            this.ddlFormaPagamento.Items.Insert(0, new ListItem("Selecionar", "0"));
         }
 
         private void CarregarSecao()

@@ -13,6 +13,15 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos {
     public partial class ManterDemissao {
         
         /// <summary>
+        /// txtCodigoDemissao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCodigoDemissao;
+        
+        /// <summary>
         /// txtDataDemissao control.
         /// </summary>
         /// <remarks>

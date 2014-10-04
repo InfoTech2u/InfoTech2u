@@ -28,6 +28,14 @@
                     <div class="widgetcontent nopadding">
                         <div class="stdform stdform2">
 
+                            
+                            <p id="validaCodigoDemissao">
+                                <label>Código Demissão</label>
+                                <span class="field">
+                                    <asp:TextBox runat="server" ID="txtCodigoDemissao" class="input-small" ClientIDMode="Static" ReadOnly="true" />
+                                </span>
+                            </p>
+
                             <p id="validaDataDemissao">
                                 <label>Data de Demissão</label>
                                 <span class="field">
@@ -71,7 +79,7 @@
                             <p id="validaComissao">
                                 <label>Comissões</label>
                                 <span class="field">
-                                    <asp:TextBox runat="server" ID="txtComissao" class="input-small" ClientIDMode="Static" />
+                                    <asp:TextBox runat="server" ID="txtComissao" class="input-block-level" ClientIDMode="Static" />
                                     <span class="help-inline" id="msgComissao"></span>
                                 </span>
                             </p>

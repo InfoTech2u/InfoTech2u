@@ -29,6 +29,14 @@
                     <div class="widgetcontent nopadding">
                         <div class="stdform stdform2">
 
+                            <p>
+                                <label>Codigo de Admissão</label>
+                                <span class="field">
+                                    <asp:TextBox runat="server" ID="txtCodigoAdmissao" class="input-small" ClientIDMode="Static" />
+                                </span>
+                            </p>
+
+                            
                             <p id="validaDataDeAdmissao">
                                 <label>Data de Admissão</label>
                                 <span class="field">
@@ -82,6 +90,14 @@
                                 <span class="field">
                                     <asp:DropDownList runat="server" ID="ddlTarefa" class="uniformselect" ClientIDMode="Static" />
                                     <span class="help-inline" id="msgTarefa"></span>
+                                </span>
+                            </p>
+
+                            <p id="validaFormaPagamento">
+                                <label>Forma de Pagamento</label>
+                                <span class="field">
+                                    <asp:DropDownList runat="server" ID="ddlFormaPagamento" class="uniformselect" ClientIDMode="Static" />
+                                    <span class="help-inline" id="msgFormaPagamento"></span>
                                 </span>
                             </p>
 

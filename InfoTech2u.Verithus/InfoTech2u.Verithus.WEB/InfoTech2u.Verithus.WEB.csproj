@@ -193,6 +193,7 @@
     <Content Include="Handler\ManterSistema.ashx" />
     <Content Include="Handler\ManterTipoSistema.ashx" />
     <Content Include="Handler\TipoParentesco.ashx" />
+    <Content Include="Handler\ManterAdmissao.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -804,6 +805,9 @@
     </Compile>
     <Compile Include="Handler\Dependente.ashx.cs">
       <DependentUpon>Dependente.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\ManterAdmissao.ashx.cs">
+      <DependentUpon>ManterAdmissao.ashx</DependentUpon>
     </Compile>
     <Compile Include="Handler\ManterCargo.ashx.cs">
       <DependentUpon>ManterCargo.ashx</DependentUpon>

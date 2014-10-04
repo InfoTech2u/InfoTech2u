@@ -20,7 +20,7 @@ namespace InfoTech2u.Verithus.VO
         public Nullable<System.DateTime> DataRegistro { get; set; }
         public Nullable<int> CodigoTipoCargo { get; set; }
         public Nullable<int> CodigoTipoSecao { get; set; }
-        public Nullable<decimal> SalarioInicial { get; set; }
+        public string SalarioInicial { get; set; }
         public string Comissao { get; set; }
         public Nullable<int> CodigoTipoTarefa { get; set; }
         public Nullable<int> CodigoTipoFormaPagamento { get; set; }

@@ -89,17 +89,21 @@
                 <h4 class="widgettitle">Dependentes</h4>
                 <table id="gridDependentes" class="table table-bordered responsive">
                     <colgroup>
-                        <col class="con0" style="align: center; width: 30%" />
-                        <col class="con1" style="align: center; width: 30%" />
-                        <col class="con0" style="align: center; width: 20%" />
+                        <col class="con1" style="align: center; width: 5%" />
+                        <col class="con0" style="align: center; width: 25%" />
+                        <col class="con1" style="align: center; width: 25%" />
+                        <col class="con0" style="align: center; width: 15%" />
+                        <col class="con1" style="align: center; width: 10%" />
                         <col class="con1" style="align: center; width: 10%" />
                         <col class="con0" style="align: center; width: 10%" />
                     </colgroup>
                     <thead>
                         <tr>
-                            <th class="head0">Nome</th>
-                            <th class="head1">Parentesco</th>
-                            <th class="head0">Data Nascimento</th>
+                            <th class="head0">Id</th>
+                            <th class="head1">Nome</th>
+                            <th class="head0">Parentesco</th>
+                            <th class="head1">Data Nascimento</th>
+                            <th class="head0">Detalhar</th>
                             <th class="head1">Alterar</th>
                             <th class="head0">Excluir</th>
                         </tr>

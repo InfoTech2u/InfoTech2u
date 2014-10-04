@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using InfoTech2u.Verithus.VO;
 using InfoTech2u.Verithus.BS;
+using System.Data;
 
 namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
 {
@@ -14,17 +15,59 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                CarregarIncludes();
-                CarregarTarefa();
-                CarregarCargo();
-                CarregarSecao();
-                CarregarFormaPagamento();
-            }
+            CarregarIncludes();
+            CarregarTarefa();
+            CarregarCargo();
+            CarregarSecao();
+            CarregarFormaPagamento();
+
+            string idFuncionario = Request.QueryString["idUser"].ToString();
+
+            if (!String.IsNullOrWhiteSpace(idFuncionario))
+                CarregarCampo(idFuncionario);
+
         }
 
+        private void CarregarCampo(string idFuncionario){
 
+            DataTable dtRetorno = new DataTable();
+
+            dtRetorno = SelecionarDemissão();
+
+            int i = 0;
+            while (i < dtRetorno.Rows.Count)
+            {
+
+                //this.txtAgencia.Text = dtRetorno.Rows[i]["BANCO_PIS_AGENCIA"].ToString();
+                this.txtCodigoDemissao.Text = dtRetorno.Rows[i]["CODIGO_DEMISSAO"].ToString();
+                this.txtComissao.Text = dtRetorno.Rows[i]["COMISSAO"].ToString();
+                this.txtDataDemissao.Text = dtRetorno.Rows[i]["DATA_DEMISSAO"].ToString();
+                this.txtDataRegistro.Text = dtRetorno.Rows[i]["DATA_REGISTRO"].ToString();
+                this.txtSalarioInicial.Text = dtRetorno.Rows[i]["SALARIO_INICIAL"].ToString();
+
+                InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlCargo, dtRetorno.Rows[i]["CODIGO_TIPO_CARGO"].ToString());
+                InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlSecao, dtRetorno.Rows[i]["CODIGO_TIPO_SECAO"].ToString());
+                InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlTarefa, dtRetorno.Rows[i]["CODIGO_TIPO_TAREFA"].ToString());
+                InfoTech2uControlHtmlUtil.SetSelectedValue(this.ddlFormaPagamento, dtRetorno.Rows[i]["CODIGO_TIPO_FORMA_PAGAMENTO"].ToString());
+
+                i++;
+            }
+
+        }
+
+        private DataTable SelecionarDemissão()
+        {
+            DadosDemissaoBS objBS = new DadosDemissaoBS();
+            DadosDemissaoVO dadosDemissao = new DadosDemissaoVO();
+
+            int codigoFuncionario = 0;
+            if (Int32.TryParse(Request.QueryString["idUser"], out codigoFuncionario))
+            {
+                dadosDemissao.CodigoFuncionario = codigoFuncionario;
+            }
+
+            return objBS.Selecionar(dadosDemissao);
+        }
 
         private void CarregarFormaPagamento()
         {

@@ -3,7 +3,7 @@
     jQuery('#hdnCodigoFuncionario').val(getUrlVars()["idUser"]);
     CarregarDependentes();
 
-    
+
 
     jQuery(".btnVoltar").click(function (event) {
         event.preventDefault();
@@ -72,8 +72,8 @@ function DadosValidos() {
             jQuery('#lblErrorDataNascimento').hide();
         }
     }
-   
-    
+
+
     return valido;
 };
 
@@ -86,10 +86,9 @@ function getUrlVars() {
         vars[hash[0]] = hash[1];
     }
     return vars;
-            }
+}
 
-function MontarGrid()
-{
+function MontarGrid() {
     //jQuery('#gridDependentes').dataTable().fnDestroy();
     //// dynamic table
     //jQuery('#gridDependentes').dataTable({
@@ -101,22 +100,20 @@ function MontarGrid()
     //});
 }
 
-function CarregarDependentes()
-{
-    if (jQuery('#hdnCodigoFuncionario').val() != undefined && jQuery('#hdnCodigoFuncionario').val() != 0)
-    {
-            jQuery.ajax({
-                type: "GET",
-                crossDomain: true,
-                url: "../../Handler/Dependente.ashx",
-                contentType: "json",
-                cache: false,
-                data: {
+function CarregarDependentes() {
+    if (jQuery('#hdnCodigoFuncionario').val() != undefined && jQuery('#hdnCodigoFuncionario').val() != 0) {
+        jQuery.ajax({
+            type: "GET",
+            crossDomain: true,
+            url: "../../Handler/Dependente.ashx",
+            contentType: "json",
+            cache: false,
+            data: {
                 Metodo: 'Listar',
                 Acao: 'Selecionar',
                 CodigoFuncionario: jQuery('#hdnCodigoFuncionario').val()
-                },
-                success: function (data) {
+            },
+            success: function (data) {
                 var dependentes = eval(data);
 
 
@@ -125,16 +122,18 @@ function CarregarDependentes()
                     for (var x in dependentes) {
 
                         var row = '<tr value="' + dependentes[x].CODIGO_DEPENDENTE + '">' +
+                               '<td>' + dependentes[x].CODIGO_DEPENDENTE + '</td>' +
                                '<td>' + dependentes[x].NOME + '</td>' +
                                '<td>' + dependentes[x].TIPO_PARENTESCO_DESC + '</td>' +
                                '<td>' + dependentes[x].DATA_NASCIMENTO_STR + '</td>' +
+                               '<td class="centeralign"><a title="Alterar" href="#modalDependente" onclick="javascript:FuncaoTelaModal(\'Detalhar\', ' + dependentes[x].CODIGO_DEPENDENTE + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
                                '<td class="centeralign"><a title="Alterar" href="#modalDependente" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + dependentes[x].CODIGO_DEPENDENTE + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
                                '<td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + dependentes[x].CODIGO_DEPENDENTE + ')" class="deleterow"><i class="icon-trash"></i></a></td>' +
                              '</tr>';
                         jQuery('#gridDependentes').append(row);
                     }
 
-                    }
+                }
 
                 MontarGrid();
             },
@@ -143,11 +142,10 @@ function CarregarDependentes()
                 alert(textStatus);
             }
         });
-                    }
+    }
 }
 
-function CarregarCombos(id)
-{
+function CarregarCombos(id) {
     jQuery.ajax({
         type: "GET",
         crossDomain: true,
@@ -169,16 +167,15 @@ function CarregarCombos(id)
 
                 CarregarListaTiposBeneficios(id);
             }
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrow) {
-                    errorAjax(textStatus);
-                    alert(textStatus);
-                }
-            });
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrow) {
+            errorAjax(textStatus);
+            alert(textStatus);
         }
+    });
+}
 
-function CarregarListaTiposBeneficios(id)
-{
+function CarregarListaTiposBeneficios(id) {
     jQuery.ajax({
         type: "GET",
         crossDomain: true,
@@ -192,17 +189,15 @@ function CarregarListaTiposBeneficios(id)
         success: function (data) {
             var lstbeneficio = eval(data);
             jQuery('#lstBeneficioSelected option').remove();
-            if (lstbeneficio != undefined && lstbeneficio.length > 0)
-            {
-                for (var x in lstbeneficio)
-                {
+            if (lstbeneficio != undefined && lstbeneficio.length > 0) {
+                for (var x in lstbeneficio) {
                     var row = "<option value=\"" + lstbeneficio[x].CodigoTipoBeneficio + "\">" + lstbeneficio[x].Descricao + "</option>";
                     jQuery('#lstBeneficioSelect').append(row);
                 }
 
                 PrepararTela(id);
             }
-            
+
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
             errorAjax(textStatus);
@@ -211,10 +206,8 @@ function CarregarListaTiposBeneficios(id)
     });
 }
 
-function PrepararTela(id)
-{
-    if (jQuery('#hdnFuncaoTela').val() == 'Incluir')
-    {
+function PrepararTela(id) {
+    if (jQuery('#hdnFuncaoTela').val() == 'Incluir') {
         jQuery('#btnIncluir').attr('onclick', 'javascript:Incluir()');
         jQuery('#modalDependenteLabel').text('Cadastro de Dependente');
         jQuery('#txtNomeDependente').val('');
@@ -235,17 +228,51 @@ function FuncaoTelaModal(funcao, id) {
     if (funcao == 'Incluir') {
         jQuery('#hdnFuncaoTela').val('Incluir');
 
+        jQuery('#txtNomeDependente').attr('readonly', false);
+        jQuery('#txtDataNascimento').attr('readonly', false);
+
+        jQuery("#ddlTipoParentesco").prop("disabled", false);
+        jQuery("#lstBeneficioSelect").prop("disabled", false);
+        jQuery("#lstBeneficioSelected").prop("disabled", false);
+        jQuery(".ds_prev").prop("disabled", false);
+        jQuery(".ds_next").prop("disabled", false);
+        jQuery("#btnIncluir").prop("disabled", false);
+
     }
     else if (funcao == 'Alterar') {
         jQuery('#hdnFuncaoTela').val('Alterar');
+
+        jQuery('#txtNomeDependente').attr('readonly', false);
+        jQuery('#txtDataNascimento').attr('readonly', false);
+
+        jQuery("#ddlTipoParentesco").prop("disabled", false);
+        jQuery("#lstBeneficioSelect").prop("disabled", false);
+        jQuery("#lstBeneficioSelected").prop("disabled", false);
+        jQuery(".ds_prev").prop("disabled", false);
+        jQuery(".ds_next").prop("disabled", false);
+        jQuery("#btnIncluir").prop("disabled", false);
+    }
+    else if (funcao == 'Detalhar') {
+        jQuery('#hdnFuncaoTela').val('Detalhar');
+
+        jQuery('#txtNomeDependente').attr('readonly', true);
+        jQuery('#txtDataNascimento').attr('readonly', true);
+
+        jQuery("#ddlTipoParentesco").prop("disabled", true);
+        jQuery("#lstBeneficioSelect").prop("disabled", true);
+        jQuery("#lstBeneficioSelected").prop("disabled", true);
+        jQuery(".ds_prev").prop("disabled", true);
+        jQuery(".ds_next").prop("disabled", true);
+        jQuery("#btnIncluir").prop("disabled", true);
+
+
     }
     else { jQuery('#hdnFuncaoTela').val(''); }
 
     CarregarCombos(id);
 }
 
-function CarregarDependente(id)
-{
+function CarregarDependente(id) {
     jQuery.ajax({
         type: "GET",
         crossDomain: true,
@@ -270,17 +297,17 @@ function CarregarDependente(id)
                     var row = jQuery('#lstBeneficioSelect option[value=' + dependente[x].CODIGO_TIPO_BENEFICIO + ']')
                     jQuery('#lstBeneficioSelect option[value=' + dependente[x].CODIGO_TIPO_BENEFICIO + ']').remove();
                     jQuery('#lstBeneficioSelected').append(row);
-    }
+                }
 
                 jQuery('#btnIncluir').attr('onclick', 'javascript:Alterar(' + id + ');');
                 jQuery('#modalDependenteLabel').text('Alteração de Dependente');
-                
-    }
+
+            }
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
             errorAjax(textStatus);
             alert(textStatus);
-    }
+        }
     });
 }
 
@@ -290,38 +317,38 @@ function Incluir() {
         var selected = jQuery('#lstBeneficioSelected option');
         var arraySel = '';
 
-        if(selected.length > 0)
-        {
+        if (selected.length > 0) {
             for (var i = 0; i < selected.length; i++) {
                 arraySel += selected[i].value + '|';
             }
         }
 
-    jQuery.ajax({
-        type: "GET",
+        jQuery.ajax({
+            type: "GET",
             crossDomain: true,
             url: "../../Handler/Dependente.ashx",
             contentType: "json",
             cache: false,
-        data: {
+            data: {
                 Metodo: 'Incluir',
-            Acao: 'Inclusao',
+                Acao: 'Inclusao',
                 Nome: jQuery('#txtNomeDependente').val(),
                 TipoParentesco: jQuery('#ddlTipoParentesco').val(),
-            DataNascimento: jQuery('#txtDataNascimento').val(),
+                DataNascimento: jQuery('#txtDataNascimento').val(),
                 CodigoFuncionario: jQuery('#hdnCodigoFuncionario').val(),
                 Beneficios: arraySel
-        },
+            },
             success: function (data) {
 
                 var dependente = eval(data);
 
-                if(dependente != undefined && dependente.length > 0)
-                {
+                if (dependente != undefined && dependente.length > 0) {
                     var row = '<tr value="' + dependente[0].CODIGO_DEPENDENTE + '">' +
+                               '<td>' + dependente[0].CODIGO_DEPENDENTE + '</td>' +
                                '<td>' + dependente[0].NOME + '</td>' +
                                '<td>' + dependente[0].TIPO_PARENTESCO_DESC + '</td>' +
                                '<td>' + dependente[0].DATA_NASCIMENTO_STR + '</td>' +
+                               '<td class="centeralign"><a title="Alterar" href="#modalDependente" onclick="javascript:FuncaoTelaModal(\'Detalhar\', ' + dependente[0].CODIGO_DEPENDENTE + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
                                '<td class="centeralign"><a title="Alterar" href="#modalDependente" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + dependente[0].CODIGO_DEPENDENTE + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
                                '<td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + dependente[0].CODIGO_DEPENDENTE + ')" class="deleterow"><i class="icon-trash"></i></a></td>' +
                              '</tr>';
@@ -344,8 +371,7 @@ function Incluir() {
 
 }
 
-function Alterar(id)
-{
+function Alterar(id) {
     if (DadosValidos()) {
         var selected = jQuery('#lstBeneficioSelected option');
         var arraySel = '';
@@ -360,8 +386,8 @@ function Alterar(id)
             type: "GET",
             crossDomain: true,
             url: "../../Handler/Dependente.ashx",
-        contentType: "json",
-        cache: false,
+            contentType: "json",
+            cache: false,
             data: {
                 Metodo: 'Alterar',
                 Acao: 'Alteracao',
@@ -371,16 +397,18 @@ function Alterar(id)
                 CodigoDependente: id,
                 Beneficios: arraySel
             },
-        success: function (data) {
+            success: function (data) {
 
                 var dependente = eval(data);
 
                 if (dependente != undefined && dependente.length > 0) {
                     jQuery('#gridDependentes tr[value=' + id + ']').remove();
                     var row = '<tr value="' + dependente[0].CODIGO_DEPENDENTE + '">' +
+                               '<td>' + dependente[0].CODIGO_DEPENDENTE + '</td>' +
                                '<td>' + dependente[0].NOME + '</td>' +
                                '<td>' + dependente[0].TIPO_PARENTESCO_DESC + '</td>' +
                                '<td>' + dependente[0].DATA_NASCIMENTO_STR + '</td>' +
+                               '<td class="centeralign"><a title="Alterar" href="#modalDependente" onclick="javascript:FuncaoTelaModal(\'Detalhar\', ' + dependente[0].CODIGO_DEPENDENTE + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
                                '<td class="centeralign"><a title="Alterar" href="#modalDependente" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + dependente[0].CODIGO_DEPENDENTE + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
                                '<td class="centeralign"><a title="Excluir" onclick="javascript:Excluir(' + dependente[0].CODIGO_DEPENDENTE + ')" class="deleterow"><i class="icon-trash"></i></a></td>' +
                              '</tr>';
@@ -402,8 +430,7 @@ function Alterar(id)
     }
 }
 
-function Excluir(id)
-{
+function Excluir(id) {
     var conf = confirm('Continue delete?');
     if (conf) {
 
@@ -424,13 +451,13 @@ function Excluir(id)
                     jQuery('#gridDependentes tbody tr[value=' + id + ']').remove();
                     MontarGrid();
                     alert('Concluído.');
-            }
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrow) {
-            errorAjax(textStatus);
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrow) {
+                errorAjax(textStatus);
                 alert(textStatus);
-        }
-    });
+            }
+        });
     }
 }
 
