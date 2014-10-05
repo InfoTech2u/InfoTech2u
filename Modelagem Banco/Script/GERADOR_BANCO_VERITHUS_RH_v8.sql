@@ -1059,6 +1059,7 @@ create table TBVRT024_DADOS_DEMISSAO (
    CODIGO_TIPO_FORMA_PAGAMENTO int                  null,
    CODIGO_FORMA_PAGAMENTO int                  null,
    CODIGO_USUARIO_      int                  null,
+   CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
    CODIGO_USUARIO_ALTERACAO int                  null,
    DATA_ALTERACAO       datetime             null,
