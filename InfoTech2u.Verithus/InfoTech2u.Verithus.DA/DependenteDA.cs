@@ -435,6 +435,7 @@ namespace InfoTech2u.Verithus.DA
                 transaction = objSql.GetConnection().BeginTransaction();
 
                 lstSqlParameter = new List<SqlParameter>();
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO_ALTERACAO", param.CodigoUsuarioAlteracao));
                 lstSqlParameter.Add(new SqlParameter("@CODIGO_DEPENDENTE", param.CodigoDependente));
                 dtRetorno = new DataTable();
 

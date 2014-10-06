@@ -285,6 +285,8 @@ namespace InfoTech2u.Verithus.DA
 
                 lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO", usuario.CodigoUsuario));
 
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO_ALTERACAO", usuario.CodigoUsuarioAlteracao));
+
                 int rowsAffected = 0;
 
                 objSql.ExecuteNonQuery("SPVRT004_USUARIOS_PR_EXCLUIR", lstSqlParameter.ToArray(), null, out rowsAffected);

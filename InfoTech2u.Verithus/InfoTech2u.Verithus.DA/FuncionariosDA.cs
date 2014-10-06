@@ -89,6 +89,8 @@ namespace InfoTech2u.Verithus.DA
                 else
                     lstSqlParameter.Add(new SqlParameter("@CODIGO_FUNCIONARIO", param.CodigoFuncionario));
 
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO_ALTERACAO", param.CodigoUsuarioAlteracao));
+
 
                 objSql.Execute("dbo.[SPVRT023_FUNCIONARIO_PR_EXCLUIR]", lstSqlParameter.ToArray(), null, ref dtRetorno);
 
