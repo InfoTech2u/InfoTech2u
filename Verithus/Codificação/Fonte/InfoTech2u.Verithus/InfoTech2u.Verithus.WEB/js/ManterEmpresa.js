@@ -281,37 +281,51 @@ function MontarGrid() {
 }
 
 function Excluir(id) {
-    var conf = confirm('Continue delete?');
-    if (conf) {
 
-        jQuery.ajax({
-            type: "GET",
-            crossDomain: true,
-            url: "../../Handler/ManterEmpresa.ashx",
-            contentType: "json",
-            cache: false,
-            data: {
-                Metodo: 'Excluir',
-                Acao: 'Exclusao',
-                CodigoEmpresa: id,
-                NomeFantasia: '',
-                RazaoSocial: '',
-                CNPJ: '',
-                InscricaoEstadual: '',
-                CodigoStatus: ''
-            },
-            success: function (data) {
+    //Confirmação
+    jConfirm('Deseja excluir o item selecionado?', 'Confirmation Dialog', function (r) {
+        if (r == true) {
+            jQuery.ajax({
+                type: "GET",
+                crossDomain: true,
+                url: "../../Handler/ManterEmpresa.ashx",
+                contentType: "json",
+                cache: false,
+                data: {
+                    Metodo: 'Excluir',
+                    Acao: 'Exclusao',
+                    CodigoEmpresa: id,
+                    NomeFantasia: '',
+                    RazaoSocial: '',
+                    CNPJ: '',
+                    InscricaoEstadual: '',
+                    CodigoStatus: ''
+                },
+                success: function (data) {
 
-                if (data) {
-                    jQuery('#dyntable tbody tr[value=' + id + ']').remove();
-                    MontarGrid();
-                    alert('Concluído.');
+                    if (data) {
+                        jQuery('#dyntable tbody tr[value=' + id + ']').remove();
+                        MontarGrid();
+                        //Sucesso
+                        jQuery.alerts.dialogClass = 'alert-success';
+                        jAlert('Item foi excluido', 'Informação', function () {
+                            jQuery.alerts.dialogClass = null; // reset to default
+                        });
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrow) {
+                    errorAjax(textStatus);
+                    alert(textStatus);
                 }
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrow) {
-                errorAjax(textStatus);
-                alert(textStatus);
-            }
-        });
-    }
+            });
+        }
+        else if (r == false) {
+            jQuery.alerts.dialogClass = 'alert-info';
+            jAlert('Item não foi excluido', 'Informação', function () {
+                jQuery.alerts.dialogClass = null; // reset to default
+            });
+        }
+    });
+
+    
 }

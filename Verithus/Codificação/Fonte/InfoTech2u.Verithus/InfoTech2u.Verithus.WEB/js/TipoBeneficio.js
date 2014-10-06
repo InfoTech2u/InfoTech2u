@@ -110,8 +110,8 @@ function CarregarTipoBeneficioLista() {
 
 function Excluir(id) {
 
-    var conf = confirm('Continue delete?');
-    if (conf)
+    jConfirm('Deseja excluir o item selecionado?', 'Confirmation Dialog', function (r) {
+        if(r == true)
         {
             jQuery.ajax({
                 type: "GET",
@@ -129,6 +129,10 @@ function Excluir(id) {
                     if (data) {
                         jQuery('table tbody tr[id="' + id + '"]').remove();
                         // do some other stuff here
+                        jQuery.alerts.dialogClass = 'alert-success';
+                        jAlert('Item foi excluido', 'Informação', function () {
+                            jQuery.alerts.dialogClass = null; // reset to default
+                        });
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -136,8 +140,13 @@ function Excluir(id) {
                     alert(textStatus);
                 }
             });
-
-
-    }
-    //return false;
+        }
+        else if(r == false)
+        {
+            jQuery.alerts.dialogClass = 'alert-info';
+            jAlert('Item não foi excluido', 'Informação', function () {
+                jQuery.alerts.dialogClass = null; // reset to default
+            });
+        }
+    });
 }

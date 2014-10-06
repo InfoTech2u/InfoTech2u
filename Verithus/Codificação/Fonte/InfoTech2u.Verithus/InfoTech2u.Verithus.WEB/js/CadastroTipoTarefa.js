@@ -133,33 +133,48 @@ jQuery(document).ready(function () {
 
 
 function Excluir(Id) {
-    var conf = confirm('Deseja Deletar este Registro?');
-    if (conf) {
-        jQuery.ajax({
-            type: "GET",
-            crossDomain: true,
-            url: "../../Handler/ManterTarefa.ashx",
-            contentType: "json",
-            cache: false,
-            data: {
-                Metodo: 'Excluir',
-                Acao: 'Exclusao',
-                Id: Id
-            },
-            success: function (data) {
 
-                if (data) {
-                    jQuery('table tbody tr[id="' + Id + '"]').remove();
-                    // do some other stuff here
+    //Confirmação
+    jConfirm('Deseja excluir o item selecionado?', 'Confirmation Dialog', function (r) {
+        if (r == true) {
+            jQuery.ajax({
+                type: "GET",
+                crossDomain: true,
+                url: "../../Handler/ManterTarefa.ashx",
+                contentType: "json",
+                cache: false,
+                data: {
+                    Metodo: 'Excluir',
+                    Acao: 'Exclusao',
+                    Id: Id
+                },
+                success: function (data) {
+
+                    if (data) {
+                        jQuery('table tbody tr[id="' + Id + '"]').remove();
+                        // do some other stuff here
+                        //Sucesso
+                        jQuery.alerts.dialogClass = 'alert-success';
+                        jAlert('Item foi excluido', 'Informação', function () {
+                            jQuery.alerts.dialogClass = null; // reset to default
+                        });
+                    }
+                    //FormatarGrid();
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrow) {
+                    errorAjax(textStatus);
+                    alert(textStatus);
                 }
-                //FormatarGrid();
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrow) {
-                errorAjax(textStatus);
-                alert(textStatus);
-            }
-        });
-    }
+            });
+        }
+        else if (r == false) {
+            jQuery.alerts.dialogClass = 'alert-info';
+            jAlert('Item não foi excluido', 'Informação', function () {
+                jQuery.alerts.dialogClass = null; // reset to default
+            });
+        }
+    });
+
 }
 
 

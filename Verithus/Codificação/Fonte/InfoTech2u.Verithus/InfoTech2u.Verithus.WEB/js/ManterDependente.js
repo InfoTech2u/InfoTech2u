@@ -431,34 +431,50 @@ function Alterar(id) {
 }
 
 function Excluir(id) {
-    var conf = confirm('Continue delete?');
-    if (conf) {
 
-        jQuery.ajax({
-            type: "GET",
-            crossDomain: true,
-            url: "../../Handler/Dependente.ashx",
-            contentType: "json",
-            cache: false,
-            data: {
-                Metodo: 'Excluir',
-                Acao: 'Exclusao',
-                CodigoDependente: id
-            },
-            success: function (data) {
+    //Confirmação
+    jConfirm('Deseja excluir o item selecionado?', 'Confirmation Dialog', function (r) {
+        if (r == true) {
 
-                if (data) {
-                    jQuery('#gridDependentes tbody tr[value=' + id + ']').remove();
-                    MontarGrid();
-                    alert('Concluído.');
+            jQuery.ajax({
+                type: "GET",
+                crossDomain: true,
+                url: "../../Handler/Dependente.ashx",
+                contentType: "json",
+                cache: false,
+                data: {
+                    Metodo: 'Excluir',
+                    Acao: 'Exclusao',
+                    CodigoDependente: id
+                },
+                success: function (data) {
+
+                    if (data) {
+                        jQuery('#gridDependentes tbody tr[value=' + id + ']').remove();
+                        MontarGrid();
+                        //Sucesso
+                        jQuery.alerts.dialogClass = 'alert-success';
+                        jAlert('Item foi excluido', 'Informação', function () {
+                            jQuery.alerts.dialogClass = null; // reset to default
+                        });
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrow) {
+                    errorAjax(textStatus);
+                    alert(textStatus);
                 }
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrow) {
-                errorAjax(textStatus);
-                alert(textStatus);
-            }
-        });
-    }
+            });
+
+        }
+        else if (r == false) {
+            jQuery.alerts.dialogClass = 'alert-info';
+            jAlert('Item não foi excluido', 'Informação', function () {
+                jQuery.alerts.dialogClass = null; // reset to default
+            });
+        }
+    });
+
+    
 }
 
 function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
