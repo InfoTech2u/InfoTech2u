@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2008                    */
-/* Created on:     04/10/2014 07:05:06                          */
+/* Created on:     08/10/2014 10:01:52                          */
 /*==============================================================*/
 
 
@@ -1077,6 +1077,7 @@ create table TBVRT025_FERIAS (
    DATA_PERIODO_FIM     datetime             null,
    DATA_GOZADA_INICIO   datetime             null,
    DATA_GOZADA_FIM      datetime             null,
+   CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
    CODIGO_USUARIO_ALTERACAO int                  null,
    DATA_ALTERACAO       datetime             null,
@@ -1097,6 +1098,7 @@ create table TBVRT026_ACIDENTE_TRABALHO (
    DATA_ALTA            datetime             null,
    RESULTADO            text                 null,
    OBSERVACOES          text                 null,
+   CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
    CODIGO_USUARIO_ALTERACAO int                  null,
    DATA_ALTERACAO       datetime             null,
@@ -1116,6 +1118,7 @@ create table TBVRT027_ALTERACAO_CARGO_SALARIO (
    SALARIO              nvarchar(80)         null,
    HORARIO_INICIO       time                 null,
    HORARIO_FIM          time                 null,
+   CODIGO_USUARIO_CADASTRO int                  null,
    DATA_CADASTRO        datetime             null,
    CODIGO_USUARIO_ALTERACAO int                  null,
    DATA_ALTERACAO       datetime             null,
