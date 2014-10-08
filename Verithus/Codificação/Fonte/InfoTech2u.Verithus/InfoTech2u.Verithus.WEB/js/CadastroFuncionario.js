@@ -1246,7 +1246,7 @@ function IncluirDadosFuncionario() {
             NumeroEnderecoPIS: jQuery('#txtNumeroEnderecoPIS').val(),
             BairroPIS: jQuery('#txtBairroPIS').val(),
             ComplementoPIS: jQuery('#txtComplementoPIS').val(),
-            CEPPIS: jQuery('#txtCEPPIS').val(),
+            CEPPIS: jQuery('#txtCEPPIS').val().replace(/[\-]/g, ""),
             OptanteFGTS: jQuery('#rdpOptanteFGTS').val(),
             DataOpcao: jQuery('#txtDataOpcao').val(),
             DataRetratacao: jQuery('#txtDataRetratacao').val(),
