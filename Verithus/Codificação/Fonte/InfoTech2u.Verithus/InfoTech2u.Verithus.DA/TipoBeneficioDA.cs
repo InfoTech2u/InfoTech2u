@@ -184,16 +184,17 @@ namespace InfoTech2u.Verithus.DA
             }
         }
 
-        public bool ExcluirTipoBeneficio(TipoBeneficioVO param)
+        public DataTable ExcluirTipoBeneficio(TipoBeneficioVO param)
         {
             InfoTech2uSQLUtil objSql = null;
             StringBuilder query = null;
             List<SqlParameter> lstSqlParameter = null;
+            DataTable dtRetorno = null;
             bool foiExcluido = false;
 
             try
             {
-
+                dtRetorno = new DataTable();
                 objSql = new InfoTech2uSQLUtil();
                 lstSqlParameter = new List<SqlParameter>();
                 query = new StringBuilder();
@@ -204,24 +205,22 @@ namespace InfoTech2u.Verithus.DA
 
                 lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_BENEFICIO", param.CodigoTipoBeneficio));
 
-                int rowsAffected = 0;
 
-                objSql.ExecuteNonQuery("SPVRT038_TIPO_BENEFICIO_PR_EXCLUIR", lstSqlParameter.ToArray(), null, out rowsAffected);
+                objSql.Execute("SPVRT038_TIPO_BENEFICIO_PR_EXCLUIR", lstSqlParameter.ToArray(), null, ref dtRetorno);
 
-                foiExcluido = rowsAffected > 0;
+                return dtRetorno;
             }
             catch (Exception ex)
             {
-                foiExcluido = false;
+                return dtRetorno;
             }
             finally
             {
                 objSql = null;
                 lstSqlParameter = null;
                 query = null;
+                dtRetorno = null;
             }
-
-            return foiExcluido;
         }
     }
 }

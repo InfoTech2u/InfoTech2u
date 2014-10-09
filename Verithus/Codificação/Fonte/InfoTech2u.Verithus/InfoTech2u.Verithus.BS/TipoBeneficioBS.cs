@@ -74,7 +74,7 @@ namespace InfoTech2u.Verithus.BS
             }
         }
 
-        public bool ExcluirTipoBeneficio(TipoBeneficioVO param)
+        public DataTable ExcluirTipoBeneficio(TipoBeneficioVO param)
         {
             TipoBeneficioDA objRetorno = null;
 

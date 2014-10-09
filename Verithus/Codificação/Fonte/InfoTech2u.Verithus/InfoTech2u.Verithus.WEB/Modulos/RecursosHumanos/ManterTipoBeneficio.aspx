@@ -7,7 +7,7 @@
         <ul class="breadcrumbs">
             <li><a href="dashboard.html"><i class="iconfa-home"></i></a><span class="separator"></span></li>
             <li><a href="forms.html">Formulario</a> <span class="separator"></span></li>
-            <li>Tipo de Beneficios</li>
+            <li>Beneficios</li>
         </ul>
 
         <div class="pageheader">
@@ -47,7 +47,7 @@
                 <!--#myModal-->
 
                 <div class="row-fluid">
-                    <a class="btn btn-primary" href="#myModal" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Incluir</a>                   
+                    <a class="btn btn-primary" onclick="javascript:LimparModal();" href="#myModal" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Incluir</a>                   
                 </div>
 
                 <h4 class="widgettitle">Benefício</h4>

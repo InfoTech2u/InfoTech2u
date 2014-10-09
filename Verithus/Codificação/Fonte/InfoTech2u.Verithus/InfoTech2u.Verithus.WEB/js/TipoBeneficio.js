@@ -1,6 +1,35 @@
 ﻿jQuery(document).ready(function () {
     CarregarTipoBeneficioLista();
 
+    jQuery('#dyntable').dataTable({
+        "sPaginationType": "full_numbers",
+        "fnDrawCallback": function (oSettings) { jQuery.uniform.update();  },
+        "language": {
+            "search":"Pesquisa",
+            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "zeroRecords": "Não há registros",
+            "info": "Página _PAGE_ de _PAGES_",
+            "infoEmpty": "Não há registros.",
+            "infoFiltered": "(Pesquisado de um total de _MAX_ registro(s))",
+            "paginate": {
+                "first": "Primeira",
+                "previous": "Anterior",
+                "next": "Próxima",
+                "last": "Última"
+            },
+        }
+    });
+
+    jQuery('#dyntable tbody').on('click', 'tr', function () {
+        if (jQuery(this).hasClass('selected')) {
+            //jQuery(this).removeClass('selected');
+        }
+        else {
+            jQuery('#dyntable tr.selected').removeClass('selected');
+            jQuery(this).addClass('selected');
+        }
+    });
+
     jQuery('#btnIncluir').click(function (event) {
         if (validar()) {
 
@@ -18,13 +47,44 @@
                 success: function (data) {
                     var lista = eval(data);
 
+                    if (lista['Msg'] != null) {
+                        jQuery('#myModal').modal('hide');
+
+                        jQuery(window.document.location).attr('href', '../../Login.aspx?se= ');
+
+                        return;
+                    } else {
+
+                        if (lista[0].Erro != null) {
+                            jQuery.alerts.dialogClass = 'alert-danger';
+                            jAlert(lista[0].Mensagem, 'Alerta', function () {
+                                jQuery.alerts.dialogClass = null; // reset to default
+                            });
+                        } else {
+
                     if (lista.length > 0) {
-                        var row = '<tr id="' + lista[0].CODIGO_TIPO_BENEFICIO + '" ><td>' + lista[0].CODIGO_TIPO_BENEFICIO + '</td><td>' + lista[0].DESCRICAO + '</td><td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + lista[0].CODIGO_TIPO_BENEFICIO + ')" class="deleterow"><i class="icon-trash"></i></a></td></tr>';
-                        jQuery('tbody').append(row);
-                        jQuery('#myModal').modal('hide')
+                                jQuery('#dyntable').DataTable().row.add([
+                                   lista[0].CODIGO_TIPO_BENEFICIO,
+                                   lista[0].DESCRICAO,
+                                   '<a title="Excluir" href="javascript:Excluir(' + lista[0].CODIGO_TIPO_BENEFICIO + ')" class="deleterow"><i class="icon-trash"></i></a>'
+                                ]).draw();
+
+                                //Sucesso
+                                jQuery.alerts.dialogClass = 'alert-success';
+                                jAlert('Item foi incluído', 'Informação', function () {
+                                    jQuery.alerts.dialogClass = null; // reset to default
+                                });
+
+                                LimparModal();
                     }
                     else {
-                        alert("Não foi possível incluir.");
+                                jQuery.alerts.dialogClass = 'alert-danger';
+                                jAlert('Inclusão não foi realizada.', 'Alerta', function () {
+                                    jQuery.alerts.dialogClass = null; // reset to default
+                                });
+
+                            }
+                        }
                     }
 
                 },
@@ -34,16 +94,16 @@
                 }
             });
         }
-
-        //jQuery('#txtDescricaoTipoBeneficio').val('');
-
     });
 });
 
 function validar() {
 
     if (jQuery('#txtDescricaoTipoBeneficio').val() == "") {
-        alert("Preencha a descrição do benefício.")
+        jQuery.alerts.dialogClass = 'alert-info';
+        jAlert('Preencha o campo.', 'Informação', function () {
+            jQuery.alerts.dialogClass = null; // reset to default
+        });
         return false;
     }
     else {
@@ -56,8 +116,6 @@ function CarregarTipoBeneficioLista() {
     jQuery("tbody").empty();
     jQuery('tbody').remove();
     jQuery('#dyntable').append('<tbody></tbody>');
-
-
 
     jQuery.ajax({
         type: "GET",
@@ -76,30 +134,13 @@ function CarregarTipoBeneficioLista() {
             if (tiposBeneficios.length > 0) {
 
                 for (x in tiposBeneficios) {
-                    var row = '<tr id="' + tiposBeneficios[x].CodigoTipoBeneficio + '"><td>' + tiposBeneficios[x].CodigoTipoBeneficio + '</td><td>' + tiposBeneficios[x].Descricao + '</td><td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + tiposBeneficios[x].CodigoTipoBeneficio + ')" class="deleterow"><i class="icon-trash"></i></a></td></tr>';
-                    jQuery('tbody').append(row);
-                }
-
-                jQuery('#dyntable').dataTable().fnDestroy();
-
-                jQuery('#dyntable').dataTable({
-                    "sPaginationType": "full_numbers",
-                    "fnDrawCallback": function (oSettings) {
-                        jQuery.uniform.update();
-                    },
-                    "language": {
-                        "lengthMenu": "Display _MENU_ records per page",
-                        "zeroRecords": "Nothing found - sorry",
-                        "info": "Showing page _PAGE_ of _PAGES_",
-                        "infoEmpty": "No records available",
-                        "infoFiltered": "(filtered from _MAX_ total records)",
-                        "sInfoEmpty": "Mostrando 0-0 de 0 Funcionários"
+                    jQuery('#dyntable').DataTable().row.add([
+                        tiposBeneficios[x].CodigoTipoBeneficio,
+                        tiposBeneficios[x].Descricao,
+                        '<a title="Excluir" href="javascript:Excluir(' + tiposBeneficios[x].CodigoTipoBeneficio + ')" class="deleterow"><i class="icon-trash"></i></a>'
+                    ]).draw();
                     }
-                    //"sInfoEmpty": "Mostrando 0-0 de 0 Funcionários"
-                });
             }
-           
-           
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
             errorAjax(textStatus);
@@ -111,8 +152,7 @@ function CarregarTipoBeneficioLista() {
 function Excluir(id) {
 
     jConfirm('Deseja excluir o item selecionado?', 'Confirmation Dialog', function (r) {
-        if(r == true)
-        {
+        if (r == true) {
             jQuery.ajax({
                 type: "GET",
                 crossDomain: true,
@@ -125,14 +165,29 @@ function Excluir(id) {
                     Id: id
                 },
                 success: function (data) {
+                    var lista = eval(data);
 
-                    if (data) {
-                        jQuery('table tbody tr[id="' + id + '"]').remove();
+                    if (lista['Msg'] != null) {
+                        jQuery('#myModal').modal('hide');
+
+                        jQuery(window.document.location).attr('href', '../../Login.aspx?se= ');
+
+                        return;
+                    } else {
+                        if (lista != null && lista[0] != undefined)
+                        {
+                            jQuery.alerts.dialogClass = 'alert-danger';
+                            jAlert(lista[0].Mensagem, 'Alerta', function () {
+                                jQuery.alerts.dialogClass = null; // reset to default
+                            });
+                        }else  {
+                            jQuery('#dyntable').DataTable().row('.selected').remove().draw(false);
                         // do some other stuff here
                         jQuery.alerts.dialogClass = 'alert-success';
                         jAlert('Item foi excluido', 'Informação', function () {
                             jQuery.alerts.dialogClass = null; // reset to default
                         });
+                    }
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -141,8 +196,7 @@ function Excluir(id) {
                 }
             });
         }
-        else if(r == false)
-        {
+        else if (r == false) {
             jQuery.alerts.dialogClass = 'alert-info';
             jAlert('Item não foi excluido', 'Informação', function () {
                 jQuery.alerts.dialogClass = null; // reset to default
@@ -150,3 +204,11 @@ function Excluir(id) {
         }
     });
 }
+
+function LimparModal()
+{
+    jQuery('#txtDescricaoTipoBeneficio').val('');
+}
+
+
+

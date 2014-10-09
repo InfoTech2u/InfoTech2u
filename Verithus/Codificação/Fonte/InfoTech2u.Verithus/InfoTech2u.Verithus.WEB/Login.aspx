@@ -19,6 +19,14 @@
     <script type="text/javascript">
         var tipoAcesso;
         jQuery(document).ready(function () {
+            if (getUrlVars()['se'] != undefined)
+            {
+                jQuery.alerts.dialogClass = 'alert-info';
+                jAlert('Sua sessão expirou.', 'Alerta', function () {
+                    jQuery.alerts.dialogClass = null; // reset to default
+                });
+            }
+
             jQuery('#btnEntrar').click(function () {
                 var u = jQuery('#username').val();
                 var p = jQuery('#password').val();

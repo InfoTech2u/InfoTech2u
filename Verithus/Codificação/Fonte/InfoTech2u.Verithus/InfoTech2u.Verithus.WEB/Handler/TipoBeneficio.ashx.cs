@@ -19,6 +19,14 @@ namespace InfoTech2u.Verithus.WEB.Handler
 
         public void ProcessRequest(HttpContext context)
         {
+            if (context.Session["CodigoUsuario"] == null)
+            {
+                context.Response.ContentType = "application/json; charset=utf-8";
+                context.Response.Write("{ \"Msg\": \"Sessão expirada. Você será redirecionado para tela de login.\"}");
+                context.Response.End();
+                return;
+            }
+
             if (context.Request.QueryString["Metodo"] == "Listar")
             {
                 var retorno = SelecionarTipoBeneficio(new TipoBeneficioVO());
@@ -49,7 +57,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
 
                     param.CodigoUsuarioAlteracao = Convert.ToInt32(context.Session["CodigoUsuario"].ToString());
 
-                    context.Response.Write(serializer.Serialize(ExcluirTipoBeneficio(param)));
+                    context.Response.Write(ExcluirTipoBeneficio(param).Serializer());
                 }
                 else
                 {
@@ -70,7 +78,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
             return objBS.IncluirTipoBeneficio(param);
         }
 
-        private bool ExcluirTipoBeneficio(TipoBeneficioVO param)
+        private DataTable ExcluirTipoBeneficio(TipoBeneficioVO param)
         {
             TipoBeneficioBS objBS = new TipoBeneficioBS();
             return objBS.ExcluirTipoBeneficio(param);
