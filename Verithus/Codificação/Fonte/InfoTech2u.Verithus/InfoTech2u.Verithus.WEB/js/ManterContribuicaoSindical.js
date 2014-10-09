@@ -77,8 +77,6 @@ function CarregarContribuicaoExistente() {
 
     var codFunc = jQuery('#hdnCodigoFuncionario').val();
 
-    alert(codFunc);
-
     jQuery.ajax({
         type: "GET",
         crossDomain: true,
