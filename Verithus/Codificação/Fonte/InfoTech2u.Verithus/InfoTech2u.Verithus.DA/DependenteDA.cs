@@ -239,7 +239,7 @@ namespace InfoTech2u.Verithus.DA
                     objSql.Execute("SPVRT001_BENEFICIO_PR_EXCLUIR", lstSqlParameter.ToArray(), transaction, ref dtRetornoExcluir);
 
                     //Verifica se exclusao ocorreu com sucesso
-                    if (dtRetornoExcluir != null && dtRetornoExcluir.Rows.Count > 0 && Convert.ToInt32(dtRetornoExcluir.Rows[0]["Mensagem"]) == 100)
+                    if (dtRetornoExcluir != null && dtRetornoExcluir.Rows.Count > 0 && Convert.ToInt32(dtRetornoExcluir.Rows[0]["Status"]) == 100)
                     {
                         transaction.Rollback();
                         return new DataTable();
@@ -437,13 +437,14 @@ namespace InfoTech2u.Verithus.DA
                 lstSqlParameter = new List<SqlParameter>();
                 lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO_ALTERACAO", param.CodigoUsuarioAlteracao));
                 lstSqlParameter.Add(new SqlParameter("@CODIGO_DEPENDENTE", param.CodigoDependente));
+
                 dtRetorno = new DataTable();
 
                 //Exclui todos benefícios do dependente caso exista
                 objSql.Execute("SPVRT001_BENEFICIO_PR_EXCLUIR", lstSqlParameter.ToArray(), transaction, ref dtRetorno);
 
                 //Verifica se exclusao ocorreu com sucesso
-                if (dtRetorno != null && dtRetorno.Rows.Count > 0 && Convert.ToInt32(dtRetorno.Rows[0]["Mensagem"]) == 100)
+                if (dtRetorno != null && dtRetorno.Rows.Count > 0 && Convert.ToInt32(dtRetorno.Rows[0]["Status"]) == 100)
                 {
                     transaction.Rollback();
                     return false;
@@ -452,6 +453,7 @@ namespace InfoTech2u.Verithus.DA
                 lstSqlParameter = new List<SqlParameter>();
 
                 lstSqlParameter.Add(new SqlParameter("@CODIGO_DEPENDENTE", param.CodigoDependente));
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO_ALTERACAO", param.CodigoUsuarioAlteracao));
 
                 rowsAffected = 0;
                 objSql.ExecuteNonQuery("SPVRT015_DEPENDENTE_PR_EXCLUIR", lstSqlParameter.ToArray(), transaction, out rowsAffected);
