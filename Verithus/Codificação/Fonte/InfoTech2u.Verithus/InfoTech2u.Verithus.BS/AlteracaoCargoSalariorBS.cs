@@ -11,7 +11,7 @@ namespace InfoTech2u.Verithus.BS
 {
     public class AlteracaoCargoSalariorBS
     {
-        public DataTable SelecionarAdmissao(AlteracaoCargoSalariorVO param)
+        public DataTable SelecionarAlteracaoCargoSalarior(AlteracaoCargoSalariorVO param)
         {
             AlteracaoCargoSalariorDA objRetorno = new AlteracaoCargoSalariorDA();
 
@@ -29,14 +29,14 @@ namespace InfoTech2u.Verithus.BS
             }
         }
 
-        public DataTable IncluirAdmissao(AlteracaoCargoSalariorVO usuario)
+        public DataTable IncluirAlteracaoCargoSalarior(AlteracaoCargoSalariorVO usuario)
         {
             AlteracaoCargoSalariorDA objRetorno = new AlteracaoCargoSalariorDA();
 
             return objRetorno.IncluirAlteracaoCargoSalarior(usuario);
         }
 
-        public DataTable AlterarAdmissao(AlteracaoCargoSalariorVO usuario)
+        public DataTable AlterarAlteracaoCargoSalarior(AlteracaoCargoSalariorVO usuario)
         {
             AlteracaoCargoSalariorDA objRetorno = new AlteracaoCargoSalariorDA();
 

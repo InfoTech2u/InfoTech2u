@@ -11,7 +11,7 @@ namespace InfoTech2u.Verithus.BS
 {
     public class FeriasBS
     {
-        public DataTable SelecionarAdmissao(FeriasVO param)
+        public DataTable SelecionarFerias(FeriasVO param)
         {
             FeriasDA objRetorno = new FeriasDA();
 
@@ -29,14 +29,14 @@ namespace InfoTech2u.Verithus.BS
             }
         }
 
-        public DataTable IncluirAdmissao(FeriasVO usuario)
+        public DataTable IncluirFerias(FeriasVO usuario)
         {
             FeriasDA objRetorno = new FeriasDA();
 
             return objRetorno.IncluirFerias(usuario);
         }
 
-        public DataTable AlterarAdmissao(FeriasVO usuario)
+        public DataTable AlterarFerias(FeriasVO usuario)
         {
             FeriasDA objRetorno = new FeriasDA();
 

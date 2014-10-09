@@ -17,9 +17,29 @@ namespace InfoTech2u.Verithus.WEB.Handler
 
         public void ProcessRequest(HttpContext context)
         {
-            context.Response.ContentType = "text/plain";
-            context.Response.Write("Hello World");
+            if (context.Request.QueryString["Metodo"] == "Selecionar")
+            {
+                var retorno = SelecionarFerias(context);
+
+                context.Response.Write(retorno.Serializer());
+            }
         }
+
+        private DataTable SelecionarFerias(HttpContext context)
+        {
+            FeriasBS objBS = new FeriasBS();
+            FeriasVO dadosFerias = new FeriasVO();
+
+            int codigoFuncionario = 0;
+            if (Int32.TryParse(context.Request.QueryString["CodigoFuncionario"], out codigoFuncionario))
+            {
+                dadosFerias.CodigoFuncionario = codigoFuncionario;
+            }
+
+            return objBS.SelecionarFerias(dadosFerias);
+        }
+
+
 
         public bool IsReusable
         {

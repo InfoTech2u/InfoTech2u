@@ -17,8 +17,26 @@ namespace InfoTech2u.Verithus.WEB.Handler
 
         public void ProcessRequest(HttpContext context)
         {
-            context.Response.ContentType = "text/plain";
-            context.Response.Write("Hello World");
+            if (context.Request.QueryString["Metodo"] == "Selecionar")
+            {
+                var retorno = SelecionarAlteracaoCargoSalarior(context);
+
+                context.Response.Write(retorno.Serializer());
+            }
+        }
+
+        private DataTable SelecionarAlteracaoCargoSalarior(HttpContext context)
+        {
+            AlteracaoCargoSalariorBS objBS = new AlteracaoCargoSalariorBS();
+            AlteracaoCargoSalariorVO dadosAlteracaoCargoSalarior = new AlteracaoCargoSalariorVO();
+
+            int codigoFuncionario = 0;
+            if (Int32.TryParse(context.Request.QueryString["CodigoFuncionario"], out codigoFuncionario))
+            {
+                dadosAlteracaoCargoSalarior.CodigoFuncionario = codigoFuncionario;
+            }
+
+            return objBS.SelecionarAlteracaoCargoSalarior(dadosAlteracaoCargoSalarior);
         }
 
         public bool IsReusable

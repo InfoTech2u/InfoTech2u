@@ -11,7 +11,7 @@ namespace InfoTech2u.Verithus.BS
 {
     public class AcidenteTrabalhoBS
     {
-        public DataTable SelecionarAdmissao(AcidenteTrabalhoVO param)
+        public DataTable SelecionarAcidenteTrabalho(AcidenteTrabalhoVO param)
         {
             AcidenteTrabalhoDA objRetorno = new AcidenteTrabalhoDA();
 
@@ -29,14 +29,14 @@ namespace InfoTech2u.Verithus.BS
             }
         }
 
-        public DataTable IncluirAdmissao(AcidenteTrabalhoVO usuario)
+        public DataTable IncluirAcidenteTrabalho(AcidenteTrabalhoVO usuario)
         {
             AcidenteTrabalhoDA objRetorno = new AcidenteTrabalhoDA();
 
             return objRetorno.IncluirAcidenteTrabalho(usuario);
         }
 
-        public DataTable AlterarAdmissao(AcidenteTrabalhoVO usuario)
+        public DataTable AlterarAcidenteTrabalho(AcidenteTrabalhoVO usuario)
         {
             AcidenteTrabalhoDA objRetorno = new AcidenteTrabalhoDA();
 
