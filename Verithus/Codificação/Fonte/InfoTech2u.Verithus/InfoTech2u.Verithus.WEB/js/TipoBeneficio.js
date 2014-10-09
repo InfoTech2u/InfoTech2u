@@ -50,7 +50,7 @@
                     if (lista['Msg'] != null) {
                         jQuery('#myModal').modal('hide');
 
-                        jQuery(window.document.location).attr('href', '../../Login.aspx?se= ');
+                        jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
 
                         return;
                     } else {
@@ -129,6 +129,13 @@ function CarregarTipoBeneficioLista() {
         },
         success: function (data) {
 
+            if (data['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
+
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+            } else {
             var tiposBeneficios = eval(data);
 
             if (tiposBeneficios.length > 0) {
@@ -140,6 +147,7 @@ function CarregarTipoBeneficioLista() {
                         '<a title="Excluir" href="javascript:Excluir(' + tiposBeneficios[x].CodigoTipoBeneficio + ')" class="deleterow"><i class="icon-trash"></i></a>'
                     ]).draw();
                     }
+            }
             }
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -170,7 +178,7 @@ function Excluir(id) {
                     if (lista['Msg'] != null) {
                         jQuery('#myModal').modal('hide');
 
-                        jQuery(window.document.location).attr('href', '../../Login.aspx?se= ');
+                        jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
 
                         return;
                     } else {

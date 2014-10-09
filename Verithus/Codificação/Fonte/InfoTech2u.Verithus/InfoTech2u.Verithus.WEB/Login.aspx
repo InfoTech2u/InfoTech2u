@@ -19,12 +19,14 @@
     <script type="text/javascript">
         var tipoAcesso;
         jQuery(document).ready(function () {
-            if (getUrlVars()['se'] != undefined)
+            if (getUrlVars()['cod'] != undefined)
             {
+                if (getUrlVars()['cod'] == 300) {
                 jQuery.alerts.dialogClass = 'alert-info';
                 jAlert('Sua sessão expirou.', 'Alerta', function () {
                     jQuery.alerts.dialogClass = null; // reset to default
                 });
+            }
             }
 
             jQuery('#btnEntrar').click(function () {
@@ -40,6 +42,17 @@
                 return false;
             });
         });
+
+        function getUrlVars() {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
 
         function VerificarUsuario(user, pass) {
             jQuery.ajax({
