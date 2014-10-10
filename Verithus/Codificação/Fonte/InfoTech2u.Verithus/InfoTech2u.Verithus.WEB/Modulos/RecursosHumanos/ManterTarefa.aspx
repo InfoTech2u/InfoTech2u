@@ -2,11 +2,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderInfoTech2u" runat="server">
-     <script type="text/javascript">
-        
-
-        
-    </script>
     <div class="rightpanel">
 
        <ul class="breadcrumbs">
@@ -51,20 +46,19 @@
                     <div class="modal-footer">
                         <button data-dismiss="modal" class="btn">&nbsp; Sair</button>
                         <a class="btn btn-primary" id="btnIncluir" href="#" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Incluir</a>
-                        <a href="#" id="btnLimpar" class="btn btn-rounded"><i class="iconfa-refresh iconsweets-black"></i>&nbsp; limpar</a>
                     </div>
                 </div>
                 <!--#myModal-->
 
                 <div class="row-fluid">
-                    <a class="btn btn-primary" href="#myModal" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Incluir</a>                   
+                    <a class="btn btn-primary" onclick="javascript:Limpar();" href="#myModal" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Incluir</a>                   
                 </div>
 
                 <h4 class="widgettitle">Benefício</h4>
             	<table id="dyntable" class="table table-bordered responsive">
                     <colgroup>
                         <col class="con0" style="align: center; width: 4%" />
-                        <col class="con1" />
+                        <col class="con1"  style="align: center; width: 80%" />
                         <col class="con0" />
                     </colgroup>
                     <thead>

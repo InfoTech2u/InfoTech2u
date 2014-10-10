@@ -4,6 +4,35 @@ jQuery(document).ready(function () {
 
     CarregarLista();
 
+    jQuery('#dyntable').dataTable({
+        "sPaginationType": "full_numbers",
+        "fnDrawCallback": function (oSettings) { jQuery.uniform.update(); },
+        "language": {
+            "search": "Pesquisa",
+            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "zeroRecords": "Não há registros",
+            "info": "Página _PAGE_ de _PAGES_",
+            "infoEmpty": "Não há registros.",
+            "infoFiltered": "(Pesquisado de um total de _MAX_ registro(s))",
+            "paginate": {
+                "first": "Primeira",
+                "previous": "Anterior",
+                "next": "Próxima",
+                "last": "Última"
+            },
+        }
+    });
+
+    jQuery('#dyntable tbody').on('click', 'tr', function () {
+        if (jQuery(this).hasClass('selected')) {
+            //jQuery(this).removeClass('selected');
+        }
+        else {
+            jQuery('#dyntable tr.selected').removeClass('selected');
+            jQuery(this).addClass('selected');
+        }
+    });
+
     jQuery('#btnIncluir').click(function (event) {
         if (ValidarFormulario()) {
             jQuery.ajax({
@@ -18,16 +47,53 @@ jQuery(document).ready(function () {
                     Descricao: jQuery('#txtDescricao').val()
                 },
                 success: function (data) {
-                    var tipos = eval(data);
-                    Limpar();
-                    if (tipos.length > 0) {
-                        var row = '<tr id="' + tipos[0].CODIGO_TIPO_TAREFA + '"><td>' + tipos[0].CODIGO_TIPO_TAREFA + '</td><td>' + tipos[0].DESCRICAO + '</td><td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + tipos[0].CODIGO_TIPO_TAREFA + ');" class="deleterow"><i class="icon-trash"></i></a></td></tr>';
-                        jQuery('tbody').append(row);
+                   
+                    var lista = eval(data);
+
+                    if (lista['Msg'] != null) {
                         jQuery('#myModal').modal('hide');
+
+                        jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                        return;
+                    } else {
+
+                        if (lista[0].Erro != null) {
+                            jQuery.alerts.dialogClass = 'alert-danger';
+                            jAlert(lista[0].Mensagem, 'Alerta', function () {
+                                jQuery.alerts.dialogClass = null; // reset to default
+                            });
+                        } else {
+
+                            if (lista.length > 0) {
+                                jQuery('#dyntable').DataTable().row.add([
+                                   lista[0].CODIGO_TIPO_TAREFA,
+                                   lista[0].DESCRICAO,
+                                   '<a title="Excluir" href="javascript:Excluir(' + lista[0].CODIGO_TIPO_TAREFA + ')" class="deleterow"><i class="icon-trash"></i></a>'
+                                ]).draw();
+
+                                //Sucesso
+                                jQuery.alerts.dialogClass = 'alert-success';
+                                jAlert('Item foi incluído', 'Informação', function () {
+                                    jQuery.alerts.dialogClass = null; // reset to default
+                                });
+
+                                Limpar();
                     }
                     else {
-                        alert("Não foi possível incluir.");
+                                jQuery.alerts.dialogClass = 'alert-danger';
+                                jAlert('Inclusão não foi realizada.', 'Alerta', function () {
+                                    jQuery.alerts.dialogClass = null; // reset to default
+                                });
+
                     }
+                        }
+                    }
+
+
+
+
+
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrow) {
                     errorAjax(textStatus);
@@ -37,17 +103,13 @@ jQuery(document).ready(function () {
         }
     });
 
-    jQuery("#btnLimpar").click(function () {
-        Limpar();
     });
-
 
     function Limpar() {
         jQuery('#txtDescricao').val("");
         jQuery('#msgDescricao').html('').hide();
         jQuery("#validaDescricao").removeClass("par control-group error").addClass("input-small");
-    }
-
+};
 
     function ValidarFormulario() {
 
@@ -83,33 +145,25 @@ jQuery(document).ready(function () {
             },
             success: function (data) {
 
-                if (data != '[]') {
-                    var tipos = eval(data);
+            if (data['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
+
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+            } else {
+                var tipos = eval(data);
+
+                if (tipos.length > 0) {
+
                     for (x in tipos) {
-                        var row = '<tr id="' + tipos[x].CodigoTipoTarefa + '"><td>' + tipos[x].CodigoTipoTarefa + '</td><td>' + tipos[x].Descricao + '</td><td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + tipos[x].CodigoTipoTarefa + ');" class="deleterow"><i class="icon-trash"></i></a></td></tr>';
-                        jQuery('tbody').append(row);
+                        jQuery('#dyntable').DataTable().row.add([
+                            tipos[x].CodigoTipoTarefa,
+                            tipos[x].Descricao,
+                            '<a title="Excluir" href="javascript:Excluir(' + tipos[x].CodigoTipoTarefa + ')" class="deleterow"><i class="icon-trash"></i></a>'
+                        ]).draw();
                     }
-
-                    //FormatarGrid();
-
-                    jQuery('#dyntable').dataTable().fnDestroy();
-
-                    jQuery('#dyntable').dataTable({
-                        "sPaginationType": "full_numbers",
-                        "fnDrawCallback": function (oSettings) {
-                            jQuery.uniform.update();
-                        },
-                        "language": {
-                            "lengthMenu": "Display _MENU_ records per page",
-                            "zeroRecords": "Nothing found - sorry",
-                            "info": "Showing page _PAGE_ of _PAGES_",
-                            "infoEmpty": "No records available",
-                            "infoFiltered": "(filtered from _MAX_ total records)",
-                            "sInfoEmpty": "Mostrando 0-0 de 0 Funcionários"
-                        }
-                        //"sInfoEmpty": "Mostrando 0-0 de 0 Funcionários"
-                    });
-
+                }
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -118,19 +172,6 @@ jQuery(document).ready(function () {
             }
         });
     }
-
-    function FormatarGrid() {
-        // dynamic table
-        jQuery('#dyntable').dataTable({
-            "sPaginationType": "full_numbers",
-            "aaSortingFixed": [[0, 'asc']],
-            "fnDrawCallback": function (oSettings) {
-                jQuery.uniform.update();
-            }
-        });
-    };
-});
-
 
 function Excluir(Id) {
 
@@ -149,17 +190,29 @@ function Excluir(Id) {
                     Id: Id
                 },
                 success: function (data) {
+                    var lista = eval(data);
 
-                    if (data) {
-                        jQuery('table tbody tr[id="' + Id + '"]').remove();
+                    if (lista['Msg'] != null) {
+                        jQuery('#myModal').modal('hide');
+
+                        jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                        return;
+                    } else {
+                        if (lista != null && lista[0] != undefined) {
+                            jQuery.alerts.dialogClass = 'alert-danger';
+                            jAlert(lista[0].Mensagem, 'Alerta', function () {
+                                jQuery.alerts.dialogClass = null; // reset to default
+                            });
+                        } else {
+                            jQuery('#dyntable').DataTable().row('.selected').remove().draw(false);
                         // do some other stuff here
-                        //Sucesso
                         jQuery.alerts.dialogClass = 'alert-success';
                         jAlert('Item foi excluido', 'Informação', function () {
                             jQuery.alerts.dialogClass = null; // reset to default
                         });
                     }
-                    //FormatarGrid();
+                    }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrow) {
                     errorAjax(textStatus);
