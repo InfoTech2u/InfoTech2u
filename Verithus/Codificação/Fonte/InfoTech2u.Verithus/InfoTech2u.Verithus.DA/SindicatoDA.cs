@@ -184,18 +184,19 @@ namespace InfoTech2u.Verithus.DA
             return listaRetorno;
         }
 
-        public bool ExcluirSindicato(SindicatoVO param)
+        public DataTable ExcluirSindicato(SindicatoVO param)
         {
             InfoTech2uSQLUtil objSql = null;
             StringBuilder query = null;
             List<SqlParameter> lstSqlParameter = null;
-            bool foiExcluido = false;
+            DataTable dtRetorno = null;
 
             try
             {
 
                 objSql = new InfoTech2uSQLUtil();
                 lstSqlParameter = new List<SqlParameter>();
+                dtRetorno = new DataTable();
                 query = new StringBuilder();
 
                 objSql.Sigla = objSql.GetDataBase();
@@ -203,25 +204,23 @@ namespace InfoTech2u.Verithus.DA
                 objSql.Open();
 
                 lstSqlParameter.Add(new SqlParameter("@CODIGO_SINDICATO", param.CodigoSindicato));
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO_ALTERACAO", param.CodigoUsuarioAlteracao));
 
-                int rowsAffected = 0;
+                objSql.Execute("SPVRT030_SINDICATO_PR_EXCLUIR", lstSqlParameter.ToArray(), null, ref dtRetorno);
 
-                objSql.ExecuteNonQuery("SPVRT030_SINDICATO_PR_EXCLUIR", lstSqlParameter.ToArray(), null, out rowsAffected);
-
-                foiExcluido = rowsAffected > 0;
+                return dtRetorno;
             }
             catch (Exception ex)
             {
-                foiExcluido = false;
+                return dtRetorno;
             }
             finally
             {
                 objSql = null;
                 lstSqlParameter = null;
                 query = null;
+                dtRetorno = null;
             }
-
-            return foiExcluido;
         }
     }
 }

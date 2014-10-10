@@ -16,9 +16,16 @@ namespace InfoTech2u.Verithus.WEB.Handler
     /// </summary>
     public class ManterSindicato : IHttpHandler, System.Web.SessionState.IRequiresSessionState
     {
-
         public void ProcessRequest(HttpContext context)
         {
+            if (context.Session["CodigoUsuario"] == null)
+            {
+                context.Response.ContentType = "application/json; charset=utf-8";
+                context.Response.Write("{ \"Msg\": \"Sessão expirada. Você será redirecionado para tela de login.\"}");
+                context.Response.End();
+                return;
+            }
+
             if (context.Request.QueryString["Metodo"] == "Lista")
             {
                 var retorno = SelecionarSindicato(new SindicatoVO());
@@ -39,20 +46,14 @@ namespace InfoTech2u.Verithus.WEB.Handler
                 SindicatoVO param = new SindicatoVO();
                 int numconvertido = 0;
 
-                JavaScriptSerializer serializer = new JavaScriptSerializer();
-
                 if (Int32.TryParse(context.Request.QueryString["Id"].ToString(), out numconvertido))
                 {
                     param.CodigoSindicato = numconvertido;
 
                     param.CodigoUsuarioAlteracao = Convert.ToInt32(context.Session["CodigoUsuario"].ToString());
+                }
 
-                    context.Response.Write(serializer.Serialize(ExcluirSindicato(param)));
-                }
-                else
-                {
-                    context.Response.Write(serializer.Serialize(false));
-                }
+                context.Response.Write(ExcluirSindicato(param).Serializer());
             }
         }
 
@@ -68,7 +69,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
             return objBS.IncluirSindicato(param);
         }
 
-        private bool ExcluirSindicato(SindicatoVO param)
+        private DataTable ExcluirSindicato(SindicatoVO param)
         {
             SindicatoBS objBS = new SindicatoBS();
             return objBS.ExcluirSindicato(param);

@@ -34,6 +34,7 @@
                                 <label class="control-label" for="txtNomeSindicato">Descrição</label>
                                 <div class="controls">
                                     <asp:TextBox runat="server" ID="txtNomeSindicato" class="input-block-level" ClientIDMode="Static" />
+                                    <span class="help-inline" id="msgNomeSindicato"></span>
                                 </div>
                             </div>
                             <!--widgetcontent-->
@@ -48,14 +49,15 @@
                 <!--#myModal-->
 
                 <div class="row-fluid">
-                    <a class="btn btn-primary" href="#myModal" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Incluir</a>                   
+                    <a class="btn btn-primary"  onclick="javascript:Limpar();" href="#myModal" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Incluir</a>                   
                 </div>
 
                 <h4 class="widgettitle">Sindicato</h4>
             	<table id="dyntable" class="table table-bordered responsive">
                     <colgroup>
-                        <col class="con0" style="align: center; width: 90%" />
-                        <col class="con1" />
+                        <col class="con0" style="align: center; width: 4%" />
+                        <col class="con1"  style="align: center; width: 80%" />
+                        <col class="con0" />
                     </colgroup>
                     <thead>
                         <tr>

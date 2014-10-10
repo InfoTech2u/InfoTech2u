@@ -74,7 +74,7 @@ namespace InfoTech2u.Verithus.BS
             }
         }
 
-        public bool ExcluirSindicato(SindicatoVO param)
+        public DataTable ExcluirSindicato(SindicatoVO param)
         {
             SindicatoDA objRetorno = null;
 

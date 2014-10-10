@@ -56,14 +56,10 @@ namespace InfoTech2u.Verithus.WEB.Handler
                     param.CodigoTipoBeneficio = numconvertido;
 
                     param.CodigoUsuarioAlteracao = Convert.ToInt32(context.Session["CodigoUsuario"].ToString());
+                }
 
                     context.Response.Write(ExcluirTipoBeneficio(param).Serializer());
                 }
-                else
-                {
-                    context.Response.Write(serializer.Serialize(false));
-                }
-            }
         }
 
         private List<TipoBeneficioVO> SelecionarTipoBeneficio(TipoBeneficioVO param)

@@ -58,6 +58,11 @@ BEGIN
 					RETURN
 				END
 		END
+	ELSE
+		BEGIN
+			SELECT 'CODIGO NULO' as Erro, 'CÓDIGO NULO - NÃO FOI POSSÍVEL EXCLUIR' as Mensagem
+					RETURN
+		END
 END
 GO
 

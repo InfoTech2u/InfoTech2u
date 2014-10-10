@@ -129,7 +129,7 @@ namespace InfoTech2u.Verithus.DA
             }
             catch (Exception ex)
             {
-                throw ex;
+                return dtRetorno;
             }
             finally
             {

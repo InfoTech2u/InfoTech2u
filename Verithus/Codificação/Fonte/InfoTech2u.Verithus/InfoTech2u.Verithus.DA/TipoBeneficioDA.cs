@@ -190,7 +190,6 @@ namespace InfoTech2u.Verithus.DA
             StringBuilder query = null;
             List<SqlParameter> lstSqlParameter = null;
             DataTable dtRetorno = null;
-            bool foiExcluido = false;
 
             try
             {
@@ -204,6 +203,7 @@ namespace InfoTech2u.Verithus.DA
                 objSql.Open();
 
                 lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_BENEFICIO", param.CodigoTipoBeneficio));
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO_ALTERACAO", param.CodigoUsuarioAlteracao));
 
 
                 objSql.Execute("SPVRT038_TIPO_BENEFICIO_PR_EXCLUIR", lstSqlParameter.ToArray(), null, ref dtRetorno);

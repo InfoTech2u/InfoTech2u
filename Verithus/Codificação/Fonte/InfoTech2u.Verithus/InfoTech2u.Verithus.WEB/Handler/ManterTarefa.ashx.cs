@@ -57,14 +57,10 @@ namespace InfoTech2u.Verithus.WEB.Handler
                     param.CodigoTipoTarefa = numconvertido;
 
                     param.CodigoUsuarioAlteracao = Convert.ToInt32(context.Session["CodigoUsuario"].ToString());
+                }
 
                     context.Response.Write(ExcluirTipoTarefa(param).DataTableSerializer());
                 }
-                else
-                {
-                    context.Response.Write(serializer.Serialize(false));
-                }
-            }
         }
 
         private List<TipoTarefaVO> SelecionarTarefaLista(TipoTarefaVO param)
