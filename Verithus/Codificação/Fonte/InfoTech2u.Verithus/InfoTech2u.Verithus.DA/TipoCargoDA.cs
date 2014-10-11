@@ -120,6 +120,8 @@ namespace InfoTech2u.Verithus.DA
                 else
                     lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_CARGO", param.CodigoTipoCargo));
 
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO_ALTERACAO", param.CodigoUsuarioAlteracao));
+
                 objSql.Execute("dbo.[SPVRT042_TIPO_CARGO_PR_EXCLUIR]", lstSqlParameter.ToArray(), null, ref dtRetorno);
 
                 return dtRetorno;

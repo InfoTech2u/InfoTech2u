@@ -86,6 +86,10 @@
                     }
                 }
         }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrow) {
+                    errorAjax(textStatus);
+                    alert(textStatus);
                 }
             })
         };

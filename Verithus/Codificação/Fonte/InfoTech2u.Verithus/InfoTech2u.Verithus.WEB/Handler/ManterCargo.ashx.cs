@@ -18,6 +18,14 @@ namespace InfoTech2u.Verithus.WEB.Handler
     {
         public void ProcessRequest(HttpContext context)
         {
+            if (context.Session["CodigoUsuario"] == null)
+            {
+                context.Response.ContentType = "application/json; charset=utf-8";
+                context.Response.Write("{ \"Msg\": \"Sessão expirada. Você será redirecionado para tela de login.\"}");
+                context.Response.End();
+                return;
+            }
+
             if (context.Request.QueryString["Metodo"] == "Lista")
             {
                 var retorno = SelecionarCargoLista(new TipoCargoVO());
@@ -41,20 +49,13 @@ namespace InfoTech2u.Verithus.WEB.Handler
                 TipoCargoVO param = new TipoCargoVO();
                 int numconvertido = 0;
 
-                JavaScriptSerializer serializer = new JavaScriptSerializer();
-
-                if (Int32.TryParse(context.Request.QueryString["Id"].ToString(), out numconvertido))
+                if (Int32.TryParse(context.Request.QueryString["Id"], out numconvertido))
                 {
                     param.CodigoTipoCargo = numconvertido;
 
                     param.CodigoUsuarioAlteracao = Convert.ToInt32(context.Session["CodigoUsuario"].ToString());
-
-                    context.Response.Write(ExcluirTipoCargo(param).DataTableSerializer());
                 }
-                else
-                {
-                    context.Response.Write(serializer.Serialize(false));
-                }
+                context.Response.Write(ExcluirTipoCargo(param).Serializer());
             }
         }
 

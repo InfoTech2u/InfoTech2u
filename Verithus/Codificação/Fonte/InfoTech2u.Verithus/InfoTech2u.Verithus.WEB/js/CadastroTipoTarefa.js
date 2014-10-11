@@ -89,11 +89,6 @@ jQuery(document).ready(function () {
                     }
                         }
                     }
-
-
-
-
-
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrow) {
                     errorAjax(textStatus);
