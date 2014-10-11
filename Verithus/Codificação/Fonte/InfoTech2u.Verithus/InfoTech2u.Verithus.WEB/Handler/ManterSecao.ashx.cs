@@ -20,6 +20,14 @@ namespace InfoTech2u.Verithus.WEB.Handler
 
         public void ProcessRequest(HttpContext context)
         {
+            if (context.Session["CodigoUsuario"] == null)
+            {
+                context.Response.ContentType = "application/json; charset=utf-8";
+                context.Response.Write("{ \"Msg\": \"Sessão expirada. Você será redirecionado para tela de login.\"}");
+                context.Response.End();
+                return;
+            }
+
             if (context.Request.QueryString["Metodo"] == "Lista")
             {
                 var retorno = SelecionarSecaoLista(new TipoSecaoVO());
@@ -43,20 +51,14 @@ namespace InfoTech2u.Verithus.WEB.Handler
                 TipoSecaoVO param = new TipoSecaoVO();
                 int numconvertido = 0;
 
-                JavaScriptSerializer serializer = new JavaScriptSerializer();
-
                 if (Int32.TryParse(context.Request.QueryString["Id"].ToString(), out numconvertido))
                 {
                     param.CodigoTipoSecao = numconvertido;
 
                     param.CodigoUsuarioAlteracao = Convert.ToInt32(context.Session["CodigoUsuario"].ToString());
+                }
 
-                    context.Response.Write(ExcluirTipoSecao(param).DataTableSerializer());
-                }
-                else
-                {
-                    context.Response.Write(serializer.Serialize(false));
-                }
+                context.Response.Write(ExcluirTipoSecao(param).Serializer());                
             }
         }
 
