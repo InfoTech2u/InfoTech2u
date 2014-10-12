@@ -120,6 +120,8 @@ namespace InfoTech2u.Verithus.DA
                 else
                     lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_FORMA_PAGAMENTO", param.CodigoTipoFormaPagamento));
 
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO_ALTERACAO", param.CodigoTipoFormaPagamento));
+
                 objSql.Execute("dbo.[SPVRT048_TIPO_FORMA_PAGAMENTO_PR_EXCLUIR]", lstSqlParameter.ToArray(), null, ref dtRetorno);
 
                 return dtRetorno;

@@ -70,7 +70,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Descrição</th>
-                            <th>Excluir</th
+                            <th>Excluir</th>
                         </tr>
                     </thead>
                     <tbody>
