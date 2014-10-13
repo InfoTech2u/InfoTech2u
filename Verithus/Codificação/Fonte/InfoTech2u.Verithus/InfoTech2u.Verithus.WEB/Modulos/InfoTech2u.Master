@@ -129,7 +129,6 @@
                                 </li>
                                 <li class="dropdown"><a href="">Empresa</a>
                                     <ul>
-                                        <li><asp:HyperLink NavigateUrl="RecursosHumanos/PesquisaEmpresa.aspx" runat="server" ID="hlkPesquisaEmpresa">Pesquisar Empresa</asp:HyperLink></li>
                                         <li><asp:HyperLink NavigateUrl="RecursosHumanos/ManterEmpresa.aspx" runat="server" ID="hlkManterEmpresa">Cadastrar Empresa</asp:HyperLink></li>
                                     </ul>
                                 </li>
