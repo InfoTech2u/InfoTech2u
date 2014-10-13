@@ -720,6 +720,8 @@
     <Content Include="Login.aspx" />
     <Content Include="Logoff.aspx" />
     <Content Include="Modulos\Dashboard\DashboardGerente.aspx" />
+    <Content Include="Modulos\RecursosHumanos\Dashboard.aspx" />
+    <Content Include="Modulos\RecursosHumanos\Default.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterAcidenteTrabalho.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterAdmissao.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterAlteracaoCargoSalario.aspx" />
@@ -961,6 +963,20 @@
     </Compile>
     <Compile Include="Handler\ExcluirFuncionario.ashx.cs">
       <DependentUpon>ExcluirFuncionario.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\RecursosHumanos\ManterAcidenteTrabalho.aspx.cs">
       <DependentUpon>ManterAcidenteTrabalho.aspx</DependentUpon>

@@ -6,17 +6,17 @@
     <div class="rightpanel">
 
         <ul class="breadcrumbs">
-            <li><a href="dashboard.html"><i class="iconfa-home"></i></a><span class="separator"></span></li>
-            <li><a href="forms.html">Forms</a> <span class="separator"></span></li>
-            <li>Form Styles</li>
+            <li><a href="Dashboard.aspx"><i class="iconfa-home"></i></a><span class="separator"></span></li>
+            <li><a href="Default.aspx">Recursos Humanos</a> <span class="separator"></span></li>
+            <li>Dados de Demissão</li>
 
         </ul>
 
         <div class="pageheader">
             <div class="pageicon"><span class="iconfa-pencil"></span></div>
             <div class="pagetitle">
-                <h5>Demissão</h5>
-                <h1>Fomulário de Demissão</h1>
+                <h5>Formulário</h5>
+                <h1>Demissão</h1>
             </div>
         </div>
         <!--pageheader-->

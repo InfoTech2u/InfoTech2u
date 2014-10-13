@@ -6,16 +6,16 @@
     <div class="rightpanel">
 
         <ul class="breadcrumbs">
-            <li><a href="dashboard.html"><i class="iconfa-home"></i></a><span class="separator"></span></li>
-            <li><a href="forms.html">Formulario</a> <span class="separator"></span></li>
-            <li>Cadastro de Sindicato</li>
+            <li><a href="Dashboard.aspx"><i class="iconfa-home"></i></a><span class="separator"></span></li>
+            <li><a href="Default.aspx">Recursos Humanos</a> <span class="separator"></span></li>
+            <li>Dados de Sindicato</li>
         </ul>
 
         <div class="pageheader">
             <div class="pageicon"><span class="iconfa-pencil"></span></div>
             <div class="pagetitle">
-                <h5>Formulario</h5>
-                <h1>Cadastro de Sindicato</h1>
+                <h5>Formulário</h5>
+                <h1>Sindicato</h1>
             </div>
         </div>
         <!--pageheader-->

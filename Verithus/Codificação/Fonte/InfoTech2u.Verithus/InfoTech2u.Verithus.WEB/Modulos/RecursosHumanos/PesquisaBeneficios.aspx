@@ -17,17 +17,17 @@
     <div class="rightpanel">
 
         <ul class="breadcrumbs">
-            <li><a href="dashboard.html"><i class="iconfa-home"></i></a><span class="separator"></span></li>
-            <li><a href="forms.html">Forms</a> <span class="separator"></span></li>
-            <li>Form Styles</li>
+            <li><a href="Dashboard.aspx"><i class="iconfa-home"></i></a><span class="separator"></span></li>
+            <li><a href="Default.aspx">Recursos Humanos</a> <span class="separator"></span></li>
+            <li>Dados de Beneficio</li>
 
         </ul>
 
         <div class="pageheader">
             <div class="pageicon"><span class="iconfa-pencil"></span></div>
             <div class="pagetitle">
-                <h5>Forms</h5>
-                <h1>Form Styles</h1>
+                <h5>Formulário</h5>
+                <h1>Beneficios</h1>
             </div>
         </div>
         <!--pageheader-->

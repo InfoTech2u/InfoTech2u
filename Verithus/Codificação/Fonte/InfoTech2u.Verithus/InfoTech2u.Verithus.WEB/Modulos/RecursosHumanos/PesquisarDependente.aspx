@@ -19,7 +19,7 @@
 
         <ul class="breadcrumbs">
             <li><a href="dashboard.html"><i class="iconfa-home"></i></a><span class="separator"></span></li>
-            <li><a href="forms.html">Forms</a> <span class="separator"></span></li>
+            <li><a href="forms.html">Recursos Humanos</a> <span class="separator"></span></li>
             <li>Form Styles</li>
 
         </ul>

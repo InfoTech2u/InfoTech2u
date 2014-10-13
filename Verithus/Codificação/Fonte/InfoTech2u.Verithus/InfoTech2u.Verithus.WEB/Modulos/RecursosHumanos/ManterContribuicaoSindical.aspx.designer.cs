@@ -40,13 +40,13 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos {
         protected global::System.Web.UI.WebControls.HiddenField hdnCodigoContribuicaoSindical;
         
         /// <summary>
-        /// txtPeriodoAno control.
+        /// datepicker control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPeriodoAno;
+        protected global::System.Web.UI.WebControls.TextBox datepicker;
         
         /// <summary>
         /// lblErrorData control.
@@ -92,5 +92,14 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblErrorVlrContribuicao;
+        
+        /// <summary>
+        /// divBtnAcao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divBtnAcao;
     }
 }
