@@ -311,6 +311,8 @@
     <Content Include="Modulos\fonts\roboto\Roboto-ThinItalic-webfont.eot" />
     <Content Include="Modulos\fonts\roboto\Roboto-ThinItalic-webfont.ttf" />
     <Content Include="Modulos\fonts\roboto\Roboto-ThinItalic-webfont.woff" />
+    <Content Include="PesquisaLog.ashx" />
+    <None Include="Properties\PublishProfiles\InfoTech2u.Verithus.Sistema.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1235,6 +1237,9 @@
     </Compile>
     <Compile Include="Modulos\RecursosHumanos\PesquisarDependente.aspx.designer.cs">
       <DependentUpon>PesquisarDependente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PesquisaLog.ashx.cs">
+      <DependentUpon>PesquisaLog.ashx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

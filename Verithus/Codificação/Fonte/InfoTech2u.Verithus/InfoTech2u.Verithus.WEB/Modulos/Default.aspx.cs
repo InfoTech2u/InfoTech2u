@@ -19,8 +19,8 @@ namespace InfoTech2u.Verithus.WEB.Modulos
 
         protected void CarregarIncludes()
         {
-            string pachCss = "../../css/";
-            string pachJs = "../../js/";
+            string pachCss = "../css/";
+            string pachJs = "../js/";
 
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "css", pachCss, "style.default.css");
 

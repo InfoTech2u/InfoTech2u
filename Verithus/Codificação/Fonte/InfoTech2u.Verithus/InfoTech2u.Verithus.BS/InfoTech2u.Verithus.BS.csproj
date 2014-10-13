@@ -64,6 +64,7 @@
     <Compile Include="FeriasBS.cs" />
     <Compile Include="FuncionariosBS.cs" />
     <Compile Include="LogAcaoBS.cs" />
+    <Compile Include="LogBS.cs" />
     <Compile Include="LogErroBS.cs" />
     <Compile Include="PaisBS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

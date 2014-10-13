@@ -29,7 +29,7 @@ namespace InfoTech2u.Verithus.WEB
         {
             //Paginas de Dashboard
             //InfoTech2uControlHtmlUtil.AdicionarUrlAmigavel("Modulos/Dashboard/Dashboard-Gerente", "DashboardGerente.aspx", this.hlkDashboard);
-            
+            /*
 
             InfoTech2uControlHtmlUtil.AdicionarUrlAmigavel("Modulos/RecursosHumanos/Pesquisa-Funcionário", "PesquisaFuncionario.aspx", this.hlkPesquisaFuncionario);
             InfoTech2uControlHtmlUtil.AdicionarUrlAmigavel("Modulos/RecursosHumanos/Cadastro-Funcionario", "ManterFuncionario.aspx", this.hlkManterUsuario);
@@ -55,7 +55,7 @@ namespace InfoTech2u.Verithus.WEB
 
             //Link de paginas Dominio do Sistema
 
-
+            */
 
         }
 

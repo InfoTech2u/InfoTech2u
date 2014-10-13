@@ -65,6 +65,7 @@
     <Compile Include="FeriasDA.cs" />
     <Compile Include="FuncionariosDA.cs" />
     <Compile Include="LogAcaoDA.cs" />
+    <Compile Include="LogDA.cs" />
     <Compile Include="LogErroDA.cs" />
     <Compile Include="PaisDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

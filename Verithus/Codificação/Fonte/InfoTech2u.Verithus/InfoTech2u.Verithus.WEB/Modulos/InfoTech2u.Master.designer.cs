@@ -31,6 +31,24 @@ namespace InfoTech2u.Verithus.WEB {
         protected global::System.Web.UI.HtmlControls.HtmlForm frmInfotech2u;
         
         /// <summary>
+        /// imgLogo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgLogo;
+        
+        /// <summary>
+        /// imgUsuario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgUsuario;
+        
+        /// <summary>
         /// lblNomeUsuario control.
         /// </summary>
         /// <remarks>
