@@ -73,9 +73,12 @@
     <Content Include="js\DataTableEmpresa.js" />
     <Content Include="js\jquery.maskedinput-1.3.js" />
     <Content Include="js\jquery.maskMoney.js" />
+    <Content Include="js\ManterAcidenteTrabalho.js" />
+    <Content Include="js\ManterAlteracaoCargoSalarior.js" />
     <Content Include="js\ManterContribuicaoSindical.js" />
     <Content Include="js\ManterDependente.js" />
     <Content Include="js\ManterEmpresa.js" />
+    <Content Include="js\ManterFerias.js" />
     <Content Include="js\ManterSindicato.js" />
     <Content Include="js\ManterSistema.js" />
     <Content Include="js\ManterTipoFuncionalidade.js" />
@@ -194,6 +197,9 @@
     <Content Include="Handler\TipoParentesco.ashx" />
     <Content Include="Handler\ManterAdmissao.ashx" />
     <Content Include="Handler\ManterEmpresa.ashx" />
+    <Content Include="Handler\ManterAcidenteTrabalho.ashx" />
+    <Content Include="Handler\ManterAlteracaoCargoSalarior.ashx" />
+    <Content Include="Handler\ManterFerias.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -714,12 +720,15 @@
     <Content Include="Login.aspx" />
     <Content Include="Logoff.aspx" />
     <Content Include="Modulos\Dashboard\DashboardGerente.aspx" />
+    <Content Include="Modulos\RecursosHumanos\ManterAcidenteTrabalho.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterAdmissao.aspx" />
+    <Content Include="Modulos\RecursosHumanos\ManterAlteracaoCargoSalario.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterBeneficios.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterCargo.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterContribuicaoSindical.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterDemissao.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterDependente.aspx" />
+    <Content Include="Modulos\RecursosHumanos\ManterFerias.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterFormaDePagamento.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterSecao.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterSindicato.aspx" />
@@ -803,8 +812,14 @@
     <Compile Include="Handler\Dependente.ashx.cs">
       <DependentUpon>Dependente.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Handler\ManterAcidenteTrabalho.ashx.cs">
+      <DependentUpon>ManterAcidenteTrabalho.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Handler\ManterAdmissao.ashx.cs">
       <DependentUpon>ManterAdmissao.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\ManterAlteracaoCargoSalarior.ashx.cs">
+      <DependentUpon>ManterAlteracaoCargoSalarior.ashx</DependentUpon>
     </Compile>
     <Compile Include="Handler\ManterCargo.ashx.cs">
       <DependentUpon>ManterCargo.ashx</DependentUpon>
@@ -817,6 +832,9 @@
     </Compile>
     <Compile Include="Handler\ManterEmpresa.ashx.cs">
       <DependentUpon>ManterEmpresa.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\ManterFerias.ashx.cs">
+      <DependentUpon>ManterFerias.ashx</DependentUpon>
     </Compile>
     <Compile Include="Handler\ManterFormaDePagamento.ashx.cs">
       <DependentUpon>ManterFormaDePagamento.ashx</DependentUpon>
@@ -944,12 +962,26 @@
     <Compile Include="Handler\ExcluirFuncionario.ashx.cs">
       <DependentUpon>ExcluirFuncionario.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\RecursosHumanos\ManterAcidenteTrabalho.aspx.cs">
+      <DependentUpon>ManterAcidenteTrabalho.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\ManterAcidenteTrabalho.aspx.designer.cs">
+      <DependentUpon>ManterAcidenteTrabalho.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\RecursosHumanos\ManterAdmissao.aspx.cs">
       <DependentUpon>ManterAdmissao.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Modulos\RecursosHumanos\ManterAdmissao.aspx.designer.cs">
       <DependentUpon>ManterAdmissao.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\ManterAlteracaoCargoSalario.aspx.cs">
+      <DependentUpon>ManterAlteracaoCargoSalario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\ManterAlteracaoCargoSalario.aspx.designer.cs">
+      <DependentUpon>ManterAlteracaoCargoSalario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\RecursosHumanos\ManterBeneficios.aspx.cs">
       <DependentUpon>ManterBeneficios.aspx</DependentUpon>
@@ -985,6 +1017,13 @@
     </Compile>
     <Compile Include="Modulos\RecursosHumanos\ManterDependente.aspx.designer.cs">
       <DependentUpon>ManterDependente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\ManterFerias.aspx.cs">
+      <DependentUpon>ManterFerias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\ManterFerias.aspx.designer.cs">
+      <DependentUpon>ManterFerias.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\RecursosHumanos\ManterFormaDePagamento.aspx.cs">
       <DependentUpon>ManterFormaDePagamento.aspx</DependentUpon>

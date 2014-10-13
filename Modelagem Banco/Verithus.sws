@@ -4,7 +4,9 @@
 
 <Workspace>
 	<Local Expanded="Yes">
-		<Model Expanded="Yes" ID="{81DAC843-94CB-443F-9752-1890F165C805}" Name="InfoTech2u_Verithus" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="../Verithus/Documentação/Modelagem/infotech2u_verithus.pdm"/>
+		<Model Expanded="Yes" ID="{81DAC843-94CB-443F-9752-1890F165C805}" Loaded="No" Name="InfoTech2u_Verithus" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="InfoTech2u_Verithus.pdm"/>
+		<Model Expanded="Yes" ID="{81DAC843-94CB-443F-9752-1890F165C805}" Loaded="No" Name="InfoTech2u_Verithus" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="InfoTech2u_Verithus.pdm"/>
+		<Model Expanded="Yes" ID="{81DAC843-94CB-443F-9752-1890F165C805}" Loaded="No" Name="InfoTech2u_Verithus" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="/users/romulo/documents/github/infotech2u/modelagem banco/infotech2u_verithus.pdm"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>

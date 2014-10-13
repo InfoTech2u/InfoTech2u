@@ -271,7 +271,51 @@
             });
 
 
+            jQuery("#btnFerias").click(function () {
 
+                var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
+
+                if (codigoSel != null)
+                    jQuery(window.document.location).attr('href', 'ManterFerias.aspx?idUser=' + codigoSel);
+                else {
+                    jQuery.alerts.dialogClass = 'alert-warning';
+                    jAlert('Selecione um funcionario', 'Alerta', function () {
+                        jQuery.alerts.dialogClass = null; // reset to default
+                    });
+                }
+                return false;
+            });
+
+            jQuery("#btnAlteracaoCargoSalario").click(function () {
+
+                var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
+
+                if (codigoSel != null)
+                    jQuery(window.document.location).attr('href', 'ManterAlteracaoCargoSalario.aspx?idUser=' + codigoSel);
+                else {
+                    jQuery.alerts.dialogClass = 'alert-warning';
+                    jAlert('Selecione um funcionario', 'Alerta', function () {
+                        jQuery.alerts.dialogClass = null; // reset to default
+                    });
+                }
+                return false;
+            });
+
+            jQuery("#btnAcidenteTrabalho").click(function () {
+
+                var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
+
+                if (codigoSel != null)
+                    jQuery(window.document.location).attr('href', 'ManterAcidenteTrabalho.aspx?idUser=' + codigoSel);
+                else {
+                    jQuery.alerts.dialogClass = 'alert-warning';
+                    jAlert('Selecione um funcionario', 'Alerta', function () {
+                        jQuery.alerts.dialogClass = null; // reset to default
+                    });
+                }
+                return false;
+            });
+            
         });
 
 
@@ -428,6 +472,9 @@
                     <button class="btn" id="btnDemissao"><i class="iconsweets-magnifying"></i>&nbsp; Demissão</button>
                     <button class="btn" id="btnDependente"><i class="iconsweets-magnifying"></i>&nbsp; Dependentes</button>
                     <button class="btn" id="btnSindical"><i class="iconsweets-magnifying"></i>&nbsp; Contribuição Sindical</button>
+                    <button class="btn" id="btnFerias"><i class="iconsweets-magnifying"></i>&nbsp; Ferias</button>
+                    <button class="btn" id="btnAcidenteTrabalho"><i class="iconsweets-magnifying"></i>&nbsp; Acidente de Trabalho</button>
+                    <button class="btn" id="btnAlteracaoCargoSalario"><i class="iconsweets-magnifying"></i>&nbsp; Alteração de Cargo e Salario</button>
                 </div>
             </div>
             <!--widget-->

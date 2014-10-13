@@ -23,6 +23,11 @@ namespace InfoTech2u.Verithus.WEB.Handler
 
                 context.Response.Write(retorno.Serializer());
             }
+            else if (context.Request.QueryString["Metodo"] == "Gravar")
+            {
+                context.Response.Write(GravarAcidenteTrabalho(context).Serializer());
+            }
+
         }
 
         private DataTable SelecionarAcidenteTrabalho(HttpContext context)
@@ -37,6 +42,73 @@ namespace InfoTech2u.Verithus.WEB.Handler
             }
 
             return objBS.SelecionarAcidenteTrabalho(dadosAcidenteTrabalho);
+        }
+
+        private DataTable GravarAcidenteTrabalho(HttpContext context)
+        {
+            AcidenteTrabalhoBS objBS = new AcidenteTrabalhoBS();
+            AcidenteTrabalhoVO dadosAcidenteTrabalho = new AcidenteTrabalhoVO();
+
+            int codigoAcidenteTrabalho = 0;
+            if (Int32.TryParse(context.Request.QueryString["CodigoAcidenteTrabalho"], out codigoAcidenteTrabalho))
+            {
+                dadosAcidenteTrabalho.CodigoAcidenteTrabalho = codigoAcidenteTrabalho;
+            }
+
+            int codigoFuncionario = 0;
+            if (Int32.TryParse(context.Request.QueryString["CodigoFuncionario"], out codigoFuncionario))
+            {
+                dadosAcidenteTrabalho.CodigoFuncionario = codigoFuncionario;
+            }
+
+            DateTime data;
+            if (DateTime.TryParse(context.Request.QueryString["Data"], out data))
+            {
+                dadosAcidenteTrabalho.Data = data;
+            }
+
+            dadosAcidenteTrabalho.Local = context.Request.QueryString["Local"].ToString();
+            dadosAcidenteTrabalho.Causa = context.Request.QueryString["Causa"].ToString();
+
+            DateTime dataAlta;
+            if (DateTime.TryParse(context.Request.QueryString["DataAlta"], out dataAlta))
+            {
+                dadosAcidenteTrabalho.DataAlta = dataAlta;
+            }
+
+            dadosAcidenteTrabalho.Resultado = context.Request.QueryString["Resultado"].ToString();
+            dadosAcidenteTrabalho.Observacoes = context.Request.QueryString["Observacoes"].ToString();
+
+            int codigoStatus = 0;
+            if (Int32.TryParse(context.Request.QueryString["CodigoStatus"], out codigoStatus))
+            {
+                dadosAcidenteTrabalho.CodigoStatus = codigoStatus;
+            }
+
+            if (dadosAcidenteTrabalho.CodigoAcidenteTrabalho== 0)
+            {
+                int codigoUsuarioCadastro = 0;
+                if (Int32.TryParse(context.Request.QueryString["CodigoUsuarioCadastro"], out codigoUsuarioCadastro))
+                {
+                    dadosAcidenteTrabalho.CodigoUsuarioCadastro = Convert.ToInt32(context.Session["CodigoUsuario"].ToString());
+                }
+
+                return objBS.IncluirAcidenteTrabalho(dadosAcidenteTrabalho);
+            }
+            else
+            {
+
+                int codigoUsuarioAlteracao = 0;
+                if (Int32.TryParse(context.Request.QueryString["CodigoUsuarioAlteracao"], out codigoUsuarioAlteracao))
+                {
+                    dadosAcidenteTrabalho.CodigoUsuarioAlteracao = Convert.ToInt32(context.Session["CodigoUsuario"].ToString());
+                }
+
+                return objBS.AlterarAcidenteTrabalho(dadosAcidenteTrabalho);
+            }
+
+
+
         }
 
         public bool IsReusable

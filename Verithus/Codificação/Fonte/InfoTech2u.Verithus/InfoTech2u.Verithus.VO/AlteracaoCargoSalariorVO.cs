@@ -19,8 +19,8 @@ namespace InfoTech2u.Verithus.VO
         public Nullable<System.DateTime> Data { get; set; }
         public Nullable<int> CodigoTipoCargo { get; set; }
         public string Salario { get; set; }
-        public Nullable<System.TimeSpan> HorarioInicio { get; set; }
-        public Nullable<System.TimeSpan> HorarioFim { get; set; }
+        public string HorarioInicio { get; set; }
+        public string HorarioFim { get; set; }
         public Nullable<int> CodigoUsuarioCadastro { get; set; }
         public Nullable<System.DateTime> DataCadastro { get; set; }
         public Nullable<int> CodigoUsuarioAlteracao { get; set; }
