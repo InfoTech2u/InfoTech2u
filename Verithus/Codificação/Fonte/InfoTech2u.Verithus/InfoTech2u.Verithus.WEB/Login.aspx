@@ -118,9 +118,9 @@
                     <button name="submit" id="btnEntrar" runat="server">Entrar</button>
                 </div>
                 <div class="inputwrapper animate4 bounceIn">
-                    <label>
+                    <!--<label>
                         <input type="checkbox" class="remember" name="signin" />
-                        Lembrar Senha</label>
+                        Lembrar Senha</label>-->
                 </div>
             </form>
         </div>
