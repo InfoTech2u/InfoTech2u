@@ -14,7 +14,10 @@ namespace InfoTech2u.Verithus.WEB
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["LoginUsuario"] == null)
+                Response.Redirect("~/Login.aspx", true);
+            
+            /*
             UsuariosVO param = new UsuariosVO();
 
             param.CodigoUsuario = Convert.ToInt32(HttpContext.Current.Session["CodigoUsuario"].ToString());
@@ -30,7 +33,7 @@ namespace InfoTech2u.Verithus.WEB
             this.lblMail.Text = param.Mail.ToString();
             this.lblLogin.Text = param.LoginUsuario.ToString();
             this.lblSenha.Text = param.Senha.ToString();
-            
+            */
 
             
 
