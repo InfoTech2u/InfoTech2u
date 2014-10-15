@@ -1,8 +1,66 @@
 ﻿jQuery(document).ready(function () {
     CarregarUsuarios();
 
+    jQuery('#gridUsuarios').dataTable({
+        "sPaginationType": "full_numbers",
+        "fnDrawCallback": function (oSettings) { jQuery.uniform.update(); },
+        "language": {
+            "search": "Pesquisa",
+            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "zeroRecords": "Não há registros",
+            "info": "Página _PAGE_ de _PAGES_",
+            "infoEmpty": "Não há registros.",
+            "infoFiltered": "(Pesquisado de um total de _MAX_ registro(s))",
+            "paginate": {
+                "first": "Primeira",
+                "previous": "Anterior",
+                "next": "Próxima",
+                "last": "Última"
+            },
+        }
+    });
+
+    jQuery('#gridUsuarios tbody').on('click', 'tr', function () {
+        if (jQuery(this).hasClass('selected')) {
+            //jQuery(this).removeClass('selected');
+        }
+        else {
+            jQuery('#gridUsuarios tr.selected').removeClass('selected');
+            jQuery(this).addClass('selected');
+        }
+    });
+
     CarregarTiposAcessos();
+    CarregarStatus();
 });
+
+function CarregarStatus()
+{
+    jQuery.ajax({
+        type: "GET",
+        crossDomain: true,
+        url: "../../Handler/ManterStatus.ashx",
+        contentType: "json",
+        cache: false,
+        data: {
+            Metodo: 'Listar',
+            Acao: 'Consulta'
+        },
+        success: function (data) {
+
+            var lista = eval(data);
+            jQuery('#ddlStatus').append("<option value='0'>Escolha</option>");
+            for (x in lista) {
+                var row = "<option value='" + lista[x].CodigoStatus + "'>" + lista[x].Descricao + "</option>";
+                jQuery('#ddlStatus').append(row);
+            }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrow) {
+            errorAjax(textStatus);
+            alert(textStatus);
+        }
+    });
+}
 
 function CarregarTiposAcessos() {
     jQuery.ajax({
@@ -43,23 +101,28 @@ function CarregarUsuarios() {
             Acao: 'Consulta'
         },
         success: function (data) {
+            if (data['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
 
-            var usuarios = eval(data);
-            if (usuarios != undefined && usuarios.length > 0) {
-                for (x in usuarios) {
-                    var row = '<tr value="' + usuarios[x].CODIGO_USUARIO + '">' +
-                                '<td>' + usuarios[x].NOME + '</td>' +
-                                '<td>' + usuarios[x].MAIL + '</td>' +
-                                '<td>' + usuarios[x].LOGIN_USUARIO + '</td>' +
-                                '<td class="centeralign"><a title="Excluir" href="#modalCadastrar" onclick="javascript:LimparCadastrar();FuncaoTelaModal(\'Alterar\', ' + usuarios[x].CODIGO_USUARIO + ');CarregarUsuario(' + usuarios[x].CODIGO_USUARIO + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
-                                '<td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + usuarios[x].CODIGO_USUARIO + ')" class="deleterow"><i class="icon-trash"></i></a></td>' +
-                              '</tr>';
-                    jQuery('#gridUsuarios tbody').append(row);
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+            } else {
+                var tipos = eval(data);
+
+                if (tipos.length > 0) {
+
+                    for (x in tipos) {
+                        jQuery('#gridUsuarios').DataTable().row.add([
+                            tipos[x].NOME,
+                            tipos[x].MAIL,
+                            tipos[x].LOGIN_USUARIO,
+                            tipos[x].STATUS_DESCRICAO,
+                            '<a title="Alterar" href="#modalCadastrar" onclick="javascript:LimparCadastrar();FuncaoTelaModal(\'Alterar\', ' + tipos[x].CODIGO_USUARIO + ');CarregarUsuario(' + tipos[x].CODIGO_USUARIO + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a>'                            
+                        ]).draw();
+                    }
                 }
             }
-
-            MontarGrid();
-
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
             errorAjax(textStatus);
@@ -87,7 +150,11 @@ function CarregarUsuario(codigousuario) {
                 jQuery('#txtNome').val(usuarios[0].NOME);
                 jQuery('#txtEmail').val(usuarios[0].MAIL);
                 jQuery('#txtLogin').val(usuarios[0].LOGIN_USUARIO);
+                jQuery('#txtSenhaI').val(usuarios[0].SENHA);
+                jQuery('#txtSenhaII').val(usuarios[0].SENHA);
+
                 jQuery('#ddlTipoAcesso').val(usuarios[0].CODIGO_TIPO_ACESSO);
+                jQuery('#ddlStatus').val(usuarios[0].CODIGO_STATUS);
             }
 
         },
@@ -112,30 +179,53 @@ function Incluir() {
             Email: jQuery('#txtEmail').val(),
             Login: jQuery('#txtLogin').val(),
             Senha: jQuery('#txtSenhaI').val(),
-            CodigoTipoAcesso: jQuery('#ddlTipoAcesso').val()
+            CodigoTipoAcesso: jQuery('#ddlTipoAcesso').val(),
+            CodigoStatus: jQuery('#ddlStatus').val()
         },
         success: function (data) {
-
             var lista = eval(data);
-            if (lista != undefined && lista.length > 0) {
-                if (lista['Erro'] != undefined) {
-                    alert('Problemas com a base de dados.');
-                } else {
-                    var row = '<tr value="' + lista[0].CODIGO_USUARIO + '">' +
-                               '<td>' + lista[0].NOME + '</td>' +
-                               '<td>' + lista[0].MAIL + '</td>' +
-                               '<td>' + lista[0].LOGIN_USUARIO + '</td>' +
-                               '<td class="centeralign"><a title="Alterar" href="#modalCadastrar" onclick="javascript:LimparCadastrar();FuncaoTelaModal(\'Alterar\', ' + usuarios[0].CODIGO_USUARIO + ');CarregarUsuario(' + usuarios[0].CODIGO_USUARIO + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
-                               '<td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + usuarios[0].CODIGO_USUARIO + ')" class="deleterow"><i class="icon-trash"></i></a></td>' +
-                             '</tr>';
 
-                    jQuery('#gridUsuarios tbody').append(row);
-                    MontarGrid();
-                    alert('Concluído.');
-                }
+            if (lista['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
+
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+                } else {
+
+                if (lista[0].Erro != null) {
+                    jQuery.alerts.dialogClass = 'alert-danger';
+                    jAlert(lista[0].Mensagem, 'Alerta', function () {
+                        jQuery.alerts.dialogClass = null; // reset to default
+                    });
+                } else {
+
+                    if (lista.length > 0) {
+                        jQuery('#gridUsuarios').DataTable().row.add([
+                           lista[0].NOME,
+                           lista[0].MAIL,
+                           lista[0].LOGIN_USUARIO,
+                           lista[0].STATUS_DESCRICAO,
+                           '<a title="Alterar" href="#modalCadastrar" onclick="javascript:LimparCadastrar();FuncaoTelaModal(\'Alterar\', ' + lista[0].CODIGO_USUARIO + ');CarregarUsuario(' + lista[0].CODIGO_USUARIO + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a>'
+                           
+                        ]).draw();
+
+                        //Sucesso
+                        jQuery.alerts.dialogClass = 'alert-success';
+                        jAlert('Item foi incluído', 'Informação', function () {
+                            jQuery.alerts.dialogClass = null; // reset to default
+                        });
+
+                        LimparCadastrar();
             }
             else {
-                alert('Falha na inclusão.');
+                        jQuery.alerts.dialogClass = 'alert-danger';
+                        jAlert('Inclusão não foi realizada.', 'Alerta', function () {
+                            jQuery.alerts.dialogClass = null; // reset to default
+                        });
+
+                    }
+                }
             }
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -158,27 +248,54 @@ function Alterar(codigousuario) {
                 Acao: 'Incluir',
                 Nome: jQuery('#txtNome').val(),
                 Email: jQuery('#txtEmail').val(),
+                Senha: jQuery('#txtSenhaI').val(),
                 CodigoTipoAcesso: jQuery('#ddlTipoAcesso').val(),
+                CodigoStatus: jQuery('#ddlStatus').val(),
                 CodigoUsuario: codigousuario
             },
             success: function (data) {
-
                 var lista = eval(data);
-                if (lista != undefined && lista.length > 0) {
-                    if (lista['Erro'] != undefined) {
-                        alert('Problemas com a base de dados.');
+                if (lista['Msg'] != null) {
+                    jQuery('#myModal').modal('hide');
+
+                    jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                    return;
                     } else {
 
-                        jQuery('#gridUsuarios tbody tr[value=' + codigousuario + ']').find('td:eq(0)').html(lista[0].NOME);
-                        jQuery('#gridUsuarios tbody tr[value=' + codigousuario + ']').find('td:eq(1)').html(lista[0].MAIL);
+                    if (lista[0].Erro != null) {
+                        jQuery.alerts.dialogClass = 'alert-danger';
+                        jAlert(lista[0].Mensagem, 'Alerta', function () {
+                            jQuery.alerts.dialogClass = null; // reset to default
+                        });
+                    } else {
 
+                        if (lista.length > 0) {
+                            jQuery('#gridUsuarios').DataTable().row('.selected').remove().draw(false);
+                            jQuery('#gridUsuarios').DataTable().row.add([
+                               lista[0].NOME,
+                               lista[0].MAIL,
+                               lista[0].LOGIN_USUARIO,
+                               lista[0].STATUS_DESCRICAO,
+                               '<a title="Alterar" href="#modalCadastrar" onclick="javascript:LimparCadastrar();FuncaoTelaModal(\'Alterar\', ' + lista[0].CODIGO_USUARIO + ');CarregarUsuario(' + lista[0].CODIGO_USUARIO + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a>'                               
+                            ]).draw();
 
+                            //Sucesso
+                            jQuery.alerts.dialogClass = 'alert-success';
+                            jAlert('Item foi alterado.', 'Informação', function () {
+                                jQuery.alerts.dialogClass = null; // reset to default
+                            });
 
-                        alert('Concluído.');
-                    }
+                            jQuery('#modalCadastrar').modal('hide')
                 }
                 else {
-                    alert('Falha na inclusão.');
+                            jQuery.alerts.dialogClass = 'alert-danger';
+                            jAlert('Alteraçãa não foi realizada.', 'Alerta', function () {
+                                jQuery.alerts.dialogClass = null; // reset to default
+                            });
+
+                        }
+                    }
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -315,6 +432,14 @@ function DadosValidos() {
         jQuery('#lblErrorTipoAcesso').hide();
     }
 
+    if (jQuery('#ddlStatus').val() == 0) {
+        jQuery('#lblErrorStatus').show();
+        semErros = false;
+    }
+    else {
+        jQuery('#lblErrorStatus').hide();
+    }
+
     if (jQuery('#txtLogin').is(':visible') && jQuery('#txtLogin').val() == '') {
         jQuery('#lblErrorLogin').show();
         jQuery('#lblErrorLogin').text('Preencha o campo.');
@@ -334,6 +459,7 @@ function LimparCadastrar() {
     jQuery('#lblErrorSenhaI').hide();
     jQuery('#lblErrorSenhaII').hide();
     jQuery('#lblErrorTipoAcesso').hide();
+    jQuery('#lblErrorStatus').hide();
 
     jQuery('#txtNome').val('');
     jQuery('#txtEmail').val('');
@@ -341,17 +467,7 @@ function LimparCadastrar() {
     jQuery('#txtSenhaI').val('');
     jQuery('#txtSenhaII').val('');
     jQuery('#ddlTipoAcesso').val(0);
-}
-
-function MontarGrid() {
-    jQuery('#gridUsuarios').dataTable().fnDestroy();
-    jQuery('#gridUsuarios').dataTable({
-        "sPaginationType": "full_numbers",
-        "aaSortingFixed": [[0, 'asc']],
-        "fnDrawCallback": function (oSettings) {
-            jQuery.uniform.update();
-        }
-    });
+    jQuery('#ddlStatus').val(0);
 }
 
 function FuncaoTelaModal(funcao, id) {
@@ -369,10 +485,10 @@ function FuncaoTelaModal(funcao, id) {
         jQuery('#btnIncluir').attr('href', 'javascript:Alterar(' + id + ')');
         jQuery('#modalLabelCadastroAlteracao').text('Alteração de Usuário');
         jQuery('#lblLogin').hide();
-        jQuery('#lblSenhaI').hide();
-        jQuery('#lblSenhaII').hide();
         jQuery('#txtLogin').hide();
-        jQuery('#txtSenhaI').hide();
-        jQuery('#txtSenhaII').hide();
+        //jQuery('#lblSenhaI').hide();
+        //jQuery('#lblSenhaII').hide();        
+        //jQuery('#txtSenhaI').hide();
+        //jQuery('#txtSenhaII').hide();
     }
 }

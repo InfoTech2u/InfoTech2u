@@ -27,6 +27,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.Configuracao
             lblErrorSenhaI.Style.Add("display", "none");
             lblErrorSenhaII.Style.Add("display", "none");
             lblErrorTipoAcesso.Style.Add("display", "none");
+            lblErrorStatus.Style.Add("display", "none");
         }
         protected void CarregarIncludes()
         {
@@ -52,6 +53,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.Configuracao
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "colorpicker.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "ui.spinner.min.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "chosen.jquery.min.js");
+            InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery.alerts.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery.cookie.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery.cookie.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "modernizr.min.js");

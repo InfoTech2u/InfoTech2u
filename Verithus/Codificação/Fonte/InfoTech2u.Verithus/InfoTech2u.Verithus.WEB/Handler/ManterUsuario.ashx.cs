@@ -17,6 +17,14 @@ namespace InfoTech2u.Verithus.WEB.Handler
 
         public void ProcessRequest(HttpContext context)
         {
+            if (context.Session["CodigoUsuario"] == null)
+            {
+                context.Response.ContentType = "application/json; charset=utf-8";
+                context.Response.Write("{ \"Msg\": \"Sessão expirada. Você será redirecionado para tela de login.\"}");
+                context.Response.End();
+                return;
+            }
+
             if (context.Request.QueryString["Metodo"] == "VerificarLogin")
             {
                 var retorno = VerificarLogin(context);
@@ -75,6 +83,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
             usuario.LoginUsuario = oCrypt.Encrypt(context.Request.QueryString["Login"].ToLower().Trim());
             usuario.Senha = oCrypt.Encrypt(context.Request.QueryString["Senha"].ToLower().Trim());
             usuario.CodigoTipoAcesso = Convert.ToInt32(context.Request.QueryString["CodigoTipoAcesso"]);
+            usuario.CodigoStatus = Convert.ToInt32(context.Request.QueryString["CodigoStatus"]);
 
             usuario.CodigoUsuarioCadastro = Convert.ToInt32(context.Session["CodigoUsuario"].ToString());
             usuario.DataCadastro = DateTime.Now;
@@ -88,6 +97,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
         {
             UsuariosBS objBS = new UsuariosBS();
             UsuariosVO usuario = new UsuariosVO();
+            InfoTech2uCryptographyUtil crypto = new InfoTech2uCryptographyUtil(EncryptionAlgorithm.TripleDes);
 
             int codigoUsuario = 0;
             if (Int32.TryParse(context.Request.QueryString["CodigoUsuario"], out codigoUsuario))
@@ -95,10 +105,25 @@ namespace InfoTech2u.Verithus.WEB.Handler
                 usuario.CodigoUsuario = codigoUsuario;
                 usuario.Nome = context.Request.QueryString["Nome"];
                 usuario.Mail = context.Request.QueryString["Email"];
+                usuario.Senha = crypto.Encrypt(context.Request.QueryString["Senha"]);
+                usuario.CodigoStatus = Convert.ToInt32(context.Request.QueryString["CodigoStatus"]);
                 usuario.CodigoTipoAcesso = Convert.ToInt32(context.Request.QueryString["CodigoTipoAcesso"]);
                 usuario.CodigoUsuarioAlteracao = Convert.ToInt32(context.Session["CodigoUsuario"].ToString());
                 usuario.DataAlteracao = DateTime.Now;
-                return objBS.AlterarUsuario(usuario);
+
+                var dtRetorno =  objBS.AlterarUsuario(usuario);
+
+                if (dtRetorno != null && dtRetorno.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dtRetorno.Rows.Count; i++)
+                    {
+                        dtRetorno.Rows[i]["LOGIN_USUARIO"] = crypto.Decrypt(dtRetorno.Rows[i]["LOGIN_USUARIO"].ToString());
+                        dtRetorno.Rows[i]["SENHA"] = crypto.Decrypt(dtRetorno.Rows[i]["SENHA"].ToString());
+                    }
+                }
+
+
+                return dtRetorno;
             }
             else
                 return new DataTable();

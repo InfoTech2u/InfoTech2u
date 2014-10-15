@@ -17,9 +17,10 @@ namespace InfoTech2u.Verithus.DA
             InfoTech2uSQLUtil objSql = new InfoTech2uSQLUtil();
             List<SqlParameter> lstSqlParameter = new List<SqlParameter>();
             DataTable dtRetorno = new DataTable();
-
+            Util.InfoTech2uCryptographyUtil crypto = null;
             try
             {
+                crypto = new InfoTech2uCryptographyUtil();
                 objSql.Sigla = objSql.GetDataBase();
                 objSql.ConnectionString = objSql.GetConnectionString(objSql.Sigla);
                 objSql.Open();
@@ -32,12 +33,16 @@ namespace InfoTech2u.Verithus.DA
 
                 objSql.Execute("dbo.[SPVRT064_USUARIOS_PR_SELECIONAR]", lstSqlParameter.ToArray(), null, ref dtRetorno);
 
-                //DataSet ds = dtRetorno;
 
-                //string xmlRetorno = ds.GetXml();
 
-                //xmlRetorno = xmlRetorno.Replace("NewDataSet", "usuario");
-                //xmlRetorno = xmlRetorno.Replace("Table", "row");
+                if (dtRetorno != null && dtRetorno.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dtRetorno.Rows.Count; i++)
+                    {
+                        dtRetorno.Rows[i]["LOGIN_USUARIO"] = crypto.Decrypt(dtRetorno.Rows[i]["LOGIN_USUARIO"].ToString());
+                        dtRetorno.Rows[i]["SENHA"] = crypto.Decrypt(dtRetorno.Rows[i]["SENHA"].ToString());
+                    }
+                }
 
                 return dtRetorno;
             }
@@ -245,7 +250,7 @@ namespace InfoTech2u.Verithus.DA
                 lstSqlParameter.Add(new SqlParameter("@SENHA", usuario.Senha));
                 lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_ACESSO", usuario.CodigoTipoAcesso));
 
-                //TODO: Pegar Usuario da SESSION
+
                 lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO_CADASTRO", usuario.CodigoUsuarioCadastro));
                 lstSqlParameter.Add(new SqlParameter("@DATA_CADASTRO", usuario.DataCadastro));
                 lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO_ALTERACAO", usuario.CodigoUsuarioAlteracao));
@@ -256,13 +261,32 @@ namespace InfoTech2u.Verithus.DA
 
                 objSql.Execute("SPVRT063_USUARIOS_PR_INCLUIR", lstSqlParameter.ToArray(), null, ref dtRetorno);
 
+                Util.InfoTech2uCryptographyUtil crypto = new InfoTech2uCryptographyUtil();
+
+                if (dtRetorno != null && dtRetorno.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dtRetorno.Rows.Count; i++)
+                    {
+                        dtRetorno.Rows[i]["LOGIN_USUARIO"] = crypto.Decrypt(dtRetorno.Rows[i]["LOGIN_USUARIO"].ToString());
+                        dtRetorno.Rows[i]["SENHA"] = crypto.Decrypt(dtRetorno.Rows[i]["SENHA"].ToString());
+                    }
+                }
+
+                return dtRetorno;
+
             }
             catch (Exception ex)
             {
-                return null;
+                return dtRetorno;
+            }
+            finally
+            {
+                objSql = null;
+                query = null;
+                lstSqlParameter = null;
+                dtRetorno = null;
             }
 
-            return dtRetorno;
         }
 
         public bool ExcluirUsuario(UsuariosVO usuario)
@@ -328,14 +352,18 @@ namespace InfoTech2u.Verithus.DA
                 lstSqlParameter.Add(new SqlParameter("@NOME", usuario.Nome));
                 lstSqlParameter.Add(new SqlParameter("@MAIL", usuario.Mail));
                 lstSqlParameter.Add(new SqlParameter("@CODIGO_TIPO_ACESSO", usuario.CodigoTipoAcesso));
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_STATUS", usuario.CodigoStatus));
+                lstSqlParameter.Add(new SqlParameter("@SENHA", usuario.Senha));
 
-                //TODO: Pegar Usuario da SESSION
+
                 lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO_ALTERACAO", usuario.CodigoUsuarioAlteracao));
                 lstSqlParameter.Add(new SqlParameter("@DATA_ALTERACAO", usuario.DataAlteracao));
 
                 dtRetorno = new DataTable();
 
                 objSql.Execute("SPVRT061_USUARIOS_PR_ALTERAR", lstSqlParameter.ToArray(), null, ref dtRetorno);
+
+                
 
             }
             catch (Exception ex)

@@ -311,6 +311,7 @@
     <Content Include="Modulos\fonts\roboto\Roboto-ThinItalic-webfont.eot" />
     <Content Include="Modulos\fonts\roboto\Roboto-ThinItalic-webfont.ttf" />
     <Content Include="Modulos\fonts\roboto\Roboto-ThinItalic-webfont.woff" />
+    <Content Include="Handler\ManterStatus.ashx" />
     <Content Include="PesquisaLog.ashx" />
     <None Include="Properties\PublishProfiles\InfoTech2u.Verithus.Sistema.pubxml" />
     <None Include="Web.Debug.config">
@@ -959,6 +960,9 @@
     </Compile>
     <Compile Include="Handler\ManterSistema.ashx.cs">
       <DependentUpon>ManterSistema.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\ManterStatus.ashx.cs">
+      <DependentUpon>ManterStatus.ashx</DependentUpon>
     </Compile>
     <Compile Include="Handler\ManterTarefa.ashx.cs">
       <DependentUpon>ManterTarefa.ashx</DependentUpon>
