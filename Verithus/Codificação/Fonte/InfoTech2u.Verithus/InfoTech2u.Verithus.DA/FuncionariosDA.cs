@@ -128,6 +128,11 @@ namespace InfoTech2u.Verithus.DA
                 objSql.Open();
 
 
+                if (param.CodigoEmpresa == null)
+                    lstSqlParameter.Add(new SqlParameter("@CODIGO_EMPRESA", DBNull.Value));
+                else
+                    lstSqlParameter.Add(new SqlParameter("@CODIGO_EMPRESA", param.CodigoEmpresa));
+
                 if (param.NumeroOrdemMatricula == null)
                     lstSqlParameter.Add(new SqlParameter("@NUMERO_ORDEM_MATRICULA_FUNCIONARIO", DBNull.Value));
                 else
@@ -512,6 +517,11 @@ namespace InfoTech2u.Verithus.DA
                     lstSqlParameter.Add(new SqlParameter("@CODIGO_FUNCIONARIO", DBNull.Value));
                 else
                     lstSqlParameter.Add(new SqlParameter("@CODIGO_FUNCIONARIO", param.CodigoFuncionario));
+
+                if (param.CodigoEmpresa == null)
+                    lstSqlParameter.Add(new SqlParameter("@CODIGO_EMPRESA", DBNull.Value));
+                else
+                    lstSqlParameter.Add(new SqlParameter("@CODIGO_EMPRESA", param.CodigoEmpresa));
 
                 if (param.Endereco.DetalheEndereco.CodigoDetalheEndereco == null)
                     lstSqlParameter.Add(new SqlParameter("@CODIGO_DETALHE_ENDERECO", DBNull.Value));

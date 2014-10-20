@@ -86,8 +86,9 @@ namespace InfoTech2u.Verithus.WEB.Handler
                 CodigoBancoPIS = context.Request.QueryString["CodigoBancoPIS"].ToString();
                 CodigoBancoFGTS = context.Request.QueryString["CodigoBancoFGTS"].ToString();
             }
-
+            
             string Status = context.Request.QueryString["Status"].ToString();
+            string CodigoEmpresaLupa = context.Request.QueryString["CodigoEmpresaLupa"].ToString();
             string NumeroOrdemMatricula = context.Request.QueryString["NumeroOrdemMatricula"].ToString();
             string NumeroMatricula = context.Request.QueryString["NumeroMatricula"].ToString();
             string NomeFuncionario = context.Request.QueryString["NomeFuncionario"].ToString();
@@ -161,10 +162,13 @@ namespace InfoTech2u.Verithus.WEB.Handler
             string Olho = context.Request.QueryString["Olho"].ToString();
             string Sinais = context.Request.QueryString["Sinais"].ToString();
 
-            
+            //CodigoEmpresaLupa
             //Passo 1 - Dados Pessoais
             if (!String.IsNullOrWhiteSpace(Status))
                 objFuncionario.CodigoStatus = Convert.ToInt32(Status);
+
+            if (!String.IsNullOrWhiteSpace(CodigoEmpresaLupa))
+                objFuncionario.CodigoEmpresa = Convert.ToInt32(CodigoEmpresaLupa);
 
             if (!String.IsNullOrWhiteSpace(NumeroOrdemMatricula))
                 objFuncionario.NumeroOrdemMatricula = Convert.ToInt32(NumeroOrdemMatricula);

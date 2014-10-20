@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Cryptography.aspx" />
+    <Content Include="css\print.css" />
     <Content Include="js\CadastroAdmissao.js" />
     <Content Include="js\CadastroDemissao.js" />
     <Content Include="js\CadastroFuncionario.js" />
@@ -312,6 +313,7 @@
     <Content Include="Modulos\fonts\roboto\Roboto-ThinItalic-webfont.ttf" />
     <Content Include="Modulos\fonts\roboto\Roboto-ThinItalic-webfont.woff" />
     <Content Include="Handler\ManterStatus.ashx" />
+    <Content Include="Modulos\RecursosHumanos\RelatorioFuncionarioGeral.aspx" />
     <Content Include="PesquisaLog.ashx" />
     <None Include="Properties\PublishProfiles\InfoTech2u.Verithus.Sistema.pubxml" />
     <None Include="Web.Debug.config">
@@ -1241,6 +1243,13 @@
     </Compile>
     <Compile Include="Modulos\RecursosHumanos\PesquisarDependente.aspx.designer.cs">
       <DependentUpon>PesquisarDependente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\RelatorioFuncionarioGeral.aspx.cs">
+      <DependentUpon>RelatorioFuncionarioGeral.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\RelatorioFuncionarioGeral.aspx.designer.cs">
+      <DependentUpon>RelatorioFuncionarioGeral.aspx</DependentUpon>
     </Compile>
     <Compile Include="PesquisaLog.ashx.cs">
       <DependentUpon>PesquisaLog.ashx</DependentUpon>

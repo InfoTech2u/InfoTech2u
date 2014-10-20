@@ -174,6 +174,7 @@
                             <p class="stdformbutton">
                                 <a href="#"  id="btnConcluirAdmissao"  class="btn btn-primary btn-rounded">Concluir</a>
                                 <a href="#" id="btnLimparAdmissao" class="btn btn-rounded"><i class="iconfa-refresh iconsweets-black"></i>&nbsp; limpar</a>
+                                <button class="btn btnVoltar" id="btnVoltar"><i class="iconsweets-magnifying"></i>&nbsp; Voltar</button>
                             </p>
                         </div>
                     </div>
