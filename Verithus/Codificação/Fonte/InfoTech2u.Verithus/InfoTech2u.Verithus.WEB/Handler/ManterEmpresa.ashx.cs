@@ -17,6 +17,15 @@ namespace InfoTech2u.Verithus.WEB.Handler
 
         public void ProcessRequest(HttpContext context)
         {
+            if (context.Session["CodigoUsuario"] == null)
+            {
+                context.Response.ContentType = "application/json; charset=utf-8";
+                context.Response.Write("{ \"Msg\": \"Sessão expirada. Você será redirecionado para tela de login.\"}");
+                context.Response.End();
+                return;
+            }
+
+
             if (context.Request.QueryString["Metodo"] == "SelecionarEmpresa")
             {
                 var retorno = SelecionarEmpresa(context);
@@ -114,9 +123,9 @@ namespace InfoTech2u.Verithus.WEB.Handler
             if (dadosEmpresa.CodigoEmpresa == 0)
             {
                 int codigoUsuarioCadastro = 0;
-                if (Int32.TryParse(context.Request.QueryString["CodigoUsuarioCadastro"], out codigoUsuarioCadastro))
+                if (Int32.TryParse(context.Session["CodigoUsuario"].ToString(), out codigoUsuarioCadastro))
                 {
-                    dadosEmpresa.CodigoUsuarioCadastro = Convert.ToInt32(context.Session["CodigoUsuario"].ToString());
+                    dadosEmpresa.CodigoUsuarioCadastro = codigoUsuarioCadastro;
                 }
 
                 return objBS.IncluirEmpresa(dadosEmpresa);
@@ -125,9 +134,9 @@ namespace InfoTech2u.Verithus.WEB.Handler
             {
 
                 int codigoUsuarioAlteracao = 0;
-                if (Int32.TryParse(context.Request.QueryString["CodigoUsuarioAlteracao"], out codigoUsuarioAlteracao))
+                if (Int32.TryParse(context.Session["CodigoUsuario"].ToString(), out codigoUsuarioAlteracao))
                 {
-                    dadosEmpresa.CodigoUsuarioAlteracao = Convert.ToInt32(context.Session["CodigoUsuario"].ToString());
+                    dadosEmpresa.CodigoUsuarioAlteracao = codigoUsuarioAlteracao;
                 }
 
                 return objBS.AlterarEmpresa(dadosEmpresa);

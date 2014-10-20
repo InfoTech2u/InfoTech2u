@@ -1,6 +1,35 @@
 ﻿jQuery(document).ready(function () {
 
     CarregarEmpresaLista();
+
+    jQuery('#dyntable').dataTable({
+        "sPaginationType": "full_numbers",
+        "fnDrawCallback": function (oSettings) { jQuery.uniform.update(); },
+        "language": {
+            "search": "Pesquisa",
+            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "zeroRecords": "Não há registros",
+            "info": "Página _PAGE_ de _PAGES_",
+            "infoEmpty": "Não há registros.",
+            "infoFiltered": "(Pesquisado de um total de _MAX_ registro(s))",
+            "paginate": {
+                "first": "Primeira",
+                "previous": "Anterior",
+                "next": "Próxima",
+                "last": "Última"
+            },
+        }
+    });
+
+    jQuery('#dyntable tbody').on('click', 'tr', function () {
+        if (jQuery(this).hasClass('selected')) {
+            //jQuery(this).removeClass('selected');
+        }
+        else {
+            jQuery('#dyntable tr.selected').removeClass('selected');
+            jQuery(this).addClass('selected');
+        }
+    });
 });
 
 function PrepararTela(id, acao) {
@@ -50,6 +79,13 @@ function CarregarEmpresa(id) {
         success: function (data) {
             var empresa = eval(data);
 
+            if (empresa['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
+
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+            } else {
 
             if (empresa != undefined && empresa.length > 0) {
 
@@ -61,6 +97,7 @@ function CarregarEmpresa(id) {
 
                 jQuery('#btnIncluir').attr('onclick', 'javascript:Gravar(' + id + ');');
 
+            }
             }
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -166,43 +203,31 @@ function CarregarEmpresaLista() {
         },
         success: function (data) {
             var empresa = eval(data);
+            if (empresa['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
 
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+            } else {
 
             if (empresa != undefined && empresa.length > 0) {
                 jQuery('#ddlTipoParentesco').append('<option value="0">Escolha</option>');
-                for (var x in empresa) {
 
-                    var row = '<tr value="' + empresa[x].CODIGO_EMPRESA + '">' +
-                           '<td>' + empresa[x].CODIGO_EMPRESA + '</td>' +
-                           '<td>' + empresa[x].RAZAO_SOCIAL + '</td>' +
-                           '<td>' + empresa[x].CNJP + '</td>' +
-                           '<td class="centeralign"><a title="Detalhar" href="#myModal" onclick="javascript:FuncaoTelaModal(\'Detalhar\', ' + empresa[x].CODIGO_EMPRESA + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
-                           '<td class="centeralign"><a title="Alterar" href="#myModal" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + empresa[x].CODIGO_EMPRESA + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
-                           '<td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + empresa[x].CODIGO_EMPRESA + ')" class="deleterow"><i class="icon-trash"></i></a></td>' +
-                         '</tr>';
-                    jQuery('#dyntable').append(row);
+                    for (x in empresa) {
+                        jQuery('#dyntable').DataTable().row.add([
+                            empresa[x].CODIGO_EMPRESA,
+                            empresa[x].RAZAO_SOCIAL,
+                            empresa[x].CNJP,
+                            '<a title="Detalhar" href="#myModal" onclick="javascript:FuncaoTelaModal(\'Detalhar\', ' + empresa[x].CODIGO_EMPRESA + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a>',
+                            '<a title="Alterar" href="#myModal" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + empresa[x].CODIGO_EMPRESA + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a>',
+                            '<a title="Excluir" href="javascript:Excluir(' + empresa[x].CODIGO_EMPRESA + ')" class="deleterow"><i class="icon-trash"></i></a>'
+                        ]).draw();
                 }
 
-                jQuery('#dyntable').dataTable().fnDestroy();
 
-                jQuery('#dyntable').dataTable({
-                    "sPaginationType": "full_numbers",
-                    "fnDrawCallback": function (oSettings) {
-                        jQuery.uniform.update();
-                    },
-                    "language": {
-                        "lengthMenu": "Display _MENU_ records per page",
-                        "zeroRecords": "Nothing found - sorry",
-                        "info": "Showing page _PAGE_ of _PAGES_",
-                        "infoEmpty": "No records available",
-                        "infoFiltered": "(filtered from _MAX_ total records)",
-                        "sInfoEmpty": "Mostrando 0-0 de 0 Funcionários"
                     }
-                    //"sInfoEmpty": "Mostrando 0-0 de 0 Funcionários"
-                });
-
             }
-
 
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -237,26 +262,36 @@ function Gravar(id) {
 
                 var empresa = eval(data);
 
+                if (empresa['Msg'] != null) {
+                    jQuery('#myModal').modal('hide');
+
+                    jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                    return;
+                } else {
+
                 if (empresa != undefined && empresa.length > 0) {
-                    var row = '<tr value="' + empresa[0].CODIGO_EMPRESA + '">' +
-                               '<td>' + empresa[0].CODIGO_EMPRESA + '</td>' +
-                               '<td>' + empresa[0].RAZAO_SOCIAL + '</td>' +
-                               '<td>' + empresa[0].CNJP + '</td>' +
-                               '<td class="centeralign"><a title="Alterar" href="#myModal" onclick="javascript:FuncaoTelaModal(\'Detalhar\', ' + empresa[0].CODIGO_EMPRESA + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
-                               '<td class="centeralign"><a title="Alterar" href="#myModal" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + empresa[0].CODIGO_EMPRESA + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
-                               '<td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + empresa[0].CODIGO_EMPRESA + ')" class="deleterow"><i class="icon-trash"></i></a></td>' +
-                             '</tr>';
 
                     if (id != 0)
-                        jQuery('#dyntable tbody tr[value=' + id + ']').remove();
+                            jQuery('#dyntable').DataTable().row('.selected').remove().draw(false);
 
-                        jQuery('#dyntable').append(row);
+                        jQuery('#dyntable').DataTable().row.add([
+                            empresa[0].CODIGO_EMPRESA,
+                            empresa[0].RAZAO_SOCIAL,
+                            empresa[0].CNJP,
+                            '<a title="Detalhar" href="#myModal" onclick="javascript:FuncaoTelaModal(\'Detalhar\', ' + empresa[0].CODIGO_EMPRESA + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a>',
+                            '<a title="Alterar" href="#myModal" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + empresa[0].CODIGO_EMPRESA + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a>',
+                            '<a title="Excluir" href="javascript:Excluir(' + empresa[0].CODIGO_EMPRESA + ')" class="deleterow"><i class="icon-trash"></i></a></td>'
+                        ]).draw();
 
-                    MontarGrid();
                     jQuery('#myModal').modal('hide')
                 }
                 else {
-                    alert("Não foi possível incluir.");
+                        jQuery.alerts.dialogClass = 'alert-danger';
+                        jAlert('Ação não pode ser concluída.', 'Alerta', function () {
+                            jQuery.alerts.dialogClass = null; // reset to default
+                        });
+                    }
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -268,17 +303,6 @@ function Gravar(id) {
 
 }
 
-function MontarGrid() {
-    //jQuery('#gridDependentes').dataTable().fnDestroy();
-    //// dynamic table
-    //jQuery('#gridDependentes').dataTable({
-    //    "sPaginationType": "full_numbers",
-    //    "aaSortingFixed": [[0, 'asc']],
-    //    "fnDrawCallback": function (oSettings) {
-    //        jQuery.uniform.update();
-    //    }
-    //});
-}
 
 function Excluir(id) {
 
@@ -302,15 +326,23 @@ function Excluir(id) {
                     CodigoStatus: ''
                 },
                 success: function (data) {
+                    var ret = eval(data)
+                    if (ret['Msg'] != null) {
+                        jQuery('#myModal').modal('hide');
 
-                    if (data) {
-                        jQuery('#dyntable tbody tr[value=' + id + ']').remove();
-                        MontarGrid();
+                        jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                        return;
+                    } else {
+
+                        if (ret) {
+                            jQuery('#dyntable').DataTable().row('.selected').remove().draw(false);
                         //Sucesso
                         jQuery.alerts.dialogClass = 'alert-success';
                         jAlert('Item foi excluido', 'Informação', function () {
                             jQuery.alerts.dialogClass = null; // reset to default
                         });
+                    }
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrow) {
