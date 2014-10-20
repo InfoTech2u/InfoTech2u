@@ -176,7 +176,7 @@ function CarregarEmpresaLista() {
                            '<td>' + empresa[x].CODIGO_EMPRESA + '</td>' +
                            '<td>' + empresa[x].RAZAO_SOCIAL + '</td>' +
                            '<td>' + empresa[x].CNJP + '</td>' +
-                           '<td class="centeralign"><a title="Alterar" href="#myModal" onclick="javascript:FuncaoTelaModal(\'Detalhar\', ' + empresa[x].CODIGO_EMPRESA + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
+                           '<td class="centeralign"><a title="Detalhar" href="#myModal" onclick="javascript:FuncaoTelaModal(\'Detalhar\', ' + empresa[x].CODIGO_EMPRESA + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
                            '<td class="centeralign"><a title="Alterar" href="#myModal" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + empresa[x].CODIGO_EMPRESA + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
                            '<td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + empresa[x].CODIGO_EMPRESA + ')" class="deleterow"><i class="icon-trash"></i></a></td>' +
                          '</tr>';

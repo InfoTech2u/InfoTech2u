@@ -95,8 +95,6 @@
                 </div>
                 <!--#myModal-->
 
-
-
                 <div class="row-fluid">
                     <a class="btn btn-primary" href="#modalCadastrar" onclick="javascript:LimparCadastrar();FuncaoTelaModal('Cadastro', 0);" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Cadastrar</a>
                 </div>
@@ -125,7 +123,15 @@
                     <tbody>
                     </tbody>
                 </table>
-
+                <div class="footer">
+                    <div class="footer-left">
+                        <span>&copy; 2014. Infotech2u. All Rights Reserved.</span>
+                    </div>
+                    <div class="footer-right">
+                        <span>Developer by: <a href="http://infotech2u.com.br/">InfoTech2U</a></span>
+                    </div>
+                </div>
+            <!--footer-->
             </div>
             <!--maincontentinner-->
         </div>
