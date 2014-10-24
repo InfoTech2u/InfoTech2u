@@ -13,6 +13,15 @@ namespace InfoTech2u.Verithus.WEB.Modulos.Configuracao {
     public partial class ManterSistema {
         
         /// <summary>
+        /// hdnFuncaoTela control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnFuncaoTela;
+        
+        /// <summary>
         /// txtDescricaoSistemas control.
         /// </summary>
         /// <remarks>

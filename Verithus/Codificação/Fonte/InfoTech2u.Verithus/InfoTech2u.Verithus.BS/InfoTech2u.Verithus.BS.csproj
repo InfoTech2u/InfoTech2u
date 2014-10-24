@@ -69,6 +69,7 @@
     <Compile Include="PaisBS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SindicatoBS.cs" />
+    <Compile Include="SistemaBS.cs" />
     <Compile Include="StatusBS.cs" />
     <Compile Include="TipoAcessoBS.cs" />
     <Compile Include="TipoBancoBS.cs" />

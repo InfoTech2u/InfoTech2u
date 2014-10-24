@@ -70,6 +70,7 @@
     <Compile Include="PaisDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SindicatoDA.cs" />
+    <Compile Include="SistemaDA.cs" />
     <Compile Include="StatusDA.cs" />
     <Compile Include="TipoAcessoDA.cs" />
     <Compile Include="TipoBancoDA.cs" />
