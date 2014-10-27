@@ -274,8 +274,11 @@ function CarregarFerias() {
 
 
                 if (ferias != undefined && ferias.length > 0) {
+                    
                     for (var x in ferias) {
 
+
+                        
 
                         jQuery('#dyntable').DataTable().row.add([
                             ferias[x].CODIGO_FERIAS,
@@ -316,9 +319,13 @@ function GravarDados() {
 
     var idUser = getUrlVars()["idUser"];
 
+    /*
     jQuery("tbody").empty();
     jQuery('tbody').remove();
-    jQuery('#dyntable').append('<tbody></tbody>');
+    jQuery('#dyntable').append('<tbody></tbody>');*/
+
+    
+    
     
     jQuery.ajax({
         type: "GET",
@@ -343,6 +350,17 @@ function GravarDados() {
 
 
             if (ferias != undefined && ferias.length > 0) {
+
+                jQuery('#myModal').modal('hide');
+
+                
+                jQuery('#dyntable').DataTable().row().remove().draw(false);
+                // do some other stuff here
+                jQuery.alerts.dialogClass = 'alert-success';
+                jAlert('Item foi gravado', 'Informação', function () {
+                    jQuery.alerts.dialogClass = null; // reset to default
+                });
+                
                 for (var x in ferias) {
 
                     jQuery('#dyntable').DataTable().row.add([
@@ -358,7 +376,7 @@ function GravarDados() {
 
             }
 
-            alert("Incluído com Sucesso!");
+            
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
             errorAjax(textStatus);
@@ -372,9 +390,7 @@ function ExcluirFerias(id) {
 
     var idUser = getUrlVars()["idUser"];
 
-    jQuery("tbody").empty();
-    jQuery('tbody').remove();
-    jQuery('#dyntable').append('<tbody></tbody>');
+    
 
     jQuery.ajax({
         type: "GET",
@@ -395,18 +411,12 @@ function ExcluirFerias(id) {
 
             if (ferias != undefined && ferias.length > 0) {
 
-                for (var x in ferias) {
-
-                    jQuery('#dyntable').DataTable().row.add([
-                            ferias[x].CODIGO_FERIAS,
-                            ferias[x].DATA_PERIODO_INICIO,
-                            ferias[x].DATA_PERIODO_FIM,
-                            ferias[x].DATA_GOZADA_INICIO,
-                            ferias[x].DATA_GOZADA_FIM,
-                            '<a title="Alterar" href="#myModal" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + ferias[x].CODIGO_FERIAS + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a>',
-                            '<a title="Excluir" href="javascript:ExcluirFerias(' + ferias[x].CODIGO_FERIAS + ')" class="deleterow"><i class="icon-trash"></i></a>'
-                    ]).draw();
-                }
+                jQuery('#dyntable').DataTable().row('.selected').remove().draw(false);
+                // do some other stuff here
+                jQuery.alerts.dialogClass = 'alert-success';
+                jAlert('Item foi excluido', 'Informação', function () {
+                    jQuery.alerts.dialogClass = null; // reset to default
+                });
 
             }
 
