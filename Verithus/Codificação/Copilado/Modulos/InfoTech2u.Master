@@ -101,10 +101,8 @@
                             <div class="userloggedinfo">
                                 <asp:Image runat="server" ID="imgUsuario" ImageUrl="~/images/photos/thumb1.png" />
                                 <div class="userinfo">
-                                    <h5><asp:Label runat="server" ID="lblNomeUsuario" /> <small>- <asp:Label runat="server" ID="lblMailUsuario" /></small></h5>
+                                    <h5><asp:Label runat="server" ID="lblNomeUsuario" /><small> - <asp:Label runat="server" ID="lblMailUsuario" /></small></h5>
                                     <ul>
-                                        <li><a href="editprofile.html">Edit Profile</a></li>
-                                        <li><a href="">Account Settings</a></li>
                                         <li><asp:HyperLink runat="server" ID="lnkSair" NavigateUrl="~/Logoff.aspx">Sair</asp:HyperLink></li>
                                     </ul>
                                 </div>
@@ -147,17 +145,18 @@
                         </li>
                         <li class="dropdown"><a href=""><span class="iconfa-th-list"></span>Configuração</a>
                             <ul>
-                                <li class="dropdown"><a href="">Acessos</a>
+                                <!--<li class="dropdown"><a href="">Acessos</a>
                                     <ul>
                                         <li><asp:HyperLink NavigateUrl="~/Modulos/Configuracao/PesquisaAcesso.aspx" runat="server" ID="hlkConsultaAcesso">Consulta de Acessos</asp:HyperLink></li>
                                         <li><asp:HyperLink NavigateUrl="~/Modulos/Configuracao/ManterAcesso.aspx" runat="server" ID="hlkCadastroAcesso">Cadastro de Acessos</asp:HyperLink></li>
                                     </ul>
-                                </li>
+                                </li>-->
                                 <li class="dropdown"><a href="">Usuarios</a>
                                     <ul>
                                         <li><asp:HyperLink NavigateUrl="~/Modulos/Configuracao/ManterUsuario.aspx" runat="server" ID="hlkCadastroUsuario">Cadastro de Usuarios</asp:HyperLink></li>
                                     </ul>
                                 </li>
+                                <!--
                                 <li class="dropdown"><a href="">Funcionalidades</a>
                                     <ul>
                                         <li><asp:HyperLink NavigateUrl="~/Modulos/Configuracao/ManterSistema.aspx" runat="server" ID="hlkManterSistema">Manutenção de Sistema</asp:HyperLink></li>
@@ -170,7 +169,7 @@
                                         <li><asp:HyperLink NavigateUrl="~/Modulos/Configuracao/ConsultaLogAcao.aspx" runat="server" ID="hlkConsultaLogAcao">Consulta Log Acao</asp:HyperLink></li>
                                         <li><asp:HyperLink NavigateUrl="~/Modulos/Configuracao/ConsultaLogErro.aspx" runat="server" ID="hlkCOnsultaLogErro">Consulta Log Erro</asp:HyperLink></li>
                                     </ul>
-                                </li>
+                                </li>-->
                             </ul>
                         </li>
                     </ul>

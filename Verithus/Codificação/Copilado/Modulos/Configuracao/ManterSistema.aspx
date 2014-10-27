@@ -24,7 +24,7 @@
                     <div class="modal-header widgettitle">
                         <button aria-hidden="true" data-dismiss="modal" class="close" type="button">&times;</button>
                         <h3 id="myModalLabel">Sistemas</h3>
-                       
+                        <asp:HiddenField ID="hdnFuncaoTela" runat="server" ClientIDMode="Static" />
                     </div>
                     <div class="modal-body">
                         <div class="widgetbox box-inverse">
@@ -33,6 +33,7 @@
                                 <label class="control-label" for="txtDescricaoSistemas">Descrição</label>
                                 <div class="controls">
                                     <asp:TextBox runat="server" ID="txtDescricaoSistemas" class="input-block-level" ClientIDMode="Static" />
+                                    <span class="help-inline" id="msgDescricaoSistemas"></span>
                                 </div>
                             </div>
                             <!--widgetcontent-->
@@ -47,18 +48,20 @@
                 <!--#myModal-->
 
                 <div class="row-fluid">
-                    <a class="btn btn-primary" href="#myModal" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Incluir</a>                   
+                    <a class="btn btn-primary" onclick="javascript:Limpar();" href="#myModal" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Incluir</a>                   
                 </div>
 
                 <h4 class="widgettitle">Sistemas</h4>
             	<table id="dyntable" class="table table-bordered responsive">
                     <colgroup>
-                        <col class="con0" style="align: center; width: 90%" />
-                        <col class="con1" />
+                        <col class="con0" style="align: center; width: 4%" />
+                        <col class="con1"  style="align: center; width: 80%" />
+                        <col class="con0" />
                     </colgroup>
                     <thead>
                         <tr>
-                            <th>Descrição</th>
+                            <th>Codigo</th>
+                            <th>Nome</th>
                             <th>Excluir</th>
                         </tr>
                     </thead>

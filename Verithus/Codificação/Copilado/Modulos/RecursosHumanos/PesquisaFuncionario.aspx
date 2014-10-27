@@ -276,7 +276,7 @@
                 var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
 
                 if (codigoSel != null)
-                    jQuery(window.document.location).attr('href', 'ManterFerias.aspx?idUser=' + codigoSel);
+                    jQuery(window.document.location).attr('href', 'ManterFeriasFuncionario.aspx?idUser=' + codigoSel);
                 else {
                     jQuery.alerts.dialogClass = 'alert-warning';
                     jAlert('Selecione um funcionario', 'Alerta', function () {
@@ -492,7 +492,7 @@
                     <button class="btn" id="btnFerias"><i class="iconsweets-magnifying"></i>&nbsp; Ferias</button>
                     <button class="btn" id="btnAcidenteTrabalho"><i class="iconsweets-magnifying"></i>&nbsp; Acidente de Trabalho</button>
                     <button class="btn" id="btnAlteracaoCargoSalario"><i class="iconsweets-magnifying"></i>&nbsp; Alteração de Cargo e Salario</button>
-                    <button class="btn" id="btnRelatorioFuncionarioGeral" style="display:none;"><i class="iconsweets-magnifying"></i>&nbsp; Relatorio Funcionario</button>
+                    <button class="btn" id="btnRelatorioFuncionarioGeral"><i class="iconsweets-magnifying"></i>&nbsp; Relatorio Funcionario</button>
                 </div>
             </div>
             <!--widget-->
