@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 * {
@@ -83,3 +83,6 @@ page-break-before: always;
 .leftpanel {display:none;}
 
 .rightpanel { margin-left: 0px;}
+
+
+#btnImprimir {display:none;}

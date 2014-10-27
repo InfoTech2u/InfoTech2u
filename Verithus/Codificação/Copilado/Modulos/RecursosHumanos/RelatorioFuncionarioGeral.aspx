@@ -595,6 +595,13 @@
                     </table>
                 </div>
 
+                <br />
+                <div class="row-fluid">
+                    <button class="btn btn-primary" id="btnImprimir" onClick="window.print()" ><i class="iconsweets-magnifying"></i>&nbsp; Imprimir</button>
+                </div>
+
+
+
 
 
                 <div class="footer">

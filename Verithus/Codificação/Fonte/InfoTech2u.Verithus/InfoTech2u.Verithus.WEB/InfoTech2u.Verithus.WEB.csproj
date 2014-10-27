@@ -881,27 +881,6 @@
     <Content Include="prettify\prettify.css" />
     <Content Include="prettify\prettify.js" />
     <Content Include="Web.config" />
-    <Content Include="welcome\images\02_Laptop.png" />
-    <Content Include="welcome\images\03_Laptop.png" />
-    <Content Include="welcome\images\04_Laptop.png" />
-    <Content Include="welcome\images\05_Ipad.png" />
-    <Content Include="welcome\images\06_Ipad.png" />
-    <Content Include="welcome\images\07_Ipad.png" />
-    <Content Include="welcome\images\08_Ipad.png" />
-    <Content Include="welcome\images\09_Ipad.png" />
-    <Content Include="welcome\images\10_Iphone.png" />
-    <Content Include="welcome\images\11_Iphone.png" />
-    <Content Include="welcome\images\12_Iphone.png" />
-    <Content Include="welcome\images\13_Iphone.png" />
-    <Content Include="welcome\images\14_Iphone.png" />
-    <Content Include="welcome\images\15_Iphone.png" />
-    <Content Include="welcome\images\16_Iphone.png" />
-    <Content Include="welcome\images\air.png" />
-    <Content Include="welcome\images\imac.png" />
-    <Content Include="welcome\images\iphone.png" />
-    <Content Include="welcome\images\mini.png" />
-    <Content Include="welcome\index.html" />
-    <Content Include="welcome\style.css" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\PaginaBase.cs" />
