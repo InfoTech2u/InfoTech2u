@@ -634,11 +634,11 @@
 
                         <p id="validaOptanteFGTS">
                             <label>Optante</label>
-                            <span class="field">
-                                <asp:RadioButtonList runat="server" ID="rdpOptanteFGTS" RepeatDirection="Horizontal" ClientIDMode="Static" Width="100px">
-                                    <asp:ListItem Text="Sim" Value="S" Selected="True" />
-                                    <asp:ListItem Text="Não" Value="N" />
-                                </asp:RadioButtonList>
+                            <span class="field validaOptanteFGTS">
+                                <asp:DropDownList runat="server" ID="ddlOptanteFGTS" class="uniformselect" ClientIDMode="Static" >
+                                    <asp:ListItem Value="S" Text="Sim" />
+                                    <asp:ListItem Value="N" Text="Nâo" />
+                                </asp:DropDownList>
                                 <span class="help-inline" id="msgOptanteFGTS"></span>
                             </span>
                         </p>

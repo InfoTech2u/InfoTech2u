@@ -22,6 +22,11 @@ jQuery(document).ready(function () {
         
     });
 
+    jQuery(".btnVoltar").click(function (event) {
+        event.preventDefault();
+        history.back(1);
+    });
+
     jQuery("#btnLimparDemissao").click(function () {
 
         jQuery('#txtDataDemissao').val("");

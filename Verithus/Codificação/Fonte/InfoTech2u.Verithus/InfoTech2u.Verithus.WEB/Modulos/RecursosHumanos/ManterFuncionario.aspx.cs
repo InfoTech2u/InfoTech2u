@@ -268,7 +268,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario
             this.rblFilhoBrasileiro.Enabled = false;
             this.rblNaturalizado.Enabled = false;
             this.rdbCasadoBrasileiro.Enabled = false;
-            this.rdpOptanteFGTS.Enabled = false;
+            this.ddlOptanteFGTS.Enabled = false;
             this.ddlStatus.Enabled = false;
             
 

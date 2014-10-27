@@ -31,6 +31,28 @@ namespace InfoTech2u.Verithus.Util
             }
         }
 
+        public static void IncludeHtmlGenericControl(Page pagina, string tipo, string caminho, string arquivo, string media)
+        {
+
+            switch (tipo)
+            {
+                case "css":
+                    HtmlGenericControl newControlCss = new HtmlGenericControl("link");
+                    newControlCss.Attributes["rel"] = "stylesheet";
+                    newControlCss.Attributes["href"] = caminho + arquivo;
+                    newControlCss.Attributes["type"] = "text/css";
+                    newControlCss.Attributes["media"] = media;
+                    pagina.Header.Controls.Add(newControlCss);
+                    break;
+                case "js":
+                    HtmlGenericControl newControlJs = new HtmlGenericControl("script");
+                    newControlJs.Attributes["type"] = "text/javascript";
+                    newControlJs.Attributes["src"] = caminho + arquivo;
+                    pagina.Header.Controls.Add(newControlJs);
+                    break;
+            }
+        }
+
         //Adicionar Url Amigavel ao Sistema e altera o HyperLink relaivo
         public static void AdicionarUrlAmigavel(string UrlAmigavel, String NomePagina,  HyperLink link)
         {

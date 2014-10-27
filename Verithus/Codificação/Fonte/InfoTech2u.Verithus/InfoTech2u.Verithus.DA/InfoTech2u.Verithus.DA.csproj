@@ -43,6 +43,7 @@
     <Compile Include="AcidenteTrabalhoDA.cs" />
     <Compile Include="AlteracaoCargoSalariorDA.cs" />
     <Compile Include="BancoDA.cs" />
+    <Compile Include="BeneficioDA.cs" />
     <Compile Include="CaractesristicaFisicaDA.cs" />
     <Compile Include="CategoriaBeneficioDA.cs" />
     <Compile Include="CidadeDA.cs" />

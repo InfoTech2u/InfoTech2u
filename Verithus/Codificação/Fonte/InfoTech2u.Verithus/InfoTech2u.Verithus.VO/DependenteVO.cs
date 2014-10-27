@@ -17,6 +17,9 @@ namespace InfoTech2u.Verithus.VO
         public int CodigoDependente { get; set; }
         public Nullable<int> CodigoFuncionario { get; set; }
         public string Nome { get; set; }
+
+        public string DescricaoTipoParentesco { get; set; }
+
         public Nullable<int> CodigoTipoParentesco { get; set; }
         public Nullable<System.DateTime> DataNascimento { get; set; }
         public Nullable<int> CodigoUsuarioCadastro { get; set; }

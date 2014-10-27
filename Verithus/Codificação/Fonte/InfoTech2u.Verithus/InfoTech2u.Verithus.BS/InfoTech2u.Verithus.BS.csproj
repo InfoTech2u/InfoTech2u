@@ -42,6 +42,7 @@
     <Compile Include="AcidenteTrabalhoBS.cs" />
     <Compile Include="AlteracaoCargoSalariorBS.cs" />
     <Compile Include="BancoBS.cs" />
+    <Compile Include="BeneficioBS.cs" />
     <Compile Include="CaractesristicaFisicaBS.cs" />
     <Compile Include="CategoriaBeneficioBS.cs" />
     <Compile Include="CidadeBS.cs" />

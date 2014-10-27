@@ -12,10 +12,9 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
+           
                 CarregarIncludes();
-            }
+            
         }
 
         protected void CarregarIncludes()

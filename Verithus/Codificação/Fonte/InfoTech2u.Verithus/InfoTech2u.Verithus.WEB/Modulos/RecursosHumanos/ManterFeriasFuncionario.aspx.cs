@@ -5,17 +5,17 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using InfoTech2u.Verithus.VO;
+using InfoTech2u.Verithus.BS;
+using System.Data;
 
 namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
 {
-    public partial class ManterTipoBeneficio : System.Web.UI.Page
+    public partial class ManterFeriasFuncionario : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
-                CarregarIncludes();
-
-            
+            CarregarIncludes();
         }
 
         protected void CarregarIncludes()
@@ -48,7 +48,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery.maskMoney.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "responsive-tables.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "custom.js");
-            InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "TipoBeneficio.js");
+            InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "ManterFerias.js");
         }
     }
 }

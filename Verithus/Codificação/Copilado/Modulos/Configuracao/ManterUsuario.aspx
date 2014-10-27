@@ -72,6 +72,16 @@
 
                                         </span>
                                     </p>
+
+                                    <p>
+                                        <label id="lblStatus">Tipo de Acesso</label>
+                                        <span class="field">
+                                            <asp:DropDownList ID="ddlStatus" CssClass="uniformselect" runat="server" ClientIDMode="Static"></asp:DropDownList>
+                                            <asp:Label ID="lblErrorStatus" CssClass="help-inline display:none" runat="server" ClientIDMode="Static">Selecione um item.</asp:Label>
+
+                                        </span>
+                                    </p>
+
                                 </div>
                             </div>
                             <!--widgetcontent-->
@@ -84,8 +94,6 @@
                     </div>
                 </div>
                 <!--#myModal-->
-
-
 
                 <div class="row-fluid">
                     <a class="btn btn-primary" href="#modalCadastrar" onclick="javascript:LimparCadastrar();FuncaoTelaModal('Cadastro', 0);" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Cadastrar</a>
@@ -108,14 +116,22 @@
                             <th class="head0">Nome</th>
                             <th class="head1">Email</th>
                             <th class="head0">Login</th>
+                            <th class="head0">Status</th>
                             <th class="head1">Alterar</th>
-                            <th class="head0">Excluir</th>
                         </tr>
                     </thead>
                     <tbody>
                     </tbody>
                 </table>
-
+                <div class="footer">
+                    <div class="footer-left">
+                        <span>&copy; 2014. Infotech2u. All Rights Reserved.</span>
+                    </div>
+                    <div class="footer-right">
+                        <span>Developer by: <a href="http://infotech2u.com.br/">InfoTech2U</a></span>
+                    </div>
+                </div>
+            <!--footer-->
             </div>
             <!--maincontentinner-->
         </div>

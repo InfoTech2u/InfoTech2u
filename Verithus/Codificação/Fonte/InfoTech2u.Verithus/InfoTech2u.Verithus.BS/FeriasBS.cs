@@ -29,6 +29,24 @@ namespace InfoTech2u.Verithus.BS
             }
         }
 
+        public DataTable ExcluirFerias(FeriasVO param)
+        {
+            FeriasDA objRetorno = new FeriasDA();
+
+            try
+            {
+                return objRetorno.ExcluirFerias(param);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objRetorno = null;
+            }
+        }
+
         public DataTable IncluirFerias(FeriasVO usuario)
         {
             FeriasDA objRetorno = new FeriasDA();

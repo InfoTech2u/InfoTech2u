@@ -27,6 +27,40 @@ namespace InfoTech2u.Verithus.WEB.Handler
             {
                 context.Response.Write(GravarFerias(context).Serializer());
             }
+            else if (context.Request.QueryString["Metodo"] == "Excluir")
+            {
+                context.Response.Write(ExcluirFerias(context).Serializer());
+            }
+        }
+
+        private DataTable ExcluirFerias(HttpContext context)
+        {
+            FeriasBS objBS = new FeriasBS();
+            FeriasVO dadosFerias = new FeriasVO();
+
+            int codigoFuncionario = 0;
+            if (Int32.TryParse(context.Request.QueryString["CodigoFuncionario"], out codigoFuncionario))
+            {
+                dadosFerias.CodigoFuncionario = codigoFuncionario;
+            }
+
+            int codigoUsuarioAlteracao = 0;
+            if (Int32.TryParse(context.Request.QueryString["CodigoUsuarioAlteracao"], out codigoUsuarioAlteracao))
+            {
+                dadosFerias.CodigoUsuarioAlteracao = Convert.ToInt32(context.Session["CodigoUsuario"].ToString());
+            }
+
+            int codigoFerias = 0;
+            if (Int32.TryParse(context.Request.QueryString["CodigoFerias"], out codigoFerias))
+            {
+                dadosFerias.CodigoFerias = codigoFerias;
+            }
+            else
+            {
+                dadosFerias.CodigoFerias = null;
+            }
+
+            return objBS.ExcluirFerias(dadosFerias);
         }
 
         private DataTable SelecionarFerias(HttpContext context)
@@ -38,6 +72,16 @@ namespace InfoTech2u.Verithus.WEB.Handler
             if (Int32.TryParse(context.Request.QueryString["CodigoFuncionario"], out codigoFuncionario))
             {
                 dadosFerias.CodigoFuncionario = codigoFuncionario;
+            }
+
+            int codigoFerias = 0;
+            if (Int32.TryParse(context.Request.QueryString["CodigoFerias"], out codigoFerias))
+            {
+                dadosFerias.CodigoFerias= codigoFerias;
+            }
+            else
+            {
+                dadosFerias.CodigoFerias = null;
             }
 
             return objBS.SelecionarFerias(dadosFerias);
@@ -90,7 +134,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
                 dadosFerias.CodigoStatus = codigoStatus;
             }
 
-            if (dadosFerias.CodigoFerias == 0)
+            if (dadosFerias.CodigoFerias == 0 || dadosFerias.CodigoFerias == null)
             {
                 int codigoUsuarioCadastro = 0;
                 if (Int32.TryParse(context.Request.QueryString["CodigoUsuarioCadastro"], out codigoUsuarioCadastro))

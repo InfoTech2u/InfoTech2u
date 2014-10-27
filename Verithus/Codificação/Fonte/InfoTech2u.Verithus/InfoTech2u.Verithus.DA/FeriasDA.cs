@@ -122,9 +122,48 @@ namespace InfoTech2u.Verithus.DA
 
                 lstSqlParameter.Add(new SqlParameter("@CODIGO_FUNCIONARIO", usuario.CodigoFuncionario));
 
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_FERIAS", usuario.CodigoFerias));
+
                 dtRetorno = new DataTable();
 
                 objSql.Execute("SPVRT068_FERIAS_PR_SELECIONAR", lstSqlParameter.ToArray(), null, ref dtRetorno);
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+            return dtRetorno;
+        }
+
+        public DataTable ExcluirFerias(FeriasVO usuario)
+        {
+            InfoTech2uSQLUtil objSql = null;
+            StringBuilder query = null;
+            List<SqlParameter> lstSqlParameter = null;
+            DataTable dtRetorno = null;
+
+            try
+            {
+
+                objSql = new InfoTech2uSQLUtil();
+                lstSqlParameter = new List<SqlParameter>();
+                query = new StringBuilder();
+
+                objSql.Sigla = objSql.GetDataBase();
+                objSql.ConnectionString = objSql.GetConnectionString(objSql.Sigla);
+                objSql.Open();
+
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_FUNCIONARIO", usuario.CodigoFuncionario));
+
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_FERIAS", usuario.CodigoFerias));
+
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO_ALTERACAO", usuario.CodigoUsuarioAlteracao));
+
+                dtRetorno = new DataTable();
+
+                objSql.Execute("SPVRT078_FERIAS_PR_EXCLUIR", lstSqlParameter.ToArray(), null, ref dtRetorno);
 
             }
             catch (Exception ex)

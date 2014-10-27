@@ -65,6 +65,15 @@
                     <!--widgetcontent-->
                 </div>
                 <!--widget-->
+                <div class="footer">
+                    <div class="footer-left">
+                        <span>&copy; 2014. Infotech2u. All Rights Reserved.</span>
+                    </div>
+                    <div class="footer-right">
+                        <span>Developer by: <a href="http://infotech2u.com.br/">InfoTech2U</a></span>
+                    </div>
+                </div>
+            <!--footer-->
             </div>
             <!--maincontentinner-->
         </div>

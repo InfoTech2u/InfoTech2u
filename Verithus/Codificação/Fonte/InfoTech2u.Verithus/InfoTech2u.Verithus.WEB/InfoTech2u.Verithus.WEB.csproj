@@ -313,6 +313,7 @@
     <Content Include="Modulos\fonts\roboto\Roboto-ThinItalic-webfont.ttf" />
     <Content Include="Modulos\fonts\roboto\Roboto-ThinItalic-webfont.woff" />
     <Content Include="Handler\ManterStatus.ashx" />
+    <Content Include="Modulos\RecursosHumanos\ManterFeriasFuncionario.aspx" />
     <Content Include="Modulos\RecursosHumanos\RelatorioFuncionarioGeral.aspx" />
     <Content Include="PesquisaLog.ashx" />
     <None Include="Properties\PublishProfiles\InfoTech2u.Verithus.Sistema.pubxml" />
@@ -1159,6 +1160,13 @@
     </Compile>
     <Compile Include="Modulos\RecursosHumanos\ManterFerias.aspx.designer.cs">
       <DependentUpon>ManterFerias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\ManterFeriasFuncionario.aspx.cs">
+      <DependentUpon>ManterFeriasFuncionario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\ManterFeriasFuncionario.aspx.designer.cs">
+      <DependentUpon>ManterFeriasFuncionario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\RecursosHumanos\ManterFormaDePagamento.aspx.cs">
       <DependentUpon>ManterFormaDePagamento.aspx</DependentUpon>

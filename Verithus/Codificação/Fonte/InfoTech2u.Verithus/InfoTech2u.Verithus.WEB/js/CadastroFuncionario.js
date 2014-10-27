@@ -934,7 +934,7 @@ function validarFuncionario(passoAtivo) {
     // Validar Documentos Fundo de Garantia
     if (passoAtivo == 6) {
 
-        var OptanteFGTS = jQuery('#rdpOptanteFGTS').val();
+        var OptanteFGTS = jQuery('#ddlOptanteFGTS').val();
         var DataOpcao = jQuery('#txtDataOpcao').val();
         var DataRetratacao = jQuery('#txtDataRetratacao').val();
         var BancoFGTS = jQuery('#ddlBancoFGTS').val();
@@ -1073,6 +1073,7 @@ function validarFuncionario(passoAtivo) {
 }
 
 function AlterarDadosFuncionario() {
+
     jQuery.ajax({
         type: "GET",
         url: "../../Handler/ManutencaoFuncionario.ashx",
@@ -1132,7 +1133,7 @@ function AlterarDadosFuncionario() {
             BairroPIS: jQuery('#txtBairroPIS').val(),
             ComplementoPIS: jQuery('#txtComplementoPIS').val(),
             CEPPIS: jQuery('#txtCEPPIS').val().replace(/[\-]/g, ""),
-            OptanteFGTS: jQuery('#rdpOptanteFGTS').val(),
+            OptanteFGTS: jQuery('#ddlOptanteFGTS option:selected').val(),
             DataOpcao: jQuery('#txtDataOpcao').val(),
             DataRetratacao: jQuery('#txtDataRetratacao').val(),
             BancoFGTS: jQuery('#ddlBancoFGTS option:selected').val(),
@@ -1249,7 +1250,7 @@ function IncluirDadosFuncionario() {
             BairroPIS: jQuery('#txtBairroPIS').val(),
             ComplementoPIS: jQuery('#txtComplementoPIS').val(),
             CEPPIS: jQuery('#txtCEPPIS').val().replace(/[\-]/g, ""),
-            OptanteFGTS: jQuery('#rdpOptanteFGTS').val(),
+            OptanteFGTS: jQuery('#ddlOptanteFGTS option:selected').val(),
             DataOpcao: jQuery('#txtDataOpcao').val(),
             DataRetratacao: jQuery('#txtDataRetratacao').val(),
             BancoFGTS: jQuery('#ddlBancoFGTS option:selected').val(),

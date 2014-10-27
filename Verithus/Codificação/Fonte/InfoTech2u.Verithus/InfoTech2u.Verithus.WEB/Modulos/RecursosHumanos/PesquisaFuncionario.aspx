@@ -276,7 +276,7 @@
                 var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
 
                 if (codigoSel != null)
-                    jQuery(window.document.location).attr('href', 'ManterFerias.aspx?idUser=' + codigoSel);
+                    jQuery(window.document.location).attr('href', 'ManterFeriasFuncionario.aspx?idUser=' + codigoSel);
                 else {
                     jQuery.alerts.dialogClass = 'alert-warning';
                     jAlert('Selecione um funcionario', 'Alerta', function () {
@@ -307,6 +307,23 @@
 
                 if (codigoSel != null)
                     jQuery(window.document.location).attr('href', 'ManterAcidenteTrabalho.aspx?idUser=' + codigoSel);
+                else {
+                    jQuery.alerts.dialogClass = 'alert-warning';
+                    jAlert('Selecione um funcionario', 'Alerta', function () {
+                        jQuery.alerts.dialogClass = null; // reset to default
+                    });
+                }
+                return false;
+            });
+
+            //btnRelatorioFuncionarioGeral
+
+            jQuery("#btnRelatorioFuncionarioGeral").click(function () {
+
+                var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
+
+                if (codigoSel != null)
+                    jQuery(window.document.location).attr('href', 'RelatorioFuncionarioGeral.aspx?idUser=' + codigoSel);
                 else {
                     jQuery.alerts.dialogClass = 'alert-warning';
                     jAlert('Selecione um funcionario', 'Alerta', function () {
@@ -475,6 +492,7 @@
                     <button class="btn" id="btnFerias"><i class="iconsweets-magnifying"></i>&nbsp; Ferias</button>
                     <button class="btn" id="btnAcidenteTrabalho"><i class="iconsweets-magnifying"></i>&nbsp; Acidente de Trabalho</button>
                     <button class="btn" id="btnAlteracaoCargoSalario"><i class="iconsweets-magnifying"></i>&nbsp; Alteração de Cargo e Salario</button>
+                    <button class="btn" id="btnRelatorioFuncionarioGeral"><i class="iconsweets-magnifying"></i>&nbsp; Relatorio Funcionario</button>
                 </div>
             </div>
             <!--widget-->

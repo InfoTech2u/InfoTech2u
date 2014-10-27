@@ -14,7 +14,7 @@ namespace InfoTech2u.Verithus.VO
     
     public partial class FeriasVO
     {
-        public int CodigoFerias { get; set; }
+        public int? CodigoFerias { get; set; }
         public Nullable<int> CodigoFuncionario { get; set; }
         public Nullable<System.DateTime> DataPeriodoInicio { get; set; }
         public Nullable<System.DateTime> DataPeriodoFim { get; set; }

@@ -31,7 +31,10 @@ jQuery(document).ready(function () {
 
 
 
-
+    jQuery(".btnVoltar").click(function (event) {
+        event.preventDefault();
+        history.back(1);
+    });
 
 
     jQuery("#btnLimparAdmissao").click(function () {

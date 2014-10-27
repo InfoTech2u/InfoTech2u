@@ -625,13 +625,13 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario {
         protected global::System.Web.UI.WebControls.TextBox txtComplementoPIS;
         
         /// <summary>
-        /// rdpOptanteFGTS control.
+        /// ddlOptanteFGTS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rdpOptanteFGTS;
+        protected global::System.Web.UI.WebControls.DropDownList ddlOptanteFGTS;
         
         /// <summary>
         /// txtDataOpcao control.
