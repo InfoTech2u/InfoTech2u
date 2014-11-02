@@ -9,6 +9,10 @@
         <div class="maincontent">
             <div class="maincontentinner">
 
+                <div class="span12">
+                    <button class="btn btn-primary" id="btnImprimir" onClick="window.print()" ><i class="iconsweets-magnifying"></i>&nbsp; Imprimir</button>
+                </div>
+                <br /><br /><br /><br />
 
 
                 <div class="span12">
@@ -596,9 +600,7 @@
                 </div>
 
                 <br />
-                <div class="row-fluid">
-                    <button class="btn btn-primary" id="btnImprimir" onClick="window.print()" ><i class="iconsweets-magnifying"></i>&nbsp; Imprimir</button>
-                </div>
+                
 
 
 
