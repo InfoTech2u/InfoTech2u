@@ -175,7 +175,7 @@ function Excluir(id) {
                 success: function (data) {
                     var lista = eval(data);
 
-                    if (lista['Msg'] != null) {
+                    if (data['Msg'] != null) {
                         jQuery('#myModal').modal('hide');
 
                         jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');

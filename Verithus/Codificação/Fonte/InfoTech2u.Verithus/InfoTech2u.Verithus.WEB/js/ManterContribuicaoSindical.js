@@ -58,12 +58,19 @@ function CarregarSindicatoLista() {
             Acao: 'Consulta'
         },
         success: function (data) {
+            if (data['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
 
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+            } else {
             var lista = eval(data);
             jQuery('#ddlSindicato').append("<option value='0'>Escolha</option>");
             for (x in lista) {
                 var row = "<option value='" + lista[x].CodigoSindicato + "'>" + lista[x].Nome + "</option>";
                 jQuery('#ddlSindicato').append(row);
+            }
             }
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -89,6 +96,13 @@ function CarregarContribuicaoExistente() {
             CodigoFuncionario: codFunc
         },
         success: function (data) {
+            if (data['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
+
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+            } else {
 
             var lista = eval(data);
 
@@ -99,6 +113,7 @@ function CarregarContribuicaoExistente() {
                 jQuery('#ddlSindicato option[value="' + lista[0].CODIGO_SINDICATO + '"]').prop('selected', true);
                 jQuery('#txtVlrContribuicao').val(lista[0].VALOR_RECOLHIDO)
                 CarregarMascaras();
+            }
             }
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -142,7 +157,13 @@ function Incluir() {
             ValorRecolhido: jQuery('#txtVlrContribuicao').val()
         },
         success: function (data) {
+            if (data['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
 
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+            } else {
             var lista = eval(data);
             if (lista != undefined && lista.length > 0) {
                 history.back(1);
@@ -151,6 +172,7 @@ function Incluir() {
                 jAlert('Contribuição Sindical não foi gravada.', 'Alerta', function () {
                     jQuery.alerts.dialogClass = null; // reset to default
                 });
+            }
             }
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -178,6 +200,13 @@ function Excluir() {
             CodigoContribuicaoSindical: jQuery('#hdnCodigoContribuicaoSindical').val()
         },
         success: function (data) {
+            if (data['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
+
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+            } else {
             if (data) {
                 Limpar();
                 history.back(1);
@@ -186,6 +215,7 @@ function Excluir() {
                 jAlert('Contribuição Sindical não foi excluída.', 'Alerta', function () {
                     jQuery.alerts.dialogClass = null; // reset to default
                 });
+            }
             }
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {

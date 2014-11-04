@@ -223,6 +223,13 @@ function CarregarFeriasFormulario(id)
             CodigoFerias: id
         },
         success: function (data) {
+            if (data['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
+
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+            } else {
             var ferias = eval(data);
 
 
@@ -238,8 +245,7 @@ function CarregarFeriasFormulario(id)
                 jQuery('#myModalLabel').text('Alteração de Ferias');
 
             }
-
-            //MontarGrid();
+            }
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
             errorAjax(textStatus);
@@ -270,16 +276,19 @@ function CarregarFerias() {
                 CodigoFuncionario: idUser
             },
             success: function (data) {
+                if (data['Msg'] != null) {
+                    jQuery('#myModal').modal('hide');
+
+                    jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                    return;
+                } else {
                 var ferias = eval(data);
 
 
                 if (ferias != undefined && ferias.length > 0) {
                     
                     for (var x in ferias) {
-
-
-                        
-
                         jQuery('#dyntable').DataTable().row.add([
                             ferias[x].CODIGO_FERIAS,
                             ferias[x].DATA_PERIODO_INICIO,
@@ -289,22 +298,10 @@ function CarregarFerias() {
                             '<a title="Alterar" href="#myModal" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + ferias[x].CODIGO_FERIAS + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a>',
                             '<a title="Excluir" href="javascript:ExcluirFerias(' + ferias[x].CODIGO_FERIAS + ')" class="deleterow"><i class="icon-trash"></i></a>'
                         ]).draw();
-                        /*
-                        var row = '<tr value="' + ferias[x].CODIGO_FERIAS + '">' +
-                               '<td>' + ferias[x].CODIGO_FERIAS + '</td>' +
-                               '<td>' + ferias[x].DATA_PERIODO_INICIO + '</td>' +
-                               '<td>' + ferias[x].DATA_PERIODO_FIM + '</td>' +
-                               '<td>' + ferias[x].DATA_GOZADA_INICIO + '</td>' +
-                               '<td>' + ferias[x].DATA_GOZADA_FIM + '</td>' +
-                               '<td class="centeralign"><a title="Alterar" href="#myModal" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + ferias[x].CODIGO_FERIAS + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
-                               '<td class="centeralign"><a title="Excluir" href="javascript:ExcluirFerias(' + ferias[x].CODIGO_FERIAS + ')" class="deleterow"><i class="icon-trash"></i></a></td>' +
-                             '</tr>';
-                        jQuery('#dyntable').append(row);*/
                     }
 
                 }
-
-                //MontarGrid();
+                }
             },
             error: function (XMLHttpRequest, textStatus, errorThrow) {
                 errorAjax(textStatus);
@@ -319,14 +316,6 @@ function GravarDados() {
 
     var idUser = getUrlVars()["idUser"];
 
-    /*
-    jQuery("tbody").empty();
-    jQuery('tbody').remove();
-    jQuery('#dyntable').append('<tbody></tbody>');*/
-
-    
-    
-    
     jQuery.ajax({
         type: "GET",
         crossDomain: true,
@@ -345,6 +334,13 @@ function GravarDados() {
             CodigoStatus: '1'
         },
         success: function (data) {
+            if (data['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
+
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+            } else {
 
             var ferias = eval(data);
 
@@ -376,7 +372,7 @@ function GravarDados() {
 
             }
 
-            
+            }
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
             errorAjax(textStatus);
@@ -405,7 +401,13 @@ function ExcluirFerias(id) {
             CodigoFuncionario: idUser
         },
         success: function (data) {
+            if (data['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
+
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
             
+                return;
+            } else {
             var ferias = eval(data);
 
 
@@ -418,6 +420,7 @@ function ExcluirFerias(id) {
                     jQuery.alerts.dialogClass = null; // reset to default
                 });
 
+            }
             }
 
         },

@@ -79,7 +79,7 @@ function CarregarEmpresa(id) {
         success: function (data) {
             var empresa = eval(data);
 
-            if (empresa['Msg'] != null) {
+            if (data['Msg'] != null) {
                 jQuery('#myModal').modal('hide');
 
                 jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
@@ -203,7 +203,7 @@ function CarregarEmpresaLista() {
         },
         success: function (data) {
             var empresa = eval(data);
-            if (empresa['Msg'] != null) {
+            if (data['Msg'] != null) {
                 jQuery('#myModal').modal('hide');
 
                 jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
@@ -262,7 +262,7 @@ function Gravar(id) {
 
                 var empresa = eval(data);
 
-                if (empresa['Msg'] != null) {
+                if (data['Msg'] != null) {
                     jQuery('#myModal').modal('hide');
 
                     jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
@@ -327,7 +327,7 @@ function Excluir(id) {
                 },
                 success: function (data) {
                     var ret = eval(data)
-                    if (ret['Msg'] != null) {
+                    if (data['Msg'] != null) {
                         jQuery('#myModal').modal('hide');
 
                         jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');

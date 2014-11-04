@@ -369,7 +369,7 @@ namespace InfoTech2u.Verithus.DA
                     objSql.Execute("SPVRT001_BENEFICIO_PR_EXCLUIR", lstSqlParameter.ToArray(), transaction, ref dtRetornoExcluir);
 
                     //Verifica se exclusao ocorreu com sucesso
-                    if (dtRetornoExcluir != null && dtRetornoExcluir.Rows.Count > 0 && Convert.ToInt32(dtRetornoExcluir.Rows[0]["Mensagem"]) == 100)
+                    if (dtRetornoExcluir != null && dtRetornoExcluir.Rows.Count > 0 && Convert.ToInt32(dtRetornoExcluir.Rows[0]["Status"]) == 100)
                     {
                         transaction.Rollback();
                         return new DataTable();
