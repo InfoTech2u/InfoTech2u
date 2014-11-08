@@ -84,6 +84,7 @@
     <Content Include="js\ManterSistema.js" />
     <Content Include="js\ManterTipoFuncionalidade.js" />
     <Content Include="js\ManterUsuario.js" />
+    <Content Include="js\PesquisaFuncionario.js" />
     <Content Include="js\TipoBeneficio.js" />
     <Content Include="Modulos\Configuracao\ConsultaLogAcao.aspx" />
     <Content Include="Modulos\Configuracao\ConsultaLogErro.aspx" />

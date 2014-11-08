@@ -13,6 +13,15 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.Funcionario {
     public partial class PesquisaFuncionario {
         
         /// <summary>
+        /// hdnIdUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnIdUser;
+        
+        /// <summary>
         /// txtCodigoFuncionario control.
         /// </summary>
         /// <remarks>

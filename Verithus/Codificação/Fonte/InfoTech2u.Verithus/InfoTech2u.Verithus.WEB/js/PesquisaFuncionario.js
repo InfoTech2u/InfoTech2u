@@ -1,25 +1,39 @@
 ﻿jQuery(document).ready(function () {
-    // dynamic table
-    /*jQuery('#dyntable').dataTable({
+    jQuery('#dyntable').dataTable({
         "sPaginationType": "full_numbers",
-        "aaSortingFixed": [[0, 'asc']],
-        "fnDrawCallback": function (oSettings) {
-            jQuery.uniform.update();
+        "fnDrawCallback": function (oSettings) { jQuery.uniform.update(); },
+        "language": {
+            "search": "Pesquisa",
+            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "zeroRecords": "Não há registros",
+            "info": "Página _PAGE_ de _PAGES_",
+            "infoEmpty": "Não há registros.",
+            "infoFiltered": "(Pesquisado de um total de _MAX_ registro(s))",
+            "paginate": {
+                "first": "Primeira",
+                "previous": "Anterior",
+                "next": "Próxima",
+                "last": "Última"
+            },
         }
-    });*/
+    });
 
+    jQuery('#dyntable tbody').on('click', 'tr', function () {        
+        if (jQuery(this).hasClass('selected')) {
+            //jQuery(this).removeClass('selected');
+        }
+        else {
+            jQuery('#dyntable tr.selected').removeClass('selected');
+            jQuery(this).addClass('selected');
+        }
+    });
 
-
-
-    //GridFake();
-
+    jQuery('#dyntable_wrapper').hide();
     jQuery('#dyntable').hide();
     jQuery('.dyntable').hide();
     jQuery('.btnAcao').hide();
 
     //btnLimpar
-
-
     jQuery("#btnLimpar").click(function () {
 
 
@@ -28,6 +42,7 @@
         jQuery('#txtNumeroMatricula').attr('value', '');
         jQuery('#txtNomeFuncionario').attr('value', '');
 
+        jQuery('#dyntable_wrapper').hide();
         jQuery('#dyntable').hide();
         jQuery('.dyntable').hide();
         jQuery('.btnAcao').hide();
@@ -38,15 +53,10 @@
     });
 
     jQuery("#btnPesquisar").click(function () {
-
-
-
+        jQuery('#dyntable_wrapper').show();
         jQuery('#dyntable').show();
         jQuery('.dyntable').show();
         jQuery('.btnAcao').show();
-        jQuery("tbody").empty();
-        jQuery('tbody').remove();
-        jQuery('#dyntable').append('<tbody></tbody>');
 
         jQuery.ajax({
             type: "GET",
@@ -69,59 +79,27 @@
                 } else {
                     var arrFuncionario = eval(data);
 
-                    //jQuery('tbody').remove();
-                    //('#dyntable').append('<tbody></tbody>');
-
-
-                    for (var i = 0; i < arrFuncionario.length; i++) {
-
-                        var row = '<tr id="' + arrFuncionario[i].FUNC_CODIGO_FUNCIONARIO + '" class="gradeX"><td><input type="radio" name="rdbFuncionario" class="rdbFuncionario" value="' + arrFuncionario[i].FUNC_CODIGO_FUNCIONARIO + '" /></td><td>' + arrFuncionario[i].FUNC_CODIGO_FUNCIONARIO + '</td><td>' + arrFuncionario[i].FUNC_NUMERO_ORDEM_MATRICULA + '</td><td>' + arrFuncionario[i].FUNC_NUMERO_MATRICULA + '</td><td class="center">' + arrFuncionario[i].FUNC_NOME_FUNCIONARIO + '</td></tr>';
-                        jQuery('tbody').append(row);
-
-                    }
-
-
-                    jQuery('#dyntable').dataTable().fnDestroy();
-
-                    jQuery('#dyntable').dataTable({
-                        "sPaginationType": "full_numbers",
-                        "fnDrawCallback": function (oSettings) {
-                            jQuery.uniform.update();
-                        },
-                        "language": {
-                            "lengthMenu": "Display _MENU_ records per page",
-                            "zeroRecords": "Nothing found - sorry",
-                            "info": "Showing page _PAGE_ of _PAGES_",
-                            "infoEmpty": "No records available",
-                            "infoFiltered": "(filtered from _MAX_ total records)",
-                            "sInfoEmpty": "Mostrando 0-0 de 0 Funcionários"
+                    for (i in arrFuncionario) {
+                        jQuery('#dyntable').DataTable().row.add([
+                            '<input type="radio" name="rdbFuncionario" class="rdbFuncionario" value="' + arrFuncionario[i].FUNC_CODIGO_FUNCIONARIO + '" />',                            
+                            arrFuncionario[i].FUNC_CODIGO_FUNCIONARIO,
+                            arrFuncionario[i].FUNC_NUMERO_ORDEM_MATRICULA,
+                            arrFuncionario[i].FUNC_NUMERO_MATRICULA,
+                            arrFuncionario[i].FUNC_NOME_FUNCIONARIO                            
+                        ]).draw();
                         }
-                        //"sInfoEmpty": "Mostrando 0-0 de 0 Funcionários"
-                    });
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrow) {
                 errorAjax(textStatus);
             }
         });
-
-
-
-        //Pesquisar();
-
-
         return false;
     });
 
 
 
     //rdbFuncionario
-
-
-
-
-
-
     jQuery("#btnIncluir").click(function () {
 
         var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
@@ -165,6 +143,8 @@
 
         var codigoSel = jQuery('input[name=rdbFuncionario]:checked', '.frmInfotech2u').val();
 
+        if (codigoSel != null) {
+
         jQuery.ajax({
             type: "GET",
             url: "../../Handler/ExcluirFuncionario.ashx",
@@ -185,7 +165,7 @@
 
                     if (arrFuncionario[0].CodigoErro = '1') {
 
-                        jQuery('table tbody tr[id="' + codigoSel + '"]').remove();
+                            jQuery('#dyntable').DataTable().row('.selected').remove().draw(false);
 
                         jQuery.alerts.dialogClass = 'alert-warning';
                         jAlert(arrFuncionario[0].Mensagem, 'Mensagem', function () {
@@ -210,6 +190,12 @@
         });
 
         return false;
+        } else {
+            jQuery.alerts.dialogClass = 'alert-warning';
+            jAlert('Selecione um funcionario', 'Alerta', function () {
+                jQuery.alerts.dialogClass = null; // reset to default
+            });
+        }
     });
 
     jQuery("#btnAdmisao").click(function () {
@@ -340,8 +326,6 @@
 
 });
 
-
-
 function Pesquisar() {
 
 
@@ -377,15 +361,6 @@ function Pesquisar() {
             errorAjax(textStatus);
         }
     });
-
-    jQuery('#dyntable').dataTable().fnDestroy();
-    jQuery('#dyntable').dataTable({
-        "sPaginationType": "full_numbers",
-        "fnDrawCallback": function (oSettings) {
-            jQuery.uniform.update();
-        }
-    });
-
 }
 
 function GridFake() {

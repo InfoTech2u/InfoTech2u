@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderInfoTech2u" runat="server">
     <div class="rightpanel">
-
+        <asp:HiddenField runat="server" ID="hdnIdUser" ClientIDMode="Static" />
         <ul class="breadcrumbs">
             <li><a href="Dashboard.aspx"><i class="iconfa-home"></i></a><span class="separator"></span></li>
             <li><a href="Default.aspx">Recursos Humanos</a> <span class="separator"></span></li>
