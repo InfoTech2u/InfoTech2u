@@ -67,7 +67,13 @@
                     contentType: "json",
                     cache: false,
                     success: function (data) {
+                        if (data['Msg'] != null) {
+                            jQuery('#myModal').modal('hide');
 
+                            jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                            return;
+                        } else {
                         var arrFuncionario = eval(data);
 
                         //jQuery('tbody').remove();
@@ -99,7 +105,7 @@
                             }
                             //"sInfoEmpty": "Mostrando 0-0 de 0 Funcionários"
                         });
-
+                        }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrow) {
                         errorAjax(textStatus);
@@ -175,7 +181,13 @@
                     contentType: "json",
                     cache: false,
                     success: function (data) {
+                        if (data['Msg'] != null) {
+                            jQuery('#myModal').modal('hide');
 
+                            jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                            return;
+                        } else {
                         var arrFuncionario = eval(data);
 
                         if (arrFuncionario[0].CodigoErro = '1') {
@@ -197,7 +209,7 @@
                         //jQuery('#dyntable').dataTable().fnDestroy();
 
                        
-
+                        }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrow) {
                         errorAjax(textStatus);

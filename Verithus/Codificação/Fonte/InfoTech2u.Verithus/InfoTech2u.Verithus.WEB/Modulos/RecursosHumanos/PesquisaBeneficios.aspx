@@ -5,13 +5,43 @@
      <script type="text/javascript">
          jQuery(document).ready(function () {
              // dynamic table
+             //jQuery('#dyntable').dataTable({
+             //    "sPaginationType": "full_numbers",
+             //    "aaSortingFixed": [[0, 'asc']],
+             //    "fnDrawCallback": function (oSettings) {
+             //        jQuery.uniform.update();
+             //    }
+             //});
+
              jQuery('#dyntable').dataTable({
                  "sPaginationType": "full_numbers",
-                 "aaSortingFixed": [[0, 'asc']],
-                 "fnDrawCallback": function (oSettings) {
-                     jQuery.uniform.update();
+                 "fnDrawCallback": function (oSettings) { jQuery.uniform.update(); },
+                 "language": {
+                     "search": "Pesquisa",
+                     "lengthMenu": "Mostrar _MENU_ registros por página",
+                     "zeroRecords": "Não há registros",
+                     "info": "Página _PAGE_ de _PAGES_",
+                     "infoEmpty": "Não há registros.",
+                     "infoFiltered": "(Pesquisado de um total de _MAX_ registro(s))",
+                     "paginate": {
+                         "first": "Primeira",
+                         "previous": "Anterior",
+                         "next": "Próxima",
+                         "last": "Última"
+                     },
                  }
              });
+
+             jQuery('#dyntable tbody').on('click', 'tr', function () {
+                 if (jQuery(this).hasClass('selected')) {
+                     //jQuery(this).removeClass('selected');
+                 }
+                 else {
+                     jQuery('#dyntable tr.selected').removeClass('selected');
+                     jQuery(this).addClass('selected');
+                 }
+             });
+
          });
     </script>
     <div class="rightpanel">

@@ -23,6 +23,14 @@ namespace InfoTech2u.Verithus.WEB.Handler
         {
             try
             {
+                if (context.Session["CodigoUsuario"] == null)
+                {
+                    context.Response.ContentType = "application/json; charset=utf-8";
+                    context.Response.Write("{ \"Msg\": \"Sessão expirada. Você será redirecionado para tela de login.\"}");
+                    context.Response.End();
+                    return;
+                }
+
                 ConsultaCEPServicoFreeVO objCEP = new ConsultaCEPServicoFreeVO();
                 List<ConsultaCEPServicoFreeVO> listObjCEP = new List<ConsultaCEPServicoFreeVO>();
                 XmlDocument objXml = new XmlDocument();

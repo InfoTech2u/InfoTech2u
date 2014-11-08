@@ -23,6 +23,14 @@ namespace InfoTech2u.Verithus.WEB
         {
             try
             {
+                if (context.Session["CodigoUsuario"] == null)
+                {
+                    context.Response.ContentType = "application/json; charset=utf-8";
+                    context.Response.Write("{ \"Msg\": \"Sessão expirada. Você será redirecionado para tela de login.\"}");
+                    context.Response.End();
+                    return;
+                }
+
                 DataTable dtRetorno = new DataTable();
                 CidadeVO entrada = new CidadeVO();
                 CidadeBS objCidade = new CidadeBS();
