@@ -160,11 +160,19 @@ function GravarDados() {
             CodigoStatus: '1'
         },
         success: function (data) {
+            if (data['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
+
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+            } else {
             //Sucesso
             jQuery.alerts.dialogClass = 'alert-success';
             jAlert('Item foi incluído.', 'Informação', function () {
                 jQuery.alerts.dialogClass = null; // reset to default
             });
+            }
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
             errorAjax(textStatus);

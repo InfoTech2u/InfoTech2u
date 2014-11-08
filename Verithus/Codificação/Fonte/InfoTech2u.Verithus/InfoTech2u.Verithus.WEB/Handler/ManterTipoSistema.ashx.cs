@@ -19,6 +19,14 @@ namespace InfoTech2u.Verithus.WEB.Handler
 
         public void ProcessRequest(HttpContext context)
         {
+            if (context.Session["CodigoUsuario"] == null)
+            {
+                context.Response.ContentType = "application/json; charset=utf-8";
+                context.Response.Write("{ \"Msg\": \"Sessão expirada. Você será redirecionado para tela de login.\"}");
+                context.Response.End();
+                return;
+            }
+
             context.Response.ContentType = "text/plain";
             context.Response.Write("Hello World");
         }

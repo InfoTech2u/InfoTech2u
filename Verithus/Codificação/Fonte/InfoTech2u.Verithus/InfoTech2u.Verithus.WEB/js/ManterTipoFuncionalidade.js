@@ -16,6 +16,13 @@
                     Descricao: jQuery('#txtDescricaoTipoFuncionalidade').val()
                 },
                 success: function (data) {
+                    if (data['Msg'] != null) {
+                        jQuery('#myModal').modal('hide');
+
+                        jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                        return;
+                    } else {
                     var lista = eval(data);
 
                     if (lista.length > 0) {
@@ -26,7 +33,7 @@
                     else {
                         alert("Não foi possível incluir.");
                     }
-
+                    }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrow) {
                     errorAjax(textStatus);
@@ -60,13 +67,19 @@ function CarregarTipoFuncionalidadeLista() {
             Acao: 'Consulta'
         },
         success: function (data) {
+            if (data['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
 
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+            } else {
             var tiposFuncionalidade = eval(data);
             for (x in tiposFuncionalidade) {
                 var row = '<tr><td>' + tiposFuncionalidade[x].Descricao + '</td><td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + tiposFuncionalidade[x].CodigoTipoFuncionalidade + ')" class="deleterow"><i class="icon-trash"></i></a></td></tr>';
                 jQuery('tbody').append(row);
             }
-
+            }
 
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -94,7 +107,13 @@ function Excluir(id) {
                         Id: id
                     },
                     success: function (data) {
+                        if (data['Msg'] != null) {
+                            jQuery('#myModal').modal('hide');
 
+                            jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                            return;
+                        } else {
                         if (data) {
                             jQuery(this).remove();
                             // do some other stuff here
@@ -103,6 +122,7 @@ function Excluir(id) {
                             jAlert('Item foi excluido', 'Informação', function () {
                                 jQuery.alerts.dialogClass = null; // reset to default
                             });
+                        }
                         }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrow) {
