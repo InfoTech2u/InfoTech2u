@@ -1319,9 +1319,6 @@ function IncluirDadosFuncionario() {
 }
 
 function CarregaComboCidade(str, tipo, strCidade) {
-
-    // alert(2);
-
     jQuery.ajax({
         type: "GET",
         url: "../../Handler/BuscaCidade.ashx",
@@ -1597,9 +1594,13 @@ function SelecionarEmpresa() {
 
     //alert(empresaSel);
 
-    if (empresaSel == undefined)
-        alert('Selecione uma Empresa');
-    else {
+    if (empresaSel == undefined){
+        //Info
+        jQuery.alerts.dialogClass = 'alert-info';
+        jAlert('Selecione uma empresa.', 'Alerta', function () {
+            jQuery.alerts.dialogClass = null; // reset to default
+        });
+    } else {
         jQuery.ajax({
             type: "GET",
             crossDomain: true,

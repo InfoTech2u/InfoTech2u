@@ -238,7 +238,11 @@ function GravarDados() {
             CodigoStatus: '1'
         },
         success: function (data) {
-            alert("Incluído com Sucesso!");
+            //Sucesso
+            jQuery.alerts.dialogClass = 'alert-success';
+            jAlert('Item foi incluído.', 'Informação', function () {
+                jQuery.alerts.dialogClass = null; // reset to default
+            });
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
             errorAjax(textStatus);
