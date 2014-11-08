@@ -15,7 +15,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
     /// <summary>
     /// Summary description for PesquisarFuncionario
     /// </summary>
-    public class PesquisarFuncionario : IHttpHandler
+    public class PesquisarFuncionario : IHttpHandler, System.Web.SessionState.IRequiresSessionState
     {
 
         public void ProcessRequest(HttpContext context)

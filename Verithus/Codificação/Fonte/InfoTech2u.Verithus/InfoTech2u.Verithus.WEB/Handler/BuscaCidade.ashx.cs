@@ -16,7 +16,7 @@ namespace InfoTech2u.Verithus.WEB
     /// <summary>
     /// Summary description for BuscaCidade
     /// </summary>
-    public class BuscaCidade : IHttpHandler
+    public class BuscaCidade : IHttpHandler, System.Web.SessionState.IRequiresSessionState
     {
 
         public void ProcessRequest(HttpContext context)

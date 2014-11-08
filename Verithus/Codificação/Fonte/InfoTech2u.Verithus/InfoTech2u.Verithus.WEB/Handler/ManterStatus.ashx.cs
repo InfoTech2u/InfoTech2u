@@ -12,7 +12,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
     /// <summary>
     /// Summary description for ManterStatus
     /// </summary>
-    public class ManterStatus : IHttpHandler
+    public class ManterStatus : IHttpHandler, System.Web.SessionState.IRequiresSessionState
     {
 
         public void ProcessRequest(HttpContext context)

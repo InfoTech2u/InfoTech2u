@@ -16,7 +16,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
     /// <summary>
     /// Summary description for BuscarCep
     /// </summary>
-    public class BuscarCep : IHttpHandler
+    public class BuscarCep : IHttpHandler, System.Web.SessionState.IRequiresSessionState
     {
 
         public void ProcessRequest(HttpContext context)
