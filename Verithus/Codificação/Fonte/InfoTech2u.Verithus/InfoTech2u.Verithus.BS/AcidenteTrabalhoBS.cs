@@ -11,6 +11,24 @@ namespace InfoTech2u.Verithus.BS
 {
     public class AcidenteTrabalhoBS
     {
+
+        public DataTable ExcluirAcidenteTrabalho(AcidenteTrabalhoVO param)
+        {
+            AcidenteTrabalhoDA objRetorno = new AcidenteTrabalhoDA();
+
+            try
+            {
+                return objRetorno.ExcluirAcidenteTrabalho(param);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objRetorno = null;
+            }
+        }
         public DataTable SelecionarAcidenteTrabalho(AcidenteTrabalhoVO param)
         {
             AcidenteTrabalhoDA objRetorno = new AcidenteTrabalhoDA();

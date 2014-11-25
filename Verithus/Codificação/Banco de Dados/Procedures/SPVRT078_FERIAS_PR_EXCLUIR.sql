@@ -1,16 +1,17 @@
 USE [DBVERITHUS]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SPVRT078_FERIAS_PR_EXCLUIR]    Script Date: 24/10/2014 20:45:40 ******/
+/****** Object:  StoredProcedure [dbo].[SPVRT078_FERIAS_PR_EXCLUIR]    Script Date: 16/11/2014 21:24:45 ******/
 DROP PROCEDURE [dbo].[SPVRT078_FERIAS_PR_EXCLUIR]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SPVRT078_FERIAS_PR_EXCLUIR]    Script Date: 24/10/2014 20:45:40 ******/
+/****** Object:  StoredProcedure [dbo].[SPVRT078_FERIAS_PR_EXCLUIR]    Script Date: 16/11/2014 21:24:45 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -35,7 +36,7 @@ BEGIN
 
 							SET @DESC = 'ERRO AO EXCLUIR FERIAS - CODIGO DO ERRO: ' + CAST(@@ERROR AS VARCHAR)
 
-							EXEC dbo.SPVRT028_LOG_PR_INCLUIR 'E', @DESC , @CODIGO_USUARIO_ALTERACAO, 'EXCLUSÃO DE TIPO DE TAREFA';
+							EXEC dbo.SPVRT028_LOG_PR_INCLUIR 'E', @DESC , @CODIGO_USUARIO_ALTERACAO, 'EXCLUSÃO DE FERIAS';
 
 							SELECT @@ERROR as Erro, @DESC as Mensagem
 							RETURN
@@ -70,6 +71,7 @@ BEGIN
 	RETURN
 
 END
+
 
 
 

@@ -3,7 +3,34 @@
     jQuery('#hdnCodigoFuncionario').val(getUrlVars()["idUser"]);
     CarregarDependentes();
 
+    jQuery('#dyntable').dataTable({
+        "sPaginationType": "full_numbers",
+        "fnDrawCallback": function (oSettings) { jQuery.uniform.update(); },
+        "language": {
+            "search": "Pesquisa",
+            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "zeroRecords": "Não há registros",
+            "info": "Página _PAGE_ de _PAGES_",
+            "infoEmpty": "Não há registros.",
+            "infoFiltered": "(Pesquisado de um total de _MAX_ registro(s))",
+            "paginate": {
+                "first": "Primeira",
+                "previous": "Anterior",
+                "next": "Próxima",
+                "last": "Última"
+            },
+        }
+    });
 
+    jQuery('#dyntable tbody').on('click', 'tr', function () {
+        if (jQuery(this).hasClass('selected')) {
+            //jQuery(this).removeClass('selected');
+        }
+        else {
+            jQuery('#dyntable tr.selected').removeClass('selected');
+            jQuery(this).addClass('selected');
+        }
+    });
 
     jQuery(".btnVoltar").click(function (event) {
         event.preventDefault();
@@ -48,58 +75,6 @@
     });
 });
 
-function DadosValidos() {
-    var valido = true;
-
-    if (jQuery('#txtNomeDependente').val() == "") {
-        jQuery('#lblErrorNomeDependente').show();
-        valido = false;
-    }
-    else { jQuery('#lblErrorNomeDependente').hide(); }
-
-    if (jQuery('#ddlTipoParentesco').val() == 0) {
-        jQuery('#lblErrorTipoParentesco').show();
-        valido = false;
-    }
-    else { jQuery('#lblErrorTipoParentesco').hide(); }
-
-    if (jQuery('#txtDataNascimento').val() != "") {
-        if (!isDate(jQuery('#txtDataNascimento').val(), '/', 0, 1, 2)) {
-            jQuery('#lblErrorDataNascimento').show();
-            valido = false;
-        }
-        else {
-            jQuery('#lblErrorDataNascimento').hide();
-        }
-    }
-
-
-    return valido;
-};
-
-function getUrlVars() {
-    var vars = [], hash;
-    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-    for (var i = 0; i < hashes.length; i++) {
-        hash = hashes[i].split('=');
-        vars.push(hash[0]);
-        vars[hash[0]] = hash[1];
-    }
-    return vars;
-}
-
-function MontarGrid() {
-    //jQuery('#gridDependentes').dataTable().fnDestroy();
-    //// dynamic table
-    //jQuery('#gridDependentes').dataTable({
-    //    "sPaginationType": "full_numbers",
-    //    "aaSortingFixed": [[0, 'asc']],
-    //    "fnDrawCallback": function (oSettings) {
-    //        jQuery.uniform.update();
-    //    }
-    //});
-}
-
 function CarregarDependentes() {
     if (jQuery('#hdnCodigoFuncionario').val() != undefined && jQuery('#hdnCodigoFuncionario').val() != 0) {
         jQuery.ajax({
@@ -115,27 +90,30 @@ function CarregarDependentes() {
             },
             success: function (data) {
                 var dependentes = eval(data);
+                if (dependentes['Msg'] != null) {
+                    jQuery('#myModal').modal('hide');
 
+                    jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                    return;
+                } else {
 
                 if (dependentes != undefined && dependentes.length > 0) {
                     jQuery('#ddlTipoParentesco').append('<option value="0">Escolha</option>');
                     for (var x in dependentes) {
-
-                        var row = '<tr value="' + dependentes[x].CODIGO_DEPENDENTE + '">' +
-                               '<td>' + dependentes[x].CODIGO_DEPENDENTE + '</td>' +
-                               '<td>' + dependentes[x].NOME + '</td>' +
-                               '<td>' + dependentes[x].TIPO_PARENTESCO_DESC + '</td>' +
-                               '<td>' + dependentes[x].DATA_NASCIMENTO_STR + '</td>' +
-                               '<td class="centeralign"><a title="Alterar" href="#modalDependente" onclick="javascript:FuncaoTelaModal(\'Detalhar\', ' + dependentes[x].CODIGO_DEPENDENTE + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
-                               '<td class="centeralign"><a title="Alterar" href="#modalDependente" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + dependentes[x].CODIGO_DEPENDENTE + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
-                               '<td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + dependentes[x].CODIGO_DEPENDENTE + ')" class="deleterow"><i class="icon-trash"></i></a></td>' +
-                             '</tr>';
-                        jQuery('#gridDependentes').append(row);
+                            jQuery('#dyntable').DataTable().row.add([
+                               dependentes[x].CODIGO_DEPENDENTE,
+                               dependentes[x].NOME,
+                               dependentes[x].TIPO_PARENTESCO_DESC,
+                               dependentes[x].DATA_NASCIMENTO_STR,
+                               '<a style="align: center;" title="Detalhar" href="#modalDependente" onclick="javascript:FuncaoTelaModal(\'Detalhar\', ' + dependentes[x].CODIGO_DEPENDENTE + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a>',
+                               '<a style="align: center;" title="Alterar" href="#modalDependente" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + dependentes[x].CODIGO_DEPENDENTE + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a>',
+                               '<a style="align: center;" title="Excluir" href="javascript:Excluir(' + dependentes[x].CODIGO_DEPENDENTE + ')" class="deleterow"><i class="icon-trash"></i></a>'
+                            ]).draw();
+                        }
                     }
-
                 }
 
-                MontarGrid();
             },
             error: function (XMLHttpRequest, textStatus, errorThrow) {
                 errorAjax(textStatus);
@@ -157,6 +135,13 @@ function CarregarCombos(id) {
             Acao: 'Selecionar'
         },
         success: function (data) {
+            if (data['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
+
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+            } else {
             var lstparentesco = eval(data);
             jQuery('#ddlTipoParentesco').append("<option value=\"0\">Escolha</option>");
             if (lstparentesco != undefined && lstparentesco.length > 0) {
@@ -166,6 +151,7 @@ function CarregarCombos(id) {
                 }
 
                 CarregarListaTiposBeneficios(id);
+            }
             }
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -187,6 +173,13 @@ function CarregarListaTiposBeneficios(id) {
             Acao: 'Selecionar'
         },
         success: function (data) {
+            if (data['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
+
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+            } else {
             var lstbeneficio = eval(data);
             jQuery('#lstBeneficioSelected option').remove();
             if (lstbeneficio != undefined && lstbeneficio.length > 0) {
@@ -197,7 +190,7 @@ function CarregarListaTiposBeneficios(id) {
 
                 PrepararTela(id);
             }
-
+            }
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
             errorAjax(textStatus);
@@ -287,7 +280,16 @@ function CarregarDependente(id) {
         success: function (data) {
             var dependente = eval(data);
 
+            if (data['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
+
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+            } else {
             if (dependente != undefined && dependente.length > 0) {
+
+                    if (dependente[0].Mensagem == undefined) {
                 jQuery('#txtNomeDependente').val(dependente[0].NOME);
                 jQuery('#ddlTipoParentesco').val(dependente[0].CODIGO_TIPO_PARENTESCO);
                 jQuery('#txtDataNascimento').val(dependente[0].DATA_NASCIMENTO_STR);
@@ -301,6 +303,14 @@ function CarregarDependente(id) {
 
                 jQuery('#btnIncluir').attr('onclick', 'javascript:Alterar(' + id + ');');
                 jQuery('#modalDependenteLabel').text('Alteração de Dependente');
+                    }
+                    else {
+                        jQuery.alerts.dialogClass = 'alert-danger';
+                        jAlert(dependente[0].Mensagem, 'Alerta', function () {
+                            jQuery.alerts.dialogClass = null; // reset to default
+                        });
+                    }
+                }
 
             }
         },
@@ -309,6 +319,46 @@ function CarregarDependente(id) {
             alert(textStatus);
         }
     });
+}
+
+function DadosValidos() {
+    var valido = true;
+
+    if (jQuery('#txtNomeDependente').val() == "") {
+        jQuery('#lblErrorNomeDependente').show();
+        valido = false;
+    }
+    else { jQuery('#lblErrorNomeDependente').hide(); }
+
+    if (jQuery('#ddlTipoParentesco').val() == 0) {
+        jQuery('#lblErrorTipoParentesco').show();
+        valido = false;
+    }
+    else { jQuery('#lblErrorTipoParentesco').hide(); }
+
+    if (jQuery('#txtDataNascimento').val() != "") {
+        if (!isDate(jQuery('#txtDataNascimento').val(), '/', 0, 1, 2)) {
+            jQuery('#lblErrorDataNascimento').show();
+            valido = false;
+        }
+        else {
+            jQuery('#lblErrorDataNascimento').hide();
+        }
+    }
+
+
+    return valido;
+};
+
+function getUrlVars() {
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for (var i = 0; i < hashes.length; i++) {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
 }
 
 function Incluir() {
@@ -339,27 +389,50 @@ function Incluir() {
                 Beneficios: arraySel
             },
             success: function (data) {
+                var dependentes = eval(data);
 
-                var dependente = eval(data);
+                if (dependentes['Msg'] != null) {
+                    jQuery('#myModal').modal('hide');
 
-                if (dependente != undefined && dependente.length > 0) {
-                    var row = '<tr value="' + dependente[0].CODIGO_DEPENDENTE + '">' +
-                               '<td>' + dependente[0].CODIGO_DEPENDENTE + '</td>' +
-                               '<td>' + dependente[0].NOME + '</td>' +
-                               '<td>' + dependente[0].TIPO_PARENTESCO_DESC + '</td>' +
-                               '<td>' + dependente[0].DATA_NASCIMENTO_STR + '</td>' +
-                               '<td class="centeralign"><a title="Alterar" href="#modalDependente" onclick="javascript:FuncaoTelaModal(\'Detalhar\', ' + dependente[0].CODIGO_DEPENDENTE + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
-                               '<td class="centeralign"><a title="Alterar" href="#modalDependente" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + dependente[0].CODIGO_DEPENDENTE + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
-                               '<td class="centeralign"><a title="Excluir" href="javascript:Excluir(' + dependente[0].CODIGO_DEPENDENTE + ')" class="deleterow"><i class="icon-trash"></i></a></td>' +
-                             '</tr>';
+                    jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
 
-                    jQuery('#gridDependentes').append(row);
+                    return;
+                } else {
 
-                    MontarGrid();
-                    jQuery('#modalDependente').modal('hide')
+                    if (dependentes[0].Erro != null) {
+                        jQuery.alerts.dialogClass = 'alert-danger';
+                        jAlert(dependentes[0].Mensagem, 'Alerta', function () {
+                            jQuery.alerts.dialogClass = null; // reset to default
+                        });
+                    } else {
+
+                        if (dependentes.length > 0) {
+                            jQuery('#dyntable').DataTable().row.add([
+                              dependentes[0].CODIGO_DEPENDENTE,
+                              dependentes[0].NOME,
+                              dependentes[0].TIPO_PARENTESCO_DESC,
+                              dependentes[0].DATA_NASCIMENTO_STR,
+                              '<a style="align: center;" title="Detalhar" href="#modalDependente" onclick="javascript:FuncaoTelaModal(\'Detalhar\', ' + dependentes[0].CODIGO_DEPENDENTE + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a>',
+                              '<a style="align: center;" title="Alterar" href="#modalDependente" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + dependentes[0].CODIGO_DEPENDENTE + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a>',
+                              '<a style="align: center;" title="Excluir" href="javascript:Excluir(' + dependentes[0].CODIGO_DEPENDENTE + ')" class="deleterow"><i class="icon-trash"></i></a>'
+                            ]).draw();
+
+                            //Sucesso
+                            jQuery.alerts.dialogClass = 'alert-success';
+                            jAlert('Item foi incluído', 'Informação', function () {
+                                jQuery.alerts.dialogClass = null; // reset to default
+                            });
+
+                            jQuery('#modalDependente').modal('hide');
                 }
                 else {
-                    alert("Não foi possível incluir.");
+                            jQuery.alerts.dialogClass = 'alert-danger';
+                            jAlert('Inclusão não foi realizada.', 'Alerta', function () {
+                                jQuery.alerts.dialogClass = null; // reset to default
+                            });
+
+                        }
+                    }
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -398,28 +471,37 @@ function Alterar(id) {
                 Beneficios: arraySel
             },
             success: function (data) {
+                if (data['Msg'] != null) {
+                    jQuery('#myModal').modal('hide');
+
+                    jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                    return;
+                } else {
 
                 var dependente = eval(data);
 
                 if (dependente != undefined && dependente.length > 0) {
-                    jQuery('#gridDependentes tr[value=' + id + ']').remove();
-                    var row = '<tr value="' + dependente[0].CODIGO_DEPENDENTE + '">' +
-                               '<td>' + dependente[0].CODIGO_DEPENDENTE + '</td>' +
-                               '<td>' + dependente[0].NOME + '</td>' +
-                               '<td>' + dependente[0].TIPO_PARENTESCO_DESC + '</td>' +
-                               '<td>' + dependente[0].DATA_NASCIMENTO_STR + '</td>' +
-                               '<td class="centeralign"><a title="Alterar" href="#modalDependente" onclick="javascript:FuncaoTelaModal(\'Detalhar\', ' + dependente[0].CODIGO_DEPENDENTE + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
-                               '<td class="centeralign"><a title="Alterar" href="#modalDependente" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + dependente[0].CODIGO_DEPENDENTE + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a></td>' +
-                               '<td class="centeralign"><a title="Excluir" onclick="javascript:Excluir(' + dependente[0].CODIGO_DEPENDENTE + ')" class="deleterow"><i class="icon-trash"></i></a></td>' +
-                             '</tr>';
+                    jQuery('#dyntable').DataTable().row('.selected').remove().draw(false);
 
-                    jQuery('#gridDependentes').append(row);
+                    jQuery('#dyntable').DataTable().row.add([
+                              dependente[0].CODIGO_DEPENDENTE,
+                              dependente[0].NOME,
+                              dependente[0].TIPO_PARENTESCO_DESC,
+                              dependente[0].DATA_NASCIMENTO_STR,
+                              '<a style="align: center;" title="Detalhar" href="#modalDependente" onclick="javascript:FuncaoTelaModal(\'Detalhar\', ' + dependente[0].CODIGO_DEPENDENTE + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a>',
+                              '<a style="align: center;" title="Alterar" href="#modalDependente" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + dependente[0].CODIGO_DEPENDENTE + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a>',
+                              '<a style="align: center;" title="Excluir" href="javascript:Excluir(' + dependente[0].CODIGO_DEPENDENTE + ')" class="deleterow"><i class="icon-trash"></i></a>'
+                    ]).draw();
 
-                    MontarGrid();
                     jQuery('#modalDependente').modal('hide')
                 }
                 else {
-                    alert("Não foi possível alterar.");
+                    jQuery.alerts.dialogClass = 'alert-info';
+                    jAlert('Item não foi alterado', 'Informação', function () {
+                        jQuery.alerts.dialogClass = null; // reset to default
+                    });
+                }
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -449,14 +531,29 @@ function Excluir(id) {
                 },
                 success: function (data) {
 
-                    if (data) {
-                        jQuery('#gridDependentes tbody tr[value=' + id + ']').remove();
-                        MontarGrid();
-                        //Sucesso
+
+                    var lista = eval(data);
+
+                    if (lista['Msg'] != null) {
+                        jQuery('#myModal').modal('hide');
+
+                        jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                        return;
+                    } else {
+                        if (lista != null && lista[0] != undefined) {
+                            jQuery.alerts.dialogClass = 'alert-danger';
+                            jAlert(lista[0].Mensagem, 'Alerta', function () {
+                                jQuery.alerts.dialogClass = null; // reset to default
+                            });
+                        } else {
+                            jQuery('#dyntable').DataTable().row('.selected').remove().draw(false);
+                            // do some other stuff here
                         jQuery.alerts.dialogClass = 'alert-success';
                         jAlert('Item foi excluido', 'Informação', function () {
                             jQuery.alerts.dialogClass = null; // reset to default
                         });
+                    }
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -528,3 +625,5 @@ function isDate(value, sepVal, dayIdx, monthIdx, yearIdx) {
         return false;
     }
 }
+
+

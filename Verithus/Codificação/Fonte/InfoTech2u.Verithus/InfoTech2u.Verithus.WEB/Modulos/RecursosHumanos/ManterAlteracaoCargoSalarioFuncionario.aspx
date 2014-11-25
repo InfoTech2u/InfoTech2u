@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Modulos/InfoTech2u.Master" AutoEventWireup="true" CodeBehind="ManterAcidenteTrabalhoFuncionario.aspx.cs" Inherits="InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.ManterAcidenteTrabalhoFuncionario" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Modulos/InfoTech2u.Master" AutoEventWireup="true" CodeBehind="ManterAlteracaoCargoSalarioFuncionario.aspx.cs" Inherits="InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos.ManterAlteracaoCargoSalarioFuncionario" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -8,14 +8,14 @@
         <ul class="breadcrumbs">
             <li><a href="Dashboard.aspx"><i class="iconfa-home"></i></a><span class="separator"></span></li>
             <li><a href="Default.aspx">Recursos Humanos</a> <span class="separator"></span></li>
-            <li>Ferias</li>
+            <li>Alteração de Cargo e Salario</li>
         </ul>
 
         <div class="pageheader">
             <div class="pageicon"><span class="iconfa-pencil"></span></div>
             <div class="pagetitle">
                 <h5>Formulário</h5>
-                <h1>Acidente de Trabalho</h1>
+                <h1>Alteração de Cargo e Salario</h1>
             </div>
         </div>
         <!--pageheader-->
@@ -24,7 +24,7 @@
                 <div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal hide fade in" id="myModal">
                     <div class="modal-header widgettitle">
                         <button aria-hidden="true" data-dismiss="modal" class="close" type="button">&times;</button>
-                        <h3 id="myModalLabel">Acidente de Trabalho</h3>
+                        <h3 id="myModalLabel">Alteração de Cargo e Salario</h3>
                         <asp:HiddenField ID="hdnFuncaoTela" runat="server" ClientIDMode="Static" />
                     </div>
                     <div class="modal-body">
@@ -35,9 +35,9 @@
                                 <div class="stdform stdform2">
 
                                     <p>
-                                        <label>Codigo de Acidente de Trabalho</label>
+                                        <label>Codigo de Alteração Cargo Salario</label>
                                         <span class="field">
-                                            <asp:TextBox runat="server" ID="txtCodigoAcidenteTrabalho" class="input-small" ClientIDMode="Static" ReadOnly="true" />
+                                            <asp:TextBox runat="server" ID="txtCodigoAlteracaoCargoSalario" class="input-small" ClientIDMode="Static" ReadOnly="true" />
                                         </span>
                                     </p>
 
@@ -50,44 +50,38 @@
                                         </span>
                                     </p>
 
-                                    <p id="validaLocalAcidente">
-                                        <label>Local Acidente</label>
+                                    <p id="validaCargo">
+                                        <label>Cargo</label>
                                         <span class="field">
-                                            <asp:TextBox runat="server" ID="txtLocalAcidente" TextMode="MultiLine" cols="80" Rows="5" class="span3 textareaCount" MaxLength="300" ClientIDMode="Static" />
-                                            <span class="help-inline" id="msgLocalAcidente"></span>
+                                            <asp:DropDownList runat="server" ID="ddlCargo" class="uniformselect" ClientIDMode="Static" />
+                                            <span class="help-inline" id="msgCargo"></span>
                                         </span>
                                     </p>
 
-                                    <p id="validaCausaAcidente">
-                                        <label>Causa Acidente</label>
+                                    <p id="validaSalario">
+                                        <label>Salário R$</label>
                                         <span class="field">
-                                            <asp:TextBox runat="server" ID="txtCausaAcidente" TextMode="MultiLine" cols="80" Rows="5" class="span3 textareaCount" MaxLength="300" ClientIDMode="Static" />
-                                            <span class="help-inline" id="msgCausaAcidente"></span>
+                                            <asp:TextBox runat="server" ID="txtSalario" class="input-small" ClientIDMode="Static" />
+                                            <span class="help-inline" id="msgSalario"></span>
                                         </span>
                                     </p>
 
-                                    <p id="validaDataAlta">
-                                        <label>Data Alta</label>
-                                        <span class="field">
-                                            <asp:TextBox runat="server" ID="txtDataAlta" class="input-small dataddmmaaaa" ClientIDMode="Static" />
-                                            <span class="help-inline" id="msgDataAlta"></span>
-                                        </span>
-                                    </p>
-
-                                    <p id="validaResultado">
-                                        <label>Resultado</label>
-                                        <span class="field">
-                                            <asp:TextBox runat="server" ID="txtResultado" TextMode="MultiLine" cols="80" Rows="5" class="span3 textareaCount" MaxLength="300" ClientIDMode="Static" />
-                                            <span class="help-inline" id="msgResultado"></span>
-                                        </span>
-                                    </p>
-
-                                    <p id="validaObservacoes">
-                                        <label>Observações</label>
-                                        <span class="field">
-                                            <asp:TextBox runat="server" ID="txtObservacoes" TextMode="MultiLine" cols="80" Rows="5" class="span3 textareaCount" MaxLength="300" ClientIDMode="Static" />
-                                            <span class="help-inline" id="msgObservacoes"></span>
-                                        </span>
+                                    <p>
+                                        <label>Horário</label>
+                                        <p id="validaHorarioEntrada">
+                                            <label>Entrada</label>
+                                            <span class="field">
+                                                <asp:TextBox runat="server" ID="txtHorarioEntrada" class="input-small horaBrasil" ClientIDMode="Static" />
+                                                <span class="help-inline" id="msgHorarioEntrada"></span>
+                                            </span>
+                                        </p>
+                                        <p id="validaHorarioSaida">
+                                            <label>Saída</label>
+                                            <span class="field">
+                                                <asp:TextBox runat="server" ID="txtHorarioSaida" class="input-small horaBrasil" ClientIDMode="Static" />
+                                                <span class="help-inline" id="msgHorarioSaida"></span>
+                                            </span>
+                                        </p>
                                     </p>
 
                                 </div>
@@ -98,8 +92,8 @@
 
                     <div class="modal-footer">
                         <button data-dismiss="modal" class="btn">&nbsp; Sair</button>
-                        <a href="#" id="btnLimparAcidente" class="btn btn-rounded"><i class="iconfa-refresh iconsweets-black"></i>&nbsp; limpar</a>
-                        <a class="btn btn-primary" id="btnConcluirAcidente" href="#" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Gravar</a>
+                        <a href="#" id="btnLimparAlteracaoCargoSalario" class="btn btn-rounded"><i class="iconfa-refresh iconsweets-black"></i>&nbsp; limpar</a>
+                        <a class="btn btn-primary" id="btnConcluirAlteracaoCargoSalario" href="#" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Gravar</a>
                     </div>
                 </div>
                 <!--#myModal-->
@@ -108,7 +102,7 @@
                     <a class="btn btn-primary" onclick="javascript:Incluir();" href="#myModal" data-toggle="modal"><i class="iconfa-pencil"></i>&nbsp; Incluir</a>
                 </div>
 
-                <h4 class="widgettitle">Ferias</h4>
+                <h4 class="widgettitle">Alteração de Cargo e Salario</h4>
                 <table id="dyntable" class="table table-bordered responsive">
                     <colgroup>
                         <col class="con0" />
@@ -117,15 +111,13 @@
                         <col class="con1" />
                         <col class="con0" />
                         <col class="con1" />
-                        <col class="con0" />
                     </colgroup>
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Data Acidente</th>
-                            <th>Local Acidente</th>
-                            <th>Causa Acidente</th>
-                            <th>Data Alta</th>
+                            <th>Data</th>
+                            <th>Cargo</th>
+                            <th>Salario</th>
                             <th>Alterar</th>
                             <th>Excluir</th>
                         </tr>

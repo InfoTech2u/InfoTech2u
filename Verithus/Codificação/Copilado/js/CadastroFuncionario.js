@@ -290,7 +290,13 @@ jQuery(document).ready(function () {
             cache: false,
             success: function (data) {
 
+                if (data['Msg'] != null) {
+                    jQuery('#myModal').modal('hide');
 
+                    jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                    return;
+                } else {
                 var arrCEP = eval(data);
 
                 jQuery('#txtBairro').val(arrCEP[0].Bairro);
@@ -338,7 +344,7 @@ jQuery(document).ready(function () {
 
                 CarregaComboCidade(str, 1, arrCEP[0].Cidade);
 
-
+                }
 
             },
             error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -359,7 +365,13 @@ jQuery(document).ready(function () {
             contentType: "json",
             cache: false,
             success: function (data) {
+                if (data['Msg'] != null) {
+                    jQuery('#myModal').modal('hide');
 
+                    jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                    return;
+                } else {
 
                 var arrCEP = eval(data);
 
@@ -405,7 +417,7 @@ jQuery(document).ready(function () {
 
                 CarregaComboCidade(str, 2, arrCEP[0].Cidade);
 
-
+                }
 
             },
             error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -1161,7 +1173,13 @@ function AlterarDadosFuncionario() {
         contentType: "json",
         cache: false,
         success: function (data) {
-            // alert(data);
+            if (data['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
+
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+            } else {
 
             var arrFuncionario = eval(data);
             var idFuncionario;
@@ -1175,6 +1193,8 @@ function AlterarDadosFuncionario() {
             jQuery(window.document.location).attr('href', 'ManterFuncionario.aspx?tpAcao=3&idUser=' + idFuncionario);
 
             return false;
+            }
+
 
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -1268,7 +1288,13 @@ function IncluirDadosFuncionario() {
         contentType: "json",
         cache: false,
         success: function (data) {
-            // alert(data);
+            if (data['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
+
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+            } else {
 
             var arrFuncionario = eval(data);
             var idFuncionario;
@@ -1282,6 +1308,7 @@ function IncluirDadosFuncionario() {
             jQuery(window.document.location).attr('href', 'ManterFuncionario.aspx?tpAcao=3&idUser=' + idFuncionario);
 
             return false;
+            }
 
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -1292,9 +1319,6 @@ function IncluirDadosFuncionario() {
 }
 
 function CarregaComboCidade(str, tipo, strCidade) {
-
-    // alert(2);
-
     jQuery.ajax({
         type: "GET",
         url: "../../Handler/BuscaCidade.ashx",
@@ -1304,7 +1328,13 @@ function CarregaComboCidade(str, tipo, strCidade) {
         contentType: "json",
         cache: false,
         success: function (data) {
+            if (data['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
 
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+            } else {
             var arrCidade = eval(data);
 
 
@@ -1375,7 +1405,7 @@ function CarregaComboCidade(str, tipo, strCidade) {
                 }
 
             }
-
+            }
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
             errorAjax(textStatus);
@@ -1506,6 +1536,13 @@ function CarregarEmpresaLista() {
             CodigoStatus: ''
         },
         success: function (data) {
+            if (data['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
+
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+            } else {
             var empresa = eval(data);
 
 
@@ -1542,7 +1579,7 @@ function CarregarEmpresaLista() {
 
             }
 
-
+            }
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
             errorAjax(textStatus);
@@ -1557,9 +1594,13 @@ function SelecionarEmpresa() {
 
     //alert(empresaSel);
 
-    if (empresaSel == undefined)
-        alert('Selecione uma Empresa');
-    else {
+    if (empresaSel == undefined){
+        //Info
+        jQuery.alerts.dialogClass = 'alert-info';
+        jAlert('Selecione uma empresa.', 'Alerta', function () {
+            jQuery.alerts.dialogClass = null; // reset to default
+        });
+    } else {
         jQuery.ajax({
             type: "GET",
             crossDomain: true,
@@ -1577,6 +1618,14 @@ function SelecionarEmpresa() {
                 CodigoStatus: ''
             },
             success: function (data) {
+
+                if (data['Msg'] != null) {
+                    jQuery('#myModal').modal('hide');
+
+                    jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                    return;
+                } else {
                 var empresa = eval(data);
 
 
@@ -1588,7 +1637,7 @@ function SelecionarEmpresa() {
                     jQuery('#myModal').modal('hide');
                 }
 
-
+                }
             },
             error: function (XMLHttpRequest, textStatus, errorThrow) {
                 errorAjax(textStatus);

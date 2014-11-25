@@ -14,7 +14,7 @@ namespace InfoTech2u.Verithus.VO
     
     public partial class AlteracaoCargoSalariorVO
     {
-        public int CodigoAlteracaoCargoSalario { get; set; }
+        public int? CodigoAlteracaoCargoSalario { get; set; }
         public Nullable<int> CodigoFuncionario { get; set; }
         public Nullable<System.DateTime> Data { get; set; }
         public Nullable<int> CodigoTipoCargo { get; set; }

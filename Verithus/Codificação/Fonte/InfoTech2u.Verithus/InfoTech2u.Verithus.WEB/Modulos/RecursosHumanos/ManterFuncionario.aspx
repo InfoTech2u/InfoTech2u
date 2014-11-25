@@ -506,7 +506,7 @@
                         <p id="validaCadastroPIS">
                             <label>Data de Cadastro</label>
                             <span class="field">
-                                <asp:TextBox runat="server" ID="txtCadastroPIS" CssClass="input-small txtDataFilMesAno dataddmmaaaa" ClientIDMode="Static" />
+                                <asp:TextBox runat="server" ID="txtCadastroPIS" CssClass="input-medium txtDataFilMesAno dataddmmaaaa" ClientIDMode="Static" />
                                 <span class="help-inline" id="msgCadastroPIS"></span>
                             </span>
                         </p>

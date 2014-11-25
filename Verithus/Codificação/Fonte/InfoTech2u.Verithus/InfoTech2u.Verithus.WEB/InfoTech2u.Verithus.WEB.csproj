@@ -74,6 +74,7 @@
     <Content Include="js\DataTableEmpresa.js" />
     <Content Include="js\jquery.maskedinput-1.3.js" />
     <Content Include="js\jquery.maskMoney.js" />
+    <Content Include="js\ManterAlteracaoCargoSalarioFuncionario.js" />
     <Content Include="js\ManterAcidenteTrabalho.js" />
     <Content Include="js\ManterAlteracaoCargoSalarior.js" />
     <Content Include="js\ManterContribuicaoSindical.js" />
@@ -314,10 +315,12 @@
     <Content Include="Modulos\fonts\roboto\Roboto-ThinItalic-webfont.ttf" />
     <Content Include="Modulos\fonts\roboto\Roboto-ThinItalic-webfont.woff" />
     <Content Include="Handler\ManterStatus.ashx" />
+    <Content Include="Modulos\RecursosHumanos\ManterAlteracaoCargoSalarioFuncionario.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterAcidenteTrabalhoFuncionario.aspx" />
     <Content Include="Modulos\RecursosHumanos\ManterFeriasFuncionario.aspx" />
     <Content Include="Modulos\RecursosHumanos\RelatorioFuncionarioGeral.aspx" />
     <Content Include="PesquisaLog.ashx" />
+    <Content Include="Handler\ManterAlteracaoCargoSalariorFuncionario.ashx" />
     <None Include="Properties\PublishProfiles\InfoTech2u.Verithus.Sistema.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -912,6 +915,9 @@
     <Compile Include="Handler\Dependente.ashx.cs">
       <DependentUpon>Dependente.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Handler\ManterAlteracaoCargoSalariorFuncionario.ashx.cs">
+      <DependentUpon>ManterAlteracaoCargoSalariorFuncionario.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Handler\ManterAcidenteTrabalho.ashx.cs">
       <DependentUpon>ManterAcidenteTrabalho.ashx</DependentUpon>
     </Compile>
@@ -1085,6 +1091,13 @@
     </Compile>
     <Compile Include="Modulos\RecursosHumanos\ManterAcidenteTrabalho.aspx.designer.cs">
       <DependentUpon>ManterAcidenteTrabalho.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\ManterAlteracaoCargoSalarioFuncionario.aspx.cs">
+      <DependentUpon>ManterAlteracaoCargoSalarioFuncionario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modulos\RecursosHumanos\ManterAlteracaoCargoSalarioFuncionario.aspx.designer.cs">
+      <DependentUpon>ManterAlteracaoCargoSalarioFuncionario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modulos\RecursosHumanos\ManterAcidenteTrabalhoFuncionario.aspx.cs">
       <DependentUpon>ManterAcidenteTrabalhoFuncionario.aspx</DependentUpon>

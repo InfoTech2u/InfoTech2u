@@ -35,7 +35,41 @@ namespace InfoTech2u.Verithus.WEB.Handler
             {
                 context.Response.Write(GravarAcidenteTrabalho(context).Serializer());
             }
+            else if (context.Request.QueryString["Metodo"] == "Excluir")
+            {
+                context.Response.Write(ExcluirAcidenteTrabalho(context).Serializer());
+            }
 
+        }
+
+        private DataTable ExcluirAcidenteTrabalho(HttpContext context)
+        {
+            AcidenteTrabalhoBS objBS = new AcidenteTrabalhoBS();
+            AcidenteTrabalhoVO dadosAcidenteTrabalho = new AcidenteTrabalhoVO();
+
+            int codigoFuncionario = 0;
+            if (Int32.TryParse(context.Request.QueryString["CodigoFuncionario"], out codigoFuncionario))
+            {
+                dadosAcidenteTrabalho.CodigoFuncionario = codigoFuncionario;
+            }
+
+            int codigoUsuarioAlteracao = 0;
+            if (Int32.TryParse(context.Request.QueryString["CodigoUsuarioAlteracao"], out codigoUsuarioAlteracao))
+            {
+                dadosAcidenteTrabalho.CodigoUsuarioAlteracao = Convert.ToInt32(context.Session["CodigoUsuario"].ToString());
+            }
+
+            int codigoAcidenteTrabalho = 0;
+            if (Int32.TryParse(context.Request.QueryString["CodigoAcidenteTrabalho"], out codigoAcidenteTrabalho))
+            {
+                dadosAcidenteTrabalho.CodigoAcidenteTrabalho = codigoAcidenteTrabalho;
+            }
+            else
+            {
+                dadosAcidenteTrabalho.CodigoAcidenteTrabalho = null;
+            }
+
+            return objBS.ExcluirAcidenteTrabalho(dadosAcidenteTrabalho);
         }
 
         private DataTable SelecionarAcidenteTrabalho(HttpContext context)
@@ -93,7 +127,7 @@ namespace InfoTech2u.Verithus.WEB.Handler
                 dadosAcidenteTrabalho.CodigoStatus = codigoStatus;
             }
 
-            if (dadosAcidenteTrabalho.CodigoAcidenteTrabalho== 0)
+            if (dadosAcidenteTrabalho.CodigoAcidenteTrabalho == 0 || dadosAcidenteTrabalho.CodigoAcidenteTrabalho == null)
             {
                 int codigoUsuarioCadastro = 0;
                 if (Int32.TryParse(context.Request.QueryString["CodigoUsuarioCadastro"], out codigoUsuarioCadastro))

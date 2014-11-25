@@ -21,6 +21,9 @@
         }
     });
 
+    //CNPJ
+    jQuery(".CNPJ").mask("99.999.999/9999-99");
+
     jQuery('#dyntable tbody').on('click', 'tr', function () {
         if (jQuery(this).hasClass('selected')) {
             //jQuery(this).removeClass('selected');

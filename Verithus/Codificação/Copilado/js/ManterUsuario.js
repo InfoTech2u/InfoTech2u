@@ -47,12 +47,19 @@ function CarregarStatus()
             Acao: 'Consulta'
         },
         success: function (data) {
+            if (data['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
 
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+            } else {
             var lista = eval(data);
             jQuery('#ddlStatus').append("<option value='0'>Escolha</option>");
             for (x in lista) {
                 var row = "<option value='" + lista[x].CodigoStatus + "'>" + lista[x].Descricao + "</option>";
                 jQuery('#ddlStatus').append(row);
+            }
             }
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -74,12 +81,19 @@ function CarregarTiposAcessos() {
             Acao: 'Consulta'
         },
         success: function (data) {
+            if (lista['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
 
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+            } else {
             var lista = eval(data);
             jQuery('#ddlTipoAcesso').append("<option value='0'>Escolha</option>");
             for (x in lista) {
                 var row = "<option value='" + lista[x].CODIGO_TIPO_ACESSO + "'>" + lista[x].DESCRICAO + "</option>";
                 jQuery('#ddlTipoAcesso').append(row);
+            }
             }
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -144,7 +158,13 @@ function CarregarUsuario(codigousuario) {
             CodigoUsuario: codigousuario
         },
         success: function (data) {
+            if (data['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
 
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+            } else {
             var usuarios = eval(data);
             if (usuarios != undefined && usuarios.length > 0) {
                 jQuery('#txtNome').val(usuarios[0].NOME);
@@ -156,7 +176,7 @@ function CarregarUsuario(codigousuario) {
                 jQuery('#ddlTipoAcesso').val(usuarios[0].CODIGO_TIPO_ACESSO);
                 jQuery('#ddlStatus').val(usuarios[0].CODIGO_STATUS);
             }
-
+            }
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
             errorAjax(textStatus);
@@ -183,6 +203,13 @@ function Incluir() {
             CodigoStatus: jQuery('#ddlStatus').val()
         },
         success: function (data) {
+            if (data['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
+
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+            } else {
             var lista = eval(data);
 
             if (lista['Msg'] != null) {
@@ -227,6 +254,7 @@ function Incluir() {
                     }
                 }
             }
+            }
         },
         error: function (XMLHttpRequest, textStatus, errorThrow) {
             errorAjax(textStatus);
@@ -255,7 +283,7 @@ function Alterar(codigousuario) {
             },
             success: function (data) {
                 var lista = eval(data);
-                if (lista['Msg'] != null) {
+                if (data['Msg'] != null) {
                     jQuery('#myModal').modal('hide');
 
                     jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
@@ -322,11 +350,20 @@ function Excluir(codigousuario) {
                 CodigoUsuario: codigousuario
             },
             success: function (data) {
+                if (data['Msg'] != null) {
+                    jQuery('#myModal').modal('hide');
 
+                    jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                    return;
+                } else {
                 if (data) {
-                    jQuery('#gridUsuarios tbody tr[value=' + codigousuario + ']').remove();
-                    MontarGrid();
-                    alert('Concluído.');
+                        jQuery('#gridUsuarios').DataTable().row('.selected').remove().draw(false);
+                        jQuery.alerts.dialogClass = 'alert-success';
+                        jAlert('Item foi excluido', 'Informação', function () {
+                            jQuery.alerts.dialogClass = null; // reset to default
+                        });
+                    }
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrow) {
@@ -351,7 +388,13 @@ function VarificarDados() {
                 Login: jQuery('#txtLogin').val(),
             },
             success: function (data) {
+                if (data['Msg'] != null) {
+                    jQuery('#myModal').modal('hide');
 
+                    jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                    return;
+                } else {
                 var lista = eval(data);
                 if (lista != undefined && lista.length > 0) {
                     if (lista["Erro"] != undefined) {
@@ -369,7 +412,7 @@ function VarificarDados() {
                 }
 
                 Incluir();
-
+                }
             },
             error: function (XMLHttpRequest, textStatus, errorThrow) {
                 errorAjax(textStatus);

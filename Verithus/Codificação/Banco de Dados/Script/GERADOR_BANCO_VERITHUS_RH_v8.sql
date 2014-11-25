@@ -1466,9 +1466,9 @@ create table TBVRT047_SISTEMA (
    CODIGO_SISTEMA       int                  identity,
    DESCRICAO            nvarchar(120)        null,
    CODIGO_USUARIO_CADASTRO int                  null,
-   DATA_USUARIO_CADASTRO datetime             null,
+   DATA_CADASTRO datetime             null,
    CODIGO_USUARIO_ALTERACAO int                  null,
-   DATA_USUARIO_ALTERACAO datetime             null,
+   DATA_ALTERACAO datetime             null,
    CODIGO_STATUS        int                  null,
    constraint PK_TBVRT047_SISTEMA primary key (CODIGO_SISTEMA)
 )

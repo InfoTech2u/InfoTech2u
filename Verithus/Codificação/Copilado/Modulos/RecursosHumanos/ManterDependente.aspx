@@ -87,7 +87,7 @@
                 </div>
 
                 <h4 class="widgettitle">Dependentes</h4>
-                <table id="gridDependentes" class="table table-bordered responsive">
+                <table id="dyntable" class="table table-bordered responsive">
                     <colgroup>
                         <col class="con1" style="align: center; width: 5%" />
                         <col class="con0" style="align: center; width: 25%" />

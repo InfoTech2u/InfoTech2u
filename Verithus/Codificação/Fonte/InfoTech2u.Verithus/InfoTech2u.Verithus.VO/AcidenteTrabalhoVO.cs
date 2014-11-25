@@ -14,7 +14,7 @@ namespace InfoTech2u.Verithus.VO
     
     public partial class AcidenteTrabalhoVO
     {
-        public int CodigoAcidenteTrabalho { get; set; }
+        public int? CodigoAcidenteTrabalho { get; set; }
         public Nullable<int> CodigoFuncionario { get; set; }
         public Nullable<System.DateTime> Data { get; set; }
         public string Local { get; set; }

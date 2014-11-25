@@ -12,6 +12,14 @@
 
     });
 
+    
+
+    CarregarLista();
+
+    jQuery('.horaBrasil').mask('99:99');
+
+    jQuery("#txtSalario").maskMoney({ showSymbol: true, symbol: "R$", decimal: ",", thousands: "." });
+
     // Character Counter
     jQuery(".textareaCount").charCount({
         allowed: 300,
@@ -50,35 +58,31 @@
         }
     });
 
-    jQuery("#btnLimparAcidente").click(function () {
+    jQuery("#btnLimparAlteracaoCargoSalario").click(function () {
 
         jQuery('#txtData').val("");
         jQuery('#msgData').html('').hide();
         jQuery("#validaData").removeClass("par control-group error").addClass("input-small");
 
-        jQuery('#txtLocalAcidente').val("");
-        jQuery('#msgLocalAcidente').html('').hide();
-        jQuery("#validaLocalAcidente").removeClass("par control-group error").addClass("input-small");
+        jQuery('#ddlCargo').val(0);
+        jQuery('#msgCargo').html('').hide();
+        jQuery("#validaCargo").removeClass("par control-group error").addClass("input-small");
 
-        jQuery('#txtCausaAcidente').val("");
-        jQuery('#msgCausaAcidente').html('').hide();
-        jQuery("#validaCausaAcidente").removeClass("par control-group error").addClass("input-small");
+        jQuery("#txtSalario").val("");
+        jQuery('#msgSalario').html('').hide();
+        jQuery("#validaSalario").removeClass("par control-group error").addClass("input-small");
 
-        jQuery('#txtDataAlta').val("");
-        jQuery('#msgDataAlta').html('').hide();
-        jQuery("#validaDataAlta").removeClass("par control-group error").addClass("input-small");
+        jQuery("#txtHorarioEntrada").val("");
+        jQuery('#msgHorarioEntrada').html('').hide();
+        jQuery("#validaHorarioEntrada").removeClass("par control-group error").addClass("input-small");
 
-        jQuery('#txtResultado').val("");
-        jQuery('#msgResultado').html('').hide();
-        jQuery("#validaResultado").removeClass("par control-group error").addClass("input-small");
-
-        jQuery('#txtObservacoes').val("");
-        jQuery('#msgObservacoes').html('').hide();
-        jQuery("#validaObservacoes").removeClass("par control-group error").addClass("input-small");
+        jQuery("#txtHorarioSaida").val("");
+        jQuery('#msgHorarioSaida').html('').hide();
+        jQuery("#validaHorarioSaida").removeClass("par control-group error").addClass("input-small");
 
     });
 
-    jQuery("#btnConcluirAcidente").click(function () {
+    jQuery("#btnConcluirAlteracaoCargoSalario").click(function () {
 
         if (ValidarFormularioAcidente()) {
             GravarDados();
@@ -167,37 +171,82 @@
 
 });
 
+function CarregarLista() {
+
+   
+
+    jQuery.ajax({
+        type: "GET",
+        crossDomain: true,
+        url: "../../Handler/ManterCargo.ashx",
+        contentType: "json",
+        cache: false,
+        data: {
+            Metodo: 'Lista',
+            Acao: 'Consulta'
+        },
+        success: function (data) {
+            if (data['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
+
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+            } else {
+
+                
+                /**/
+                var lstTipoCargo = eval(data);
+                jQuery('#ddlCargo').append("<option value=\"0\">Escolha</option>");
+                if (lstTipoCargo != undefined && lstTipoCargo.length > 0) {
+                    for (var x in lstTipoCargo) {
+                        var row = "<option value=\"" + lstTipoCargo[x].CodigoTipoCargo + "\">" + lstTipoCargo[x].Descricao + "</option>";
+                        jQuery('#ddlCargo').append(row);
+                    }
+
+                    //CarregarListaTiposBeneficios(id);
+                }
+                /**/
+            }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrow) {
+            errorAjax(textStatus);
+            alert(textStatus);
+        }
+    });
+}
+
 function Incluir() {
 
     //alert('Teste');
 
     jQuery('#btnConcluirAcidente').attr('onclick', 'javascript:Incluir()');
-    jQuery('#myModalLabel').text('Cadastro de Acidente de Trabalho');
+    jQuery('#myModalLabel').text('Cadastro de Alteração de Cargo e Salario');
 
-    jQuery('#txtCodigoAcidenteTrabalho').val('');
+    jQuery('#txtCodigoAlteracaoCargoSalario').val('');
 
     jQuery('#txtData').val('');
-    jQuery('#txtLocalAcidente').val('');
-    jQuery('#txtCausaAcidente').val('');
-    jQuery('#txtDataAlta').val('');
-    jQuery('#txtResultado').val('');
-    jQuery('#txtObservacoes').val('');
+    jQuery('#txtSalario').val('');
+    jQuery('#txtHorarioEntrada').val('');
+    jQuery('#txtHorarioSaida').val('');
+    
+    jQuery('#ddlCargo').val('');
 }
 
 function PrepararTela(id) {
 
     if (jQuery('#hdnFuncaoTela').val() == 'Incluir') {
         jQuery('#btnConcluirAcidente').attr('onclick', 'javascript:Incluir()');
-        jQuery('#myModalLabel').text('Cadastro de Acidentes de Trabalho');
+        jQuery('#myModalLabel').text('Cadastro de Alteração de Cargo e Salario');
 
-        jQuery('#txtCodigoAcidenteTrabalho').val('');
+        jQuery('#txtCodigoAlteracaoCargoSalario').val('');
 
         jQuery('#txtData').val('');
-        jQuery('#txtLocalAcidente').val('');
-        jQuery('#txtCausaAcidente').val('');
-        jQuery('#txtDataAlta').val('');
-        jQuery('#txtResultado').val('');
-        jQuery('#txtObservacoes').val('');
+        jQuery('#txtSalario').val('');
+        jQuery('#txtHorarioEntrada').val('');
+        jQuery('#txtHorarioSaida').val('');
+        
+        jQuery('#ddlCargo').val('');
     }
     else (jQuery('#hdnFuncaoTela').val() == 'Alterar')
     {
@@ -210,27 +259,27 @@ function FuncaoTelaModal(funcao, id) {
     if (funcao == 'Incluir') {
         jQuery('#hdnFuncaoTela').val('Incluir');
 
+        jQuery('#txtCodigoAlteracaoCargoSalario').attr('readonly', false);
         jQuery('#txtData').attr('readonly', false);
-        jQuery('#txtLocalAcidente').attr('readonly', false);
-        jQuery('#txtCausaAcidente').attr('readonly', false);
-        jQuery('#txtDataAlta').attr('readonly', false);
-        jQuery('#txtResultado').attr('readonly', false);
-        jQuery('#txtObservacoes').attr('readonly', false);
+        jQuery('#ddlCargo').attr('readonly', false);
+        jQuery('#txtSalario').attr('readonly', false);
+        jQuery('#txtHorarioEntrada').attr('readonly', false);
+        jQuery('#txtHorarioSaida').attr('readonly', false);
 
-        jQuery("#btnConcluirAcidente").prop("disabled", false);
+        jQuery("#btnConcluirAlteracaoCargoSalario").prop("disabled", false);
 
     }
     else if (funcao == 'Alterar') {
         jQuery('#hdnFuncaoTela').val('Alterar');
 
+        jQuery('#txtCodigoAlteracaoCargoSalario').attr('readonly', false);
         jQuery('#txtData').attr('readonly', false);
-        jQuery('#txtLocalAcidente').attr('readonly', false);
-        jQuery('#txtCausaAcidente').attr('readonly', false);
-        jQuery('#txtDataAlta').attr('readonly', false);
-        jQuery('#txtResultado').attr('readonly', false);
-        jQuery('#txtObservacoes').attr('readonly', false);
+        jQuery('#ddlCargo').attr('readonly', false);
+        jQuery('#txtSalario').attr('readonly', false);
+        jQuery('#txtHorarioEntrada').attr('readonly', false);
+        jQuery('#txtHorarioSaida').attr('readonly', false);
 
-        jQuery("#btnConcluirAcidente").prop("disabled", false);
+        jQuery("#btnConcluirAlteracaoCargoSalario").prop("disabled", false);
 
         PrepararTela(id)
 
@@ -246,14 +295,14 @@ function CarregarAcidentesFormulario(id) {
     jQuery.ajax({
         type: "GET",
         crossDomain: true,
-        url: "../../Handler/ManterAcidenteTrabalho.ashx",
+        url: "../../Handler/ManterAlteracaoCargoSalariorFuncionario.ashx",
         contentType: "json",
         cache: false,
         data: {
             Metodo: 'Selecionar',
             Acao: 'Selecionar',
             CodigoFuncionario: idUser,
-            CodigoAcidenteTrabalho: id
+            CodigoAlteracaoCargoSalario: id
         },
         success: function (data) {
             if (data['Msg'] != null) {
@@ -268,15 +317,14 @@ function CarregarAcidentesFormulario(id) {
 
                 if (Acidente != undefined && Acidente.length > 0) {
 
-                    jQuery('#txtCodigoAcidenteTrabalho').val(Acidente[0].CODIGO_ACIDENTE_TRABALHO);
+                    jQuery('#txtCodigoAlteracaoCargoSalario').val(Acidente[0].CODIGO_ALTERACAO_CARGO_SALARIO);
                     jQuery('#txtData').val(Acidente[0].DATA);
-                    jQuery('#txtLocalAcidente').val(Acidente[0].ACIDENTE_TRABALHO_LOCAL);
-                    jQuery('#txtCausaAcidente').val(Acidente[0].CAUSA);
-                    jQuery('#txtDataAlta').val(Acidente[0].DATA_ALTA);
-
-                    jQuery('#txtResultado').val(Acidente[0].RESULTADO);
-                    jQuery('#txtObservacoes').val(Acidente[0].OBSERVACOES);
-
+                    //jQuery('#ddlTipoParentesco').val(dependente[0].CODIGO_TIPO_PARENTESCO);
+                    jQuery('#ddlCargo').val(Acidente[0].CODIGO_TIPO_CARGO);
+                    jQuery('#txtSalario').val(Acidente[0].SALARIO);
+                    jQuery('#txtHorarioEntrada').val(Acidente[0].HORARIO_INICIO);
+                    jQuery('#txtHorarioSaida').val(Acidente[0].HORARIO_FIM);
+                    
                     jQuery('#btnConcluirAcidente').attr('onclick', 'javascript:Alterar(' + id + ');');
                     jQuery('#myModalLabel').text('Alteração de Ferias');
 
@@ -293,6 +341,8 @@ function CarregarAcidentesFormulario(id) {
 
 function CarregarAcidentes() {
 
+    
+
     jQuery("tbody").empty();
     jQuery('tbody').remove();
     jQuery('#dyntable').append('<tbody></tbody>');
@@ -303,7 +353,7 @@ function CarregarAcidentes() {
         jQuery.ajax({
             type: "GET",
             crossDomain: true,
-            url: "../../Handler/ManterAcidenteTrabalho.ashx",
+            url: "../../Handler/ManterAlteracaoCargoSalariorFuncionario.ashx",
             contentType: "json",
             cache: false,
             data: {
@@ -312,6 +362,9 @@ function CarregarAcidentes() {
                 CodigoFuncionario: idUser
             },
             success: function (data) {
+
+                
+
                 if (data['Msg'] != null) {
                     jQuery('#myModal').modal('hide');
 
@@ -326,13 +379,12 @@ function CarregarAcidentes() {
 
                         for (var x in Acidente) {
                             jQuery('#dyntable').DataTable().row.add([
-                                Acidente[x].CODIGO_ACIDENTE_TRABALHO,
+                                Acidente[x].CODIGO_ALTERACAO_CARGO_SALARIO,
                                 Acidente[x].DATA,
-                                Acidente[x].ACIDENTE_TRABALHO_LOCAL,
-                                Acidente[x].CAUSA,
-                                Acidente[x].DATA_ALTA,
-                                '<a title="Alterar" href="#myModal" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + Acidente[x].CODIGO_ACIDENTE_TRABALHO + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a>',
-                                '<a title="Excluir" href="javascript:ExcluirFerias(' + Acidente[x].CODIGO_ACIDENTE_TRABALHO + ')" class="deleterow"><i class="icon-trash"></i></a>'
+                                Acidente[x].TIPO_CARGO_DESCRICAO,
+                                Acidente[x].SALARIO,
+                                '<a title="Alterar" href="#myModal" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + Acidente[x].CODIGO_ALTERACAO_CARGO_SALARIO + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a>',
+                                '<a title="Excluir" href="javascript:ExcluirFerias(' + Acidente[x].CODIGO_ALTERACAO_CARGO_SALARIO + ')" class="deleterow"><i class="icon-trash"></i></a>'
                             ]).draw();
                         }
 
@@ -350,25 +402,26 @@ function CarregarAcidentes() {
 
 function GravarDados() {
 
+    alert('1');
+
     var idUser = getUrlVars()["idUser"];
 
     jQuery.ajax({
         type: "GET",
         crossDomain: true,
-        url: "../../Handler/ManterAcidenteTrabalho.ashx",
+        url: "../../Handler/ManterAlteracaoCargoSalariorFuncionario.ashx",
         contentType: "json",
         cache: false,
         data: {
             Metodo: 'Gravar',
             Acao: 'Inclusao',
-            CodigoAcidenteTrabalho: jQuery('#txtCodigoAcidenteTrabalho').val(),
+            CodigoAlteracaoCargoSalario: jQuery('#txtCodigoAlteracaoCargoSalario').val(),
             CodigoFuncionario: idUser,
             Data: jQuery('#txtData').val(),
-            Local: jQuery('#txtLocalAcidente').val(),
-            Causa: jQuery('#txtCausaAcidente').val(),
-            DataAlta: jQuery('#txtDataAlta').val(),
-            Resultado: jQuery('#txtResultado').val(),
-            Observacoes: jQuery('#txtObservacoes').val(),
+            CodigoTipoCargo: jQuery('#ddlCargo option:selected').val(),
+            Salario: jQuery('#txtSalario').val(),
+            HorarioInicio: jQuery('#txtHorarioEntrada').val(),
+            HorarioFim: jQuery('#txtHorarioSaida').val(),
             CodigoStatus: '1'
         },
         success: function (data) {
@@ -398,78 +451,12 @@ function GravarDados() {
                     for (var x in Acidente) {
 
                         jQuery('#dyntable').DataTable().row.add([
-                                Acidente[x].CODIGO_ACIDENTE_TRABALHO,
+                                Acidente[x].CODIGO_ALTERACAO_CARGO_SALARIO,
                                 Acidente[x].DATA,
-                                Acidente[x].ACIDENTE_TRABALHO_LOCAL,
-                                Acidente[x].CAUSA,
-                                Acidente[x].DATA_ALTA,
-                                '<a title="Alterar" href="#myModal" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + Acidente[x].CODIGO_ACIDENTE_TRABALHO + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a>',
-                                '<a title="Excluir" href="javascript:ExcluirFerias(' + Acidente[x].CODIGO_ACIDENTE_TRABALHO + ')" class="deleterow"><i class="icon-trash"></i></a>'
-                        ]).draw();
-                    }
-                }
-            }
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrow) {
-            errorAjax(textStatus);
-            alert(textStatus);
-        }
-    });
-
-}
-
-/*ExcluirFerias*/
-function ExcluirFerias(idAcidenteTrabalho) {
-
-    var idUser = getUrlVars()["idUser"];
-
-    jQuery.ajax({
-        type: "GET",
-        crossDomain: true,
-        url: "../../Handler/ManterAcidenteTrabalho.ashx",
-        contentType: "json",
-        cache: false,
-        data: {
-            Metodo: 'Excluir',
-            Acao: 'Inclusao',
-            CodigoAcidenteTrabalho: idAcidenteTrabalho,
-            CodigoFuncionario: idUser,
-            CodigoStatus: '1'
-        },
-        success: function (data) {
-            if (data['Msg'] != null) {
-                jQuery('#myModal').modal('hide');
-
-                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
-
-                return;
-            } else {
-                //Sucesso
-                var Acidente = eval(data);
-
-
-                if (Acidente != undefined && Acidente.length > 0) {
-
-                    //jQuery('#myModal').modal('hide');
-
-
-                    jQuery('#dyntable').DataTable().row().remove().draw(false);
-                    // do some other stuff here
-                    jQuery.alerts.dialogClass = 'alert-success';
-                    jAlert('Item foi gravado', 'Informação', function () {
-                        jQuery.alerts.dialogClass = null; // reset to default
-                    });
-
-                    for (var x in Acidente) {
-
-                        jQuery('#dyntable').DataTable().row.add([
-                                Acidente[x].CODIGO_ACIDENTE_TRABALHO,
-                                Acidente[x].DATA,
-                                Acidente[x].ACIDENTE_TRABALHO_LOCAL,
-                                Acidente[x].CAUSA,
-                                Acidente[x].DATA_ALTA,
-                                '<a title="Alterar" href="#myModal" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + Acidente[x].CODIGO_ACIDENTE_TRABALHO + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a>',
-                                '<a title="Excluir" href="javascript:ExcluirFerias(' + Acidente[x].CODIGO_ACIDENTE_TRABALHO + ')" class="deleterow"><i class="icon-trash"></i></a>'
+                                Acidente[x].TIPO_CARGO_DESCRICAO,
+                                Acidente[x].SALARIO,
+                                '<a title="Alterar" href="#myModal" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + Acidente[x].CODIGO_ALTERACAO_CARGO_SALARIO + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a>',
+                                '<a title="Excluir" href="javascript:ExcluirFerias(' + Acidente[x].CODIGO_ALTERACAO_CARGO_SALARIO + ')" class="deleterow"><i class="icon-trash"></i></a>'
                         ]).draw();
                     }
                 }

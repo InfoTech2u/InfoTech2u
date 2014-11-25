@@ -11,7 +11,7 @@ using System.Data;
 
 namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
 {
-    public partial class ManterAcidenteTrabalhoFuncionario : System.Web.UI.Page
+    public partial class ManterAlteracaoCargoSalarioFuncionario : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -66,7 +66,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "jquery.maskMoney.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "responsive-tables.js");
             InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "custom.js");
-            InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "ManterAcidenteTrabalho.js");
+            InfoTech2uControlHtmlUtil.IncludeHtmlGenericControl(this.Page, "js", pachJs, "ManterAlteracaoCargoSalarioFuncionario.js");
         }
     }
 }

@@ -48,12 +48,12 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
         {
             List<DependenteVO> listaDependentes = ListaDependentes(idUser);
 
-           // this.rptDependentes.ItemDataBound += new RepeaterItemEventHandler(rptDependentes_ItemDataBound);
+            // this.rptDependentes.ItemDataBound += new RepeaterItemEventHandler(rptDependentes_ItemDataBound);
 
             this.rptDependentes.DataSource = listaDependentes;
             this.rptDependentes.DataBind();
 
-            
+
 
         }
 
@@ -67,8 +67,18 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
 
             dtRetorno = retorno.SelecionarAcidenteTrabalho(param);
 
-            this.rptAcidenteTrabalho.DataSource = dtRetorno;
-            this.rptAcidenteTrabalho.DataBind();
+            //lblAcidenteTrabalho
+
+            if (dtRetorno.Rows.Count > 0)
+            {
+                this.rptAcidenteTrabalho.DataSource = dtRetorno;
+                this.rptAcidenteTrabalho.DataBind();
+            }
+            else
+            {
+                this.lblAcidenteTrabalho.Visible = true;
+            }
+
 
         }
 
@@ -97,7 +107,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
                 dependente.DataNascimento = Convert.ToDateTime(dtRetorno.Rows[i]["DATA_NASCIMENTO_STR"].ToString());
                 dependente.DescricaoTipoParentesco = dtRetorno.Rows[i]["TIPO_PARENTESCO_DESC"].ToString();
                 dependente.BeneficioVO = ListaBeneficios(Convert.ToInt32(dtRetorno.Rows[i]["CODIGO_DEPENDENTE"].ToString()));
-                
+
                 listParam.Add(dependente);
 
                 i++;
@@ -106,7 +116,7 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
             return listParam;
         }
 
-        
+
         protected List<BeneficioVO> ListaBeneficios(int idBeneficio)
         {
             List<BeneficioVO> listParam = new List<BeneficioVO>();
@@ -210,13 +220,13 @@ namespace InfoTech2u.Verithus.WEB.Modulos.RecursosHumanos
                     //this.txtSobNumero.Text = dtRetorno.Rows[i]["DOC_PIS_FUNC_SOB_NUMERO"].ToString();
                     this.lblTituloEleitor.Text = dtRetorno.Rows[i]["DOC_FUNC_TITULO_ELEITOR"].ToString();
                     this.lblEstadoCivil.Text = dtRetorno.Rows[i]["CIVIL_DESCRICAO"].ToString();
-                    this.lblNacionalidade.Text = dtRetorno.Rows[i]["FUNC_LOCAL_NASCIMENTO"].ToString();
+                    this.lblNacionalidade.Text = dtRetorno.Rows[i]["FUNC_LOCAL_NASCIMENTO_PAIS"].ToString();
                     this.lblTipoLogradouroFuncionario.Text = dtRetorno.Rows[i]["TIPO_LOG_FUNC_DESCRICAO"].ToString();
                     this.lblEstado.Text = dtRetorno.Rows[i]["EST_FUNC_DESCRICAO"].ToString();
                     this.lblCidade.Text = dtRetorno.Rows[i]["CID_FUNC_DESCRICAO"].ToString();
 
-                    this.lblNacionalidadePai.Text = dtRetorno.Rows[i]["CIVIL_DESCRICAO"].ToString();
-                    this.lblNacionalidadeMae.Text = dtRetorno.Rows[i]["CIVIL_DESCRICAO"].ToString();
+                    this.lblNacionalidadePai.Text = dtRetorno.Rows[i]["FUNC_NACIONALIDADE_PAI_PAIS"].ToString();
+                    this.lblNacionalidadeMae.Text = dtRetorno.Rows[i]["FUNC_NACIONALIDADE_MAE_PAIS"].ToString();
 
 
 

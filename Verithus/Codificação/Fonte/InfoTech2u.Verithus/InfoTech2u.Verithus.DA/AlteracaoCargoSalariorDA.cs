@@ -136,5 +136,42 @@ namespace InfoTech2u.Verithus.DA
 
             return dtRetorno;
         }
+
+        public DataTable ExcluirAlteracaoCargoSalarior(AlteracaoCargoSalariorVO usuario)
+        {
+            InfoTech2uSQLUtil objSql = null;
+            StringBuilder query = null;
+            List<SqlParameter> lstSqlParameter = null;
+            DataTable dtRetorno = null;
+
+            try
+            {
+
+                objSql = new InfoTech2uSQLUtil();
+                lstSqlParameter = new List<SqlParameter>();
+                query = new StringBuilder();
+
+                objSql.Sigla = objSql.GetDataBase();
+                objSql.ConnectionString = objSql.GetConnectionString(objSql.Sigla);
+                objSql.Open();
+
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_FUNCIONARIO", usuario.CodigoFuncionario));
+
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_ALTERACAO_CARGO_SALARIO", usuario.CodigoAlteracaoCargoSalario));
+
+                lstSqlParameter.Add(new SqlParameter("@CODIGO_USUARIO_ALTERACAO", usuario.CodigoUsuarioAlteracao));
+
+                dtRetorno = new DataTable();
+
+                objSql.Execute("SPVRT080_ALTERACAO_CARGO_SALARIO_PR_EXCLUIR", lstSqlParameter.ToArray(), null, ref dtRetorno);
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+            return dtRetorno;
+        }
     }
 }

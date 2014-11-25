@@ -11,6 +11,23 @@ namespace InfoTech2u.Verithus.BS
 {
     public class AlteracaoCargoSalariorBS
     {
+        public DataTable ExcluirAlteracaoCargoSalarior(AlteracaoCargoSalariorVO param)
+        {
+            AlteracaoCargoSalariorDA objRetorno = new AlteracaoCargoSalariorDA();
+
+            try
+            {
+                return objRetorno.ExcluirAlteracaoCargoSalarior(param);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objRetorno = null;
+            }
+        }
         public DataTable SelecionarAlteracaoCargoSalarior(AlteracaoCargoSalariorVO param)
         {
             AlteracaoCargoSalariorDA objRetorno = new AlteracaoCargoSalariorDA();

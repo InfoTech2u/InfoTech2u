@@ -55,7 +55,7 @@
                             <div class="par control-group">
                                 <label class="control-label" for="txtCNPJ">CNPJ</label>
                                 <div class="controls">
-                                    <asp:TextBox runat="server" ID="txtCNPJ" class="input-medium" ClientIDMode="Static" />
+                                    <asp:TextBox runat="server" ID="txtCNPJ" class="input-large CNPJ" ClientIDMode="Static" />
                                     <asp:Label ID="lblErrorCNPJ" CssClass="help-inline" runat="server" ClientIDMode="Static">Informe o CNPJ.</asp:Label>
                                 </div>
                             </div>
