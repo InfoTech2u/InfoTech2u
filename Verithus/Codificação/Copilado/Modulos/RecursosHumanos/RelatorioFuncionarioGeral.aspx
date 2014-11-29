@@ -547,6 +547,7 @@
 
                 <div class="span12">
                     <h3>Acidentes de Trabalho</h3>
+                    <label runat="server" id="lblAcidenteTrabalho" visible="false">Nada Consta</label>
                     <asp:Repeater ID="rptAcidenteTrabalho" runat="server" OnItemDataBound="rptAcidenteTrabalho_ItemDataBound">
                         <HeaderTemplate>
                         </HeaderTemplate>

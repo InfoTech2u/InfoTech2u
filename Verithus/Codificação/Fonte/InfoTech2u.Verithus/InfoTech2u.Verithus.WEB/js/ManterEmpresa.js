@@ -257,7 +257,7 @@ function Gravar(id) {
                 CodigoEmpresa: jQuery('#txtCodigoEmpresa').val(),
                 NomeFantasia: jQuery('#txtNomeFantasia').val(),
                 RazaoSocial: jQuery('#txtRazaoSocial').val(),
-                CNPJ: jQuery('#txtCNPJ').val(),
+                CNPJ: jQuery('#txtCNPJ').val().replace(/[\.-]/g, "").replace("/",""),
                 InscricaoEstadual: jQuery('#txtInscricaoEstadual').val(),
                 CodigoStatus: 1
             },
@@ -338,14 +338,20 @@ function Excluir(id) {
                         return;
                     } else {
 
-                        if (ret) {
+                        if (ret != null && ret[0] != undefined) {
+                            jQuery.alerts.dialogClass = 'alert-danger';
+                            jAlert(ret[0].Mensagem, 'Alerta', function () {
+                                jQuery.alerts.dialogClass = null; // reset to default
+                            });
+                        } else {
                             jQuery('#dyntable').DataTable().row('.selected').remove().draw(false);
-                        //Sucesso
-                        jQuery.alerts.dialogClass = 'alert-success';
-                        jAlert('Item foi excluido', 'Informação', function () {
-                            jQuery.alerts.dialogClass = null; // reset to default
-                        });
-                    }
+                            //Sucesso
+                            jQuery.alerts.dialogClass = 'alert-success';
+                            jAlert('Item foi excluido', 'Informação', function () {
+                                jQuery.alerts.dialogClass = null; // reset to default
+                            });
+
+                        }
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrow) {

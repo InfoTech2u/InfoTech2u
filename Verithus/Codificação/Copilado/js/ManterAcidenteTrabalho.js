@@ -418,6 +418,71 @@ function GravarDados() {
 
 }
 
+/*ExcluirFerias*/
+function ExcluirFerias(idAcidenteTrabalho) {
+
+    var idUser = getUrlVars()["idUser"];
+
+    jQuery.ajax({
+        type: "GET",
+        crossDomain: true,
+        url: "../../Handler/ManterAcidenteTrabalho.ashx",
+        contentType: "json",
+        cache: false,
+        data: {
+            Metodo: 'Excluir',
+            Acao: 'Inclusao',
+            CodigoAcidenteTrabalho: idAcidenteTrabalho,
+            CodigoFuncionario: idUser,
+            CodigoStatus: '1'
+        },
+        success: function (data) {
+            if (data['Msg'] != null) {
+                jQuery('#myModal').modal('hide');
+
+                jQuery(window.document.location).attr('href', '../../Login.aspx?cod=300');
+
+                return;
+            } else {
+                //Sucesso
+                var Acidente = eval(data);
+
+
+                if (Acidente != undefined && Acidente.length > 0) {
+
+                    //jQuery('#myModal').modal('hide');
+
+
+                    jQuery('#dyntable').DataTable().row().remove().draw(false);
+                    // do some other stuff here
+                    jQuery.alerts.dialogClass = 'alert-success';
+                    jAlert('Item foi gravado', 'Informação', function () {
+                        jQuery.alerts.dialogClass = null; // reset to default
+                    });
+
+                    for (var x in Acidente) {
+
+                        jQuery('#dyntable').DataTable().row.add([
+                                Acidente[x].CODIGO_ACIDENTE_TRABALHO,
+                                Acidente[x].DATA,
+                                Acidente[x].ACIDENTE_TRABALHO_LOCAL,
+                                Acidente[x].CAUSA,
+                                Acidente[x].DATA_ALTA,
+                                '<a title="Alterar" href="#myModal" onclick="javascript:FuncaoTelaModal(\'Alterar\', ' + Acidente[x].CODIGO_ACIDENTE_TRABALHO + ');" data-toggle="modal"><i class="iconfa-pencil"></i></a>',
+                                '<a title="Excluir" href="javascript:ExcluirFerias(' + Acidente[x].CODIGO_ACIDENTE_TRABALHO + ')" class="deleterow"><i class="icon-trash"></i></a>'
+                        ]).draw();
+                    }
+                }
+            }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrow) {
+            errorAjax(textStatus);
+            alert(textStatus);
+        }
+    });
+
+}
+
 function getUrlVars() {
     var vars = [], hash;
     var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
