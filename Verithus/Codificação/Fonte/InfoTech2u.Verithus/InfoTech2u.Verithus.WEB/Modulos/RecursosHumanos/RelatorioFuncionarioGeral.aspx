@@ -22,7 +22,7 @@
                     <div class="invoice_logo">
                         <img src="../../images/logo.png" alt="" />
                     </div>
-                    <h2>FICHA DE REGISTRO DO EMPREGADO</h2>
+                    <h2 class="titRelatorio">FICHA DE REGISTRO DO EMPREGADO</h2>
                     <h3>Dados Pessoais</h3>
                     <table class="table table-bordered table-invoice">
                         <tr>

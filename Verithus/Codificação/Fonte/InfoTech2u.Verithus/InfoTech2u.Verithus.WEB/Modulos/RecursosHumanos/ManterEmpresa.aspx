@@ -61,10 +61,10 @@
                             </div>
 
                             <div class="par control-group">
-                                <label class="control-label" for="txtInscricaoEstadual">Inscrição Estadual</label>
+                                <label class="control-label" for="txtInscricaoEstadual">Inscrição Municipal</label>
                                 <div class="controls">
                                     <asp:TextBox runat="server" ID="txtInscricaoEstadual" class="input-medium" ClientIDMode="Static" />
-                                    <asp:Label ID="lblErrorInscricaoEstadual" CssClass="help-inline" runat="server" ClientIDMode="Static">Informe o Inscrição Estadual.</asp:Label>
+                                    <asp:Label ID="lblErrorInscricaoEstadual" CssClass="help-inline" runat="server" ClientIDMode="Static">Informe o Inscrição Municipal.</asp:Label>
                                 </div>
                             </div>
 

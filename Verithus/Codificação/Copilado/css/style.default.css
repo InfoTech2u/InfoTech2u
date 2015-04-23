@@ -1820,6 +1820,8 @@ table td.center, table th.center { text-align: center; }
 }
 
 
-
+.titRelatorio {
+    text-align:center;
+}
 
 
